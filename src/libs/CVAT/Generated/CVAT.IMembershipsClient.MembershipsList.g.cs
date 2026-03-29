@@ -1,0 +1,35 @@
+#nullable enable
+
+namespace CVAT
+{
+    public partial interface IMembershipsClient
+    {
+        /// <summary>
+        /// List memberships
+        /// </summary>
+        /// <param name="xOrganization"></param>
+        /// <param name="filter"></param>
+        /// <param name="org"></param>
+        /// <param name="orgId"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="role"></param>
+        /// <param name="search"></param>
+        /// <param name="sort"></param>
+        /// <param name="user"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.PaginatedMembershipReadList> MembershipsListAsync(
+            string? xOrganization = default,
+            string? filter = default,
+            string? org = default,
+            int? orgId = default,
+            int? page = default,
+            int? pageSize = default,
+            global::CVAT.MembershipsListRole? role = default,
+            string? search = default,
+            string? sort = default,
+            string? user = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

@@ -1,0 +1,18 @@
+#nullable enable
+
+namespace CVAT
+{
+    public partial interface IGuidesClient
+    {
+        /// <summary>
+        /// Delete an annotation guide<br/>
+        /// This also deletes all assets attached to the guide.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task GuidesDestroyAsync(
+            int id,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

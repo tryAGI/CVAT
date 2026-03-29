@@ -1,0 +1,195 @@
+
+#nullable enable
+
+namespace CVAT
+{
+    public partial class JobsClient
+    {
+        partial void PrepareJobsRetrieveDataArguments(
+            global::System.Net.Http.HttpClient httpClient,
+            ref int id,
+            ref int? index,
+            ref int? number,
+            ref global::CVAT.JobsRetrieveDataQuality? quality,
+            ref global::CVAT.JobsRetrieveDataType type);
+        partial void PrepareJobsRetrieveDataRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            int id,
+            int? index,
+            int? number,
+            global::CVAT.JobsRetrieveDataQuality? quality,
+            global::CVAT.JobsRetrieveDataType type);
+        partial void ProcessJobsRetrieveDataResponse(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+        partial void ProcessJobsRetrieveDataResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref byte[] content);
+
+        /// <summary>
+        /// Get data of a job
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="index"></param>
+        /// <param name="number"></param>
+        /// <param name="quality"></param>
+        /// <param name="type"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<byte[]> JobsRetrieveDataAsync(
+            int id,
+            global::CVAT.JobsRetrieveDataType type,
+            int? index = default,
+            int? number = default,
+            global::CVAT.JobsRetrieveDataQuality? quality = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            PrepareArguments(
+                client: HttpClient);
+            PrepareJobsRetrieveDataArguments(
+                httpClient: HttpClient,
+                id: ref id,
+                index: ref index,
+                number: ref number,
+                quality: ref quality,
+                type: ref type);
+
+            var __pathBuilder = new global::CVAT.PathBuilder(
+                path: $"/api/jobs/{id}/data",
+                baseUri: HttpClient.BaseAddress); 
+            __pathBuilder
+                .AddOptionalParameter("index", index?.ToString())
+                .AddOptionalParameter("number", number?.ToString())
+                .AddOptionalParameter("quality", quality?.ToValueString())
+                .AddRequiredParameter("type", type.ToValueString()) 
+                ; 
+            var __path = __pathBuilder.ToString();
+            using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                method: global::System.Net.Http.HttpMethod.Get,
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+            __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+            __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+            foreach (var __authorization in Authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                }
+            }
+
+            PrepareRequest(
+                client: HttpClient,
+                request: __httpRequest);
+            PrepareJobsRetrieveDataRequest(
+                httpClient: HttpClient,
+                httpRequestMessage: __httpRequest,
+                id: id,
+                index: index,
+                number: number,
+                quality: quality,
+                type: type);
+
+            using var __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+
+            ProcessResponse(
+                client: HttpClient,
+                response: __response);
+            ProcessJobsRetrieveDataResponse(
+                httpClient: HttpClient,
+                httpResponseMessage: __response);
+
+            if (ReadResponseAsString)
+            {
+                var __content = await __response.Content.ReadAsByteArrayAsync(
+#if NET5_0_OR_GREATER
+                    cancellationToken
+#endif
+                ).ConfigureAwait(false);
+
+                ProcessJobsRetrieveDataResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
+
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+
+                    return __content;
+                }
+                catch (global::System.Exception __ex)
+                {
+                    throw new global::CVAT.ApiException(
+                        message: __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+            }
+            else
+            {
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+
+                    var __content = await __response.Content.ReadAsByteArrayAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return __content;
+                }
+                catch (global::System.Exception __ex)
+                {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
+                    throw new global::CVAT.ApiException(
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseBody = __content,
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+            }
+        }
+    }
+}

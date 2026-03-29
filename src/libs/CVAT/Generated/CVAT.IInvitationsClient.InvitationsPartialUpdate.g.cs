@@ -1,0 +1,38 @@
+#nullable enable
+
+namespace CVAT
+{
+    public partial interface IInvitationsClient
+    {
+        /// <summary>
+        /// Update an invitation
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.InvitationRead> InvitationsPartialUpdateAsync(
+            string key,
+
+            global::CVAT.PatchedInvitationWriteRequest request,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update an invitation
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="role">
+        /// * `worker` - Worker<br/>
+        /// * `supervisor` - Supervisor<br/>
+        /// * `maintainer` - Maintainer<br/>
+        /// * `owner` - Owner
+        /// </param>
+        /// <param name="email"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.InvitationRead> InvitationsPartialUpdateAsync(
+            string key,
+            global::CVAT.RoleEnum? role = default,
+            string? email = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}
