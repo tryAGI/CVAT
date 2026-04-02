@@ -51,8 +51,8 @@ namespace CVAT.JsonConverters
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
-            global::CVAT.User? value1 = default;
-            global::CVAT.BasicUser? value2 = default;
+            global::CVAT.User? user = default;
+            global::CVAT.BasicUser? basic = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -61,7 +61,7 @@ namespace CVAT.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.User), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.User> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.User).Name}");
-                        value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        user = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -76,7 +76,7 @@ namespace CVAT.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.BasicUser), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.BasicUser> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.BasicUser).Name}");
-                        value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        basic = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -87,13 +87,13 @@ namespace CVAT.JsonConverters
                 }
             }
 
-            if (value1 == null && value2 == null)
+            if (user == null && basic == null)
             {
                 try
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.User), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.User> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.User).Name}");
-                    value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    user = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -106,7 +106,7 @@ namespace CVAT.JsonConverters
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.BasicUser), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.BasicUser> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.BasicUser).Name}");
-                    value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    basic = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -117,9 +117,9 @@ namespace CVAT.JsonConverters
             }
 
             var __value = new global::CVAT.MetaUser(
-                value1,
+                user,
 
-                value2
+                basic
                 );
 
             return __value;
@@ -134,17 +134,17 @@ namespace CVAT.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsUser)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.User), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.User?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.User).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.User!, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsBasic)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.BasicUser), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.BasicUser?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.BasicUser).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Basic!, typeInfo);
             }
         }
     }
