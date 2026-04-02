@@ -13,35 +13,35 @@ namespace CVAT
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::CVAT.User? Value1 { get; init; }
+        public global::CVAT.User? User { get; init; }
 #else
-        public global::CVAT.User? Value1 { get; }
+        public global::CVAT.User? User { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(User))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsUser => User != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::CVAT.BasicUser? Value2 { get; init; }
+        public global::CVAT.BasicUser? Basic { get; init; }
 #else
-        public global::CVAT.BasicUser? Value2 { get; }
+        public global::CVAT.BasicUser? Basic { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Basic))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsBasic => Basic != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::CVAT.User?(MetaUser @this) => @this.Value1;
+        public static implicit operator global::CVAT.User?(MetaUser @this) => @this.User;
 
         /// <summary>
         /// 
         /// </summary>
         public MetaUser(global::CVAT.User? value)
         {
-            Value1 = value;
+            User = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::CVAT.BasicUser?(MetaUser @this) => @this.Value2;
+        public static implicit operator global::CVAT.BasicUser?(MetaUser @this) => @this.Basic;
 
         /// <summary>
         /// 
         /// </summary>
         public MetaUser(global::CVAT.BasicUser? value)
         {
-            Value2 = value;
+            Basic = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public MetaUser(
-            global::CVAT.User? value1,
-            global::CVAT.BasicUser? value2
+            global::CVAT.User? user,
+            global::CVAT.BasicUser? basic
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            User = user;
+            Basic = basic;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            Basic as object ??
+            User as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            User?.ToString() ??
+            Basic?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace CVAT
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 || IsValue2;
+            return IsUser || IsBasic;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::CVAT.User?, TResult>? value1 = null,
-            global::System.Func<global::CVAT.BasicUser?, TResult>? value2 = null,
+            global::System.Func<global::CVAT.User?, TResult>? user = null,
+            global::System.Func<global::CVAT.BasicUser?, TResult>? basic = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsUser && user != null)
             {
-                return value1(Value1!);
+                return user(User!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsBasic && basic != null)
             {
-                return value2(Value2!);
+                return basic(Basic!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace CVAT
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::CVAT.User?>? value1 = null,
-            global::System.Action<global::CVAT.BasicUser?>? value2 = null,
+            global::System.Action<global::CVAT.User?>? user = null,
+            global::System.Action<global::CVAT.BasicUser?>? basic = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsUser)
             {
-                value1?.Invoke(Value1!);
+                user?.Invoke(User!);
             }
-            else if (IsValue2)
+            else if (IsBasic)
             {
-                value2?.Invoke(Value2!);
+                basic?.Invoke(Basic!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace CVAT
         {
             var fields = new object?[]
             {
-                Value1,
+                User,
                 typeof(global::CVAT.User),
-                Value2,
+                Basic,
                 typeof(global::CVAT.BasicUser),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace CVAT
         public bool Equals(MetaUser other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::CVAT.User?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::CVAT.BasicUser?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::CVAT.User?>.Default.Equals(User, other.User) &&
+                global::System.Collections.Generic.EqualityComparer<global::CVAT.BasicUser?>.Default.Equals(Basic, other.Basic) 
                 ;
         }
 

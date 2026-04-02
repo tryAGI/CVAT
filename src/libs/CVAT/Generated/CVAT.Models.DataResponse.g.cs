@@ -13,35 +13,35 @@ namespace CVAT
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::CVAT.RqId? Value1 { get; init; }
+        public global::CVAT.RqId? RqId { get; init; }
 #else
-        public global::CVAT.RqId? Value1 { get; }
+        public global::CVAT.RqId? RqId { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RqId))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsRqId => RqId != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public byte[]? Value2 { get; init; }
+        public byte[]? DataResponseVariant2 { get; init; }
 #else
-        public byte[]? Value2 { get; }
+        public byte[]? DataResponseVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DataResponseVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsDataResponseVariant2 => DataResponseVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::CVAT.RqId?(DataResponse @this) => @this.Value1;
+        public static implicit operator global::CVAT.RqId?(DataResponse @this) => @this.RqId;
 
         /// <summary>
         /// 
         /// </summary>
         public DataResponse(global::CVAT.RqId? value)
         {
-            Value1 = value;
+            RqId = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator byte[]?(DataResponse @this) => @this.Value2;
+        public static implicit operator byte[]?(DataResponse @this) => @this.DataResponseVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public DataResponse(byte[]? value)
         {
-            Value2 = value;
+            DataResponseVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public DataResponse(
-            global::CVAT.RqId? value1,
-            byte[]? value2
+            global::CVAT.RqId? rqId,
+            byte[]? dataResponseVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            RqId = rqId;
+            DataResponseVariant2 = dataResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            DataResponseVariant2 as object ??
+            RqId as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            RqId?.ToString() ??
+            DataResponseVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace CVAT
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 || !IsValue1 && IsValue2;
+            return IsRqId && !IsDataResponseVariant2 || !IsRqId && IsDataResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::CVAT.RqId?, TResult>? value1 = null,
-            global::System.Func<byte[]?, TResult>? value2 = null,
+            global::System.Func<global::CVAT.RqId?, TResult>? rqId = null,
+            global::System.Func<byte[]?, TResult>? dataResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsRqId && rqId != null)
             {
-                return value1(Value1!);
+                return rqId(RqId!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsDataResponseVariant2 && dataResponseVariant2 != null)
             {
-                return value2(Value2!);
+                return dataResponseVariant2(DataResponseVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace CVAT
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::CVAT.RqId?>? value1 = null,
-            global::System.Action<byte[]?>? value2 = null,
+            global::System.Action<global::CVAT.RqId?>? rqId = null,
+            global::System.Action<byte[]?>? dataResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsRqId)
             {
-                value1?.Invoke(Value1!);
+                rqId?.Invoke(RqId!);
             }
-            else if (IsValue2)
+            else if (IsDataResponseVariant2)
             {
-                value2?.Invoke(Value2!);
+                dataResponseVariant2?.Invoke(DataResponseVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace CVAT
         {
             var fields = new object?[]
             {
-                Value1,
+                RqId,
                 typeof(global::CVAT.RqId),
-                Value2,
+                DataResponseVariant2,
                 typeof(byte[]),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace CVAT
         public bool Equals(DataResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::CVAT.RqId?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<byte[]?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::CVAT.RqId?>.Default.Equals(RqId, other.RqId) &&
+                global::System.Collections.Generic.EqualityComparer<byte[]?>.Default.Equals(DataResponseVariant2, other.DataResponseVariant2) 
                 ;
         }
 
