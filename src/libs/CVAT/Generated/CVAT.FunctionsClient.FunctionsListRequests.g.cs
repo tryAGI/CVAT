@@ -6,26 +6,10 @@ namespace CVAT
     public partial class FunctionsClient
     {
         partial void PrepareFunctionsListRequestsArguments(
-            global::System.Net.Http.HttpClient httpClient,
-            ref string? xOrganization,
-            ref string? filter,
-            ref string? org,
-            ref int? orgId,
-            ref int? page,
-            ref int? pageSize,
-            ref string? search,
-            ref string? sort);
+            global::System.Net.Http.HttpClient httpClient);
         partial void PrepareFunctionsListRequestsRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? xOrganization,
-            string? filter,
-            string? org,
-            int? orgId,
-            int? page,
-            int? pageSize,
-            string? search,
-            string? sort);
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
         partial void ProcessFunctionsListRequestsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -38,52 +22,19 @@ namespace CVAT
         /// <summary>
         /// List annotation requests
         /// </summary>
-        /// <param name="xOrganization"></param>
-        /// <param name="filter"></param>
-        /// <param name="org"></param>
-        /// <param name="orgId"></param>
-        /// <param name="page"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="search"></param>
-        /// <param name="sort"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::CVAT.PaginatedAnnotationRequestList> FunctionsListRequestsAsync(
-            string? xOrganization = default,
-            string? filter = default,
-            string? org = default,
-            int? orgId = default,
-            int? page = default,
-            int? pageSize = default,
-            string? search = default,
-            string? sort = default,
+        public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>> FunctionsListRequestsAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareFunctionsListRequestsArguments(
-                httpClient: HttpClient,
-                xOrganization: ref xOrganization,
-                filter: ref filter,
-                org: ref org,
-                orgId: ref orgId,
-                page: ref page,
-                pageSize: ref pageSize,
-                search: ref search,
-                sort: ref sort);
+                httpClient: HttpClient);
 
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: "/api/functions/requests/",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder
-                .AddOptionalParameter("filter", filter)
-                .AddOptionalParameter("org", org)
-                .AddOptionalParameter("org_id", orgId?.ToString())
-                .AddOptionalParameter("page", page?.ToString())
-                .AddOptionalParameter("page_size", pageSize?.ToString())
-                .AddOptionalParameter("search", search)
-                .AddOptionalParameter("sort", sort) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -109,26 +60,12 @@ namespace CVAT
                 }
             }
 
-            if (xOrganization != default)
-            {
-                __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
-            }
-
-
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
             PrepareFunctionsListRequestsRequest(
                 httpClient: HttpClient,
-                httpRequestMessage: __httpRequest,
-                xOrganization: xOrganization,
-                filter: filter,
-                org: org,
-                orgId: orgId,
-                page: page,
-                pageSize: pageSize,
-                search: search,
-                sort: sort);
+                httpRequestMessage: __httpRequest);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -164,7 +101,7 @@ namespace CVAT
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::CVAT.PaginatedAnnotationRequestList.FromJson(__content, JsonSerializerContext) ??
+                        (global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>), JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -194,7 +131,7 @@ namespace CVAT
                     ).ConfigureAwait(false);
 
                     return
-                        await global::CVAT.PaginatedAnnotationRequestList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        (global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>), JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

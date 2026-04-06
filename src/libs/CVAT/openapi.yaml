@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.61.0 (2.0)",
+    "version": "2.62.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -3659,77 +3659,6 @@
       "get": {
         "operationId": "functions_list_requests",
         "summary": "List annotation requests",
-        "parameters": [
-          {
-            "name": "X-Organization",
-            "in": "header",
-            "description": "Organization unique slug",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter",
-            "required": false,
-            "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['name', 'owner', 'provider', 'type', 'labels', 'id', 'updated_date'].",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "org",
-            "in": "query",
-            "description": "Organization unique slug",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "org_id",
-            "in": "query",
-            "description": "Organization identifier",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "description": "A page number within the paginated result set.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "page_size",
-            "required": false,
-            "in": "query",
-            "description": "Number of results to return per page.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "search",
-            "required": false,
-            "in": "query",
-            "description": "A search term. Available search_fields: ('name', 'owner', 'provider', 'type', 'labels')",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['name', 'owner', 'provider', 'type', 'labels', 'id', 'updated_date']",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "tags": [
           "functions"
         ],
@@ -3754,7 +3683,10 @@
             "content": {
               "application/vnd.cvat+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedAnnotationRequestList"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnnotationRequest"
+                  }
                 }
               }
             },
@@ -3795,7 +3727,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "content": {
               "application/vnd.cvat+json": {
                 "schema": {
@@ -3817,8 +3749,7 @@
             "in": "path",
             "name": "request_id",
             "schema": {
-              "type": "string",
-              "pattern": "^\\S+$"
+              "type": "string"
             },
             "required": true
           }
@@ -3863,8 +3794,7 @@
             "in": "path",
             "name": "request_id",
             "schema": {
-              "type": "string",
-              "pattern": "^\\S+$"
+              "type": "string"
             },
             "required": true
           }
@@ -16794,37 +16724,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AnnotationConflict"
-            }
-          }
-        }
-      },
-      "PaginatedAnnotationRequestList": {
-        "type": "object",
-        "required": [
-          "count",
-          "results"
-        ],
-        "properties": {
-          "count": {
-            "type": "integer",
-            "example": 123
-          },
-          "next": {
-            "type": "string",
-            "nullable": true,
-            "format": "uri",
-            "example": "http://api.example.org/accounts/?page=4"
-          },
-          "previous": {
-            "type": "string",
-            "nullable": true,
-            "format": "uri",
-            "example": "http://api.example.org/accounts/?page=2"
-          },
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AnnotationRequest"
             }
           }
         }
