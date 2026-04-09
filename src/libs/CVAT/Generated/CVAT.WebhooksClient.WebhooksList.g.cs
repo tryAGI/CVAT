@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class WebhooksClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_WebhooksListSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_WebhooksListSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_WebhooksListSecurityRequirement0,
+            };
         partial void PrepareWebhooksListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? xOrganization,
@@ -92,6 +111,12 @@ namespace CVAT
                 targetUrl: ref targetUrl,
                 type: ref type);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_WebhooksListSecurityRequirements,
+                operationName: "WebhooksListAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: "/api/webhooks",
                 baseUri: HttpClient.BaseAddress); 
@@ -107,7 +132,7 @@ namespace CVAT
                 .AddOptionalParameter("sort", sort)
                 .AddOptionalParameter("target_url", targetUrl)
                 .AddOptionalParameter("type", type?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -117,7 +142,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

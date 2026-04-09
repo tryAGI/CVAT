@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class TasksClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_TasksCreateSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_TasksCreateSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_TasksCreateSecurityRequirement0,
+            };
         partial void PrepareTasksCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? xOrganization,
@@ -57,13 +76,19 @@ namespace CVAT
                 orgId: ref orgId,
                 request: request);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_TasksCreateSecurityRequirements,
+                operationName: "TasksCreateAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: "/api/tasks",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("org", org)
                 .AddOptionalParameter("org_id", orgId?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -73,7 +98,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class CloudstoragesClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_CloudstoragesListSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_CloudstoragesListSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_CloudstoragesListSecurityRequirement0,
+            };
         partial void PrepareCloudstoragesListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? xOrganization,
@@ -97,6 +116,12 @@ namespace CVAT
                 search: ref search,
                 sort: ref sort);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CloudstoragesListSecurityRequirements,
+                operationName: "CloudstoragesListAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: "/api/cloudstorages",
                 baseUri: HttpClient.BaseAddress); 
@@ -113,7 +138,7 @@ namespace CVAT
                 .AddOptionalParameter("resource", resource)
                 .AddOptionalParameter("search", search)
                 .AddOptionalParameter("sort", sort) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -123,7 +148,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
