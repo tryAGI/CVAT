@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class JobsClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_JobsPartialUpdateAnnotationsSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_JobsPartialUpdateAnnotationsSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_JobsPartialUpdateAnnotationsSecurityRequirement0,
+            };
         partial void PrepareJobsPartialUpdateAnnotationsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::CVAT.JobsPartialUpdateAnnotationsAction action,
@@ -45,12 +64,18 @@ namespace CVAT
                 id: ref id,
                 request: request);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_JobsPartialUpdateAnnotationsSecurityRequirements,
+                operationName: "JobsPartialUpdateAnnotationsAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: $"/api/jobs/{id}/annotations/",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddRequiredParameter("action", action.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: new global::System.Net.Http.HttpMethod("PATCH"),
@@ -60,7 +85,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

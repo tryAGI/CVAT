@@ -6,6 +6,7 @@ namespace CVAT
     public sealed partial class CVATClient
     {
         /// <inheritdoc cref="CVATClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::CVAT.EndPointAuthorization}?, bool)"/>
+
         public CVATClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

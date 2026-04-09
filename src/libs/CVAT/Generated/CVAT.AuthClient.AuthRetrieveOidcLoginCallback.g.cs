@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class AuthClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_AuthRetrieveOidcLoginCallbackSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_AuthRetrieveOidcLoginCallbackSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_AuthRetrieveOidcLoginCallbackSecurityRequirement0,
+            };
         partial void PrepareAuthRetrieveOidcLoginCallbackArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? code,
@@ -43,13 +62,19 @@ namespace CVAT
                 id: ref id,
                 state: ref state);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_AuthRetrieveOidcLoginCallbackSecurityRequirements,
+                operationName: "AuthRetrieveOidcLoginCallbackAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: $"/api/auth/oidc/{id}/login/callback/",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("code", code)
                 .AddOptionalParameter("state", state) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -59,7 +84,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

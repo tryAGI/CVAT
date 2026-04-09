@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class TasksClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_TasksCreateDatasetExportSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_TasksCreateDatasetExportSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_TasksCreateDatasetExportSecurityRequirement0,
+            };
         partial void PrepareTasksCreateDatasetExportArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int? cloudStorageId,
@@ -67,6 +86,12 @@ namespace CVAT
                 location: ref location,
                 saveImages: ref saveImages);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_TasksCreateDatasetExportSecurityRequirements,
+                operationName: "TasksCreateDatasetExportAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: $"/api/tasks/{id}/dataset/export",
                 baseUri: HttpClient.BaseAddress); 
@@ -76,7 +101,7 @@ namespace CVAT
                 .AddRequiredParameter("format", format)
                 .AddOptionalParameter("location", location?.ToValueString())
                 .AddOptionalParameter("save_images", saveImages?.ToString().ToLowerInvariant()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -86,7 +111,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

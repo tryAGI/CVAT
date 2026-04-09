@@ -13,7 +13,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://app.cvat.ai";
+        public const string DefaultBaseUrl = "https://app.cvat.ai/";
 
         private bool _disposeHttpClient = true;
 

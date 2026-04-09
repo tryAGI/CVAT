@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class SchemaClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_SchemaRetrieveSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_SchemaRetrieveSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_SchemaRetrieveSecurityRequirement0,
+            };
         partial void PrepareSchemaRetrieveArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::CVAT.SchemaRetrieveLang? lang,
@@ -44,13 +63,19 @@ namespace CVAT
                 lang: ref lang,
                 scheme: ref scheme);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_SchemaRetrieveSecurityRequirements,
+                operationName: "SchemaRetrieveAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: "/api/schema/",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("lang", lang?.ToValueString())
                 .AddOptionalParameter("scheme", scheme?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -60,7 +85,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

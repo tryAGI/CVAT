@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class ServerClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_ServerRetrievePluginsSecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_ServerRetrievePluginsSecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_ServerRetrievePluginsSecurityRequirement0,
+            };
         partial void PrepareServerRetrievePluginsArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareServerRetrievePluginsRequest(
@@ -32,9 +51,15 @@ namespace CVAT
             PrepareServerRetrievePluginsArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ServerRetrievePluginsSecurityRequirements,
+                operationName: "ServerRetrievePluginsAsync");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: "/api/server/plugins",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -44,7 +69,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace CVAT
 {
     public partial class CloudstoragesClient
     {
+
+
+        private static readonly global::CVAT.EndPointSecurityRequirement s_CloudstoragesRetrieveContentV2SecurityRequirement0 =
+            new global::CVAT.EndPointSecurityRequirement
+            {
+                Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
+                {                    new global::CVAT.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_CloudstoragesRetrieveContentV2SecurityRequirements =
+            new global::CVAT.EndPointSecurityRequirement[]
+            {                s_CloudstoragesRetrieveContentV2SecurityRequirement0,
+            };
         partial void PrepareCloudstoragesRetrieveContentV2Arguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int id,
@@ -57,6 +76,12 @@ namespace CVAT
                 pageSize: ref pageSize,
                 prefix: ref prefix);
 
+
+            var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CloudstoragesRetrieveContentV2SecurityRequirements,
+                operationName: "CloudstoragesRetrieveContentV2Async");
+
             var __pathBuilder = new global::CVAT.PathBuilder(
                 path: $"/api/cloudstorages/{id}/content-v2",
                 baseUri: HttpClient.BaseAddress); 
@@ -65,7 +90,7 @@ namespace CVAT
                 .AddOptionalParameter("next_token", nextToken)
                 .AddOptionalParameter("page_size", pageSize?.ToString())
                 .AddOptionalParameter("prefix", prefix) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -75,7 +100,7 @@ namespace CVAT
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
