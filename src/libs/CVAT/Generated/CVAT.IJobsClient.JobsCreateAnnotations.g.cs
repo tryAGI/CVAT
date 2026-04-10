@@ -19,6 +19,7 @@ namespace CVAT
         /// Default Value: true
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.RqId> JobsCreateAnnotationsAsync(
@@ -30,6 +31,7 @@ namespace CVAT
             string? format = default,
             global::CVAT.JobsCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Import annotations into a job<br/>
@@ -47,6 +49,7 @@ namespace CVAT
         /// </param>
         /// <param name="annotationFile"></param>
         /// <param name="annotationFilename"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.RqId> JobsCreateAnnotationsAsync(
@@ -58,6 +61,7 @@ namespace CVAT
             string? format = default,
             global::CVAT.JobsCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

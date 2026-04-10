@@ -53,6 +53,7 @@ namespace CVAT
         /// <param name="uploadStart"></param>
         /// <param name="id"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.DataResponse> TasksCreateDataAsync(
@@ -62,6 +63,7 @@ namespace CVAT
             bool? uploadFinish = default,
             bool? uploadMultiple = default,
             bool? uploadStart = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Attach data to a task<br/>
@@ -220,6 +222,7 @@ namespace CVAT
         /// Included only in requests
         /// </param>
         /// <param name="validationParams"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.DataResponse> TasksCreateDataAsync(
@@ -246,6 +249,7 @@ namespace CVAT
             global::CVAT.SortingMethod? sortingMethod = default,
             string? filenamePattern = default,
             global::CVAT.ValidationParamsRequest? validationParams = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

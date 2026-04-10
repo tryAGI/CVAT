@@ -12,11 +12,13 @@ namespace CVAT
         /// Returns the success/fail message.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.RestAuthDetail> AuthCreatePasswordResetConfirmAsync(
 
             global::CVAT.PasswordResetConfirmRequest request,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Password reset e-mail link is confirmed, therefore<br/>
@@ -29,6 +31,7 @@ namespace CVAT
         /// <param name="newPassword2"></param>
         /// <param name="uid"></param>
         /// <param name="token"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.RestAuthDetail> AuthCreatePasswordResetConfirmAsync(
@@ -36,6 +39,7 @@ namespace CVAT
             string newPassword2,
             string uid,
             string token,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

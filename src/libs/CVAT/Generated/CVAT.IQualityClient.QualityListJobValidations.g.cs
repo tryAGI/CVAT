@@ -20,6 +20,7 @@ namespace CVAT
         /// <param name="sort"></param>
         /// <param name="status"></param>
         /// <param name="taskId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.PaginatedJobValidationList> QualityListJobValidationsAsync(
@@ -36,6 +37,7 @@ namespace CVAT
             string? sort = default,
             global::CVAT.QualityListJobValidationsStatus? status = default,
             int? taskId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
