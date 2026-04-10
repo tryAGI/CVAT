@@ -11,6 +11,7 @@ namespace CVAT
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.WebhookRead> WebhooksCreateAsync(
@@ -19,6 +20,7 @@ namespace CVAT
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a webhook
@@ -44,6 +46,7 @@ namespace CVAT
         /// <param name="events">
         /// Included only in requests
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.WebhookRead> WebhooksCreateAsync(
@@ -59,6 +62,7 @@ namespace CVAT
             string? secret = default,
             bool? isActive = default,
             bool? enableSsl = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

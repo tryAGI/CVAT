@@ -8,11 +8,13 @@ namespace CVAT
         /// 
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.RegisterSerializerWithSubscriptions> AuthCreateRegisterAsync(
 
             global::CVAT.RegisterSerializerWithSubscriptionsRequest request,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -28,6 +30,7 @@ namespace CVAT
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
         /// <param name="confirmations"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.RegisterSerializerWithSubscriptions> AuthCreateRegisterAsync(
@@ -38,6 +41,7 @@ namespace CVAT
             string? firstName = default,
             string? lastName = default,
             global::System.Collections.Generic.IList<global::CVAT.UserAgreementRequest>? confirmations = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

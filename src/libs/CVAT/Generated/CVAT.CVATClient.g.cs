@@ -31,6 +31,9 @@ namespace CVAT
 #if DEBUG
             = true;
 #endif
+
+        /// <inheritdoc/>
+        public global::CVAT.AutoSDKClientOptions Options { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -40,7 +43,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public AnalyticsClient Analytics => new AnalyticsClient(HttpClient, authorizations: Authorizations)
+        public AnalyticsClient Analytics => new AnalyticsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -49,7 +52,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public AssetsClient Assets => new AssetsClient(HttpClient, authorizations: Authorizations)
+        public AssetsClient Assets => new AssetsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -58,7 +61,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public AuthClient Auth => new AuthClient(HttpClient, authorizations: Authorizations)
+        public AuthClient Auth => new AuthClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -67,7 +70,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public CloudstoragesClient Cloudstorages => new CloudstoragesClient(HttpClient, authorizations: Authorizations)
+        public CloudstoragesClient Cloudstorages => new CloudstoragesClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -76,7 +79,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public CommentsClient Comments => new CommentsClient(HttpClient, authorizations: Authorizations)
+        public CommentsClient Comments => new CommentsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -85,7 +88,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public ConsensusClient Consensus => new ConsensusClient(HttpClient, authorizations: Authorizations)
+        public ConsensusClient Consensus => new ConsensusClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -94,7 +97,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public EventsClient Events => new EventsClient(HttpClient, authorizations: Authorizations)
+        public EventsClient Events => new EventsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -103,7 +106,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public FunctionsClient Functions => new FunctionsClient(HttpClient, authorizations: Authorizations)
+        public FunctionsClient Functions => new FunctionsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -112,7 +115,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public GuidesClient Guides => new GuidesClient(HttpClient, authorizations: Authorizations)
+        public GuidesClient Guides => new GuidesClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -121,7 +124,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public InvitationsClient Invitations => new InvitationsClient(HttpClient, authorizations: Authorizations)
+        public InvitationsClient Invitations => new InvitationsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -130,7 +133,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public IssuesClient Issues => new IssuesClient(HttpClient, authorizations: Authorizations)
+        public IssuesClient Issues => new IssuesClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -139,7 +142,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public JobsClient Jobs => new JobsClient(HttpClient, authorizations: Authorizations)
+        public JobsClient Jobs => new JobsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -148,7 +151,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public LabelsClient Labels => new LabelsClient(HttpClient, authorizations: Authorizations)
+        public LabelsClient Labels => new LabelsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -157,7 +160,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public LambdaClient Lambda => new LambdaClient(HttpClient, authorizations: Authorizations)
+        public LambdaClient Lambda => new LambdaClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -166,7 +169,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public LimitsClient Limits => new LimitsClient(HttpClient, authorizations: Authorizations)
+        public LimitsClient Limits => new LimitsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -175,7 +178,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public MembershipsClient Memberships => new MembershipsClient(HttpClient, authorizations: Authorizations)
+        public MembershipsClient Memberships => new MembershipsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -184,7 +187,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public OrganizationsClient Organizations => new OrganizationsClient(HttpClient, authorizations: Authorizations)
+        public OrganizationsClient Organizations => new OrganizationsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -193,7 +196,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public ProjectsClient Projects => new ProjectsClient(HttpClient, authorizations: Authorizations)
+        public ProjectsClient Projects => new ProjectsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -202,7 +205,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public QualityClient Quality => new QualityClient(HttpClient, authorizations: Authorizations)
+        public QualityClient Quality => new QualityClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -211,7 +214,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public RequestsClient Requests => new RequestsClient(HttpClient, authorizations: Authorizations)
+        public RequestsClient Requests => new RequestsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -220,7 +223,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public SchemaClient Schema => new SchemaClient(HttpClient, authorizations: Authorizations)
+        public SchemaClient Schema => new SchemaClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -229,7 +232,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public ServerClient Server => new ServerClient(HttpClient, authorizations: Authorizations)
+        public ServerClient Server => new ServerClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -238,7 +241,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public SubscriptionsClient Subscriptions => new SubscriptionsClient(HttpClient, authorizations: Authorizations)
+        public SubscriptionsClient Subscriptions => new SubscriptionsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -247,7 +250,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public TasksClient Tasks => new TasksClient(HttpClient, authorizations: Authorizations)
+        public TasksClient Tasks => new TasksClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -256,7 +259,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public UsageClient Usage => new UsageClient(HttpClient, authorizations: Authorizations)
+        public UsageClient Usage => new UsageClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -265,7 +268,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public UsersClient Users => new UsersClient(HttpClient, authorizations: Authorizations)
+        public UsersClient Users => new UsersClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -274,7 +277,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public WebhooksClient Webhooks => new WebhooksClient(HttpClient, authorizations: Authorizations)
+        public WebhooksClient Webhooks => new WebhooksClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -293,11 +296,37 @@ namespace CVAT
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::CVAT.EndPointAuthorization>? authorizations = null,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri,
+                authorizations,
+                options: null,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the CVATClient.
+        /// If no httpClient is provided, a new one will be created.
+        /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public CVATClient(
+            global::System.Net.Http.HttpClient? httpClient = null,
+            global::System.Uri? baseUri = null,
+            global::System.Collections.Generic.List<global::CVAT.EndPointAuthorization>? authorizations = null,
+            global::CVAT.AutoSDKClientOptions? options = null,
             bool disposeHttpClient = true)
         {
+
             HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
             Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::CVAT.EndPointAuthorization>();
+            Options = options ?? new global::CVAT.AutoSDKClientOptions();
             _disposeHttpClient = disposeHttpClient;
 
             Initialized(HttpClient);

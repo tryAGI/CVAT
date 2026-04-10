@@ -25,6 +25,7 @@ namespace CVAT
             Authorizations.Add(new global::CVAT.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

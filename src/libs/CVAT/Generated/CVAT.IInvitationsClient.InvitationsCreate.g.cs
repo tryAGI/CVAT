@@ -11,6 +11,7 @@ namespace CVAT
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.InvitationRead> InvitationsCreateAsync(
@@ -19,6 +20,7 @@ namespace CVAT
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create an invitation
@@ -33,6 +35,7 @@ namespace CVAT
         /// * `owner` - Owner
         /// </param>
         /// <param name="email"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.InvitationRead> InvitationsCreateAsync(
@@ -41,6 +44,7 @@ namespace CVAT
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

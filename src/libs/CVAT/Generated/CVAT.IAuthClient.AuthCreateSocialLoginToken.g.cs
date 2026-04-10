@@ -13,6 +13,7 @@ namespace CVAT
         /// <param name="process"></param>
         /// <param name="scope"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.Token> AuthCreateSocialLoginTokenAsync(
@@ -22,6 +23,7 @@ namespace CVAT
             string? authParams = default,
             string? process = default,
             string? scope = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Method returns an authentication token based on code parameter<br/>
@@ -39,6 +41,7 @@ namespace CVAT
         /// Default Value: login
         /// </param>
         /// <param name="requestScope"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.Token> AuthCreateSocialLoginTokenAsync(
@@ -52,6 +55,7 @@ namespace CVAT
             string? requestAuthParams = default,
             string? requestProcess = default,
             string? requestScope = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

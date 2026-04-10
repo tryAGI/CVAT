@@ -13,6 +13,7 @@ namespace CVAT
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.TaskRead> TasksCreateAsync(
@@ -21,6 +22,7 @@ namespace CVAT
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a task<br/>
@@ -50,6 +52,7 @@ namespace CVAT
         /// Configured at task creation<br/>
         /// Default Value: 0
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.TaskRead> TasksCreateAsync(
@@ -68,6 +71,7 @@ namespace CVAT
             global::CVAT.StorageRequest? targetStorage = default,
             global::CVAT.StorageRequest? sourceStorage = default,
             int? consensusReplicas = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

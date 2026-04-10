@@ -20,6 +20,7 @@ namespace CVAT
         /// <param name="subresource"></param>
         /// <param name="target"></param>
         /// <param name="taskId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.PaginatedRequestList> RequestsListAsync(
@@ -36,6 +37,7 @@ namespace CVAT
             string? subresource = default,
             string? target = default,
             int? taskId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -11,12 +11,14 @@ namespace CVAT
         /// </summary>
         /// <param name="rqId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.QualityReport> QualityCreateReportAsync(
 
             global::CVAT.QualityReportCreateRequest request,
             string? rqId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a quality report<br/>
@@ -30,12 +32,14 @@ namespace CVAT
         /// <param name="projectId">
         /// Included only in requests
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.QualityReport> QualityCreateReportAsync(
             int taskId,
             int projectId,
             string? rqId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

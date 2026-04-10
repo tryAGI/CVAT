@@ -23,6 +23,7 @@ namespace CVAT
         /// <param name="sort"></param>
         /// <param name="taskId"></param>
         /// <param name="type"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.PaginatedLabelList> LabelsListAsync(
@@ -42,6 +43,7 @@ namespace CVAT
             string? sort = default,
             int? taskId = default,
             global::CVAT.LabelsListType? type = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
