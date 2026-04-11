@@ -164,10 +164,10 @@ namespace CVAT
                 } 
             }
 
-                if (xOrganization != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
-                }
+            if (xOrganization != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
+            }
 
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
