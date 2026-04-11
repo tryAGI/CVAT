@@ -178,18 +178,18 @@ namespace CVAT
                 } 
             }
 
-                if (uploadFinish != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Upload-Finish", uploadFinish.ToString());
-                }
-                if (uploadMultiple != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Upload-Multiple", uploadMultiple.ToString());
-                }
-                if (uploadStart != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Upload-Start", uploadStart.ToString());
-                }
+            if (uploadFinish != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Upload-Finish", uploadFinish.ToString());
+            }
+            if (uploadMultiple != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Upload-Multiple", uploadMultiple.ToString());
+            }
+            if (uploadStart != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Upload-Start", uploadStart.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(

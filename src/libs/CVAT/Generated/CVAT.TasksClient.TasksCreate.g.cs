@@ -138,10 +138,10 @@ namespace CVAT
                 } 
             }
 
-                if (xOrganization != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
-                }
+            if (xOrganization != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(

@@ -1,0 +1,81 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Create a cloud storage",
+      "Slug": "cloudstorages-create",
+      "Description": "Generated from OpenAPI examples.",
+      "Language": "csharp",
+      "Code": "using var client = new CVATClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::CVAT.CloudStorageWriteRequest\u003E(\n    @\u0022{\n  \u0022\u0022provider_type\u0022\u0022: \u0022\u0022AWS_S3_BUCKET\u0022\u0022,\n  \u0022\u0022resource\u0022\u0022: \u0022\u0022somebucket\u0022\u0022,\n  \u0022\u0022display_name\u0022\u0022: \u0022\u0022Bucket\u0022\u0022,\n  \u0022\u0022credentials_type\u0022\u0022: \u0022\u0022KEY_SECRET_KEY_PAIR\u0022\u0022,\n  \u0022\u0022key\u0022\u0022: \u0022\u0022XXX\u0022\u0022,\n  \u0022\u0022secret_key\u0022\u0022: \u0022\u0022XXX\u0022\u0022,\n  \u0022\u0022specific_attributes\u0022\u0022: \u0022\u0022region=eu-central-1\u0022\u0022,\n  \u0022\u0022description\u0022\u0022: \u0022\u0022Some description\u0022\u0022,\n  \u0022\u0022manifests\u0022\u0022: [\n    \u0022\u0022manifest.jsonl\u0022\u0022\n  ]\n}\u0022)!;\n\nvar response = await client.Cloudstorages.CloudstoragesCreateAsync(\n    request: request\n);",
+      "Format": "sdk",
+      "OperationId": "cloudstorages_create",
+      "Setup": "This example assumes \u0060using CVAT;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 2,
+      "Title": "Update a cloud storage",
+      "Slug": "cloudstorages-partial-update",
+      "Description": "Generated from OpenAPI examples.",
+      "Language": "http",
+      "Code": "### Update a cloud storage\n# @name cloudstorages_partial_update\nPATCH {{host}}/api/cloudstorages/{{id}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/vnd.cvat\u002Bjson\n\n{\n  \u0022provider_type\u0022: \u0022AWS_S3_BUCKET\u0022,\n  \u0022resource\u0022: \u0022somebucket\u0022,\n  \u0022display_name\u0022: \u0022Bucket\u0022,\n  \u0022credentials_type\u0022: \u0022KEY_SECRET_KEY_PAIR\u0022,\n  \u0022key\u0022: \u0022XXX\u0022,\n  \u0022secret_key\u0022: \u0022XXX\u0022,\n  \u0022specific_attributes\u0022: \u0022region=eu-central-1\u0022,\n  \u0022description\u0022: \u0022Some description\u0022,\n  \u0022manifests\u0022: [\n    \u0022manifest.jsonl\u0022\n  ]\n}\n\n## Responses\n# 200\n# Content-Type: application/vnd.cvat\u002Bjson",
+      "Format": "http",
+      "OperationId": "cloudstorages_partial_update",
+      "Setup": null
+    },
+    {
+      "Order": 3,
+      "Title": "Create a job",
+      "Slug": "jobs-create",
+      "Description": "Generated from OpenAPI examples.",
+      "Language": "csharp",
+      "Code": "using var client = new CVATClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::CVAT.JobWriteRequest\u003E(\n    @\u0022{\n  \u0022\u0022type\u0022\u0022: \u0022\u0022ground_truth\u0022\u0022,\n  \u0022\u0022task_id\u0022\u0022: 42,\n  \u0022\u0022frame_selection_method\u0022\u0022: \u0022\u0022random_per_job\u0022\u0022,\n  \u0022\u0022frames_per_job_share\u0022\u0022: 0.2,\n  \u0022\u0022random_seed\u0022\u0022: 1\n}\u0022)!;\n\nvar response = await client.Jobs.JobsCreateAsync(\n    request: request\n);",
+      "Format": "sdk",
+      "OperationId": "jobs_create",
+      "Setup": "This example assumes \u0060using CVAT;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 4,
+      "Title": "Allows updating current validation configuration",
+      "Slug": "jobs-partial-update-validation-layout",
+      "Description": "WARNING: this operation is not protected from race conditions.\nIt\u0027s up to the user to ensure no parallel calls to this operation happen.\nIt affects image access, including exports with images, backups, chunk downloading etc.",
+      "Language": "http",
+      "Code": "### Allows updating current validation configuration\n# @name jobs_partial_update_validation_layout\nPATCH {{host}}/api/jobs/{{id}}/validation_layout\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/vnd.cvat\u002Bjson\n\n{\n  \u0022frame_selection_method\u0022: \u0022manual\u0022,\n  \u0022honeypot_real_frames\u0022: [\n    10,\n    20,\n    22\n  ]\n}\n\n## Responses\n# 200\n# Content-Type: application/vnd.cvat\u002Bjson",
+      "Format": "http",
+      "OperationId": "jobs_partial_update_validation_layout",
+      "Setup": null
+    },
+    {
+      "Order": 5,
+      "Title": "Create a job validation request",
+      "Slug": "quality-create-validation",
+      "Description": "The endpoint can be used this way:\n\n    request_data = {\u0022job_id\u0022: 42}\n    response = post(body=request_data)\n    if response.status == 200:\n        return response.data[\u0022status\u0022] # likely, \u0022disabled\u0022\n\n    rq_id = response.data[\u0022rq_id\u0022]\n    while True:\n        response = get(f\u0022/api/requests/{rq_id}\u0022)\n        background_request = json.loads(response.data)\n        if background_request[\u0022status\u0022] == \u0022finished\u0022:\n            return background_request\n        elif background_request[\u0022status\u0022] == \u0022failed\u0022:\n            raise Exception(background_request[\u0022message\u0022])\n\nOnly the last validation request to a job is considered valid. If a new request arrives\nbefore the previous one is completed, the previous one is considered canceled.\nThe attempts counter will be increased regardless of the results being collected.",
+      "Language": "csharp",
+      "Code": "using var client = new CVATClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::CVAT.JobValidationCreateRequest\u003E(\n    @\u0022{\n  \u0022\u0022job_id\u0022\u0022: 42\n}\u0022)!;\n\nvar response = await client.Quality.QualityCreateValidationAsync(\n    request: request\n);",
+      "Format": "sdk",
+      "OperationId": "quality_create_validation",
+      "Setup": "This example assumes \u0060using CVAT;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 6,
+      "Title": "Update a task",
+      "Slug": "tasks-partial-update",
+      "Description": "Generated from OpenAPI examples.",
+      "Language": "http",
+      "Code": "### Update a task\n# @name tasks_partial_update\nPATCH {{host}}/api/tasks/{{id}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/vnd.cvat\u002Bjson\n\n{\n  \u0022project_id\u0022: 0\n}\n\n## Responses\n# 200\n# Content-Type: application/vnd.cvat\u002Bjson",
+      "Format": "http",
+      "OperationId": "tasks_partial_update",
+      "Setup": null
+    },
+    {
+      "Order": 7,
+      "Title": "Allows updating current validation configuration",
+      "Slug": "tasks-partial-update-validation-layout",
+      "Description": "WARNING: this operation is not protected from race conditions.\nIt\u0027s up to the user to ensure no parallel calls to this operation happen.\nIt affects image access, including exports with images, backups, chunk downloading etc.",
+      "Language": "http",
+      "Code": "### Allows updating current validation configuration\n# @name tasks_partial_update_validation_layout\nPATCH {{host}}/api/tasks/{{id}}/validation_layout\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/vnd.cvat\u002Bjson\n\n{\n  \u0022disabled_frames\u0022: [\n    4,\n    5,\n    8\n  ]\n}\n\n## Responses\n# 200\n# Content-Type: application/vnd.cvat\u002Bjson",
+      "Format": "http",
+      "OperationId": "tasks_partial_update_validation_layout",
+      "Setup": null
+    }
+  ]
+}
