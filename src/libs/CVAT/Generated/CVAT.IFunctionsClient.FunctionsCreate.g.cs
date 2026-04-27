@@ -33,6 +33,9 @@ namespace CVAT
         /// </param>
         /// <param name="labelsV2"></param>
         /// <param name="supportedShapeTypes"></param>
+        /// <param name="visibility">
+        /// Default Value: private
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -44,6 +47,7 @@ namespace CVAT
             global::CVAT.KindEnum? kind = default,
             global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? labelsV2 = default,
             global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes = default,
+            global::CVAT.VisibilityEnum? visibility = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

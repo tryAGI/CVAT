@@ -145,6 +145,10 @@ namespace CVAT
 
             typeof(global::CVAT.JsonConverters.ValidationModeNullableJsonConverter),
 
+            typeof(global::CVAT.JsonConverters.VisibilityEnumJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.VisibilityEnumNullableJsonConverter),
+
             typeof(global::CVAT.JsonConverters.WebhookContentTypeJsonConverter),
 
             typeof(global::CVAT.JsonConverters.WebhookContentTypeNullableJsonConverter),
@@ -436,6 +440,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.FunctionLabel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionLabel))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.ShapeType2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.VisibilityEnum), TypeInfoPropertyName = "VisibilityEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionAttribute))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionAttributeRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionCall))]

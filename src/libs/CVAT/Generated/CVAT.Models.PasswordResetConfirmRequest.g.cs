@@ -9,18 +9,16 @@ namespace CVAT
     public sealed partial class PasswordResetConfirmRequest
     {
         /// <summary>
-        /// 
+        /// Included only in requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("new_password1")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string NewPassword1 { get; set; }
+        public string? NewPassword1 { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("new_password2")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string NewPassword2 { get; set; }
+        public string? NewPassword2 { get; set; }
 
         /// <summary>
         /// 
@@ -45,21 +43,25 @@ namespace CVAT
         /// <summary>
         /// Initializes a new instance of the <see cref="PasswordResetConfirmRequest" /> class.
         /// </summary>
-        /// <param name="newPassword1"></param>
-        /// <param name="newPassword2"></param>
         /// <param name="uid"></param>
         /// <param name="token"></param>
+        /// <param name="newPassword1">
+        /// Included only in requests
+        /// </param>
+        /// <param name="newPassword2">
+        /// Included only in requests
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PasswordResetConfirmRequest(
-            string newPassword1,
-            string newPassword2,
             string uid,
-            string token)
+            string token,
+            string? newPassword1,
+            string? newPassword2)
         {
-            this.NewPassword1 = newPassword1 ?? throw new global::System.ArgumentNullException(nameof(newPassword1));
-            this.NewPassword2 = newPassword2 ?? throw new global::System.ArgumentNullException(nameof(newPassword2));
+            this.NewPassword1 = newPassword1;
+            this.NewPassword2 = newPassword2;
             this.Uid = uid ?? throw new global::System.ArgumentNullException(nameof(uid));
             this.Token = token ?? throw new global::System.ArgumentNullException(nameof(token));
         }

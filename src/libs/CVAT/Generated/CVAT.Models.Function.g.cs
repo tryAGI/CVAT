@@ -80,6 +80,13 @@ namespace CVAT
         public int? Organization { get; set; }
 
         /// <summary>
+        /// Default Value: private
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.VisibilityEnumJsonConverter))]
+        public global::CVAT.VisibilityEnum? Visibility { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -114,6 +121,9 @@ namespace CVAT
         /// <param name="organization">
         /// Included only in responses
         /// </param>
+        /// <param name="visibility">
+        /// Default Value: private
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -128,7 +138,8 @@ namespace CVAT
             global::System.DateTime? createdDate,
             global::System.DateTime? updatedDate,
             global::CVAT.BasicUser? owner,
-            int? organization)
+            int? organization,
+            global::CVAT.VisibilityEnum? visibility)
         {
             this.Id = id;
             this.Provider = provider ?? throw new global::System.ArgumentNullException(nameof(provider));
@@ -141,6 +152,7 @@ namespace CVAT
             this.UpdatedDate = updatedDate;
             this.Owner = owner;
             this.Organization = organization;
+            this.Visibility = visibility;
         }
 
         /// <summary>

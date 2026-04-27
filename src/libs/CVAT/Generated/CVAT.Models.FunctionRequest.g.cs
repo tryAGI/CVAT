@@ -56,6 +56,13 @@ namespace CVAT
         public global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? SupportedShapeTypes { get; set; }
 
         /// <summary>
+        /// Default Value: private
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("visibility")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.VisibilityEnumJsonConverter))]
+        public global::CVAT.VisibilityEnum? Visibility { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -78,6 +85,9 @@ namespace CVAT
         /// </param>
         /// <param name="labelsV2"></param>
         /// <param name="supportedShapeTypes"></param>
+        /// <param name="visibility">
+        /// Default Value: private
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -88,7 +98,8 @@ namespace CVAT
             string? name,
             global::CVAT.KindEnum? kind,
             global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? labelsV2,
-            global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes)
+            global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes,
+            global::CVAT.VisibilityEnum? visibility)
         {
             this.Provider = provider ?? throw new global::System.ArgumentNullException(nameof(provider));
             this.Url = url;
@@ -97,6 +108,7 @@ namespace CVAT
             this.Kind = kind;
             this.LabelsV2 = labelsV2;
             this.SupportedShapeTypes = supportedShapeTypes;
+            this.Visibility = visibility;
         }
 
         /// <summary>

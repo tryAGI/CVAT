@@ -397,8 +397,12 @@ namespace CVAT
         ///     new_password1, new_password2<br/>
         /// Returns the success/fail message.
         /// </summary>
-        /// <param name="newPassword1"></param>
-        /// <param name="newPassword2"></param>
+        /// <param name="newPassword1">
+        /// Included only in requests
+        /// </param>
+        /// <param name="newPassword2">
+        /// Included only in requests
+        /// </param>
         /// <param name="uid"></param>
         /// <param name="token"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
