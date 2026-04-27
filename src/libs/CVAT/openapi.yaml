@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.62.0 (2.0)",
+    "version": "2.63.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -14699,6 +14699,14 @@
             "type": "integer",
             "readOnly": true,
             "nullable": true
+          },
+          "visibility": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VisibilityEnum"
+              }
+            ],
+            "default": "private"
           }
         },
         "required": [
@@ -15045,6 +15053,14 @@
             "items": {
               "$ref": "#/components/schemas/ShapeType"
             }
+          },
+          "visibility": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VisibilityEnum"
+              }
+            ],
+            "default": "private"
           }
         },
         "required": [
@@ -17384,18 +17400,20 @@
         "properties": {
           "old_password": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 128
+            "writeOnly": true,
+            "minLength": 1
           },
           "new_password1": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 128
+            "writeOnly": true,
+            "minLength": 8,
+            "maxLength": 256
           },
           "new_password2": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 128
+            "writeOnly": true,
+            "minLength": 8,
+            "maxLength": 256
           }
         },
         "required": [
@@ -17410,13 +17428,15 @@
         "properties": {
           "new_password1": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 128
+            "writeOnly": true,
+            "minLength": 8,
+            "maxLength": 256
           },
           "new_password2": {
             "type": "string",
-            "minLength": 1,
-            "maxLength": 128
+            "writeOnly": true,
+            "minLength": 8,
+            "maxLength": 256
           },
           "uid": {
             "type": "string",
@@ -18916,12 +18936,14 @@
           "password1": {
             "type": "string",
             "writeOnly": true,
-            "minLength": 1
+            "minLength": 8,
+            "maxLength": 256
           },
           "password2": {
             "type": "string",
             "writeOnly": true,
-            "minLength": 1
+            "minLength": 8,
+            "maxLength": 256
           },
           "first_name": {
             "type": "string",
@@ -20529,6 +20551,14 @@
           "frame_selection_method",
           "mode"
         ]
+      },
+      "VisibilityEnum": {
+        "enum": [
+          "public",
+          "private"
+        ],
+        "type": "string",
+        "description": "* `public` - Public\n* `private` - Private"
       },
       "WebhookContentType": {
         "enum": [
