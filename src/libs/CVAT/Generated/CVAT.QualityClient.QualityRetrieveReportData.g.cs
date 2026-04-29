@@ -135,7 +135,7 @@ namespace CVAT
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     format: format,
-                    id: id);
+                    id: id!);
 
                 return __httpRequest;
             }

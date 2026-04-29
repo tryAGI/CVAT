@@ -119,7 +119,7 @@ namespace CVAT
                 PrepareFunctionsDestroyRequestsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    requestId: requestId);
+                    requestId: requestId!);
 
                 return __httpRequest;
             }

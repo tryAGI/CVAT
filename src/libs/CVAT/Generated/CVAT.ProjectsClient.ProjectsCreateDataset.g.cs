@@ -170,7 +170,7 @@ namespace CVAT
                     cloudStorageId: cloudStorageId,
                     filename: filename,
                     format: format,
-                    id: id,
+                    id: id!,
                     location: location,
                     request: request);
 

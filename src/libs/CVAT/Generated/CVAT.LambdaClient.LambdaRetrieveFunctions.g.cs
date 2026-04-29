@@ -124,7 +124,7 @@ namespace CVAT
                 PrepareLambdaRetrieveFunctionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    funcId: funcId);
+                    funcId: funcId!);
 
                 return __httpRequest;
             }

@@ -163,8 +163,8 @@ namespace CVAT
                     httpRequestMessage: __httpRequest,
                     cloudStorageId: cloudStorageId,
                     filename: filename,
-                    format: format,
-                    id: id,
+                    format: format!,
+                    id: id!,
                     location: location,
                     saveImages: saveImages);
 

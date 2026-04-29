@@ -119,7 +119,7 @@ namespace CVAT
                 PrepareInvitationsResendRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    key: key);
+                    key: key!);
 
                 return __httpRequest;
             }

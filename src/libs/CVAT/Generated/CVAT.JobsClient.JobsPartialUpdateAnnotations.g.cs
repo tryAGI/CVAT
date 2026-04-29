@@ -141,8 +141,8 @@ namespace CVAT
                 PrepareJobsPartialUpdateAnnotationsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    action: action,
-                    id: id,
+                    action: action!,
+                    id: id!,
                     request: request);
 
                 return __httpRequest;

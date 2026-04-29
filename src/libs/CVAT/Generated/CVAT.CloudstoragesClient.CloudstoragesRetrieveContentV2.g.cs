@@ -150,7 +150,7 @@ namespace CVAT
                 PrepareCloudstoragesRetrieveContentV2Request(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id,
+                    id: id!,
                     manifestPath: manifestPath,
                     nextToken: nextToken,
                     pageSize: pageSize,

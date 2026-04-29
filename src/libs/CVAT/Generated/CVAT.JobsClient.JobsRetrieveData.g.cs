@@ -150,11 +150,11 @@ namespace CVAT
                 PrepareJobsRetrieveDataRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id,
+                    id: id!,
                     index: index,
                     number: number,
                     quality: quality,
-                    type: type);
+                    type: type!);
 
                 return __httpRequest;
             }
