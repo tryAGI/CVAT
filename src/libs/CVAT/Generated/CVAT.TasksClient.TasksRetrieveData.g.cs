@@ -139,10 +139,10 @@ namespace CVAT
                 PrepareTasksRetrieveDataRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id,
+                    id: id!,
                     number: number,
                     quality: quality,
-                    type: type);
+                    type: type!);
 
                 return __httpRequest;
             }

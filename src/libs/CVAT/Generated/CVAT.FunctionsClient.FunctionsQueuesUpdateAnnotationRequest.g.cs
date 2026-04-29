@@ -138,8 +138,8 @@ namespace CVAT
                 PrepareFunctionsQueuesUpdateAnnotationRequestRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id,
-                    requestId: requestId,
+                    id: id!,
+                    requestId: requestId!,
                     request: request);
 
                 return __httpRequest;

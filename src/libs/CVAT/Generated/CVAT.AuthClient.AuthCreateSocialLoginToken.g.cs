@@ -160,7 +160,7 @@ namespace CVAT
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     authParams: authParams,
-                    id: id,
+                    id: id!,
                     process: process,
                     scope: scope,
                     request: request);

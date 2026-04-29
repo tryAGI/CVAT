@@ -157,7 +157,7 @@ namespace CVAT
                     httpRequestMessage: __httpRequest,
                     cloudStorageId: cloudStorageId,
                     filename: filename,
-                    id: id,
+                    id: id!,
                     lightweight: lightweight,
                     location: location);
 

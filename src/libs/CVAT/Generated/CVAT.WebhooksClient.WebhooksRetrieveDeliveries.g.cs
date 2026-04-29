@@ -129,8 +129,8 @@ namespace CVAT
                 PrepareWebhooksRetrieveDeliveriesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    deliveryId: deliveryId,
-                    id: id);
+                    deliveryId: deliveryId!,
+                    id: id!);
 
                 return __httpRequest;
             }

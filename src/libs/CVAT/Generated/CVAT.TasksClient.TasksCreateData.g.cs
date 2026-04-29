@@ -211,7 +211,7 @@ namespace CVAT
                     uploadFinish: uploadFinish,
                     uploadMultiple: uploadMultiple,
                     uploadStart: uploadStart,
-                    id: id,
+                    id: id!,
                     request: request);
 
                 return __httpRequest;
