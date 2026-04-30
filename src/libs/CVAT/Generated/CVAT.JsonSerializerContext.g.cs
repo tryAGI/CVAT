@@ -281,6 +281,10 @@ namespace CVAT
 
             typeof(global::CVAT.JsonConverters.TasksListDimensionNullableJsonConverter),
 
+            typeof(global::CVAT.JsonConverters.TasksListModeJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.TasksListModeNullableJsonConverter),
+
             typeof(global::CVAT.JsonConverters.TasksListStatusJsonConverter),
 
             typeof(global::CVAT.JsonConverters.TasksListStatusNullableJsonConverter),
@@ -686,6 +690,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SchemaRetrieveLang), TypeInfoPropertyName = "SchemaRetrieveLang2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SchemaRetrieveScheme), TypeInfoPropertyName = "SchemaRetrieveScheme2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListDimension), TypeInfoPropertyName = "TasksListDimension2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListMode), TypeInfoPropertyName = "TasksListMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListStatus), TypeInfoPropertyName = "TasksListStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListValidationMode), TypeInfoPropertyName = "TasksListValidationMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateAnnotationsLocation), TypeInfoPropertyName = "TasksCreateAnnotationsLocation2")]

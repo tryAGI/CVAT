@@ -1444,55 +1444,59 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksListStatus? Type354 { get; set; }
+        public global::CVAT.TasksListMode? Type354 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksListValidationMode? Type355 { get; set; }
+        public global::CVAT.TasksListStatus? Type355 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksCreateAnnotationsLocation? Type356 { get; set; }
+        public global::CVAT.TasksListValidationMode? Type356 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksPartialUpdateAnnotationsAction? Type357 { get; set; }
+        public global::CVAT.TasksCreateAnnotationsLocation? Type357 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksCreateBackupExportLocation? Type358 { get; set; }
+        public global::CVAT.TasksPartialUpdateAnnotationsAction? Type358 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksRetrieveDataQuality? Type359 { get; set; }
+        public global::CVAT.TasksCreateBackupExportLocation? Type359 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksRetrieveDataType? Type360 { get; set; }
+        public global::CVAT.TasksRetrieveDataQuality? Type360 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksCreateDatasetExportLocation? Type361 { get; set; }
+        public global::CVAT.TasksRetrieveDataType? Type361 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TasksCreateBackupLocation? Type362 { get; set; }
+        public global::CVAT.TasksCreateDatasetExportLocation? Type362 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.WebhooksListType? Type363 { get; set; }
+        public global::CVAT.TasksCreateBackupLocation? Type363 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SocialAuthMethods>? Type364 { get; set; }
+        public global::CVAT.WebhooksListType? Type364 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>? Type365 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.SocialAuthMethods>? Type365 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionCall>? Type366 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>? Type366 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionCall>? Type367 { get; set; }
 
         /// <summary>
         /// 

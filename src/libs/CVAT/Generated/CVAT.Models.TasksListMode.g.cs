@@ -4,47 +4,46 @@
 namespace CVAT
 {
     /// <summary>
-    /// * `video` - VIDEO<br/>
-    /// * `imageset` - IMAGESET
+    /// 
     /// </summary>
-    public enum ChunkType
+    public enum TasksListMode
     {
         /// <summary>
         /// 
         /// </summary>
-        Imageset,
+        Annotation,
         /// <summary>
         /// 
         /// </summary>
-        Video,
+        Interpolation,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class ChunkTypeExtensions
+    public static class TasksListModeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this ChunkType value)
+        public static string ToValueString(this TasksListMode value)
         {
             return value switch
             {
-                ChunkType.Imageset => "imageset",
-                ChunkType.Video => "video",
+                TasksListMode.Annotation => "annotation",
+                TasksListMode.Interpolation => "interpolation",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static ChunkType? ToEnum(string value)
+        public static TasksListMode? ToEnum(string value)
         {
             return value switch
             {
-                "imageset" => ChunkType.Imageset,
-                "video" => ChunkType.Video,
+                "annotation" => TasksListMode.Annotation,
+                "interpolation" => TasksListMode.Interpolation,
                 _ => null,
             };
         }

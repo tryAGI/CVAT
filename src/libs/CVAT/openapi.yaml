@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.63.0 (2.0)",
+    "version": "2.64.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -10149,7 +10149,11 @@
             "in": "query",
             "description": "A simple equality filter for the mode field",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "annotation",
+                "interpolation"
+              ]
             }
           },
           {
@@ -13715,11 +13719,10 @@
       "ChunkType": {
         "enum": [
           "video",
-          "imageset",
-          "list"
+          "imageset"
         ],
         "type": "string",
-        "description": "* `video` - VIDEO\n* `imageset` - IMAGESET\n* `list` - LIST"
+        "description": "* `video` - VIDEO\n* `imageset` - IMAGESET"
       },
       "ClientEvents": {
         "type": "object",
