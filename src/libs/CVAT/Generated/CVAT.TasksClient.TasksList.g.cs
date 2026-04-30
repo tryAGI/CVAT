@@ -31,7 +31,7 @@ namespace CVAT
             ref string? assignee,
             ref global::CVAT.TasksListDimension? dimension,
             ref string? filter,
-            ref string? mode,
+            ref global::CVAT.TasksListMode? mode,
             ref string? name,
             ref string? org,
             ref int? orgId,
@@ -53,7 +53,7 @@ namespace CVAT
             string? assignee,
             global::CVAT.TasksListDimension? dimension,
             string? filter,
-            string? mode,
+            global::CVAT.TasksListMode? mode,
             string? name,
             string? org,
             int? orgId,
@@ -107,7 +107,7 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.TasksListDimension? dimension = default,
             string? filter = default,
-            string? mode = default,
+            global::CVAT.TasksListMode? mode = default,
             string? name = default,
             string? org = default,
             int? orgId = default,
@@ -178,7 +178,7 @@ namespace CVAT
                                 .AddOptionalParameter("assignee", assignee)
                                 .AddOptionalParameter("dimension", dimension?.ToValueString())
                                 .AddOptionalParameter("filter", filter)
-                                .AddOptionalParameter("mode", mode)
+                                .AddOptionalParameter("mode", mode?.ToValueString())
                                 .AddOptionalParameter("name", name)
                                 .AddOptionalParameter("org", org)
                                 .AddOptionalParameter("org_id", orgId?.ToString())

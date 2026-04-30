@@ -34,7 +34,7 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.TasksListDimension? dimension = default,
             string? filter = default,
-            string? mode = default,
+            global::CVAT.TasksListMode? mode = default,
             string? name = default,
             string? org = default,
             int? orgId = default,
