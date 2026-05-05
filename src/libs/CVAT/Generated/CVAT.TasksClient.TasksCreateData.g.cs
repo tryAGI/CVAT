@@ -111,6 +111,81 @@ namespace CVAT
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await TasksCreateDataAsResponseAsync(
+                id: id,
+
+                request: request,
+                uploadFinish: uploadFinish,
+                uploadMultiple: uploadMultiple,
+                uploadStart: uploadStart,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Attach data to a task<br/>
+        /// Allows to upload data (images, video, etc.) to a task.<br/>
+        /// Supports the TUS open file uploading protocol (https://tus.io/).<br/>
+        /// Supports the following protocols:<br/>
+        /// 1. A single Data request<br/>
+        /// and<br/>
+        /// 2.1. An Upload-Start request<br/>
+        /// 2.2.a. Regular TUS protocol requests (Upload-Length + Chunks)<br/>
+        /// 2.2.b. Upload-Multiple requests<br/>
+        /// 2.3. An Upload-Finish request<br/>
+        /// Requests:<br/>
+        /// - Data - POST, no extra headers or 'Upload-Start' + 'Upload-Finish' headers.<br/>
+        ///   Contains data in the body.<br/>
+        /// - Upload-Start - POST, has an 'Upload-Start' header. No body is expected.<br/>
+        /// - Upload-Length - POST, has an 'Upload-Length' header (see the TUS specification)<br/>
+        /// - Chunk - HEAD/PATCH (see the TUS specification). Sent to /data/&lt;file id&gt; endpoints.<br/>
+        /// - Upload-Finish - POST, has an 'Upload-Finish' header. Can contain data in the body.<br/>
+        /// - Upload-Multiple - POST, has an 'Upload-Multiple' header. Contains data in the body.<br/>
+        /// The 'Upload-Finish' request allows to specify the uploaded files should be ordered.<br/>
+        /// This may be needed if the files can be sent unordered. To state that the input files<br/>
+        /// are sent ordered, pass an empty list of files in the 'upload_file_order' field.<br/>
+        /// If the files are sent unordered, the ordered file list is expected<br/>
+        /// in the 'upload_file_order' field. It must be a list of string file paths,<br/>
+        /// relative to the dataset root.<br/>
+        /// Example:<br/>
+        /// files = [<br/>
+        ///     "cats/cat_1.jpg",<br/>
+        ///     "dogs/dog2.jpg",<br/>
+        ///     "image_3.png",<br/>
+        ///     ...<br/>
+        /// ]<br/>
+        /// Independently of the file declaration field used<br/>
+        /// ('client_files', 'server_files', etc.), when the 'predefined'<br/>
+        /// sorting method is selected, the uploaded files will be ordered according<br/>
+        /// to the '.jsonl' manifest file, if it is found in the list of files.<br/>
+        /// For archives (e.g. '.zip'), a manifest file ('*.jsonl') is required when using<br/>
+        /// the 'predefined' file ordering. Such file must be provided next to the archive<br/>
+        /// in the list of files. Read more about manifest files here:<br/>
+        /// https://docs.cvat.ai/docs/manual/advanced/dataset_manifest/<br/>
+        /// After all data is sent, the operation status can be retrieved via<br/>
+        /// the `GET /api/requests/&lt;rq_id&gt;`, where **rq_id** is request ID returned for this request.<br/>
+        /// Once data is attached to a task, it cannot be detached or replaced.
+        /// </summary>
+        /// <param name="uploadFinish"></param>
+        /// <param name="uploadMultiple"></param>
+        /// <param name="uploadStart"></param>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.DataResponse>> TasksCreateDataAsResponseAsync(
+            int id,
+
+            global::CVAT.DataRequest request,
+            bool? uploadFinish = default,
+            bool? uploadMultiple = default,
+            bool? uploadStart = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -145,6 +220,7 @@ namespace CVAT
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::CVAT.PathBuilder(
                                 path: $"/api/tasks/{id}/data/",
                                 baseUri: HttpClient.BaseAddress);
@@ -242,6 +318,8 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -252,6 +330,11 @@ namespace CVAT
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::CVAT.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -269,6 +352,8 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -278,8 +363,7 @@ namespace CVAT
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::CVAT.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -288,6 +372,11 @@ namespace CVAT
                         __attempt < __maxAttempts &&
                         global::CVAT.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::CVAT.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -304,14 +393,15 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::CVAT.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -351,6 +441,8 @@ namespace CVAT
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -371,6 +463,8 @@ namespace CVAT
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -395,9 +489,13 @@ namespace CVAT
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::CVAT.DataResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::CVAT.DataResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.DataResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -425,9 +523,13 @@ namespace CVAT
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::CVAT.DataResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::CVAT.DataResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.DataResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

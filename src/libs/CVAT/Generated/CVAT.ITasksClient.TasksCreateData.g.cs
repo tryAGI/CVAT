@@ -113,6 +113,67 @@ namespace CVAT
         /// <param name="uploadMultiple"></param>
         /// <param name="uploadStart"></param>
         /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.DataResponse>> TasksCreateDataAsResponseAsync(
+            int id,
+
+            global::CVAT.DataRequest request,
+            bool? uploadFinish = default,
+            bool? uploadMultiple = default,
+            bool? uploadStart = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Attach data to a task<br/>
+        /// Allows to upload data (images, video, etc.) to a task.<br/>
+        /// Supports the TUS open file uploading protocol (https://tus.io/).<br/>
+        /// Supports the following protocols:<br/>
+        /// 1. A single Data request<br/>
+        /// and<br/>
+        /// 2.1. An Upload-Start request<br/>
+        /// 2.2.a. Regular TUS protocol requests (Upload-Length + Chunks)<br/>
+        /// 2.2.b. Upload-Multiple requests<br/>
+        /// 2.3. An Upload-Finish request<br/>
+        /// Requests:<br/>
+        /// - Data - POST, no extra headers or 'Upload-Start' + 'Upload-Finish' headers.<br/>
+        ///   Contains data in the body.<br/>
+        /// - Upload-Start - POST, has an 'Upload-Start' header. No body is expected.<br/>
+        /// - Upload-Length - POST, has an 'Upload-Length' header (see the TUS specification)<br/>
+        /// - Chunk - HEAD/PATCH (see the TUS specification). Sent to /data/&lt;file id&gt; endpoints.<br/>
+        /// - Upload-Finish - POST, has an 'Upload-Finish' header. Can contain data in the body.<br/>
+        /// - Upload-Multiple - POST, has an 'Upload-Multiple' header. Contains data in the body.<br/>
+        /// The 'Upload-Finish' request allows to specify the uploaded files should be ordered.<br/>
+        /// This may be needed if the files can be sent unordered. To state that the input files<br/>
+        /// are sent ordered, pass an empty list of files in the 'upload_file_order' field.<br/>
+        /// If the files are sent unordered, the ordered file list is expected<br/>
+        /// in the 'upload_file_order' field. It must be a list of string file paths,<br/>
+        /// relative to the dataset root.<br/>
+        /// Example:<br/>
+        /// files = [<br/>
+        ///     "cats/cat_1.jpg",<br/>
+        ///     "dogs/dog2.jpg",<br/>
+        ///     "image_3.png",<br/>
+        ///     ...<br/>
+        /// ]<br/>
+        /// Independently of the file declaration field used<br/>
+        /// ('client_files', 'server_files', etc.), when the 'predefined'<br/>
+        /// sorting method is selected, the uploaded files will be ordered according<br/>
+        /// to the '.jsonl' manifest file, if it is found in the list of files.<br/>
+        /// For archives (e.g. '.zip'), a manifest file ('*.jsonl') is required when using<br/>
+        /// the 'predefined' file ordering. Such file must be provided next to the archive<br/>
+        /// in the list of files. Read more about manifest files here:<br/>
+        /// https://docs.cvat.ai/docs/manual/advanced/dataset_manifest/<br/>
+        /// After all data is sent, the operation status can be retrieved via<br/>
+        /// the `GET /api/requests/&lt;rq_id&gt;`, where **rq_id** is request ID returned for this request.<br/>
+        /// Once data is attached to a task, it cannot be detached or replaced.
+        /// </summary>
+        /// <param name="uploadFinish"></param>
+        /// <param name="uploadMultiple"></param>
+        /// <param name="uploadStart"></param>
+        /// <param name="id"></param>
         /// <param name="chunkSize">
         /// Maximum number of frames per chunk
         /// </param>
