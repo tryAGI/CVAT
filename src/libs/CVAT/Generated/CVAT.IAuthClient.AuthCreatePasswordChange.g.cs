@@ -23,6 +23,20 @@ namespace CVAT
         /// Accepts the following POST parameters: new_password1, new_password2<br/>
         /// Returns the success/fail message.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.RestAuthDetail>> AuthCreatePasswordChangeAsResponseAsync(
+
+            global::CVAT.PasswordChangeRequest request,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Calls Django Auth SetPasswordForm save method.<br/>
+        /// Accepts the following POST parameters: new_password1, new_password2<br/>
+        /// Returns the success/fail message.
+        /// </summary>
         /// <param name="oldPassword">
         /// Included only in requests
         /// </param>

@@ -28,6 +28,24 @@ namespace CVAT
         /// <param name="xOrganization"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.CloudStorageRead>> CloudstoragesCreateAsResponseAsync(
+
+            global::CVAT.CloudStorageWriteRequest request,
+            string? xOrganization = default,
+            string? org = default,
+            int? orgId = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a cloud storage
+        /// </summary>
+        /// <param name="xOrganization"></param>
+        /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="providerType">
         /// * `AWS_S3_BUCKET` - Amazon S3<br/>
         /// * `AZURE_CONTAINER` - Azure Blob Storage<br/>

@@ -70,6 +70,44 @@ namespace CVAT
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await QualityCreateValidationAsResponseAsync(
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create a job validation request<br/>
+        /// The endpoint can be used this way:<br/>
+        ///     request_data = {"job_id": 42}<br/>
+        ///     response = post(body=request_data)<br/>
+        ///     if response.status == 200:<br/>
+        ///         return response.data["status"] # likely, "disabled"<br/>
+        ///     rq_id = response.data["rq_id"]<br/>
+        ///     while True:<br/>
+        ///         response = get(f"/api/requests/{rq_id}")<br/>
+        ///         background_request = json.loads(response.data)<br/>
+        ///         if background_request["status"] == "finished":<br/>
+        ///             return background_request<br/>
+        ///         elif background_request["status"] == "failed":<br/>
+        ///             raise Exception(background_request["message"])<br/>
+        /// Only the last validation request to a job is considered valid. If a new request arrives<br/>
+        /// before the previous one is completed, the previous one is considered canceled.<br/>
+        /// The attempts counter will be increased regardless of the results being collected.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.JobValidation>> QualityCreateValidationAsResponseAsync(
+
+            global::CVAT.JobValidationCreateRequest request,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -100,6 +138,7 @@ namespace CVAT
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::CVAT.PathBuilder(
                                 path: "/api/quality/job_validations",
                                 baseUri: HttpClient.BaseAddress);
@@ -179,6 +218,8 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -189,6 +230,11 @@ namespace CVAT
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::CVAT.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -206,6 +252,8 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -215,8 +263,7 @@ namespace CVAT
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::CVAT.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -225,6 +272,11 @@ namespace CVAT
                         __attempt < __maxAttempts &&
                         global::CVAT.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::CVAT.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -241,14 +293,15 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::CVAT.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -288,6 +341,8 @@ namespace CVAT
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -308,6 +363,8 @@ namespace CVAT
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // 
@@ -365,9 +422,13 @@ namespace CVAT
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::CVAT.JobValidation.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::CVAT.JobValidation.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.JobValidation>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -395,9 +456,13 @@ namespace CVAT
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::CVAT.JobValidation.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::CVAT.JobValidation.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.JobValidation>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
