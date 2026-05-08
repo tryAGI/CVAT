@@ -29,6 +29,19 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickRqId(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::CVAT.RqId? value)
+        {
+            value = RqId;
+            return IsRqId;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public byte[]? DataResponseVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DataResponseVariant2))]
 #endif
         public bool IsDataResponseVariant2 => DataResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickDataResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out byte[]? value)
+        {
+            value = DataResponseVariant2;
+            return IsDataResponseVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace CVAT
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::CVAT.RqId?, TResult>? rqId = null,
-            global::System.Func<byte[]?, TResult>? dataResponseVariant2 = null,
+            global::System.Func<global::CVAT.RqId, TResult>? rqId = null,
+            global::System.Func<byte[], TResult>? dataResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace CVAT
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::CVAT.RqId?>? rqId = null,
-            global::System.Action<byte[]?>? dataResponseVariant2 = null,
+            global::System.Action<global::CVAT.RqId>? rqId = null,
+
+            global::System.Action<byte[]>? dataResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRqId)
+            {
+                rqId?.Invoke(RqId!);
+            }
+            else if (IsDataResponseVariant2)
+            {
+                dataResponseVariant2?.Invoke(DataResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::CVAT.RqId>? rqId = null,
+            global::System.Action<byte[]>? dataResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
