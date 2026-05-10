@@ -42,6 +42,13 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public global::CVAT.RqId PickRqId() => IsRqId
+            ? RqId!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RqId' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public byte[]? DataResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace CVAT
             value = DataResponseVariant2;
             return IsDataResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[] PickDataResponseVariant2() => IsDataResponseVariant2
+            ? DataResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'DataResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public static DataResponse FromRqId(global::CVAT.RqId? value) => new DataResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator DataResponse(byte[] value) => new DataResponse((byte[]?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace CVAT
         {
             DataResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static DataResponse FromDataResponseVariant2(byte[]? value) => new DataResponse(value);
 
         /// <summary>
         /// 
