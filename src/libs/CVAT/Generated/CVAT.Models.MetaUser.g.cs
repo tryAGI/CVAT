@@ -42,6 +42,13 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public global::CVAT.User PickUser() => IsUser
+            ? User!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'User' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::CVAT.BasicUser? Basic { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace CVAT
             value = Basic;
             return IsBasic;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::CVAT.BasicUser PickBasic() => IsBasic
+            ? Basic!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public static MetaUser FromUser(global::CVAT.User? value) => new MetaUser(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MetaUser(global::CVAT.BasicUser value) => new MetaUser((global::CVAT.BasicUser?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace CVAT
         {
             Basic = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MetaUser FromBasic(global::CVAT.BasicUser? value) => new MetaUser(value);
 
         /// <summary>
         /// 
