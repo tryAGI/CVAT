@@ -75,6 +75,7 @@ namespace CVAT.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.RqId), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.RqId> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.RqId).Name}");
                     rqId = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -85,9 +86,13 @@ namespace CVAT.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (rqId == null && dataResponseVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(byte[]), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<byte[]> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(byte[]).Name}");
                     dataResponseVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
