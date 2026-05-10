@@ -41,5 +41,6 @@ namespace CVAT
         public RestAuthDetail()
         {
         }
+
     }
 }

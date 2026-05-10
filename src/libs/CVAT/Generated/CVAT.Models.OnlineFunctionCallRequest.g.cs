@@ -48,5 +48,6 @@ namespace CVAT
         public OnlineFunctionCallRequest()
         {
         }
+
     }
 }

@@ -190,5 +190,6 @@ namespace CVAT
         public LabeledShapeRequest()
         {
         }
+
     }
 }

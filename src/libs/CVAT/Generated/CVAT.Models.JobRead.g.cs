@@ -380,5 +380,6 @@ namespace CVAT
         public JobRead()
         {
         }
+
     }
 }

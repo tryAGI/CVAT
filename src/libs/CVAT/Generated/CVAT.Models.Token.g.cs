@@ -40,5 +40,6 @@ namespace CVAT
         public Token()
         {
         }
+
     }
 }

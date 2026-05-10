@@ -131,5 +131,6 @@ namespace CVAT
         public FunctionIdAndArParamsRequest()
         {
         }
+
     }
 }

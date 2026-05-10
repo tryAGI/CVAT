@@ -185,5 +185,6 @@ namespace CVAT
         public PatchedCloudStorageWriteRequest()
         {
         }
+
     }
 }

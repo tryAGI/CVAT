@@ -384,5 +384,6 @@ namespace CVAT
         public QualitySettings()
         {
         }
+
     }
 }

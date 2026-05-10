@@ -50,5 +50,6 @@ namespace CVAT
         public Plugins()
         {
         }
+
     }
 }

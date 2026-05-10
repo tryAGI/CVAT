@@ -73,5 +73,6 @@ namespace CVAT
         public PatchedJobWriteRequest()
         {
         }
+
     }
 }

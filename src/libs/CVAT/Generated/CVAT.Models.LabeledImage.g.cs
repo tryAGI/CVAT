@@ -90,5 +90,6 @@ namespace CVAT
         public LabeledImage()
         {
         }
+
     }
 }

@@ -378,5 +378,6 @@ namespace CVAT
         public TaskRead()
         {
         }
+
     }
 }

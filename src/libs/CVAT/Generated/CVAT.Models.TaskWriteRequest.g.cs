@@ -149,5 +149,6 @@ namespace CVAT
         public TaskWriteRequest()
         {
         }
+
     }
 }

@@ -89,5 +89,6 @@ namespace CVAT
         public UserAgreementRequest()
         {
         }
+
     }
 }

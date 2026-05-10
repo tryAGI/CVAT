@@ -104,5 +104,6 @@ namespace CVAT
         public RequestDataOperation()
         {
         }
+
     }
 }

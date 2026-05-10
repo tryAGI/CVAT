@@ -140,5 +140,6 @@ namespace CVAT
         public TrackedShape()
         {
         }
+
     }
 }

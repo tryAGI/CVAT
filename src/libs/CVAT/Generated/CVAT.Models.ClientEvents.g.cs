@@ -51,5 +51,6 @@ namespace CVAT
         public ClientEvents()
         {
         }
+
     }
 }
