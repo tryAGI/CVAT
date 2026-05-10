@@ -156,5 +156,6 @@ namespace CVAT
         public QualityReport()
         {
         }
+
     }
 }

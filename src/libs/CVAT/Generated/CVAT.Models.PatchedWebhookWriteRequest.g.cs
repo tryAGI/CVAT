@@ -98,5 +98,6 @@ namespace CVAT
         public PatchedWebhookWriteRequest()
         {
         }
+
     }
 }

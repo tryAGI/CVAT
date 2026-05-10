@@ -126,5 +126,6 @@ namespace CVAT
         public PatchedTaskWriteRequest()
         {
         }
+
     }
 }

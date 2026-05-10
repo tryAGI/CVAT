@@ -121,5 +121,6 @@ namespace CVAT
         public ArParamsRequest()
         {
         }
+
     }
 }

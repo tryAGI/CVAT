@@ -82,5 +82,6 @@ namespace CVAT
         public AssetRead()
         {
         }
+
     }
 }

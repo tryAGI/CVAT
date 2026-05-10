@@ -52,5 +52,6 @@ namespace CVAT
         public CommentsSummary()
         {
         }
+
     }
 }

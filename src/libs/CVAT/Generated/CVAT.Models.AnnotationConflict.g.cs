@@ -97,5 +97,6 @@ namespace CVAT
         public AnnotationConflict()
         {
         }
+
     }
 }

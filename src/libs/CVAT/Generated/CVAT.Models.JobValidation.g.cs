@@ -165,5 +165,6 @@ namespace CVAT
         public JobValidation()
         {
         }
+
     }
 }

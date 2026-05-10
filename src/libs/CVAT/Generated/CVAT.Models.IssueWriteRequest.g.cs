@@ -88,5 +88,6 @@ namespace CVAT
         public IssueWriteRequest()
         {
         }
+
     }
 }

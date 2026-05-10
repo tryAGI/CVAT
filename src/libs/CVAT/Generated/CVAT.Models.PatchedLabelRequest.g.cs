@@ -135,5 +135,6 @@ namespace CVAT
         public PatchedLabelRequest()
         {
         }
+
     }
 }

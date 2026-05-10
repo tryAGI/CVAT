@@ -196,5 +196,6 @@ namespace CVAT
         public JobWriteRequest()
         {
         }
+
     }
 }

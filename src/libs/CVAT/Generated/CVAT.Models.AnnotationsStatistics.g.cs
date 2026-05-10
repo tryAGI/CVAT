@@ -140,5 +140,6 @@ namespace CVAT
         public AnnotationsStatistics()
         {
         }
+
     }
 }

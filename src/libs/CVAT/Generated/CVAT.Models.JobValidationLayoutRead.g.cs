@@ -61,5 +61,6 @@ namespace CVAT
         public JobValidationLayoutRead()
         {
         }
+
     }
 }

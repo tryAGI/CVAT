@@ -69,5 +69,6 @@ namespace CVAT
         public RqStatus()
         {
         }
+
     }
 }

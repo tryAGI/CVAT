@@ -76,5 +76,6 @@ namespace CVAT
         public AnnotationId()
         {
         }
+
     }
 }

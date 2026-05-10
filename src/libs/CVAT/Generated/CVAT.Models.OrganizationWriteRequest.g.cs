@@ -67,5 +67,6 @@ namespace CVAT
         public OrganizationWriteRequest()
         {
         }
+
     }
 }

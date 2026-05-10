@@ -58,5 +58,6 @@ namespace CVAT
         public LabelMappingEntryRequest()
         {
         }
+
     }
 }
