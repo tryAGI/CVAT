@@ -223,5 +223,6 @@ namespace CVAT
         public ReportEvent()
         {
         }
+
     }
 }

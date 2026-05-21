@@ -86,5 +86,6 @@ namespace CVAT
         public SocialLoginSerializerExRequest()
         {
         }
+
     }
 }

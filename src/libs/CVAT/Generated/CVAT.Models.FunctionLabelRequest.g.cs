@@ -70,5 +70,6 @@ namespace CVAT
         public FunctionLabelRequest()
         {
         }
+
     }
 }

@@ -63,5 +63,6 @@ namespace CVAT
         public ConsensusSettings()
         {
         }
+
     }
 }

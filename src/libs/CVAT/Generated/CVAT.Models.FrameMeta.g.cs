@@ -12,15 +12,13 @@ namespace CVAT
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("width")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Width { get; set; }
+        public int? Width { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("height")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Height { get; set; }
+        public int? Height { get; set; }
 
         /// <summary>
         /// 
@@ -51,10 +49,10 @@ namespace CVAT
         /// <summary>
         /// Initializes a new instance of the <see cref="FrameMeta" /> class.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
         /// <param name="name"></param>
         /// <param name="relatedFiles"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         /// <param name="hasRelatedContext">
         /// Included only in responses
         /// </param>
@@ -62,10 +60,10 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FrameMeta(
-            int width,
-            int height,
             string name,
             int relatedFiles,
+            int? width,
+            int? height,
             bool? hasRelatedContext)
         {
             this.Width = width;
@@ -81,5 +79,6 @@ namespace CVAT
         public FrameMeta()
         {
         }
+
     }
 }

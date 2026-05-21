@@ -80,5 +80,6 @@ namespace CVAT
         public DatasetFormat()
         {
         }
+
     }
 }

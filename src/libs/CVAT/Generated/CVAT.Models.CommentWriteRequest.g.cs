@@ -49,5 +49,6 @@ namespace CVAT
         public CommentWriteRequest()
         {
         }
+
     }
 }

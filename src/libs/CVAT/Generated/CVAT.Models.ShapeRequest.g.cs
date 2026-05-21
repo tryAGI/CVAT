@@ -110,5 +110,6 @@ namespace CVAT
         public ShapeRequest()
         {
         }
+
     }
 }

@@ -11,6 +11,10 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        x1d,
+        /// <summary>
+        /// 
+        /// </summary>
         x2d,
         /// <summary>
         /// 
@@ -30,6 +34,7 @@ namespace CVAT
         {
             return value switch
             {
+                TasksListDimension.x1d => "1d",
                 TasksListDimension.x2d => "2d",
                 TasksListDimension.x3d => "3d",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -42,6 +47,7 @@ namespace CVAT
         {
             return value switch
             {
+                "1d" => TasksListDimension.x1d,
                 "2d" => TasksListDimension.x2d,
                 "3d" => TasksListDimension.x3d,
                 _ => null,

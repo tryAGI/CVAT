@@ -214,5 +214,6 @@ namespace CVAT
         public QualityReportSummary()
         {
         }
+
     }
 }

@@ -71,5 +71,6 @@ namespace CVAT
         public FunctionAttributeRequest()
         {
         }
+
     }
 }

@@ -38,8 +38,7 @@ namespace CVAT
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image_quality")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ImageQuality { get; set; }
+        public int? ImageQuality { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -101,7 +100,6 @@ namespace CVAT
         /// Initializes a new instance of the <see cref="DataMetaRead" /> class.
         /// </summary>
         /// <param name="chunksUpdatedDate"></param>
-        /// <param name="imageQuality"></param>
         /// <param name="deletedFrames"></param>
         /// <param name="chapters"></param>
         /// <param name="chunkSize">
@@ -111,6 +109,7 @@ namespace CVAT
         /// The number of frames included. Deleted frames do not affect this value.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="imageQuality"></param>
         /// <param name="startFrame">
         /// Included only in responses
         /// </param>
@@ -135,11 +134,11 @@ namespace CVAT
 #endif
         public DataMetaRead(
             global::System.DateTime chunksUpdatedDate,
-            int imageQuality,
             global::System.Collections.Generic.IList<int> deletedFrames,
             global::System.Collections.Generic.IList<global::CVAT.Chapter>? chapters,
             int? chunkSize,
             int? size,
+            int? imageQuality,
             int? startFrame,
             int? stopFrame,
             string? frameFilter,
@@ -169,5 +168,6 @@ namespace CVAT
         public DataMetaRead()
         {
         }
+
     }
 }

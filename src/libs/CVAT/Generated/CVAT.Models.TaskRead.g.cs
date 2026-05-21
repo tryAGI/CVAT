@@ -41,12 +41,6 @@ namespace CVAT
         public string? ProjectName { get; set; }
 
         /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        public string? Mode { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
@@ -146,10 +140,22 @@ namespace CVAT
         public int? Data { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dimension")]
         public string? Dimension { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_type")]
+        public string? MediaType { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -238,9 +244,6 @@ namespace CVAT
         /// <param name="projectName">
         /// Included only in responses
         /// </param>
-        /// <param name="mode">
-        /// Included only in responses
-        /// </param>
         /// <param name="owner"></param>
         /// <param name="assignee"></param>
         /// <param name="bugTracker">
@@ -283,7 +286,15 @@ namespace CVAT
         /// <param name="data">
         /// Included only in responses
         /// </param>
-        /// <param name="dimension"></param>
+        /// <param name="dimension">
+        /// Included only in responses
+        /// </param>
+        /// <param name="mode">
+        /// Included only in responses
+        /// </param>
+        /// <param name="mediaType">
+        /// Included only in responses
+        /// </param>
         /// <param name="subset">
         /// Included only in responses
         /// </param>
@@ -312,7 +323,6 @@ namespace CVAT
             string? name,
             int? projectId,
             string? projectName,
-            string? mode,
             global::CVAT.BasicUser? owner,
             global::CVAT.BasicUser? assignee,
             string? bugTracker,
@@ -330,6 +340,8 @@ namespace CVAT
             int? imageQuality,
             int? data,
             string? dimension,
+            string? mode,
+            string? mediaType,
             string? subset,
             int? organizationId,
             global::CVAT.Storage? targetStorage,
@@ -343,7 +355,6 @@ namespace CVAT
             this.Name = name;
             this.ProjectId = projectId;
             this.ProjectName = projectName;
-            this.Mode = mode;
             this.Owner = owner;
             this.Assignee = assignee;
             this.BugTracker = bugTracker;
@@ -361,6 +372,8 @@ namespace CVAT
             this.ImageQuality = imageQuality;
             this.Data = data;
             this.Dimension = dimension;
+            this.Mode = mode;
+            this.MediaType = mediaType;
             this.Subset = subset;
             this.OrganizationId = organizationId;
             this.TargetStorage = targetStorage;
@@ -378,5 +391,6 @@ namespace CVAT
         public TaskRead()
         {
         }
+
     }
 }

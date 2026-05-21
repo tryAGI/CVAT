@@ -67,6 +67,18 @@ namespace CVAT
         /// <summary>
         /// Included only in responses
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        public string? Mode { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("media_type")]
+        public string? MediaType { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bug_tracker")]
         public string? BugTracker { get; set; }
 
@@ -90,12 +102,6 @@ namespace CVAT
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OperationStatusJsonConverter))]
         public global::CVAT.OperationStatus? State { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        public string? Mode { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -249,6 +255,12 @@ namespace CVAT
         /// <param name="dimension">
         /// Included only in responses
         /// </param>
+        /// <param name="mode">
+        /// Included only in responses
+        /// </param>
+        /// <param name="mediaType">
+        /// Included only in responses
+        /// </param>
         /// <param name="bugTracker">
         /// Included only in responses
         /// </param>
@@ -259,9 +271,6 @@ namespace CVAT
         /// Included only in responses
         /// </param>
         /// <param name="state">
-        /// Included only in responses
-        /// </param>
-        /// <param name="mode">
         /// Included only in responses
         /// </param>
         /// <param name="frameCount">
@@ -320,11 +329,12 @@ namespace CVAT
             global::CVAT.BasicUser? assignee,
             int? guideId,
             string? dimension,
+            string? mode,
+            string? mediaType,
             string? bugTracker,
             global::CVAT.JobStatus? status,
             global::CVAT.JobStage? stage,
             global::CVAT.OperationStatus? state,
-            string? mode,
             int? frameCount,
             int? startFrame,
             int? stopFrame,
@@ -350,11 +360,12 @@ namespace CVAT
             this.Assignee = assignee;
             this.GuideId = guideId;
             this.Dimension = dimension;
+            this.Mode = mode;
+            this.MediaType = mediaType;
             this.BugTracker = bugTracker;
             this.Status = status;
             this.Stage = stage;
             this.State = state;
-            this.Mode = mode;
             this.FrameCount = frameCount;
             this.StartFrame = startFrame;
             this.StopFrame = stopFrame;
@@ -380,5 +391,6 @@ namespace CVAT
         public JobRead()
         {
         }
+
     }
 }

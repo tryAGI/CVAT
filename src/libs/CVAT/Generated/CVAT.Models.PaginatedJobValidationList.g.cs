@@ -77,5 +77,6 @@ namespace CVAT
         public PaginatedJobValidationList()
         {
         }
+
     }
 }

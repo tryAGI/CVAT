@@ -78,5 +78,6 @@ namespace CVAT
         public QualityReportJobsSummary()
         {
         }
+
     }
 }

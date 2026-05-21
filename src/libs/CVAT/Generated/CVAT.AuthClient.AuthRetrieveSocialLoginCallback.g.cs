@@ -57,6 +57,31 @@ namespace CVAT
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            await AuthRetrieveSocialLoginCallbackAsResponseAsync(
+                id: id,
+                code: code,
+                state: state,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Checks the authentication response from specified provider, redirects to the CVAT client if successful.<br/>
+        /// Accepts a request from provider with code and state query parameters. In case of successful authentication on the provider side, it will redirect to the CVAT client
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="id"></param>
+        /// <param name="state"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse> AuthRetrieveSocialLoginCallbackAsResponseAsync(
+            string id,
+            string? code = default,
+            string? state = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareAuthRetrieveSocialLoginCallbackArguments(
@@ -87,12 +112,13 @@ namespace CVAT
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::CVAT.PathBuilder(
                                 path: $"/api/auth/social/{id}/login/callback/",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("code", code)
-                                .AddOptionalParameter("state", state) 
+                                .AddOptionalParameter("state", state)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::CVAT.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -166,6 +192,8 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -176,6 +204,11 @@ namespace CVAT
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::CVAT.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -193,6 +226,8 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -202,8 +237,7 @@ namespace CVAT
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::CVAT.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -212,6 +246,11 @@ namespace CVAT
                         __attempt < __maxAttempts &&
                         global::CVAT.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::CVAT.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -228,14 +267,15 @@ namespace CVAT
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::CVAT.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -275,6 +315,8 @@ namespace CVAT
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -295,6 +337,8 @@ namespace CVAT
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -315,6 +359,10 @@ namespace CVAT
                                 {
                                     __response.EnsureSuccessStatusCode();
 
+                return new global::CVAT.AutoSDKHttpResponse(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -336,6 +384,10 @@ namespace CVAT
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
+                                    return new global::CVAT.AutoSDKHttpResponse(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

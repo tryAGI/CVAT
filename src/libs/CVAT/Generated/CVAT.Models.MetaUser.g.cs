@@ -29,6 +29,26 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickUser(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::CVAT.User? value)
+        {
+            value = User;
+            return IsUser;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::CVAT.User PickUser() => IsUser
+            ? User!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'User' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::CVAT.BasicUser? Basic { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Basic))]
 #endif
         public bool IsBasic => Basic != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBasic(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::CVAT.BasicUser? value)
+        {
+            value = Basic;
+            return IsBasic;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::CVAT.BasicUser PickBasic() => IsBasic
+            ? Basic!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        public static MetaUser FromUser(global::CVAT.User? value) => new MetaUser(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MetaUser(global::CVAT.BasicUser value) => new MetaUser((global::CVAT.BasicUser?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace CVAT
         {
             Basic = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MetaUser FromBasic(global::CVAT.BasicUser? value) => new MetaUser(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace CVAT
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::CVAT.User?, TResult>? user = null,
-            global::System.Func<global::CVAT.BasicUser?, TResult>? basic = null,
+            global::System.Func<global::CVAT.User, TResult>? user = null,
+            global::System.Func<global::CVAT.BasicUser, TResult>? basic = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace CVAT
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::CVAT.User?>? user = null,
-            global::System.Action<global::CVAT.BasicUser?>? basic = null,
+            global::System.Action<global::CVAT.User>? user = null,
+
+            global::System.Action<global::CVAT.BasicUser>? basic = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsUser)
+            {
+                user?.Invoke(User!);
+            }
+            else if (IsBasic)
+            {
+                basic?.Invoke(Basic!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::CVAT.User>? user = null,
+            global::System.Action<global::CVAT.BasicUser>? basic = null,
             bool validate = true)
         {
             if (validate)

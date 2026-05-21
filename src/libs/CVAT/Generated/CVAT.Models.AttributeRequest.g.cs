@@ -54,6 +54,13 @@ namespace CVAT
         public required global::System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>
+        /// Delete the attribute and all related annotation values.<br/>
+        /// Included only in requests
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deleted")]
+        public bool? Deleted { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -74,6 +81,10 @@ namespace CVAT
         /// <param name="values"></param>
         /// <param name="id"></param>
         /// <param name="defaultValue"></param>
+        /// <param name="deleted">
+        /// Delete the attribute and all related annotation values.<br/>
+        /// Included only in requests
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -83,7 +94,8 @@ namespace CVAT
             global::CVAT.InputTypeEnum inputType,
             global::System.Collections.Generic.IList<string> values,
             int? id,
-            string? defaultValue)
+            string? defaultValue,
+            bool? deleted)
         {
             this.Id = id;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
@@ -91,6 +103,7 @@ namespace CVAT
             this.InputType = inputType;
             this.DefaultValue = defaultValue;
             this.Values = values ?? throw new global::System.ArgumentNullException(nameof(values));
+            this.Deleted = deleted;
         }
 
         /// <summary>
@@ -99,5 +112,6 @@ namespace CVAT
         public AttributeRequest()
         {
         }
+
     }
 }

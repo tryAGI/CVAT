@@ -54,6 +54,12 @@ namespace CVAT
         public global::System.Collections.Generic.IList<double>? Points { get; set; }
 
         /// <summary>
+        /// Default Value: []
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attributes")]
+        public global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? Attributes { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -65,12 +71,6 @@ namespace CVAT
         [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Frame { get; set; }
-
-        /// <summary>
-        /// Default Value: []
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("attributes")]
-        public global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? Attributes { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -105,10 +105,10 @@ namespace CVAT
         /// Default Value: 0F
         /// </param>
         /// <param name="points"></param>
-        /// <param name="id"></param>
         /// <param name="attributes">
         /// Default Value: []
         /// </param>
+        /// <param name="id"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -120,8 +120,8 @@ namespace CVAT
             int? zOrder,
             double? rotation,
             global::System.Collections.Generic.IList<double>? points,
-            int? id,
-            global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? attributes)
+            global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? attributes,
+            int? id)
         {
             this.Type = type;
             this.Occluded = occluded;
@@ -129,9 +129,9 @@ namespace CVAT
             this.ZOrder = zOrder;
             this.Rotation = rotation;
             this.Points = points;
+            this.Attributes = attributes;
             this.Id = id;
             this.Frame = frame;
-            this.Attributes = attributes;
         }
 
         /// <summary>
@@ -140,5 +140,6 @@ namespace CVAT
         public TrackedShapeRequest()
         {
         }
+
     }
 }

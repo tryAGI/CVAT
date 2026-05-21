@@ -74,5 +74,6 @@ namespace CVAT
         public LabeledData()
         {
         }
+
     }
 }

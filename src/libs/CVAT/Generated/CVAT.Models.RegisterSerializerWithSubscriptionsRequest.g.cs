@@ -99,5 +99,6 @@ namespace CVAT
         public RegisterSerializerWithSubscriptionsRequest()
         {
         }
+
     }
 }

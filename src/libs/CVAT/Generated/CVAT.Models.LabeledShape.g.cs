@@ -62,19 +62,12 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Frame { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("label_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int LabelId { get; set; }
 
         /// <summary>
-        /// 
+        /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group")]
         public int? Group { get; set; }
@@ -84,6 +77,13 @@ namespace CVAT
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
         public string? Source { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Frame { get; set; }
 
         /// <summary>
         /// Default Value: []
@@ -122,8 +122,8 @@ namespace CVAT
         /// * `mask` - MASK<br/>
         /// * `skeleton` - SKELETON
         /// </param>
-        /// <param name="frame"></param>
         /// <param name="labelId"></param>
+        /// <param name="frame"></param>
         /// <param name="occluded">
         /// Default Value: false
         /// </param>
@@ -138,7 +138,9 @@ namespace CVAT
         /// </param>
         /// <param name="points"></param>
         /// <param name="id"></param>
-        /// <param name="group"></param>
+        /// <param name="group">
+        /// Default Value: 0
+        /// </param>
         /// <param name="source">
         /// Default Value: manual
         /// </param>
@@ -154,8 +156,8 @@ namespace CVAT
 #endif
         public LabeledShape(
             global::CVAT.ShapeType2 type,
-            int frame,
             int labelId,
+            int frame,
             bool? occluded,
             bool? outside,
             int? zOrder,
@@ -175,10 +177,10 @@ namespace CVAT
             this.Rotation = rotation;
             this.Points = points;
             this.Id = id;
-            this.Frame = frame;
             this.LabelId = labelId;
             this.Group = group;
             this.Source = source;
+            this.Frame = frame;
             this.Attributes = attributes;
             this.Score = score;
             this.Elements = elements;
@@ -190,5 +192,6 @@ namespace CVAT
         public LabeledShape()
         {
         }
+
     }
 }

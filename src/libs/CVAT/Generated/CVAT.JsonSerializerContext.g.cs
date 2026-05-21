@@ -177,6 +177,14 @@ namespace CVAT
 
             typeof(global::CVAT.JsonConverters.JobsListDimensionNullableJsonConverter),
 
+            typeof(global::CVAT.JsonConverters.JobsListMediaTypeJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.JobsListMediaTypeNullableJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.JobsListModeJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.JobsListModeNullableJsonConverter),
+
             typeof(global::CVAT.JsonConverters.JobsListStageJsonConverter),
 
             typeof(global::CVAT.JsonConverters.JobsListStageNullableJsonConverter),
@@ -192,6 +200,10 @@ namespace CVAT
             typeof(global::CVAT.JsonConverters.JobsRetrieveAnnotationsLocationJsonConverter),
 
             typeof(global::CVAT.JsonConverters.JobsRetrieveAnnotationsLocationNullableJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.JobsCreateAnnotationsImportModeJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.JobsCreateAnnotationsImportModeNullableJsonConverter),
 
             typeof(global::CVAT.JsonConverters.JobsCreateAnnotationsLocationJsonConverter),
 
@@ -281,6 +293,10 @@ namespace CVAT
 
             typeof(global::CVAT.JsonConverters.TasksListDimensionNullableJsonConverter),
 
+            typeof(global::CVAT.JsonConverters.TasksListMediaTypeJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.TasksListMediaTypeNullableJsonConverter),
+
             typeof(global::CVAT.JsonConverters.TasksListModeJsonConverter),
 
             typeof(global::CVAT.JsonConverters.TasksListModeNullableJsonConverter),
@@ -292,6 +308,10 @@ namespace CVAT
             typeof(global::CVAT.JsonConverters.TasksListValidationModeJsonConverter),
 
             typeof(global::CVAT.JsonConverters.TasksListValidationModeNullableJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.TasksCreateAnnotationsImportModeJsonConverter),
+
+            typeof(global::CVAT.JsonConverters.TasksCreateAnnotationsImportModeNullableJsonConverter),
 
             typeof(global::CVAT.JsonConverters.TasksCreateAnnotationsLocationJsonConverter),
 
@@ -664,10 +684,13 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsListAction), TypeInfoPropertyName = "EventsListAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsCreateExportLocation), TypeInfoPropertyName = "EventsCreateExportLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListDimension), TypeInfoPropertyName = "JobsListDimension2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListMediaType), TypeInfoPropertyName = "JobsListMediaType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListMode), TypeInfoPropertyName = "JobsListMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListStage), TypeInfoPropertyName = "JobsListStage2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListState), TypeInfoPropertyName = "JobsListState2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListType), TypeInfoPropertyName = "JobsListType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsRetrieveAnnotationsLocation), TypeInfoPropertyName = "JobsRetrieveAnnotationsLocation2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsCreateAnnotationsImportMode), TypeInfoPropertyName = "JobsCreateAnnotationsImportMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsCreateAnnotationsLocation), TypeInfoPropertyName = "JobsCreateAnnotationsLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsPartialUpdateAnnotationsAction), TypeInfoPropertyName = "JobsPartialUpdateAnnotationsAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsRetrieveDataQuality), TypeInfoPropertyName = "JobsRetrieveDataQuality2")]
@@ -690,9 +713,11 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SchemaRetrieveLang), TypeInfoPropertyName = "SchemaRetrieveLang2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SchemaRetrieveScheme), TypeInfoPropertyName = "SchemaRetrieveScheme2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListDimension), TypeInfoPropertyName = "TasksListDimension2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListMediaType), TypeInfoPropertyName = "TasksListMediaType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListMode), TypeInfoPropertyName = "TasksListMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListStatus), TypeInfoPropertyName = "TasksListStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksListValidationMode), TypeInfoPropertyName = "TasksListValidationMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateAnnotationsImportMode), TypeInfoPropertyName = "TasksCreateAnnotationsImportMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateAnnotationsLocation), TypeInfoPropertyName = "TasksCreateAnnotationsLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksPartialUpdateAnnotationsAction), TypeInfoPropertyName = "TasksPartialUpdateAnnotationsAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateBackupExportLocation), TypeInfoPropertyName = "TasksCreateBackupExportLocation2")]

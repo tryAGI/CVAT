@@ -57,5 +57,6 @@ namespace CVAT
         public CreateAnalyticsReportBodyRequest()
         {
         }
+
     }
 }

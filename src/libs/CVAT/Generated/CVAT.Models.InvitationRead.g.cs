@@ -58,6 +58,12 @@ namespace CVAT
         public bool? Expired { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("accepted")]
+        public bool? Accepted { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("organization_info")]
@@ -92,6 +98,9 @@ namespace CVAT
         /// <param name="expired">
         /// Included only in responses
         /// </param>
+        /// <param name="accepted">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -103,7 +112,8 @@ namespace CVAT
             string? key,
             global::System.DateTime? createdDate,
             global::CVAT.BasicUser? owner,
-            bool? expired)
+            bool? expired,
+            bool? accepted)
         {
             this.Key = key;
             this.CreatedDate = createdDate;
@@ -112,6 +122,7 @@ namespace CVAT
             this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
             this.Organization = organization;
             this.Expired = expired;
+            this.Accepted = accepted;
             this.OrganizationInfo = organizationInfo ?? throw new global::System.ArgumentNullException(nameof(organizationInfo));
         }
 
@@ -121,5 +132,6 @@ namespace CVAT
         public InvitationRead()
         {
         }
+
     }
 }
