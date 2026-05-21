@@ -24,8 +24,7 @@ namespace CVAT
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frame_selection_method")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.FrameSelectionMethodJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::CVAT.FrameSelectionMethod FrameSelectionMethod { get; set; }
+        public global::CVAT.FrameSelectionMethod? FrameSelectionMethod { get; set; }
 
         /// <summary>
         /// The seed value for the random number generator.<br/>
@@ -124,7 +123,7 @@ namespace CVAT
 #endif
         public ValidationParamsRequest(
             global::CVAT.ValidationMode mode,
-            global::CVAT.FrameSelectionMethod frameSelectionMethod,
+            global::CVAT.FrameSelectionMethod? frameSelectionMethod,
             int? randomSeed,
             global::System.Collections.Generic.IList<string>? frames,
             int? frameCount,

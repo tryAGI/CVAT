@@ -619,7 +619,7 @@ namespace CVAT
         /// Maximum number of frames per chunk
         /// </param>
         /// <param name="imageQuality">
-        /// Image quality to use during annotation
+        /// Image quality to use during annotation, required for image and video-based tasks
         /// </param>
         /// <param name="startFrame">
         /// First frame index
@@ -729,7 +729,6 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.DataResponse> TasksCreateDataAsync(
             int id,
-            int imageQuality,
             int? cloudStorageId,
             global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>> jobFileMapping,
             global::System.Collections.Generic.IList<string> uploadFileOrder,
@@ -737,6 +736,7 @@ namespace CVAT
             bool? uploadMultiple = default,
             bool? uploadStart = default,
             int? chunkSize = default,
+            int? imageQuality = default,
             int? startFrame = default,
             int? stopFrame = default,
             string? frameFilter = default,

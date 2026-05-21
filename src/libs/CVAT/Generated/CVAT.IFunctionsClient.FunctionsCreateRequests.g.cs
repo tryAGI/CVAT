@@ -38,6 +38,7 @@ namespace CVAT
         /// * `track` - track
         /// </param>
         /// <param name="task"></param>
+        /// <param name="job"></param>
         /// <param name="frame"></param>
         /// <param name="threshold"></param>
         /// <param name="cleanup"></param>
@@ -53,6 +54,7 @@ namespace CVAT
             int task,
             int function,
             global::CVAT.TypeCcbEnum? type = default,
+            int? job = default,
             int? frame = default,
             double? threshold = default,
             bool? cleanup = default,

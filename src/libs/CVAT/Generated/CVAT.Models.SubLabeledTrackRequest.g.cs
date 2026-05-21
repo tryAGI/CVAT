@@ -17,19 +17,12 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Frame { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("label_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int LabelId { get; set; }
 
         /// <summary>
-        /// 
+        /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group")]
         public int? Group { get; set; }
@@ -43,15 +36,22 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("shapes")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::CVAT.TrackedShapeRequest> Shapes { get; set; }
+        public required int Frame { get; set; }
 
         /// <summary>
         /// Default Value: []
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("attributes")]
         public global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? Attributes { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("shapes")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::CVAT.TrackedShapeRequest> Shapes { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -62,11 +62,13 @@ namespace CVAT
         /// <summary>
         /// Initializes a new instance of the <see cref="SubLabeledTrackRequest" /> class.
         /// </summary>
-        /// <param name="frame"></param>
         /// <param name="labelId"></param>
+        /// <param name="frame"></param>
         /// <param name="shapes"></param>
         /// <param name="id"></param>
-        /// <param name="group"></param>
+        /// <param name="group">
+        /// Default Value: 0
+        /// </param>
         /// <param name="source">
         /// Default Value: manual
         /// </param>
@@ -77,8 +79,8 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SubLabeledTrackRequest(
-            int frame,
             int labelId,
+            int frame,
             global::System.Collections.Generic.IList<global::CVAT.TrackedShapeRequest> shapes,
             int? id,
             int? group,
@@ -86,12 +88,12 @@ namespace CVAT
             global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? attributes)
         {
             this.Id = id;
-            this.Frame = frame;
             this.LabelId = labelId;
             this.Group = group;
             this.Source = source;
-            this.Shapes = shapes ?? throw new global::System.ArgumentNullException(nameof(shapes));
+            this.Frame = frame;
             this.Attributes = attributes;
+            this.Shapes = shapes ?? throw new global::System.ArgumentNullException(nameof(shapes));
         }
 
         /// <summary>

@@ -4,7 +4,9 @@
 namespace CVAT
 {
     /// <summary>
+    /// * `create:backup` - CREATE:BACKUP<br/>
     /// * `create:comment` - CREATE:COMMENT<br/>
+    /// * `create:export` - CREATE:EXPORT<br/>
     /// * `create:invitation` - CREATE:INVITATION<br/>
     /// * `create:issue` - CREATE:ISSUE<br/>
     /// * `create:job` - CREATE:JOB<br/>
@@ -30,9 +32,17 @@ namespace CVAT
     public enum EventsEnum
     {
         /// <summary>
+        /// backup` - CREATE:BACKUP
+        /// </summary>
+        Create_backup,
+        /// <summary>
         /// comment` - CREATE:COMMENT
         /// </summary>
         Create_comment,
+        /// <summary>
+        /// export` - CREATE:EXPORT
+        /// </summary>
+        Create_export,
         /// <summary>
         /// invitation` - CREATE:INVITATION
         /// </summary>
@@ -131,7 +141,9 @@ namespace CVAT
         {
             return value switch
             {
+                EventsEnum.Create_backup => "create:backup",
                 EventsEnum.Create_comment => "create:comment",
+                EventsEnum.Create_export => "create:export",
                 EventsEnum.Create_invitation => "create:invitation",
                 EventsEnum.Create_issue => "create:issue",
                 EventsEnum.Create_job => "create:job",
@@ -163,7 +175,9 @@ namespace CVAT
         {
             return value switch
             {
+                "create:backup" => EventsEnum.Create_backup,
                 "create:comment" => EventsEnum.Create_comment,
+                "create:export" => EventsEnum.Create_export,
                 "create:invitation" => EventsEnum.Create_invitation,
                 "create:issue" => EventsEnum.Create_issue,
                 "create:job" => EventsEnum.Create_job,

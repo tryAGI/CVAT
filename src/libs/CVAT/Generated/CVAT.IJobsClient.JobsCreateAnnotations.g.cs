@@ -14,6 +14,9 @@ namespace CVAT
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
         /// <param name="location"></param>
         /// <param name="useDefaultLocation">
         /// Default Value: true
@@ -29,6 +32,7 @@ namespace CVAT
             int? cloudStorageId = default,
             string? filename = default,
             string? format = default,
+            global::CVAT.JobsCreateAnnotationsImportMode? importMode = default,
             global::CVAT.JobsCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -43,6 +47,9 @@ namespace CVAT
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
         /// <param name="location"></param>
         /// <param name="useDefaultLocation">
         /// Default Value: true
@@ -58,6 +65,7 @@ namespace CVAT
             int? cloudStorageId = default,
             string? filename = default,
             string? format = default,
+            global::CVAT.JobsCreateAnnotationsImportMode? importMode = default,
             global::CVAT.JobsCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -72,6 +80,9 @@ namespace CVAT
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
         /// <param name="location"></param>
         /// <param name="useDefaultLocation">
         /// Default Value: true
@@ -88,6 +99,7 @@ namespace CVAT
             int? cloudStorageId = default,
             string? filename = default,
             string? format = default,
+            global::CVAT.JobsCreateAnnotationsImportMode? importMode = default,
             global::CVAT.JobsCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,

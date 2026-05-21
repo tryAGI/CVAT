@@ -12,6 +12,7 @@ namespace CVAT
         /// <param name="format"></param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="projectId"></param>
@@ -29,6 +30,7 @@ namespace CVAT
             string? format = default,
             int? jobId = default,
             string? org = default,
+            int? orgId = default,
             int? page = default,
             int? pageSize = default,
             int? projectId = default,
@@ -47,6 +49,7 @@ namespace CVAT
         /// <param name="format"></param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="projectId"></param>
@@ -64,6 +67,7 @@ namespace CVAT
             string? format = default,
             int? jobId = default,
             string? org = default,
+            int? orgId = default,
             int? page = default,
             int? pageSize = default,
             int? projectId = default,

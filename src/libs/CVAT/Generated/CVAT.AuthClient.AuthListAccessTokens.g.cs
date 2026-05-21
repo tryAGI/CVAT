@@ -31,6 +31,7 @@ namespace CVAT
             ref string? name,
             ref int? page,
             ref int? pageSize,
+            ref bool? readOnly,
             ref string? search,
             ref string? sort);
         partial void PrepareAuthListAccessTokensRequest(
@@ -40,6 +41,7 @@ namespace CVAT
             string? name,
             int? page,
             int? pageSize,
+            bool? readOnly,
             string? search,
             string? sort);
         partial void ProcessAuthListAccessTokensResponse(
@@ -58,6 +60,7 @@ namespace CVAT
         /// <param name="name"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
+        /// <param name="readOnly"></param>
         /// <param name="search"></param>
         /// <param name="sort"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,6 +71,7 @@ namespace CVAT
             string? name = default,
             int? page = default,
             int? pageSize = default,
+            bool? readOnly = default,
             string? search = default,
             string? sort = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -78,6 +82,7 @@ namespace CVAT
                 name: name,
                 page: page,
                 pageSize: pageSize,
+                readOnly: readOnly,
                 search: search,
                 sort: sort,
                 requestOptions: requestOptions,
@@ -93,6 +98,7 @@ namespace CVAT
         /// <param name="name"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
+        /// <param name="readOnly"></param>
         /// <param name="search"></param>
         /// <param name="sort"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -103,6 +109,7 @@ namespace CVAT
             string? name = default,
             int? page = default,
             int? pageSize = default,
+            bool? readOnly = default,
             string? search = default,
             string? sort = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -116,6 +123,7 @@ namespace CVAT
                 name: ref name,
                 page: ref page,
                 pageSize: ref pageSize,
+                readOnly: ref readOnly,
                 search: ref search,
                 sort: ref sort);
 
@@ -150,6 +158,7 @@ namespace CVAT
                                 .AddOptionalParameter("name", name)
                                 .AddOptionalParameter("page", page?.ToString())
                                 .AddOptionalParameter("page_size", pageSize?.ToString())
+                                .AddOptionalParameter("read_only", readOnly?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("search", search)
                                 .AddOptionalParameter("sort", sort)
                                 ;
@@ -197,6 +206,7 @@ namespace CVAT
                     name: name,
                     page: page,
                     pageSize: pageSize,
+                    readOnly: readOnly,
                     search: search,
                     sort: sort);
 

@@ -32,6 +32,7 @@ namespace CVAT
             ref string? format,
             ref int? jobId,
             ref string? org,
+            ref int? orgId,
             ref int? page,
             ref int? pageSize,
             ref int? projectId,
@@ -48,6 +49,7 @@ namespace CVAT
             string? format,
             int? jobId,
             string? org,
+            int? orgId,
             int? page,
             int? pageSize,
             int? projectId,
@@ -73,6 +75,7 @@ namespace CVAT
         /// <param name="format"></param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="projectId"></param>
@@ -90,6 +93,7 @@ namespace CVAT
             string? format = default,
             int? jobId = default,
             string? org = default,
+            int? orgId = default,
             int? page = default,
             int? pageSize = default,
             int? projectId = default,
@@ -107,6 +111,7 @@ namespace CVAT
                 format: format,
                 jobId: jobId,
                 org: org,
+                orgId: orgId,
                 page: page,
                 pageSize: pageSize,
                 projectId: projectId,
@@ -129,6 +134,7 @@ namespace CVAT
         /// <param name="format"></param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <param name="projectId"></param>
@@ -146,6 +152,7 @@ namespace CVAT
             string? format = default,
             int? jobId = default,
             string? org = default,
+            int? orgId = default,
             int? page = default,
             int? pageSize = default,
             int? projectId = default,
@@ -166,6 +173,7 @@ namespace CVAT
                 format: ref format,
                 jobId: ref jobId,
                 org: ref org,
+                orgId: ref orgId,
                 page: ref page,
                 pageSize: ref pageSize,
                 projectId: ref projectId,
@@ -207,6 +215,7 @@ namespace CVAT
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("job_id", jobId?.ToString())
                                 .AddOptionalParameter("org", org)
+                                .AddOptionalParameter("org_id", orgId?.ToString())
                                 .AddOptionalParameter("page", page?.ToString())
                                 .AddOptionalParameter("page_size", pageSize?.ToString())
                                 .AddOptionalParameter("project_id", projectId?.ToString())
@@ -261,6 +270,7 @@ namespace CVAT
                     format: format,
                     jobId: jobId,
                     org: org,
+                    orgId: orgId,
                     page: page,
                     pageSize: pageSize,
                     projectId: projectId,

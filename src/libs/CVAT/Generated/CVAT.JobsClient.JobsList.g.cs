@@ -31,6 +31,8 @@ namespace CVAT
             ref string? assignee,
             ref global::CVAT.JobsListDimension? dimension,
             ref string? filter,
+            ref global::CVAT.JobsListMediaType? mediaType,
+            ref global::CVAT.JobsListMode? mode,
             ref string? org,
             ref int? orgId,
             ref int? page,
@@ -52,6 +54,8 @@ namespace CVAT
             string? assignee,
             global::CVAT.JobsListDimension? dimension,
             string? filter,
+            global::CVAT.JobsListMediaType? mediaType,
+            global::CVAT.JobsListMode? mode,
             string? org,
             int? orgId,
             int? page,
@@ -82,6 +86,8 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
+        /// <param name="mode"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="page"></param>
@@ -104,6 +110,8 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.JobsListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.JobsListMediaType? mediaType = default,
+            global::CVAT.JobsListMode? mode = default,
             string? org = default,
             int? orgId = default,
             int? page = default,
@@ -126,6 +134,8 @@ namespace CVAT
                 assignee: assignee,
                 dimension: dimension,
                 filter: filter,
+                mediaType: mediaType,
+                mode: mode,
                 org: org,
                 orgId: orgId,
                 page: page,
@@ -153,6 +163,8 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
+        /// <param name="mode"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="page"></param>
@@ -175,6 +187,8 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.JobsListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.JobsListMediaType? mediaType = default,
+            global::CVAT.JobsListMode? mode = default,
             string? org = default,
             int? orgId = default,
             int? page = default,
@@ -200,6 +214,8 @@ namespace CVAT
                 assignee: ref assignee,
                 dimension: ref dimension,
                 filter: ref filter,
+                mediaType: ref mediaType,
+                mode: ref mode,
                 org: ref org,
                 orgId: ref orgId,
                 page: ref page,
@@ -245,6 +261,8 @@ namespace CVAT
                                 .AddOptionalParameter("assignee", assignee)
                                 .AddOptionalParameter("dimension", dimension?.ToValueString())
                                 .AddOptionalParameter("filter", filter)
+                                .AddOptionalParameter("media_type", mediaType?.ToValueString())
+                                .AddOptionalParameter("mode", mode?.ToValueString())
                                 .AddOptionalParameter("org", org)
                                 .AddOptionalParameter("org_id", orgId?.ToString())
                                 .AddOptionalParameter("page", page?.ToString())
@@ -310,6 +328,8 @@ namespace CVAT
                     assignee: assignee,
                     dimension: dimension,
                     filter: filter,
+                    mediaType: mediaType,
+                    mode: mode,
                     org: org,
                     orgId: orgId,
                     page: page,

@@ -16,11 +16,10 @@ namespace CVAT
         public int? ChunkSize { get; set; }
 
         /// <summary>
-        /// Image quality to use during annotation
+        /// Image quality to use during annotation, required for image and video-based tasks
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image_quality")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ImageQuality { get; set; }
+        public int? ImageQuality { get; set; }
 
         /// <summary>
         /// First frame index
@@ -189,11 +188,11 @@ namespace CVAT
         /// <summary>
         /// Initializes a new instance of the <see cref="DataRequest" /> class.
         /// </summary>
-        /// <param name="imageQuality">
-        /// Image quality to use during annotation
-        /// </param>
         /// <param name="chunkSize">
         /// Maximum number of frames per chunk
+        /// </param>
+        /// <param name="imageQuality">
+        /// Image quality to use during annotation, required for image and video-based tasks
         /// </param>
         /// <param name="startFrame">
         /// First frame index
@@ -302,8 +301,8 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DataRequest(
-            int imageQuality,
             int? chunkSize,
+            int? imageQuality,
             int? startFrame,
             int? stopFrame,
             string? frameFilter,

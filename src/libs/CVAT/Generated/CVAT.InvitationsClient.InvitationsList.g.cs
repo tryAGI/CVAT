@@ -28,6 +28,7 @@ namespace CVAT
         partial void PrepareInvitationsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? xOrganization,
+            ref bool? accepted,
             ref string? filter,
             ref string? org,
             ref int? orgId,
@@ -35,11 +36,13 @@ namespace CVAT
             ref int? page,
             ref int? pageSize,
             ref string? search,
-            ref string? sort);
+            ref string? sort,
+            ref int? userId);
         partial void PrepareInvitationsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? xOrganization,
+            bool? accepted,
             string? filter,
             string? org,
             int? orgId,
@@ -47,7 +50,8 @@ namespace CVAT
             int? page,
             int? pageSize,
             string? search,
-            string? sort);
+            string? sort,
+            int? userId);
         partial void ProcessInvitationsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -61,6 +65,7 @@ namespace CVAT
         /// List invitations
         /// </summary>
         /// <param name="xOrganization"></param>
+        /// <param name="accepted"></param>
         /// <param name="filter"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
@@ -69,11 +74,13 @@ namespace CVAT
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
         /// <param name="sort"></param>
+        /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.PaginatedInvitationReadList> InvitationsListAsync(
             string? xOrganization = default,
+            bool? accepted = default,
             string? filter = default,
             string? org = default,
             int? orgId = default,
@@ -82,11 +89,13 @@ namespace CVAT
             int? pageSize = default,
             string? search = default,
             string? sort = default,
+            int? userId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await InvitationsListAsResponseAsync(
                 xOrganization: xOrganization,
+                accepted: accepted,
                 filter: filter,
                 org: org,
                 orgId: orgId,
@@ -95,6 +104,7 @@ namespace CVAT
                 pageSize: pageSize,
                 search: search,
                 sort: sort,
+                userId: userId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -105,6 +115,7 @@ namespace CVAT
         /// List invitations
         /// </summary>
         /// <param name="xOrganization"></param>
+        /// <param name="accepted"></param>
         /// <param name="filter"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
@@ -113,11 +124,13 @@ namespace CVAT
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
         /// <param name="sort"></param>
+        /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.PaginatedInvitationReadList>> InvitationsListAsResponseAsync(
             string? xOrganization = default,
+            bool? accepted = default,
             string? filter = default,
             string? org = default,
             int? orgId = default,
@@ -126,6 +139,7 @@ namespace CVAT
             int? pageSize = default,
             string? search = default,
             string? sort = default,
+            int? userId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -134,6 +148,7 @@ namespace CVAT
             PrepareInvitationsListArguments(
                 httpClient: HttpClient,
                 xOrganization: ref xOrganization,
+                accepted: ref accepted,
                 filter: ref filter,
                 org: ref org,
                 orgId: ref orgId,
@@ -141,7 +156,8 @@ namespace CVAT
                 page: ref page,
                 pageSize: ref pageSize,
                 search: ref search,
-                sort: ref sort);
+                sort: ref sort,
+                userId: ref userId);
 
 
             var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
@@ -170,6 +186,7 @@ namespace CVAT
                                 path: "/api/invitations",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("accepted", accepted?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("filter", filter)
                                 .AddOptionalParameter("org", org)
                                 .AddOptionalParameter("org_id", orgId?.ToString())
@@ -178,6 +195,7 @@ namespace CVAT
                                 .AddOptionalParameter("page_size", pageSize?.ToString())
                                 .AddOptionalParameter("search", search)
                                 .AddOptionalParameter("sort", sort)
+                                .AddOptionalParameter("user_id", userId?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::CVAT.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -226,6 +244,7 @@ namespace CVAT
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     xOrganization: xOrganization,
+                    accepted: accepted,
                     filter: filter,
                     org: org,
                     orgId: orgId,
@@ -233,7 +252,8 @@ namespace CVAT
                     page: page,
                     pageSize: pageSize,
                     search: search,
-                    sort: sort);
+                    sort: sort,
+                    userId: userId);
 
                 return __httpRequest;
             }
