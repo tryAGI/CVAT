@@ -28,7 +28,7 @@ namespace CVAT
         public string? Color { get; set; }
 
         /// <summary>
-        /// The list of attributes. If you want to remove an attribute, you need to recreate the label and specify the remaining attributes.<br/>
+        /// The list of attributes. To remove an attribute, pass the full attribute body with deleted=true. Related annotation attribute values will be deleted.<br/>
         /// Default Value: []
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("attributes")]
@@ -72,7 +72,7 @@ namespace CVAT
         /// The hex value for the RGB color. Will be generated automatically, unless specified explicitly.
         /// </param>
         /// <param name="attributes">
-        /// The list of attributes. If you want to remove an attribute, you need to recreate the label and specify the remaining attributes.<br/>
+        /// The list of attributes. To remove an attribute, pass the full attribute body with deleted=true. Related annotation attribute values will be deleted.<br/>
         /// Default Value: []
         /// </param>
         /// <param name="type">

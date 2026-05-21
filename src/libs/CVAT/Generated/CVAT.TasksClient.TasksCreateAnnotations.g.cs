@@ -31,6 +31,7 @@ namespace CVAT
             ref string? filename,
             ref string? format,
             ref int id,
+            ref global::CVAT.TasksCreateAnnotationsImportMode? importMode,
             ref global::CVAT.TasksCreateAnnotationsLocation? location,
             ref bool? useDefaultLocation,
             global::CVAT.AnnotationFileRequest request);
@@ -41,6 +42,7 @@ namespace CVAT
             string? filename,
             string? format,
             int id,
+            global::CVAT.TasksCreateAnnotationsImportMode? importMode,
             global::CVAT.TasksCreateAnnotationsLocation? location,
             bool? useDefaultLocation,
             global::CVAT.AnnotationFileRequest request);
@@ -63,6 +65,9 @@ namespace CVAT
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
         /// <param name="location"></param>
         /// <param name="useDefaultLocation">
         /// Default Value: true
@@ -78,6 +83,7 @@ namespace CVAT
             int? cloudStorageId = default,
             string? filename = default,
             string? format = default,
+            global::CVAT.TasksCreateAnnotationsImportMode? importMode = default,
             global::CVAT.TasksCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -90,6 +96,7 @@ namespace CVAT
                 cloudStorageId: cloudStorageId,
                 filename: filename,
                 format: format,
+                importMode: importMode,
                 location: location,
                 useDefaultLocation: useDefaultLocation,
                 requestOptions: requestOptions,
@@ -108,6 +115,9 @@ namespace CVAT
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
         /// <param name="location"></param>
         /// <param name="useDefaultLocation">
         /// Default Value: true
@@ -123,6 +133,7 @@ namespace CVAT
             int? cloudStorageId = default,
             string? filename = default,
             string? format = default,
+            global::CVAT.TasksCreateAnnotationsImportMode? importMode = default,
             global::CVAT.TasksCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -138,6 +149,7 @@ namespace CVAT
                 filename: ref filename,
                 format: ref format,
                 id: ref id,
+                importMode: ref importMode,
                 location: ref location,
                 useDefaultLocation: ref useDefaultLocation,
                 request: request);
@@ -172,6 +184,7 @@ namespace CVAT
                                 .AddOptionalParameter("cloud_storage_id", cloudStorageId?.ToString())
                                 .AddOptionalParameter("filename", filename)
                                 .AddOptionalParameter("format", format)
+                                .AddOptionalParameter("import_mode", importMode?.ToValueString())
                                 .AddOptionalParameter("location", location?.ToValueString())
                                 .AddOptionalParameter("use_default_location", useDefaultLocation?.ToString().ToLowerInvariant())
                                 ;
@@ -225,6 +238,7 @@ namespace CVAT
                     filename: filename,
                     format: format,
                     id: id!,
+                    importMode: importMode,
                     location: location,
                     useDefaultLocation: useDefaultLocation,
                     request: request);
@@ -549,6 +563,9 @@ namespace CVAT
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
         /// <param name="location"></param>
         /// <param name="useDefaultLocation">
         /// Default Value: true
@@ -565,6 +582,7 @@ namespace CVAT
             int? cloudStorageId = default,
             string? filename = default,
             string? format = default,
+            global::CVAT.TasksCreateAnnotationsImportMode? importMode = default,
             global::CVAT.TasksCreateAnnotationsLocation? location = default,
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -581,6 +599,7 @@ namespace CVAT
                 filename: filename,
                 format: format,
                 id: id,
+                importMode: importMode,
                 location: location,
                 useDefaultLocation: useDefaultLocation,
                 request: __request,

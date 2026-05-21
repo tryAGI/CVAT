@@ -379,6 +379,10 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        Ug,
+        /// <summary>
+        /// 
+        /// </summary>
         Uk,
         /// <summary>
         /// 
@@ -506,6 +510,7 @@ namespace CVAT
                 SchemaRetrieveLang.Tr => "tr",
                 SchemaRetrieveLang.Tt => "tt",
                 SchemaRetrieveLang.Udm => "udm",
+                SchemaRetrieveLang.Ug => "ug",
                 SchemaRetrieveLang.Uk => "uk",
                 SchemaRetrieveLang.Ur => "ur",
                 SchemaRetrieveLang.Uz => "uz",
@@ -614,6 +619,7 @@ namespace CVAT
                 "tr" => SchemaRetrieveLang.Tr,
                 "tt" => SchemaRetrieveLang.Tt,
                 "udm" => SchemaRetrieveLang.Udm,
+                "ug" => SchemaRetrieveLang.Ug,
                 "uk" => SchemaRetrieveLang.Uk,
                 "ur" => SchemaRetrieveLang.Ur,
                 "uz" => SchemaRetrieveLang.Uz,

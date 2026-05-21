@@ -11,6 +11,7 @@ namespace CVAT
         /// <param name="name"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
+        /// <param name="readOnly"></param>
         /// <param name="search"></param>
         /// <param name="sort"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -21,6 +22,7 @@ namespace CVAT
             string? name = default,
             int? page = default,
             int? pageSize = default,
+            bool? readOnly = default,
             string? search = default,
             string? sort = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -32,6 +34,7 @@ namespace CVAT
         /// <param name="name"></param>
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
+        /// <param name="readOnly"></param>
         /// <param name="search"></param>
         /// <param name="sort"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -42,6 +45,7 @@ namespace CVAT
             string? name = default,
             int? page = default,
             int? pageSize = default,
+            bool? readOnly = default,
             string? search = default,
             string? sort = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,

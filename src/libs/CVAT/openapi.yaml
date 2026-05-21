@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.64.0 (2.0)",
+    "version": "2.65.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -299,7 +299,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['name', 'id', 'created_date', 'updated_date', 'expiry_date', 'last_used_date', 'read_only'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['created_date', 'expiry_date', 'id', 'last_used_date', 'name', 'read_only', 'updated_date'].",
             "schema": {
               "type": "string"
             }
@@ -331,10 +331,18 @@
             }
           },
           {
+            "name": "read_only",
+            "in": "query",
+            "description": "A simple equality filter for the read_only field",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('name',)",
+            "description": "A search term. Available search_fields: ['name']",
             "schema": {
               "type": "string"
             }
@@ -343,7 +351,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['name', 'id', 'created_date', 'updated_date', 'expiry_date', 'last_used_date', 'read_only']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['created_date', 'expiry_date', 'id', 'last_used_date', 'name', 'read_only', 'updated_date']",
             "schema": {
               "type": "string"
             }
@@ -1416,7 +1424,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['provider_type', 'name', 'resource', 'credentials_type', 'owner', 'description', 'id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['credentials_type', 'description', 'id', 'name', 'owner', 'provider_type', 'resource'].",
             "schema": {
               "type": "string"
             }
@@ -1496,7 +1504,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('provider_type', 'name', 'resource', 'credentials_type', 'owner', 'description')",
+            "description": "A search term. Available search_fields: ['description', 'name', 'owner', 'resource']",
             "schema": {
               "type": "string"
             }
@@ -1505,7 +1513,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['provider_type', 'name', 'resource', 'credentials_type', 'owner', 'description', 'id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['credentials_type', 'description', 'id', 'name', 'owner', 'provider_type', 'resource']",
             "schema": {
               "type": "string"
             }
@@ -2073,7 +2081,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['owner', 'id', 'issue_id', 'frame_id', 'job_id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['frame_id', 'id', 'issue_id', 'job_id', 'owner'].",
             "schema": {
               "type": "string"
             }
@@ -2148,7 +2156,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('owner',)",
+            "description": "A search term. Available search_fields: ['owner']",
             "schema": {
               "type": "string"
             }
@@ -2157,7 +2165,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['owner', 'id', 'issue_id', 'frame_id', 'job_id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['frame_id', 'id', 'issue_id', 'job_id', 'owner']",
             "schema": {
               "type": "string"
             }
@@ -3007,7 +3015,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['name', 'owner', 'provider', 'type', 'labels', 'id', 'updated_date'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'labels', 'name', 'owner', 'provider', 'type', 'updated_date'].",
             "schema": {
               "type": "string"
             }
@@ -3050,7 +3058,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('name', 'owner', 'provider', 'type', 'labels')",
+            "description": "A search term. Available search_fields: ['labels', 'name', 'owner', 'provider', 'type']",
             "schema": {
               "type": "string"
             }
@@ -3059,7 +3067,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['name', 'owner', 'provider', 'type', 'labels', 'id', 'updated_date']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'labels', 'name', 'owner', 'provider', 'type', 'updated_date']",
             "schema": {
               "type": "string"
             }
@@ -4029,10 +4037,18 @@
             }
           },
           {
+            "name": "accepted",
+            "in": "query",
+            "description": "A simple equality filter for the accepted field",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['owner', 'user_id', 'accepted'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['accepted', 'id', 'owner', 'user_id'].",
             "schema": {
               "type": "string"
             }
@@ -4083,7 +4099,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('owner',)",
+            "description": "A search term. Available search_fields: ['owner']",
             "schema": {
               "type": "string"
             }
@@ -4092,9 +4108,17 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['owner', 'created_date']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['accepted', 'created_date', 'owner', 'user_id']",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "A simple equality filter for the user_id field",
+            "schema": {
+              "type": "integer"
             }
           }
         ],
@@ -4505,7 +4529,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['owner', 'assignee', 'id', 'job_id', 'task_id', 'resolved', 'frame_id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'frame_id', 'id', 'job_id', 'owner', 'resolved', 'task_id'].",
             "schema": {
               "type": "string"
             }
@@ -4580,7 +4604,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('owner', 'assignee')",
+            "description": "A search term. Available search_fields: ['assignee', 'owner']",
             "schema": {
               "type": "string"
             }
@@ -4589,7 +4613,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['owner', 'assignee', 'id', 'job_id', 'task_id', 'resolved', 'frame_id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['assignee', 'frame_id', 'id', 'job_id', 'owner', 'resolved', 'task_id']",
             "schema": {
               "type": "string"
             }
@@ -4877,8 +4901,9 @@
             "schema": {
               "type": "string",
               "enum": [
-                "3d",
-                "2d"
+                "1d",
+                "2d",
+                "3d"
               ]
             }
           },
@@ -4886,9 +4911,34 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['task_name', 'project_name', 'assignee', 'state', 'stage', 'id', 'task_id', 'project_id', 'updated_date', 'dimension', 'type', 'parent_job_id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'dimension', 'id', 'media_type', 'mode', 'parent_job_id', 'project_id', 'project_name', 'stage', 'state', 'task_id', 'task_name', 'type', 'updated_date'].",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "media_type",
+            "in": "query",
+            "description": "A simple equality filter for the media_type field",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image",
+                "point_cloud",
+                "audio"
+              ]
+            }
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "A simple equality filter for the mode field",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "annotation",
+                "interpolation"
+              ]
             }
           },
           {
@@ -4953,7 +5003,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('task_name', 'project_name', 'assignee', 'state', 'stage')",
+            "description": "A search term. Available search_fields: ['assignee', 'project_name', 'task_name']",
             "schema": {
               "type": "string"
             }
@@ -4962,7 +5012,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['task_name', 'project_name', 'assignee', 'state', 'stage', 'id', 'task_id', 'project_id', 'updated_date', 'dimension', 'type', 'parent_job_id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['assignee', 'dimension', 'id', 'media_type', 'mode', 'parent_job_id', 'project_id', 'project_name', 'stage', 'state', 'task_id', 'task_name', 'type', 'updated_date']",
             "schema": {
               "type": "string"
             }
@@ -5438,6 +5488,19 @@
             },
             "description": "A unique integer value identifying this job.",
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "import_mode",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "append",
+                "replace"
+              ],
+              "default": "replace"
+            },
+            "description": "How to import annotations"
           },
           {
             "in": "query",
@@ -6164,7 +6227,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['name', 'parent', 'id', 'type', 'color', 'parent_id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['color', 'id', 'name', 'parent', 'parent_id', 'type'].",
             "schema": {
               "type": "string"
             }
@@ -6247,7 +6310,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('name', 'parent')",
+            "description": "A search term. Available search_fields: ['name', 'parent']",
             "schema": {
               "type": "string"
             }
@@ -6256,7 +6319,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['name', 'parent', 'id', 'type', 'color', 'parent_id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['color', 'id', 'name', 'parent', 'parent_id', 'type']",
             "schema": {
               "type": "string"
             }
@@ -6808,7 +6871,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['user_id', 'user', 'id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'user', 'user_id'].",
             "schema": {
               "type": "string"
             }
@@ -6851,7 +6914,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['user_id', 'user', 'id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'user', 'user_id']",
             "schema": {
               "type": "string"
             }
@@ -7145,7 +7208,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['user', 'role', 'id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'role', 'user'].",
             "schema": {
               "type": "string"
             }
@@ -7202,7 +7265,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('user', 'role')",
+            "description": "A search term. Available search_fields: ['user']",
             "schema": {
               "type": "string"
             }
@@ -7211,7 +7274,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['user', 'role', 'id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'role', 'user']",
             "schema": {
               "type": "string"
             }
@@ -7409,7 +7472,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['name', 'owner', 'slug', 'id'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'name', 'owner', 'slug'].",
             "schema": {
               "type": "string"
             }
@@ -7452,7 +7515,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('name', 'owner', 'slug')",
+            "description": "A search term. Available search_fields: ['name', 'owner', 'slug']",
             "schema": {
               "type": "string"
             }
@@ -7469,7 +7532,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['name', 'owner', 'slug', 'id']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'name', 'owner', 'slug']",
             "schema": {
               "type": "string"
             }
@@ -7720,7 +7783,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['name', 'owner', 'assignee', 'status', 'id', 'updated_date'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'id', 'name', 'owner', 'status', 'updated_date'].",
             "schema": {
               "type": "string"
             }
@@ -7779,7 +7842,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('name', 'owner', 'assignee', 'status')",
+            "description": "A search term. Available search_fields: ['assignee', 'name', 'owner']",
             "schema": {
               "type": "string"
             }
@@ -7788,7 +7851,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['name', 'owner', 'assignee', 'status', 'id', 'updated_date']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['assignee', 'id', 'name', 'owner', 'status', 'updated_date']",
             "schema": {
               "type": "string"
             }
@@ -8533,7 +8596,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'frame', 'type', 'job_id', 'task_id', 'project_id', 'severity'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['frame', 'id', 'job_id', 'project_id', 'severity', 'task_id', 'type'].",
             "schema": {
               "type": "string"
             }
@@ -8620,7 +8683,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'frame', 'type', 'job_id', 'task_id', 'project_id', 'severity']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['frame', 'id', 'job_id', 'project_id', 'severity', 'task_id', 'type']",
             "schema": {
               "type": "string"
             }
@@ -8710,7 +8773,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'job_id', 'task_id', 'project_id', 'report_id', 'status', 'assignee'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'id', 'job_id', 'project_id', 'report_id', 'status', 'task_id'].",
             "schema": {
               "type": "string"
             }
@@ -8977,7 +9040,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'job_id', 'task_id', 'project_id', 'created_date', 'gt_last_updated', 'target_last_updated'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['created_date', 'gt_last_updated', 'id', 'job_id', 'project_id', 'target_last_updated', 'task_id'].",
             "schema": {
               "type": "string"
             }
@@ -9044,7 +9107,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'job_id', 'task_id', 'project_id', 'created_date', 'gt_last_updated', 'target_last_updated']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['created_date', 'gt_last_updated', 'id', 'job_id', 'project_id', 'target_last_updated', 'task_id']",
             "schema": {
               "type": "string"
             }
@@ -9300,7 +9363,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'task_id', 'project_id', 'inherit', 'created_date', 'updated_date'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['created_date', 'id', 'inherit', 'project_id', 'task_id', 'updated_date'].",
             "schema": {
               "type": "string"
             }
@@ -9371,7 +9434,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['id', 'task_id', 'project_id', 'inherit', 'created_date', 'updated_date']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['created_date', 'id', 'inherit', 'project_id', 'task_id', 'updated_date']",
             "schema": {
               "type": "string"
             }
@@ -9538,7 +9601,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['status', 'project_id', 'task_id', 'job_id', 'action', 'target', 'subresource', 'format'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['action', 'format', 'job_id', 'org', 'org_id', 'project_id', 'status', 'subresource', 'target', 'task_id'].",
             "schema": {
               "type": "string"
             }
@@ -9565,6 +9628,14 @@
             "description": "A simple equality filter for the org field",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "description": "A simple equality filter for the org_id field",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -9597,7 +9668,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['created_date', 'status', 'action']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['action', 'created_date', 'status']",
             "schema": {
               "type": "string"
             }
@@ -9864,6 +9935,7 @@
                 "tr",
                 "tt",
                 "udm",
+                "ug",
                 "uk",
                 "ur",
                 "uz",
@@ -10130,8 +10202,9 @@
             "schema": {
               "type": "string",
               "enum": [
-                "3d",
-                "2d"
+                "1d",
+                "2d",
+                "3d"
               ]
             }
           },
@@ -10139,9 +10212,22 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['project_name', 'name', 'owner', 'status', 'assignee', 'subset', 'mode', 'dimension', 'tracker_link', 'validation_mode', 'id', 'project_id', 'updated_date'].\n\nThere are few examples for complex filtering tasks:\n\n    - Get all tasks from 1,2,3 projects - { \"and\" : [{ \"in\" : [{ \"var\" : \"project_id\" }, [1, 2, 3]]}]}\n\n    - Get all completed tasks from 1 project - { \"and\": [{ \"==\": [{ \"var\" : \"status\" }, \"completed\"]}, { \"==\" : [{ \"var\" : \"project_id\"}, 1]}]}\n\n",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'dimension', 'id', 'media_type', 'mode', 'name', 'owner', 'project_id', 'project_name', 'status', 'subset', 'tracker_link', 'updated_date', 'validation_mode'].\n\nThere are few examples for complex filtering tasks:\n\n    - Get all tasks from 1,2,3 projects - { \"and\" : [{ \"in\" : [{ \"var\" : \"project_id\" }, [1, 2, 3]]}]}\n\n    - Get all completed tasks from 1 project - { \"and\": [{ \"==\": [{ \"var\" : \"status\" }, \"completed\"]}, { \"==\" : [{ \"var\" : \"project_id\"}, 1]}]}\n\n",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "media_type",
+            "in": "query",
+            "description": "A simple equality filter for the media_type field",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image",
+                "point_cloud",
+                "audio"
+              ]
             }
           },
           {
@@ -10226,7 +10312,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('project_name', 'name', 'owner', 'status', 'assignee', 'subset', 'mode', 'dimension', 'tracker_link', 'validation_mode')",
+            "description": "A search term. Available search_fields: ['assignee', 'name', 'owner', 'project_name', 'subset', 'tracker_link']",
             "schema": {
               "type": "string"
             }
@@ -10235,7 +10321,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['project_name', 'name', 'owner', 'status', 'assignee', 'subset', 'mode', 'dimension', 'tracker_link', 'validation_mode', 'id', 'project_id', 'updated_date']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['assignee', 'dimension', 'id', 'media_type', 'mode', 'name', 'owner', 'project_id', 'project_name', 'status', 'subset', 'tracker_link', 'updated_date', 'validation_mode']",
             "schema": {
               "type": "string"
             }
@@ -10696,6 +10782,19 @@
             },
             "description": "A unique integer value identifying this task.",
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "import_mode",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "append",
+                "replace"
+              ],
+              "default": "replace"
+            },
+            "description": "How to import annotations"
           },
           {
             "in": "query",
@@ -11780,7 +11879,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['user_id', 'user'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['user', 'user_id'].",
             "schema": {
               "type": "string"
             }
@@ -11823,7 +11922,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['user_id', 'user']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['user', 'user_id']",
             "schema": {
               "type": "string"
             }
@@ -11919,7 +12018,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['username', 'first_name', 'last_name', 'id', 'is_active'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['first_name', 'id', 'is_active', 'last_name', 'username'].",
             "schema": {
               "type": "string"
             }
@@ -11986,7 +12085,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('username', 'first_name', 'last_name')",
+            "description": "A search term. Available search_fields: ['first_name', 'last_name', 'username']",
             "schema": {
               "type": "string"
             }
@@ -11995,7 +12094,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['username', 'first_name', 'last_name', 'id', 'is_active']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['first_name', 'id', 'is_active', 'last_name', 'username']",
             "schema": {
               "type": "string"
             }
@@ -12239,7 +12338,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['target_url', 'owner', 'type', 'description', 'id', 'project_id', 'updated_date'].",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['description', 'id', 'owner', 'project_id', 'target_url', 'type', 'updated_date'].",
             "schema": {
               "type": "string"
             }
@@ -12298,7 +12397,7 @@
             "name": "search",
             "required": false,
             "in": "query",
-            "description": "A search term. Available search_fields: ('target_url', 'owner', 'type', 'description')",
+            "description": "A search term. Available search_fields: ['description', 'owner', 'target_url']",
             "schema": {
               "type": "string"
             }
@@ -12307,7 +12406,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['target_url', 'owner', 'type', 'description', 'id', 'project_id', 'updated_date']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['description', 'id', 'owner', 'project_id', 'target_url', 'type', 'updated_date']",
             "schema": {
               "type": "string"
             }
@@ -13374,6 +13473,9 @@
           "task": {
             "type": "integer"
           },
+          "job": {
+            "type": "integer"
+          },
           "frame": {
             "type": "integer",
             "minimum": 0
@@ -13423,6 +13525,9 @@
             "$ref": "#/components/schemas/TypeCcbEnum"
           },
           "task": {
+            "type": "integer"
+          },
+          "job": {
             "type": "integer"
           },
           "frame": {
@@ -13576,6 +13681,11 @@
               "type": "string",
               "maxLength": 200
             }
+          },
+          "deleted": {
+            "type": "boolean",
+            "writeOnly": true,
+            "description": "Delete the attribute and all related annotation values."
           }
         },
         "required": [
@@ -13719,10 +13829,11 @@
       "ChunkType": {
         "enum": [
           "video",
-          "imageset"
+          "imageset",
+          "audio_mp3"
         ],
         "type": "string",
-        "description": "* `video` - VIDEO\n* `imageset` - IMAGESET"
+        "description": "* `video` - VIDEO\n* `imageset` - IMAGESET\n* `audio_mp3` - AUDIO_MP3"
       },
       "ClientEvents": {
         "type": "object",
@@ -14153,8 +14264,7 @@
         "required": [
           "chunks_updated_date",
           "deleted_frames",
-          "frames",
-          "image_quality"
+          "frames"
         ]
       },
       "DataRequest": {
@@ -14171,8 +14281,8 @@
           "image_quality": {
             "type": "integer",
             "maximum": 100,
-            "minimum": 0,
-            "description": "Image quality to use during annotation"
+            "minimum": 1,
+            "description": "Image quality to use during annotation, required for image and video-based tasks"
           },
           "start_frame": {
             "type": "integer",
@@ -14294,10 +14404,7 @@
             ],
             "nullable": true
           }
-        },
-        "required": [
-          "image_quality"
-        ]
+        }
       },
       "DataResponse": {
         "oneOf": [
@@ -14554,7 +14661,9 @@
       },
       "EventsEnum": {
         "enum": [
+          "create:backup",
           "create:comment",
+          "create:export",
           "create:invitation",
           "create:issue",
           "create:job",
@@ -14578,7 +14687,7 @@
           "update:task"
         ],
         "type": "string",
-        "description": "* `create:comment` - CREATE:COMMENT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:organization` - DELETE:ORGANIZATION\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK"
+        "description": "* `create:backup` - CREATE:BACKUP\n* `create:comment` - CREATE:COMMENT\n* `create:export` - CREATE:EXPORT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:organization` - DELETE:ORGANIZATION\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK"
       },
       "FileInfo": {
         "type": "object",
@@ -14631,10 +14740,8 @@
           }
         },
         "required": [
-          "height",
           "name",
-          "related_files",
-          "width"
+          "related_files"
         ]
       },
       "FrameSelectionMethod": {
@@ -14905,6 +15012,9 @@
           "task": {
             "type": "integer"
           },
+          "job": {
+            "type": "integer"
+          },
           "frame": {
             "type": "integer",
             "minimum": 0
@@ -15168,6 +15278,10 @@
             "readOnly": true,
             "nullable": true
           },
+          "accepted": {
+            "type": "boolean",
+            "readOnly": true
+          },
           "organization_info": {
             "$ref": "#/components/schemas/BasicOrganization"
           }
@@ -15358,8 +15472,15 @@
           },
           "dimension": {
             "type": "string",
-            "readOnly": true,
-            "maxLength": 2
+            "readOnly": true
+          },
+          "mode": {
+            "type": "string",
+            "readOnly": true
+          },
+          "media_type": {
+            "type": "string",
+            "readOnly": true
           },
           "bug_tracker": {
             "type": "string",
@@ -15389,10 +15510,6 @@
                 "$ref": "#/components/schemas/OperationStatus"
               }
             ],
-            "readOnly": true
-          },
-          "mode": {
-            "type": "string",
             "readOnly": true
           },
           "frame_count": {
@@ -15772,7 +15889,7 @@
               "$ref": "#/components/schemas/Attribute"
             },
             "default": [],
-            "description": "The list of attributes. If you want to remove an attribute, you need to recreate the label and specify the remaining attributes."
+            "description": "The list of attributes. To remove an attribute, pass the full attribute body with deleted=true. Related annotation attribute values will be deleted."
           },
           "type": {
             "allOf": [
@@ -15948,10 +16065,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -15959,11 +16072,16 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "default": "manual"
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -15985,10 +16103,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -15996,12 +16110,17 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "minLength": 1,
             "default": "manual"
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -16052,10 +16171,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -16063,11 +16178,16 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "default": "manual"
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -16132,10 +16252,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -16143,12 +16259,17 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "minLength": 1,
             "default": "manual"
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -16184,10 +16305,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -16195,17 +16312,16 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "default": "manual"
           },
-          "shapes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrackedShape"
-            }
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -16213,6 +16329,12 @@
               "$ref": "#/components/schemas/AttributeVal"
             },
             "default": []
+          },
+          "shapes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackedShape"
+            }
           },
           "elements": {
             "type": "array",
@@ -16234,10 +16356,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -16245,18 +16363,17 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "minLength": 1,
             "default": "manual"
           },
-          "shapes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrackedShapeRequest"
-            }
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -16264,6 +16381,12 @@
               "$ref": "#/components/schemas/AttributeValRequest"
             },
             "default": []
+          },
+          "shapes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackedShapeRequest"
+            }
           },
           "elements": {
             "type": "array",
@@ -17710,7 +17833,7 @@
               "$ref": "#/components/schemas/AttributeRequest"
             },
             "default": [],
-            "description": "The list of attributes. If you want to remove an attribute, you need to recreate the label and specify the remaining attributes."
+            "description": "The list of attributes. To remove an attribute, pass the full attribute body with deleted=true. Related annotation attribute values will be deleted."
           },
           "deleted": {
             "type": "boolean",
@@ -18255,8 +18378,7 @@
           "dimension": {
             "type": "string",
             "readOnly": true,
-            "nullable": true,
-            "maxLength": 16
+            "nullable": true
           },
           "organization": {
             "type": "integer",
@@ -19148,6 +19270,10 @@
             "type": "integer",
             "nullable": true
           },
+          "org_id": {
+            "type": "integer",
+            "nullable": true
+          },
           "format": {
             "type": "string",
             "nullable": true
@@ -19528,10 +19654,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -19539,11 +19661,16 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "default": "manual"
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -19602,10 +19729,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -19613,12 +19736,17 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "minLength": 1,
             "default": "manual"
+          },
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -19648,10 +19776,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -19659,17 +19783,16 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "default": "manual"
           },
-          "shapes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrackedShape"
-            }
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -19677,6 +19800,12 @@
               "$ref": "#/components/schemas/AttributeVal"
             },
             "default": []
+          },
+          "shapes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackedShape"
+            }
           }
         },
         "required": [
@@ -19692,10 +19821,6 @@
             "type": "integer",
             "nullable": true
           },
-          "frame": {
-            "type": "integer",
-            "minimum": 0
-          },
           "label_id": {
             "type": "integer",
             "minimum": 0
@@ -19703,18 +19828,17 @@
           "group": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "default": 0
           },
           "source": {
             "type": "string",
             "minLength": 1,
             "default": "manual"
           },
-          "shapes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TrackedShapeRequest"
-            }
+          "frame": {
+            "type": "integer",
+            "minimum": 0
           },
           "attributes": {
             "type": "array",
@@ -19722,6 +19846,12 @@
               "$ref": "#/components/schemas/AttributeValRequest"
             },
             "default": []
+          },
+          "shapes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackedShapeRequest"
+            }
           }
         },
         "required": [
@@ -19750,7 +19880,7 @@
               "$ref": "#/components/schemas/Attribute"
             },
             "default": [],
-            "description": "The list of attributes. If you want to remove an attribute, you need to recreate the label and specify the remaining attributes."
+            "description": "The list of attributes. To remove an attribute, pass the full attribute body with deleted=true. Related annotation attribute values will be deleted."
           },
           "type": {
             "allOf": [
@@ -19827,7 +19957,7 @@
               "$ref": "#/components/schemas/AttributeRequest"
             },
             "default": [],
-            "description": "The list of attributes. If you want to remove an attribute, you need to recreate the label and specify the remaining attributes."
+            "description": "The list of attributes. To remove an attribute, pass the full attribute body with deleted=true. Related annotation attribute values will be deleted."
           },
           "type": {
             "allOf": [
@@ -19880,10 +20010,6 @@
           "project_name": {
             "type": "string",
             "nullable": true,
-            "readOnly": true
-          },
-          "mode": {
-            "type": "string",
             "readOnly": true
           },
           "owner": {
@@ -19983,7 +20109,16 @@
             "readOnly": true
           },
           "dimension": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
+          },
+          "mode": {
+            "type": "string",
+            "readOnly": true
+          },
+          "media_type": {
+            "type": "string",
+            "readOnly": true
           },
           "subset": {
             "type": "string",
@@ -20224,6 +20359,13 @@
               "format": "double"
             }
           },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeVal"
+            },
+            "default": []
+          },
           "id": {
             "type": "integer",
             "nullable": true
@@ -20231,13 +20373,6 @@
           "frame": {
             "type": "integer",
             "minimum": 0
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AttributeVal"
-            },
-            "default": []
           }
         },
         "required": [
@@ -20277,6 +20412,13 @@
               "format": "double"
             }
           },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeValRequest"
+            },
+            "default": []
+          },
           "id": {
             "type": "integer",
             "nullable": true
@@ -20284,13 +20426,6 @@
           "frame": {
             "type": "integer",
             "minimum": 0
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AttributeValRequest"
-            },
-            "default": []
           }
         },
         "required": [
@@ -20551,7 +20686,6 @@
           }
         },
         "required": [
-          "frame_selection_method",
           "mode"
         ]
       },

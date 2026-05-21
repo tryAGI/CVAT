@@ -28,6 +28,12 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("job")]
+        public int? Job { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
         public int? Frame { get; set; }
 
@@ -83,6 +89,7 @@ namespace CVAT
         /// * `init_tracking` - init_tracking<br/>
         /// * `track` - track
         /// </param>
+        /// <param name="job"></param>
         /// <param name="frame"></param>
         /// <param name="threshold"></param>
         /// <param name="cleanup"></param>
@@ -96,6 +103,7 @@ namespace CVAT
         public ArParams(
             int task,
             global::CVAT.TypeCcbEnum? type,
+            int? job,
             int? frame,
             double? threshold,
             bool? cleanup,
@@ -106,6 +114,7 @@ namespace CVAT
         {
             this.Type = type;
             this.Task = task;
+            this.Job = job;
             this.Frame = frame;
             this.Threshold = threshold;
             this.Cleanup = cleanup;

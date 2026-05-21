@@ -11,6 +11,8 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
+        /// <param name="mode"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="page"></param>
@@ -33,6 +35,8 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.JobsListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.JobsListMediaType? mediaType = default,
+            global::CVAT.JobsListMode? mode = default,
             string? org = default,
             int? orgId = default,
             int? page = default,
@@ -56,6 +60,8 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
+        /// <param name="mode"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
         /// <param name="page"></param>
@@ -78,6 +84,8 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.JobsListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.JobsListMediaType? mediaType = default,
+            global::CVAT.JobsListMode? mode = default,
             string? org = default,
             int? orgId = default,
             int? page = default,

@@ -43,6 +43,12 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("org_id")]
+        public int? OrgId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("format")]
         public string? Format { get; set; }
 
@@ -72,6 +78,7 @@ namespace CVAT
         /// <param name="projectId"></param>
         /// <param name="taskId"></param>
         /// <param name="jobId"></param>
+        /// <param name="orgId"></param>
         /// <param name="format"></param>
         /// <param name="functionId"></param>
         /// <param name="lightweight"></param>
@@ -84,6 +91,7 @@ namespace CVAT
             int? projectId,
             int? taskId,
             int? jobId,
+            int? orgId,
             string? format,
             string? functionId,
             bool? lightweight)
@@ -93,6 +101,7 @@ namespace CVAT
             this.ProjectId = projectId;
             this.TaskId = taskId;
             this.JobId = jobId;
+            this.OrgId = orgId;
             this.Format = format;
             this.FunctionId = functionId;
             this.Lightweight = lightweight;

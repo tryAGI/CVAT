@@ -5,10 +5,15 @@ namespace CVAT
 {
     /// <summary>
     /// * `video` - VIDEO<br/>
-    /// * `imageset` - IMAGESET
+    /// * `imageset` - IMAGESET<br/>
+    /// * `audio_mp3` - AUDIO_MP3
     /// </summary>
     public enum ChunkType
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        AudioMp3,
         /// <summary>
         /// 
         /// </summary>
@@ -31,6 +36,7 @@ namespace CVAT
         {
             return value switch
             {
+                ChunkType.AudioMp3 => "audio_mp3",
                 ChunkType.Imageset => "imageset",
                 ChunkType.Video => "video",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -43,6 +49,7 @@ namespace CVAT
         {
             return value switch
             {
+                "audio_mp3" => ChunkType.AudioMp3,
                 "imageset" => ChunkType.Imageset,
                 "video" => ChunkType.Video,
                 _ => null,

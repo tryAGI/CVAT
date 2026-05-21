@@ -11,6 +11,7 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
         /// <param name="mode"></param>
         /// <param name="name"></param>
         /// <param name="org"></param>
@@ -34,6 +35,7 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.TasksListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.TasksListMediaType? mediaType = default,
             global::CVAT.TasksListMode? mode = default,
             string? name = default,
             string? org = default,
@@ -58,6 +60,7 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
         /// <param name="mode"></param>
         /// <param name="name"></param>
         /// <param name="org"></param>
@@ -81,6 +84,7 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.TasksListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.TasksListMediaType? mediaType = default,
             global::CVAT.TasksListMode? mode = default,
             string? name = default,
             string? org = default,

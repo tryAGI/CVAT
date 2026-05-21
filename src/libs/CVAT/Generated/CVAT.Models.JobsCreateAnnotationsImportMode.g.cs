@@ -4,52 +4,46 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    /// Default Value: replace
     /// </summary>
-    public enum JobsListDimension
+    public enum JobsCreateAnnotationsImportMode
     {
         /// <summary>
         /// 
         /// </summary>
-        x1d,
+        Append,
         /// <summary>
         /// 
         /// </summary>
-        x2d,
-        /// <summary>
-        /// 
-        /// </summary>
-        x3d,
+        Replace,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class JobsListDimensionExtensions
+    public static class JobsCreateAnnotationsImportModeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this JobsListDimension value)
+        public static string ToValueString(this JobsCreateAnnotationsImportMode value)
         {
             return value switch
             {
-                JobsListDimension.x1d => "1d",
-                JobsListDimension.x2d => "2d",
-                JobsListDimension.x3d => "3d",
+                JobsCreateAnnotationsImportMode.Append => "append",
+                JobsCreateAnnotationsImportMode.Replace => "replace",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static JobsListDimension? ToEnum(string value)
+        public static JobsCreateAnnotationsImportMode? ToEnum(string value)
         {
             return value switch
             {
-                "1d" => JobsListDimension.x1d,
-                "2d" => JobsListDimension.x2d,
-                "3d" => JobsListDimension.x3d,
+                "append" => JobsCreateAnnotationsImportMode.Append,
+                "replace" => JobsCreateAnnotationsImportMode.Replace,
                 _ => null,
             };
         }

@@ -31,6 +31,7 @@ namespace CVAT
             ref string? assignee,
             ref global::CVAT.TasksListDimension? dimension,
             ref string? filter,
+            ref global::CVAT.TasksListMediaType? mediaType,
             ref global::CVAT.TasksListMode? mode,
             ref string? name,
             ref string? org,
@@ -53,6 +54,7 @@ namespace CVAT
             string? assignee,
             global::CVAT.TasksListDimension? dimension,
             string? filter,
+            global::CVAT.TasksListMediaType? mediaType,
             global::CVAT.TasksListMode? mode,
             string? name,
             string? org,
@@ -84,6 +86,7 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
         /// <param name="mode"></param>
         /// <param name="name"></param>
         /// <param name="org"></param>
@@ -107,6 +110,7 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.TasksListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.TasksListMediaType? mediaType = default,
             global::CVAT.TasksListMode? mode = default,
             string? name = default,
             string? org = default,
@@ -130,6 +134,7 @@ namespace CVAT
                 assignee: assignee,
                 dimension: dimension,
                 filter: filter,
+                mediaType: mediaType,
                 mode: mode,
                 name: name,
                 org: org,
@@ -158,6 +163,7 @@ namespace CVAT
         /// <param name="assignee"></param>
         /// <param name="dimension"></param>
         /// <param name="filter"></param>
+        /// <param name="mediaType"></param>
         /// <param name="mode"></param>
         /// <param name="name"></param>
         /// <param name="org"></param>
@@ -181,6 +187,7 @@ namespace CVAT
             string? assignee = default,
             global::CVAT.TasksListDimension? dimension = default,
             string? filter = default,
+            global::CVAT.TasksListMediaType? mediaType = default,
             global::CVAT.TasksListMode? mode = default,
             string? name = default,
             string? org = default,
@@ -207,6 +214,7 @@ namespace CVAT
                 assignee: ref assignee,
                 dimension: ref dimension,
                 filter: ref filter,
+                mediaType: ref mediaType,
                 mode: ref mode,
                 name: ref name,
                 org: ref org,
@@ -253,6 +261,7 @@ namespace CVAT
                                 .AddOptionalParameter("assignee", assignee)
                                 .AddOptionalParameter("dimension", dimension?.ToValueString())
                                 .AddOptionalParameter("filter", filter)
+                                .AddOptionalParameter("media_type", mediaType?.ToValueString())
                                 .AddOptionalParameter("mode", mode?.ToValueString())
                                 .AddOptionalParameter("name", name)
                                 .AddOptionalParameter("org", org)
@@ -319,6 +328,7 @@ namespace CVAT
                     assignee: assignee,
                     dimension: dimension,
                     filter: filter,
+                    mediaType: mediaType,
                     mode: mode,
                     name: name,
                     org: org,
