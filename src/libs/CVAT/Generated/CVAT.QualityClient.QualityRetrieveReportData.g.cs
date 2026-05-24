@@ -368,17 +368,15 @@ namespace CVAT
                                 {
                                 }
 
-                                throw new global::CVAT.ApiException(
+                                throw global::CVAT.ApiException.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __ex,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                 }
@@ -691,16 +689,15 @@ namespace CVAT
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::CVAT.ApiException(
+                                    throw global::CVAT.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: null,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -735,17 +732,15 @@ namespace CVAT
                                     {
                                     }
 
-                                    throw new global::CVAT.ApiException(
+                                    throw global::CVAT.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 
