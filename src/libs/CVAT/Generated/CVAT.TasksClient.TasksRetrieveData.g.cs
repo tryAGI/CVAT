@@ -349,6 +349,38 @@ namespace CVAT
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            // 
+                            if ((int)__response.StatusCode == 416)
+                            {
+                                string? __content_416 = null;
+                                global::System.Exception? __exception_416 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_416 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_416 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_416 = __ex;
+                                }
+
+
+                                throw global::CVAT.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_416 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_416,
+                                    responseBody: __content_416,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
 
                             if (__effectiveReadResponseAsString)
                             {

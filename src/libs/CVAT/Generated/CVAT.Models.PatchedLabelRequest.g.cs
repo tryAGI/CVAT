@@ -51,6 +51,7 @@ namespace CVAT
         /// * `polyline` - POLYLINE<br/>
         /// * `rectangle` - RECTANGLE<br/>
         /// * `skeleton` - SKELETON<br/>
+        /// * `interval` - INTERVAL<br/>
         /// * `tag` - TAG
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
@@ -102,6 +103,7 @@ namespace CVAT
         /// * `polyline` - POLYLINE<br/>
         /// * `rectangle` - RECTANGLE<br/>
         /// * `skeleton` - SKELETON<br/>
+        /// * `interval` - INTERVAL<br/>
         /// * `tag` - TAG
         /// </param>
         /// <param name="svg"></param>

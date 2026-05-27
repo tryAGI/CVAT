@@ -471,6 +471,7 @@ namespace CVAT
         /// * `polyline` - POLYLINE<br/>
         /// * `rectangle` - RECTANGLE<br/>
         /// * `skeleton` - SKELETON<br/>
+        /// * `interval` - INTERVAL<br/>
         /// * `tag` - TAG
         /// </param>
         /// <param name="svg"></param>
