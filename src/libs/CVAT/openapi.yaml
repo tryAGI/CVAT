@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.65.0 (2.0)",
+    "version": "2.66.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -5823,6 +5823,20 @@
               }
             },
             "description": "Data of a specific type"
+          },
+          "206": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "description": "Partial chunk data"
+          },
+          "416": {
+            "description": "Requested range is not satisfiable"
           }
         }
       }
@@ -6348,6 +6362,7 @@
                 "polyline",
                 "rectangle",
                 "skeleton",
+                "interval",
                 "tag"
               ]
             }
@@ -11222,6 +11237,27 @@
               }
             },
             "description": "Data of a specific type"
+          },
+          "206": {
+            "headers": {
+              "X-Checksum": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Data checksum, applicable for chunks only"
+              },
+              "X-Updated-Date": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "description": "Data update date, applicable for chunks only"
+              }
+            },
+            "description": "Partial chunk data"
+          },
+          "416": {
+            "description": "Requested range is not satisfiable"
           }
         }
       },
@@ -15897,7 +15933,7 @@
                 "$ref": "#/components/schemas/LabelType"
               }
             ],
-            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `tag` - TAG"
+            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `interval` - INTERVAL\n* `tag` - TAG"
           },
           "svg": {
             "type": "string"
@@ -15993,10 +16029,11 @@
           "polyline",
           "rectangle",
           "skeleton",
+          "interval",
           "tag"
         ],
         "type": "string",
-        "description": "* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `tag` - TAG"
+        "description": "* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `interval` - INTERVAL\n* `tag` - TAG"
       },
       "LabeledData": {
         "type": "object",
@@ -16023,6 +16060,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LabeledTrack"
+            },
+            "default": []
+          },
+          "intervals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabeledInterval"
             },
             "default": []
           }
@@ -16053,6 +16097,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LabeledTrackRequest"
+            },
+            "default": []
+          },
+          "intervals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabeledIntervalRequest"
             },
             "default": []
           }
@@ -16133,6 +16184,109 @@
         "required": [
           "frame",
           "label_id"
+        ]
+      },
+      "LabeledInterval": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "label_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "group": {
+            "type": "integer",
+            "minimum": 0,
+            "nullable": true,
+            "default": 0
+          },
+          "source": {
+            "type": "string",
+            "default": "manual"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeVal"
+            },
+            "default": []
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "default": 1.0
+          },
+          "start": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stop": {
+            "type": "integer",
+            "minimum": 0,
+            "nullable": true
+          }
+        },
+        "required": [
+          "label_id",
+          "start",
+          "stop"
+        ]
+      },
+      "LabeledIntervalRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "label_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "group": {
+            "type": "integer",
+            "minimum": 0,
+            "nullable": true,
+            "default": 0
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "default": "manual"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeValRequest"
+            },
+            "default": []
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "default": 1.0
+          },
+          "start": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stop": {
+            "type": "integer",
+            "minimum": 0,
+            "nullable": true
+          }
+        },
+        "required": [
+          "label_id",
+          "start",
+          "stop"
         ]
       },
       "LabeledShape": {
@@ -17846,7 +18000,7 @@
                 "$ref": "#/components/schemas/LabelType"
               }
             ],
-            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `tag` - TAG"
+            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `interval` - INTERVAL\n* `tag` - TAG"
           },
           "svg": {
             "type": "string"
@@ -17884,6 +18038,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LabeledTrackRequest"
+            },
+            "default": []
+          },
+          "intervals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabeledIntervalRequest"
             },
             "default": []
           }
@@ -19888,7 +20049,7 @@
                 "$ref": "#/components/schemas/LabelType"
               }
             ],
-            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `tag` - TAG"
+            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `interval` - INTERVAL\n* `tag` - TAG"
           },
           "has_parent": {
             "type": "boolean"
@@ -19965,7 +20126,7 @@
                 "$ref": "#/components/schemas/LabelType"
               }
             ],
-            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `tag` - TAG"
+            "description": "Associated annotation type for this label\n\n* `any` - ANY\n* `cuboid` - CUBOID\n* `ellipse` - ELLIPSE\n* `mask` - MASK\n* `points` - POINTS\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `rectangle` - RECTANGLE\n* `skeleton` - SKELETON\n* `interval` - INTERVAL\n* `tag` - TAG"
           },
           "has_parent": {
             "type": "boolean"

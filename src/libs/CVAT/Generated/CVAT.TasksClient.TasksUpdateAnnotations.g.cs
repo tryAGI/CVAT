@@ -433,6 +433,9 @@ namespace CVAT
         /// <param name="tracks">
         /// Default Value: []
         /// </param>
+        /// <param name="intervals">
+        /// Default Value: []
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -442,6 +445,7 @@ namespace CVAT
             global::System.Collections.Generic.IList<global::CVAT.LabeledImageRequest>? tags = default,
             global::System.Collections.Generic.IList<global::CVAT.LabeledShapeRequest>? shapes = default,
             global::System.Collections.Generic.IList<global::CVAT.LabeledTrackRequest>? tracks = default,
+            global::System.Collections.Generic.IList<global::CVAT.LabeledIntervalRequest>? intervals = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -451,6 +455,7 @@ namespace CVAT
                 Tags = tags,
                 Shapes = shapes,
                 Tracks = tracks,
+                Intervals = intervals,
             };
 
             await TasksUpdateAnnotationsAsync(

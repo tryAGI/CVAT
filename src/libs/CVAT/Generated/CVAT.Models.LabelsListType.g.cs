@@ -23,6 +23,10 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        Interval,
+        /// <summary>
+        /// 
+        /// </summary>
         Mask,
         /// <summary>
         /// 
@@ -65,6 +69,7 @@ namespace CVAT
                 LabelsListType.Any => "any",
                 LabelsListType.Cuboid => "cuboid",
                 LabelsListType.Ellipse => "ellipse",
+                LabelsListType.Interval => "interval",
                 LabelsListType.Mask => "mask",
                 LabelsListType.Points => "points",
                 LabelsListType.Polygon => "polygon",
@@ -85,6 +90,7 @@ namespace CVAT
                 "any" => LabelsListType.Any,
                 "cuboid" => LabelsListType.Cuboid,
                 "ellipse" => LabelsListType.Ellipse,
+                "interval" => LabelsListType.Interval,
                 "mask" => LabelsListType.Mask,
                 "points" => LabelsListType.Points,
                 "polygon" => LabelsListType.Polygon,

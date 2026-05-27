@@ -33,6 +33,12 @@ namespace CVAT
         public global::System.Collections.Generic.IList<global::CVAT.LabeledTrack>? Tracks { get; set; }
 
         /// <summary>
+        /// Default Value: []
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("intervals")]
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledInterval>? Intervals { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -53,6 +59,9 @@ namespace CVAT
         /// <param name="tracks">
         /// Default Value: []
         /// </param>
+        /// <param name="intervals">
+        /// Default Value: []
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -60,12 +69,14 @@ namespace CVAT
             int? version,
             global::System.Collections.Generic.IList<global::CVAT.LabeledImage>? tags,
             global::System.Collections.Generic.IList<global::CVAT.LabeledShape>? shapes,
-            global::System.Collections.Generic.IList<global::CVAT.LabeledTrack>? tracks)
+            global::System.Collections.Generic.IList<global::CVAT.LabeledTrack>? tracks,
+            global::System.Collections.Generic.IList<global::CVAT.LabeledInterval>? intervals)
         {
             this.Version = version;
             this.Tags = tags;
             this.Shapes = shapes;
             this.Tracks = tracks;
+            this.Intervals = intervals;
         }
 
         /// <summary>

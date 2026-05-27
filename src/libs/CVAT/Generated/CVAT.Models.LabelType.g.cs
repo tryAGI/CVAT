@@ -13,6 +13,7 @@ namespace CVAT
     /// * `polyline` - POLYLINE<br/>
     /// * `rectangle` - RECTANGLE<br/>
     /// * `skeleton` - SKELETON<br/>
+    /// * `interval` - INTERVAL<br/>
     /// * `tag` - TAG
     /// </summary>
     public enum LabelType
@@ -29,6 +30,10 @@ namespace CVAT
         /// 
         /// </summary>
         Ellipse,
+        /// <summary>
+        /// 
+        /// </summary>
+        Interval,
         /// <summary>
         /// 
         /// </summary>
@@ -74,6 +79,7 @@ namespace CVAT
                 LabelType.Any => "any",
                 LabelType.Cuboid => "cuboid",
                 LabelType.Ellipse => "ellipse",
+                LabelType.Interval => "interval",
                 LabelType.Mask => "mask",
                 LabelType.Points => "points",
                 LabelType.Polygon => "polygon",
@@ -94,6 +100,7 @@ namespace CVAT
                 "any" => LabelType.Any,
                 "cuboid" => LabelType.Cuboid,
                 "ellipse" => LabelType.Ellipse,
+                "interval" => LabelType.Interval,
                 "mask" => LabelType.Mask,
                 "points" => LabelType.Points,
                 "polygon" => LabelType.Polygon,
