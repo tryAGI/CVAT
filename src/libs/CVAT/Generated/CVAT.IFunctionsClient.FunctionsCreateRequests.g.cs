@@ -53,7 +53,7 @@ namespace CVAT
         global::System.Threading.Tasks.Task<global::CVAT.AnnotationRequest> FunctionsCreateRequestsAsync(
             int task,
             int function,
-            global::CVAT.TypeCcbEnum? type = default,
+            global::CVAT.Type4c0Enum? type = default,
             int? job = default,
             int? frame = default,
             double? threshold = default,
