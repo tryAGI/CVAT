@@ -465,7 +465,7 @@ namespace CVAT
         public async global::System.Threading.Tasks.Task<global::CVAT.Function> FunctionsCreateRunAsync(
             int id,
             int task,
-            global::CVAT.TypeCcbEnum? type = default,
+            global::CVAT.Type4c0Enum? type = default,
             int? job = default,
             int? frame = default,
             double? threshold = default,

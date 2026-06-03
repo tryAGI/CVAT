@@ -168,7 +168,7 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
-        public global::CVAT.TypeCcbEnum? Type35 { get; set; }
+        public global::CVAT.Type4c0Enum? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>

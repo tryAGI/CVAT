@@ -3,10 +3,10 @@
 namespace CVAT.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class TypeCcbEnumJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.TypeCcbEnum>
+    public sealed class Type4c0EnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.Type4c0Enum?>
     {
         /// <inheritdoc />
-        public override global::CVAT.TypeCcbEnum Read(
+        public override global::CVAT.Type4c0Enum? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace CVAT.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::CVAT.TypeCcbEnumExtensions.ToEnum(stringValue) ?? default;
+                        return global::CVAT.Type4c0EnumExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace CVAT.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::CVAT.TypeCcbEnum)numValue;
+                    return (global::CVAT.Type4c0Enum)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::CVAT.TypeCcbEnum);
+                    return default(global::CVAT.Type4c0Enum?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace CVAT.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::CVAT.TypeCcbEnum value,
+            global::CVAT.Type4c0Enum? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::CVAT.TypeCcbEnumExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::CVAT.Type4c0EnumExtensions.ToValueString(value.Value));
+            }
         }
     }
 }
