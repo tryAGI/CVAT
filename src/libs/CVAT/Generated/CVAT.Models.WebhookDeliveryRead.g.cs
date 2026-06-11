@@ -41,6 +41,18 @@ namespace CVAT
         /// <summary>
         /// Included only in responses
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attempt")]
+        public int? Attempt { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_duration")]
+        public int? RequestDuration { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_date")]
         public global::System.DateTime? CreatedDate { get; set; }
 
@@ -92,6 +104,12 @@ namespace CVAT
         /// <param name="redelivery">
         /// Included only in responses
         /// </param>
+        /// <param name="attempt">
+        /// Included only in responses
+        /// </param>
+        /// <param name="requestDuration">
+        /// Included only in responses
+        /// </param>
         /// <param name="createdDate">
         /// Included only in responses
         /// </param>
@@ -116,6 +134,8 @@ namespace CVAT
             string? @event,
             int? statusCode,
             bool? redelivery,
+            int? attempt,
+            int? requestDuration,
             global::System.DateTime? createdDate,
             global::System.DateTime? updatedDate,
             string? changedFields,
@@ -127,6 +147,8 @@ namespace CVAT
             this.Event = @event;
             this.StatusCode = statusCode;
             this.Redelivery = redelivery;
+            this.Attempt = attempt;
+            this.RequestDuration = requestDuration;
             this.CreatedDate = createdDate;
             this.UpdatedDate = updatedDate;
             this.ChangedFields = changedFields;
