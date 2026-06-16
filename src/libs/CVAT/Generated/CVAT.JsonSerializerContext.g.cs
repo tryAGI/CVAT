@@ -137,9 +137,9 @@ namespace CVAT
 
             typeof(global::CVAT.JsonConverters.StorageTypeNullableJsonConverter),
 
-            typeof(global::CVAT.JsonConverters.TypeCcbEnumJsonConverter),
+            typeof(global::CVAT.JsonConverters.Type4c0EnumJsonConverter),
 
-            typeof(global::CVAT.JsonConverters.TypeCcbEnumNullableJsonConverter),
+            typeof(global::CVAT.JsonConverters.Type4c0EnumNullableJsonConverter),
 
             typeof(global::CVAT.JsonConverters.ValidationModeJsonConverter),
 
@@ -391,7 +391,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Count))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ArAssignment))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ArParams))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TypeCcbEnum), TypeInfoPropertyName = "TypeCcbEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Type4c0Enum), TypeInfoPropertyName = "Type4c0Enum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntry>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LabelMappingEntry))]

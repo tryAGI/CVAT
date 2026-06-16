@@ -27,10 +27,12 @@ namespace CVAT
             };
         partial void PrepareProjectsRetrievePreviewArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? prefer,
             ref int id);
         partial void PrepareProjectsRetrievePreviewRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? prefer,
             int id);
         partial void ProcessProjectsRetrievePreviewResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -39,17 +41,20 @@ namespace CVAT
         /// <summary>
         /// Get a preview image for a project
         /// </summary>
+        /// <param name="prefer"></param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         public async global::System.Threading.Tasks.Task ProjectsRetrievePreviewAsync(
             int id,
+            string? prefer = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             await ProjectsRetrievePreviewAsResponseAsync(
                 id: id,
+                prefer: prefer,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -57,12 +62,14 @@ namespace CVAT
         /// <summary>
         /// Get a preview image for a project
         /// </summary>
+        /// <param name="prefer"></param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse> ProjectsRetrievePreviewAsResponseAsync(
             int id,
+            string? prefer = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -70,6 +77,7 @@ namespace CVAT
                 client: HttpClient);
             PrepareProjectsRetrievePreviewArguments(
                 httpClient: HttpClient,
+                prefer: ref prefer,
                 id: ref id);
 
 
@@ -127,6 +135,12 @@ namespace CVAT
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+
+            if (prefer != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Prefer", prefer.ToString());
+            }
+
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -138,6 +152,7 @@ namespace CVAT
                 PrepareProjectsRetrievePreviewRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    prefer: prefer,
                     id: id!);
 
                 return __httpRequest;

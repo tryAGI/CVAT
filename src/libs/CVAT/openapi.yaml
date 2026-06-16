@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.66.0 (2.0)",
+    "version": "2.68.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -6058,6 +6058,14 @@
         "summary": "Get a preview image for a job",
         "parameters": [
           {
+            "in": "header",
+            "name": "Prefer",
+            "schema": {
+              "type": "string"
+            },
+            "description": "RFC 7240 preference token. Send `handling=empty` to receive a 204 No Content response when no media-derived preview exists. Without the preference, the server returns a default placeholder image with status 200."
+          },
+          {
             "in": "path",
             "name": "id",
             "schema": {
@@ -6089,6 +6097,9 @@
         "responses": {
           "200": {
             "description": "Job image preview"
+          },
+          "204": {
+            "description": "No media-derived preview is available. The client should render a placeholder image. Only returned when the request opts in via `Prefer: handling=empty`."
           }
         }
       }
@@ -8449,6 +8460,14 @@
         "summary": "Get a preview image for a project",
         "parameters": [
           {
+            "in": "header",
+            "name": "Prefer",
+            "schema": {
+              "type": "string"
+            },
+            "description": "RFC 7240 preference token. Send `handling=empty` to receive a 204 No Content response when no media-derived preview exists. Without the preference, the server returns a default placeholder image with status 200."
+          },
+          {
             "in": "path",
             "name": "id",
             "schema": {
@@ -8480,6 +8499,9 @@
         "responses": {
           "200": {
             "description": "Project image preview"
+          },
+          "204": {
+            "description": "No media-derived preview is available. The client should render a placeholder image. Only returned when the request opts in via `Prefer: handling=empty`."
           },
           "404": {
             "description": "Project image preview not found"
@@ -11564,6 +11586,14 @@
         "summary": "Get a preview image for a task",
         "parameters": [
           {
+            "in": "header",
+            "name": "Prefer",
+            "schema": {
+              "type": "string"
+            },
+            "description": "RFC 7240 preference token. Send `handling=empty` to receive a 204 No Content response when no media-derived preview exists. Without the preference, the server returns a default placeholder image with status 200."
+          },
+          {
             "in": "path",
             "name": "id",
             "schema": {
@@ -11595,6 +11625,9 @@
         "responses": {
           "200": {
             "description": "Task image preview"
+          },
+          "204": {
+            "description": "No media-derived preview is available. The client should render a placeholder image. Only returned when the request opts in via `Prefer: handling=empty`."
           },
           "404": {
             "description": "Task image preview not found"
@@ -13504,7 +13537,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/TypeCcbEnum"
+            "$ref": "#/components/schemas/Type4c0Enum"
           },
           "task": {
             "type": "integer"
@@ -13558,7 +13591,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/TypeCcbEnum"
+            "$ref": "#/components/schemas/Type4c0Enum"
           },
           "task": {
             "type": "integer"
@@ -15043,7 +15076,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/TypeCcbEnum"
+            "$ref": "#/components/schemas/Type4c0Enum"
           },
           "task": {
             "type": "integer"
@@ -16922,7 +16955,6 @@
             "readOnly": true
           },
           "contact": {
-            "type": "object",
             "readOnly": true
           },
           "owner": {
@@ -16954,9 +16986,7 @@
           "description": {
             "type": "string"
           },
-          "contact": {
-            "type": "object"
-          }
+          "contact": {}
         },
         "required": [
           "slug"
@@ -18093,9 +18123,7 @@
           "description": {
             "type": "string"
           },
-          "contact": {
-            "type": "object"
-          }
+          "contact": {}
         }
       },
       "PatchedProjectWriteRequest": {
@@ -20594,7 +20622,7 @@
           "type"
         ]
       },
-      "TypeCcbEnum": {
+      "Type4c0Enum": {
         "enum": [
           "annotate_task",
           "annotate_frame",
@@ -20889,6 +20917,16 @@
             "type": "boolean",
             "readOnly": true
           },
+          "attempt": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
+          "request_duration": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
           "created_date": {
             "type": "string",
             "format": "date-time",
@@ -20904,11 +20942,9 @@
             "readOnly": true
           },
           "request": {
-            "type": "object",
             "readOnly": true
           },
           "response": {
-            "type": "object",
             "readOnly": true
           }
         }

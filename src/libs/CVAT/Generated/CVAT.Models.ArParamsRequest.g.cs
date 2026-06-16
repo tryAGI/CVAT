@@ -15,8 +15,8 @@ namespace CVAT
         /// * `track` - track
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.TypeCcbEnumJsonConverter))]
-        public global::CVAT.TypeCcbEnum? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type4c0EnumJsonConverter))]
+        public global::CVAT.Type4c0Enum? Type { get; set; }
 
         /// <summary>
         /// 
@@ -102,7 +102,7 @@ namespace CVAT
 #endif
         public ArParamsRequest(
             int task,
-            global::CVAT.TypeCcbEnum? type,
+            global::CVAT.Type4c0Enum? type,
             int? job,
             int? frame,
             double? threshold,

@@ -9,7 +9,7 @@ namespace CVAT
     /// * `init_tracking` - init_tracking<br/>
     /// * `track` - track
     /// </summary>
-    public enum TypeCcbEnum
+    public enum Type4c0Enum
     {
         /// <summary>
         /// 
@@ -32,33 +32,33 @@ namespace CVAT
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class TypeCcbEnumExtensions
+    public static class Type4c0EnumExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this TypeCcbEnum value)
+        public static string ToValueString(this Type4c0Enum value)
         {
             return value switch
             {
-                TypeCcbEnum.AnnotateFrame => "annotate_frame",
-                TypeCcbEnum.AnnotateTask => "annotate_task",
-                TypeCcbEnum.InitTracking => "init_tracking",
-                TypeCcbEnum.Track => "track",
+                Type4c0Enum.AnnotateFrame => "annotate_frame",
+                Type4c0Enum.AnnotateTask => "annotate_task",
+                Type4c0Enum.InitTracking => "init_tracking",
+                Type4c0Enum.Track => "track",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static TypeCcbEnum? ToEnum(string value)
+        public static Type4c0Enum? ToEnum(string value)
         {
             return value switch
             {
-                "annotate_frame" => TypeCcbEnum.AnnotateFrame,
-                "annotate_task" => TypeCcbEnum.AnnotateTask,
-                "init_tracking" => TypeCcbEnum.InitTracking,
-                "track" => TypeCcbEnum.Track,
+                "annotate_frame" => Type4c0Enum.AnnotateFrame,
+                "annotate_task" => Type4c0Enum.AnnotateTask,
+                "init_tracking" => Type4c0Enum.InitTracking,
+                "track" => Type4c0Enum.Track,
                 _ => null,
             };
         }
