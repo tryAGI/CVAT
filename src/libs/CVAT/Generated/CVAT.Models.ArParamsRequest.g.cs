@@ -64,6 +64,12 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("roi")]
+        public global::System.Collections.Generic.IList<int>? Roi { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shapes")]
         public global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? Shapes { get; set; }
 
@@ -95,6 +101,7 @@ namespace CVAT
         /// <param name="cleanup"></param>
         /// <param name="convMaskToPoly"></param>
         /// <param name="mapping"></param>
+        /// <param name="roi"></param>
         /// <param name="shapes"></param>
         /// <param name="states"></param>
 #if NET7_0_OR_GREATER
@@ -109,6 +116,7 @@ namespace CVAT
             bool? cleanup,
             bool? convMaskToPoly,
             global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping,
+            global::System.Collections.Generic.IList<int>? roi,
             global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? shapes,
             global::System.Collections.Generic.IList<string>? states)
         {
@@ -120,6 +128,7 @@ namespace CVAT
             this.Cleanup = cleanup;
             this.ConvMaskToPoly = convMaskToPoly;
             this.Mapping = mapping;
+            this.Roi = roi;
             this.Shapes = shapes;
             this.States = states;
         }

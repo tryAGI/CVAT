@@ -5,7 +5,8 @@ namespace CVAT
     public partial interface IAuthClient
     {
         /// <summary>
-        /// 
+        /// Registers a new user.<br/>
+        /// Accepts the following POST parameters: username, email, password1, password2.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -17,7 +18,8 @@ namespace CVAT
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        /// Registers a new user.<br/>
+        /// Accepts the following POST parameters: username, email, password1, password2.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,7 +31,8 @@ namespace CVAT
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        /// Registers a new user.<br/>
+        /// Accepts the following POST parameters: username, email, password1, password2.
         /// </summary>
         /// <param name="username"></param>
         /// <param name="email"></param>
