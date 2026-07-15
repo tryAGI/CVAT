@@ -71,6 +71,9 @@ namespace CVAT
         /// <param name="mapping">
         /// Label mapping from the model to the task labels
         /// </param>
+        /// <param name="roi">
+        /// Region of interest as [xtl, ytl, xbr, ybr]
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -87,6 +90,7 @@ namespace CVAT
             bool? cleanup = default,
             bool? convMaskToPoly2 = default,
             global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping = default,
+            global::System.Collections.Generic.IList<int>? roi = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

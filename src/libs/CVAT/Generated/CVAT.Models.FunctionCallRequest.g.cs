@@ -67,6 +67,12 @@ namespace CVAT
         public global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? Mapping { get; set; }
 
         /// <summary>
+        /// Region of interest as [xtl, ytl, xbr, ybr]
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("roi")]
+        public global::System.Collections.Generic.IList<int>? Roi { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -100,6 +106,9 @@ namespace CVAT
         /// <param name="mapping">
         /// Label mapping from the model to the task labels
         /// </param>
+        /// <param name="roi">
+        /// Region of interest as [xtl, ytl, xbr, ybr]
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -112,7 +121,8 @@ namespace CVAT
             bool? cleanup,
             bool? convMaskToPoly,
             bool? convMaskToPoly2,
-            global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping)
+            global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping,
+            global::System.Collections.Generic.IList<int>? roi)
         {
             this.Function = function ?? throw new global::System.ArgumentNullException(nameof(function));
             this.Task = task;
@@ -123,6 +133,7 @@ namespace CVAT
             this.ConvMaskToPoly = convMaskToPoly;
             this.ConvMaskToPoly2 = convMaskToPoly2;
             this.Mapping = mapping;
+            this.Roi = roi;
         }
 
         /// <summary>

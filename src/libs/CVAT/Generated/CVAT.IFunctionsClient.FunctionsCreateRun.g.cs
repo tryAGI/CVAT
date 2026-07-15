@@ -49,6 +49,7 @@ namespace CVAT
         /// <param name="cleanup"></param>
         /// <param name="convMaskToPoly"></param>
         /// <param name="mapping"></param>
+        /// <param name="roi"></param>
         /// <param name="shapes"></param>
         /// <param name="states"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -64,6 +65,7 @@ namespace CVAT
             bool? cleanup = default,
             bool? convMaskToPoly = default,
             global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping = default,
+            global::System.Collections.Generic.IList<int>? roi = default,
             global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? shapes = default,
             global::System.Collections.Generic.IList<string>? states = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
