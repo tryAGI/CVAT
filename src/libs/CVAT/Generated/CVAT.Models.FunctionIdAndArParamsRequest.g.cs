@@ -11,12 +11,13 @@ namespace CVAT
         /// <summary>
         /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
+        /// * `interact` - interact<br/>
         /// * `init_tracking` - init_tracking<br/>
         /// * `track` - track
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type4c0EnumJsonConverter))]
-        public global::CVAT.Type4c0Enum? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type837EnumJsonConverter))]
+        public global::CVAT.Type837Enum? Type { get; set; }
 
         /// <summary>
         /// 
@@ -64,6 +65,24 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pos_points")]
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? PosPoints { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("neg_points")]
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? NegPoints { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("obj_bbox")]
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? ObjBbox { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("roi")]
         public global::System.Collections.Generic.IList<int>? Roi { get; set; }
 
@@ -100,6 +119,7 @@ namespace CVAT
         /// <param name="type">
         /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
+        /// * `interact` - interact<br/>
         /// * `init_tracking` - init_tracking<br/>
         /// * `track` - track
         /// </param>
@@ -109,6 +129,9 @@ namespace CVAT
         /// <param name="cleanup"></param>
         /// <param name="convMaskToPoly"></param>
         /// <param name="mapping"></param>
+        /// <param name="posPoints"></param>
+        /// <param name="negPoints"></param>
+        /// <param name="objBbox"></param>
         /// <param name="roi"></param>
         /// <param name="shapes"></param>
         /// <param name="states"></param>
@@ -118,13 +141,16 @@ namespace CVAT
         public FunctionIdAndArParamsRequest(
             int task,
             int function,
-            global::CVAT.Type4c0Enum? type,
+            global::CVAT.Type837Enum? type,
             int? job,
             int? frame,
             double? threshold,
             bool? cleanup,
             bool? convMaskToPoly,
             global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? posPoints,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? negPoints,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? objBbox,
             global::System.Collections.Generic.IList<int>? roi,
             global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? shapes,
             global::System.Collections.Generic.IList<string>? states)
@@ -137,6 +163,9 @@ namespace CVAT
             this.Cleanup = cleanup;
             this.ConvMaskToPoly = convMaskToPoly;
             this.Mapping = mapping;
+            this.PosPoints = posPoints;
+            this.NegPoints = negPoints;
+            this.ObjBbox = objBbox;
             this.Roi = roi;
             this.Shapes = shapes;
             this.States = states;

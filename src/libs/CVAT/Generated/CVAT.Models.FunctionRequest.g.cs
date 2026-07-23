@@ -52,6 +52,30 @@ namespace CVAT
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_pos_points")]
+        public int? MinPosPoints { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_neg_points")]
+        public int? MinNegPoints { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startswith_box")]
+        public bool? StartswithBox { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("startswith_box_optional")]
+        public bool? StartswithBoxOptional { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supported_shape_types")]
         public global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? SupportedShapeTypes { get; set; }
 
@@ -84,6 +108,10 @@ namespace CVAT
         /// * `tracker` - Tracker
         /// </param>
         /// <param name="labelsV2"></param>
+        /// <param name="minPosPoints"></param>
+        /// <param name="minNegPoints"></param>
+        /// <param name="startswithBox"></param>
+        /// <param name="startswithBoxOptional"></param>
         /// <param name="supportedShapeTypes"></param>
         /// <param name="visibility">
         /// Default Value: private
@@ -98,6 +126,10 @@ namespace CVAT
             string? name,
             global::CVAT.KindEnum? kind,
             global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? labelsV2,
+            int? minPosPoints,
+            int? minNegPoints,
+            bool? startswithBox,
+            bool? startswithBoxOptional,
             global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes,
             global::CVAT.VisibilityEnum? visibility)
         {
@@ -107,6 +139,10 @@ namespace CVAT
             this.Name = name;
             this.Kind = kind;
             this.LabelsV2 = labelsV2;
+            this.MinPosPoints = minPosPoints;
+            this.MinNegPoints = minNegPoints;
+            this.StartswithBox = startswithBox;
+            this.StartswithBoxOptional = startswithBoxOptional;
             this.SupportedShapeTypes = supportedShapeTypes;
             this.Visibility = visibility;
         }
