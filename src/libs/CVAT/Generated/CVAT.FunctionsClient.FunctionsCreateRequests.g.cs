@@ -437,6 +437,7 @@ namespace CVAT
         /// <param name="type">
         /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
+        /// * `interact` - interact<br/>
         /// * `init_tracking` - init_tracking<br/>
         /// * `track` - track
         /// </param>
@@ -447,6 +448,9 @@ namespace CVAT
         /// <param name="cleanup"></param>
         /// <param name="convMaskToPoly"></param>
         /// <param name="mapping"></param>
+        /// <param name="posPoints"></param>
+        /// <param name="negPoints"></param>
+        /// <param name="objBbox"></param>
         /// <param name="roi"></param>
         /// <param name="shapes"></param>
         /// <param name="states"></param>
@@ -457,13 +461,16 @@ namespace CVAT
         public async global::System.Threading.Tasks.Task<global::CVAT.AnnotationRequest> FunctionsCreateRequestsAsync(
             int task,
             int function,
-            global::CVAT.Type4c0Enum? type = default,
+            global::CVAT.Type837Enum? type = default,
             int? job = default,
             int? frame = default,
             double? threshold = default,
             bool? cleanup = default,
             bool? convMaskToPoly = default,
             global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping = default,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? posPoints = default,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? negPoints = default,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? objBbox = default,
             global::System.Collections.Generic.IList<int>? roi = default,
             global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? shapes = default,
             global::System.Collections.Generic.IList<string>? states = default,
@@ -480,6 +487,9 @@ namespace CVAT
                 Cleanup = cleanup,
                 ConvMaskToPoly = convMaskToPoly,
                 Mapping = mapping,
+                PosPoints = posPoints,
+                NegPoints = negPoints,
+                ObjBbox = objBbox,
                 Roi = roi,
                 Shapes = shapes,
                 States = states,

@@ -25,7 +25,7 @@ namespace CVAT
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shapes")]
-        public global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? Shapes { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AttributedShapeRequest>? Shapes { get; set; }
 
         /// <summary>
         /// 
@@ -52,7 +52,7 @@ namespace CVAT
         public QueueRequestCompleteInputRequest(
             string agentId,
             global::CVAT.LabeledDataRequest? annotations,
-            global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? shapes,
+            global::System.Collections.Generic.IList<global::CVAT.AttributedShapeRequest>? shapes,
             global::System.Collections.Generic.IList<string>? states)
         {
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));

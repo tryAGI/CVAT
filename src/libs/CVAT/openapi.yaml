@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.70.0 (2.0)",
+    "version": "2.71.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -13483,7 +13483,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/Type4c0Enum"
+            "$ref": "#/components/schemas/Type837Enum"
           },
           "task": {
             "type": "integer"
@@ -13513,6 +13513,43 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/LabelMappingEntry"
             }
+          },
+          "pos_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          "neg_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          "obj_bbox": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "maxItems": 2
           },
           "roi": {
             "type": "array",
@@ -13545,7 +13582,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/Type4c0Enum"
+            "$ref": "#/components/schemas/Type837Enum"
           },
           "task": {
             "type": "integer"
@@ -13575,6 +13612,43 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/LabelMappingEntryRequest"
             }
+          },
+          "pos_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          "neg_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          "obj_bbox": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "maxItems": 2
           },
           "roi": {
             "type": "array",
@@ -13756,6 +13830,50 @@
         "required": [
           "spec_id",
           "value"
+        ]
+      },
+      "AttributedShapeRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ShapeType"
+          },
+          "occluded": {
+            "type": "boolean",
+            "default": false
+          },
+          "outside": {
+            "type": "boolean",
+            "default": false
+          },
+          "z_order": {
+            "type": "integer",
+            "default": 0
+          },
+          "rotation": {
+            "type": "number",
+            "format": "double",
+            "maximum": 360,
+            "minimum": 0,
+            "default": 0.0
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeValRequest"
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "type"
         ]
       },
       "BasicOrganization": {
@@ -14812,6 +14930,22 @@
               "$ref": "#/components/schemas/FunctionLabel"
             }
           },
+          "min_pos_points": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": 0
+          },
+          "min_neg_points": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -1
+          },
+          "startswith_box": {
+            "type": "boolean"
+          },
+          "startswith_box_optional": {
+            "type": "boolean"
+          },
           "supported_shape_types": {
             "type": "array",
             "items": {
@@ -15047,7 +15181,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/Type4c0Enum"
+            "$ref": "#/components/schemas/Type837Enum"
           },
           "task": {
             "type": "integer"
@@ -15077,6 +15211,43 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/LabelMappingEntryRequest"
             }
+          },
+          "pos_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          "neg_points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          "obj_bbox": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "maxItems": 2
           },
           "roi": {
             "type": "array",
@@ -15208,6 +15379,22 @@
             "items": {
               "$ref": "#/components/schemas/FunctionLabelRequest"
             }
+          },
+          "min_pos_points": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": 0
+          },
+          "min_neg_points": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -1
+          },
+          "startswith_box": {
+            "type": "boolean"
+          },
+          "startswith_box_optional": {
+            "type": "boolean"
           },
           "supported_shape_types": {
             "type": "array",
@@ -19100,9 +19287,8 @@
           "shapes": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ShapeRequest"
-            },
-            "nullable": true
+              "$ref": "#/components/schemas/AttributedShapeRequest"
+            }
           },
           "states": {
             "type": "array",
@@ -20588,15 +20774,16 @@
           "type"
         ]
       },
-      "Type4c0Enum": {
+      "Type837Enum": {
         "enum": [
           "annotate_task",
           "annotate_frame",
+          "interact",
           "init_tracking",
           "track"
         ],
         "type": "string",
-        "description": "* `annotate_task` - annotate_task\n* `annotate_frame` - annotate_frame\n* `init_tracking` - init_tracking\n* `track` - track"
+        "description": "* `annotate_task` - annotate_task\n* `annotate_frame` - annotate_frame\n* `interact` - interact\n* `init_tracking` - init_tracking\n* `track` - track"
       },
       "Usage": {
         "type": "object",

@@ -443,7 +443,7 @@ namespace CVAT
             string requestId,
             string agentId,
             global::CVAT.LabeledDataRequest? annotations = default,
-            global::System.Collections.Generic.IList<global::CVAT.ShapeRequest>? shapes = default,
+            global::System.Collections.Generic.IList<global::CVAT.AttributedShapeRequest>? shapes = default,
             global::System.Collections.Generic.IList<string>? states = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)

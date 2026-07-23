@@ -137,9 +137,9 @@ namespace CVAT
 
             typeof(global::CVAT.JsonConverters.StorageTypeNullableJsonConverter),
 
-            typeof(global::CVAT.JsonConverters.Type4c0EnumJsonConverter),
+            typeof(global::CVAT.JsonConverters.Type837EnumJsonConverter),
 
-            typeof(global::CVAT.JsonConverters.Type4c0EnumNullableJsonConverter),
+            typeof(global::CVAT.JsonConverters.Type837EnumNullableJsonConverter),
 
             typeof(global::CVAT.JsonConverters.ValidationModeJsonConverter),
 
@@ -391,10 +391,12 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Count))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ArAssignment))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ArParams))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Type4c0Enum), TypeInfoPropertyName = "Type4c0Enum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Type837Enum), TypeInfoPropertyName = "Type837Enum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntry>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LabelMappingEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.Shape>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Shape))]
@@ -412,6 +414,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AttributeRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AttributeVal))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AttributeValRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AttributedShapeRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicOrganization))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicUserRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Chapter))]
@@ -485,7 +489,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RoleEnum), TypeInfoPropertyName = "RoleEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.InvitationWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.IssueRead))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.IssueWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.IssuesSummary))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobRead))]
@@ -530,7 +533,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.LabeledIntervalRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LabeledIntervalRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.AttributeVal>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.SubLabeledShape>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SubLabeledShape))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.SubLabeledShapeRequest>))]
@@ -655,6 +657,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RequestCategoryEnum), TypeInfoPropertyName = "RequestCategoryEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QueueRequestAcquireOutput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QueueRequestCompleteInputRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.AttributedShapeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QueueRequestFailInputRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QueueRequestUpdateInputRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RegisterSerializerWithSubscriptions))]
@@ -736,10 +739,13 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ReportEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationsStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationId>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.Shape>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ShapeRequest>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributeValRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.Event>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.EventRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FileInfo>))]
@@ -756,7 +762,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionAttributeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionSublabelRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionLabelRequest>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.Attribute>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.Sublabel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.LabeledImage>))]
@@ -768,7 +773,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.LabeledTrackRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.LabeledIntervalRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributeVal>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributeValRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.SubLabeledShape>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.SubLabeledShapeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.TrackedShape>))]
@@ -801,6 +805,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.SublabelRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.PatchedLabelRequest>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributedShapeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.UserAgreement>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.UserAgreementRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.SocialAuthMethods>))]

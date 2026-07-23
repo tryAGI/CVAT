@@ -447,6 +447,10 @@ namespace CVAT
         /// * `tracker` - Tracker
         /// </param>
         /// <param name="labelsV2"></param>
+        /// <param name="minPosPoints"></param>
+        /// <param name="minNegPoints"></param>
+        /// <param name="startswithBox"></param>
+        /// <param name="startswithBoxOptional"></param>
         /// <param name="supportedShapeTypes"></param>
         /// <param name="visibility">
         /// Default Value: private
@@ -461,6 +465,10 @@ namespace CVAT
             string? name = default,
             global::CVAT.KindEnum? kind = default,
             global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? labelsV2 = default,
+            int? minPosPoints = default,
+            int? minNegPoints = default,
+            bool? startswithBox = default,
+            bool? startswithBoxOptional = default,
             global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes = default,
             global::CVAT.VisibilityEnum? visibility = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
@@ -474,6 +482,10 @@ namespace CVAT
                 Name = name,
                 Kind = kind,
                 LabelsV2 = labelsV2,
+                MinPosPoints = minPosPoints,
+                MinNegPoints = minNegPoints,
+                StartswithBox = startswithBox,
+                StartswithBoxOptional = startswithBoxOptional,
                 SupportedShapeTypes = supportedShapeTypes,
                 Visibility = visibility,
             };
