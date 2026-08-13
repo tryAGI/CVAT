@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.72.0 (2.0)",
+    "version": "2.73.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -14706,6 +14706,15 @@
           "timestamp"
         ]
       },
+      "EventGroup": {
+        "type": "object",
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
       "EventRequest": {
         "type": "object",
         "properties": {
@@ -14799,20 +14808,25 @@
           "events": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EventsEnum"
-            }
+              "$ref": "#/components/schemas/WebhooksEvent"
+            },
+            "readOnly": true
           }
         },
         "required": [
-          "events",
           "webhook_type"
         ]
       },
       "EventsEnum": {
         "enum": [
-          "create:backup",
+          "completed:request[calculate:quality]",
+          "completed:request[create:task]",
+          "completed:request[export:annotations]",
+          "completed:request[export:backup]",
+          "completed:request[export:dataset]",
+          "completed:request[merge:job]",
+          "completed:request[merge:task]",
           "create:comment",
-          "create:export",
           "create:invitation",
           "create:issue",
           "create:job",
@@ -14824,7 +14838,6 @@
           "delete:issue",
           "delete:job",
           "delete:membership",
-          "delete:organization",
           "delete:project",
           "delete:task",
           "update:comment",
@@ -14836,7 +14849,7 @@
           "update:task"
         ],
         "type": "string",
-        "description": "* `create:backup` - CREATE:BACKUP\n* `create:comment` - CREATE:COMMENT\n* `create:export` - CREATE:EXPORT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:organization` - DELETE:ORGANIZATION\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK"
+        "description": "* `completed:request[calculate:quality]` - COMPLETED:REQUEST[CALCULATE:QUALITY]\n* `completed:request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]\n* `completed:request[export:annotations]` - COMPLETED:REQUEST[EXPORT:ANNOTATIONS]\n* `completed:request[export:backup]` - COMPLETED:REQUEST[EXPORT:BACKUP]\n* `completed:request[export:dataset]` - COMPLETED:REQUEST[EXPORT:DATASET]\n* `completed:request[merge:job]` - COMPLETED:REQUEST[MERGE:JOB]\n* `completed:request[merge:task]` - COMPLETED:REQUEST[MERGE:TASK]\n* `create:comment` - CREATE:COMMENT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK"
       },
       "FileInfo": {
         "type": "object",
@@ -16422,12 +16435,14 @@
           },
           "start": {
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "description": "Must be within the task frame bounds."
           },
           "stop": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "description": "Exclusive interval end. May be one greater than the task stop frame."
           }
         },
         "required": [
@@ -16474,12 +16489,14 @@
           },
           "start": {
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "description": "Must be within the task frame bounds."
           },
           "stop": {
             "type": "integer",
             "minimum": 0,
-            "nullable": true
+            "nullable": true,
+            "description": "Exclusive interval end. May be one greater than the task stop frame."
           }
         },
         "required": [
@@ -21242,6 +21259,23 @@
           "target_url",
           "type"
         ]
+      },
+      "WebhooksEvent": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "readOnly": true
+          },
+          "group": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EventGroup"
+              }
+            ],
+            "readOnly": true
+          }
+        }
       }
     },
     "securitySchemes": {
