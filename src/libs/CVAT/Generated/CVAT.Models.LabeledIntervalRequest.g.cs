@@ -46,14 +46,14 @@ namespace CVAT
         public double? Score { get; set; }
 
         /// <summary>
-        /// 
+        /// Must be within the task frame bounds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Start { get; set; }
 
         /// <summary>
-        /// 
+        /// Exclusive interval end. May be one greater than the task stop frame.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stop")]
         public int? Stop { get; set; }
@@ -68,7 +68,9 @@ namespace CVAT
         /// Initializes a new instance of the <see cref="LabeledIntervalRequest" /> class.
         /// </summary>
         /// <param name="labelId"></param>
-        /// <param name="start"></param>
+        /// <param name="start">
+        /// Must be within the task frame bounds.
+        /// </param>
         /// <param name="id"></param>
         /// <param name="group">
         /// Default Value: 0
@@ -82,7 +84,9 @@ namespace CVAT
         /// <param name="score">
         /// Default Value: 1F
         /// </param>
-        /// <param name="stop"></param>
+        /// <param name="stop">
+        /// Exclusive interval end. May be one greater than the task stop frame.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

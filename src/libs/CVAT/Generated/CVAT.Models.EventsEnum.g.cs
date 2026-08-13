@@ -4,9 +4,14 @@
 namespace CVAT
 {
     /// <summary>
-    /// * `create:backup` - CREATE:BACKUP<br/>
+    /// * `completed:request[calculate:quality]` - COMPLETED:REQUEST[CALCULATE:QUALITY]<br/>
+    /// * `completed:request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]<br/>
+    /// * `completed:request[export:annotations]` - COMPLETED:REQUEST[EXPORT:ANNOTATIONS]<br/>
+    /// * `completed:request[export:backup]` - COMPLETED:REQUEST[EXPORT:BACKUP]<br/>
+    /// * `completed:request[export:dataset]` - COMPLETED:REQUEST[EXPORT:DATASET]<br/>
+    /// * `completed:request[merge:job]` - COMPLETED:REQUEST[MERGE:JOB]<br/>
+    /// * `completed:request[merge:task]` - COMPLETED:REQUEST[MERGE:TASK]<br/>
     /// * `create:comment` - CREATE:COMMENT<br/>
-    /// * `create:export` - CREATE:EXPORT<br/>
     /// * `create:invitation` - CREATE:INVITATION<br/>
     /// * `create:issue` - CREATE:ISSUE<br/>
     /// * `create:job` - CREATE:JOB<br/>
@@ -18,7 +23,6 @@ namespace CVAT
     /// * `delete:issue` - DELETE:ISSUE<br/>
     /// * `delete:job` - DELETE:JOB<br/>
     /// * `delete:membership` - DELETE:MEMBERSHIP<br/>
-    /// * `delete:organization` - DELETE:ORGANIZATION<br/>
     /// * `delete:project` - DELETE:PROJECT<br/>
     /// * `delete:task` - DELETE:TASK<br/>
     /// * `update:comment` - UPDATE:COMMENT<br/>
@@ -32,17 +36,37 @@ namespace CVAT
     public enum EventsEnum
     {
         /// <summary>
-        /// backup` - CREATE:BACKUP
+        /// request[calculate:quality]` - COMPLETED:REQUEST[CALCULATE:QUALITY]
         /// </summary>
-        Create_backup,
+        Completed_requestcalculate_quality,
+        /// <summary>
+        /// request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]
+        /// </summary>
+        Completed_requestcreate_task,
+        /// <summary>
+        /// request[export:annotations]` - COMPLETED:REQUEST[EXPORT:ANNOTATIONS]
+        /// </summary>
+        Completed_requestexport_annotations,
+        /// <summary>
+        /// request[export:backup]` - COMPLETED:REQUEST[EXPORT:BACKUP]
+        /// </summary>
+        Completed_requestexport_backup,
+        /// <summary>
+        /// request[export:dataset]` - COMPLETED:REQUEST[EXPORT:DATASET]
+        /// </summary>
+        Completed_requestexport_dataset,
+        /// <summary>
+        /// request[merge:job]` - COMPLETED:REQUEST[MERGE:JOB]
+        /// </summary>
+        Completed_requestmerge_job,
+        /// <summary>
+        /// request[merge:task]` - COMPLETED:REQUEST[MERGE:TASK]
+        /// </summary>
+        Completed_requestmerge_task,
         /// <summary>
         /// comment` - CREATE:COMMENT
         /// </summary>
         Create_comment,
-        /// <summary>
-        /// export` - CREATE:EXPORT
-        /// </summary>
-        Create_export,
         /// <summary>
         /// invitation` - CREATE:INVITATION
         /// </summary>
@@ -64,7 +88,7 @@ namespace CVAT
         /// </summary>
         Create_project,
         /// <summary>
-        /// task` - CREATE:TASK
+        /// request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]
         /// </summary>
         Create_task,
         /// <summary>
@@ -87,10 +111,6 @@ namespace CVAT
         /// membership` - DELETE:MEMBERSHIP
         /// </summary>
         Delete_membership,
-        /// <summary>
-        /// organization` - DELETE:ORGANIZATION
-        /// </summary>
-        Delete_organization,
         /// <summary>
         /// project` - DELETE:PROJECT
         /// </summary>
@@ -141,9 +161,14 @@ namespace CVAT
         {
             return value switch
             {
-                EventsEnum.Create_backup => "create:backup",
+                EventsEnum.Completed_requestcalculate_quality => "completed:request[calculate:quality]",
+                EventsEnum.Completed_requestcreate_task => "completed:request[create:task]",
+                EventsEnum.Completed_requestexport_annotations => "completed:request[export:annotations]",
+                EventsEnum.Completed_requestexport_backup => "completed:request[export:backup]",
+                EventsEnum.Completed_requestexport_dataset => "completed:request[export:dataset]",
+                EventsEnum.Completed_requestmerge_job => "completed:request[merge:job]",
+                EventsEnum.Completed_requestmerge_task => "completed:request[merge:task]",
                 EventsEnum.Create_comment => "create:comment",
-                EventsEnum.Create_export => "create:export",
                 EventsEnum.Create_invitation => "create:invitation",
                 EventsEnum.Create_issue => "create:issue",
                 EventsEnum.Create_job => "create:job",
@@ -155,7 +180,6 @@ namespace CVAT
                 EventsEnum.Delete_issue => "delete:issue",
                 EventsEnum.Delete_job => "delete:job",
                 EventsEnum.Delete_membership => "delete:membership",
-                EventsEnum.Delete_organization => "delete:organization",
                 EventsEnum.Delete_project => "delete:project",
                 EventsEnum.Delete_task => "delete:task",
                 EventsEnum.Update_comment => "update:comment",
@@ -175,9 +199,14 @@ namespace CVAT
         {
             return value switch
             {
-                "create:backup" => EventsEnum.Create_backup,
+                "completed:request[calculate:quality]" => EventsEnum.Completed_requestcalculate_quality,
+                "completed:request[create:task]" => EventsEnum.Completed_requestcreate_task,
+                "completed:request[export:annotations]" => EventsEnum.Completed_requestexport_annotations,
+                "completed:request[export:backup]" => EventsEnum.Completed_requestexport_backup,
+                "completed:request[export:dataset]" => EventsEnum.Completed_requestexport_dataset,
+                "completed:request[merge:job]" => EventsEnum.Completed_requestmerge_job,
+                "completed:request[merge:task]" => EventsEnum.Completed_requestmerge_task,
                 "create:comment" => EventsEnum.Create_comment,
-                "create:export" => EventsEnum.Create_export,
                 "create:invitation" => EventsEnum.Create_invitation,
                 "create:issue" => EventsEnum.Create_issue,
                 "create:job" => EventsEnum.Create_job,
@@ -189,7 +218,6 @@ namespace CVAT
                 "delete:issue" => EventsEnum.Delete_issue,
                 "delete:job" => EventsEnum.Delete_job,
                 "delete:membership" => EventsEnum.Delete_membership,
-                "delete:organization" => EventsEnum.Delete_organization,
                 "delete:project" => EventsEnum.Delete_project,
                 "delete:task" => EventsEnum.Delete_task,
                 "update:comment" => EventsEnum.Update_comment,
