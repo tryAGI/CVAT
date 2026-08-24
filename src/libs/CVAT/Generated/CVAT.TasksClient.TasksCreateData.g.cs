@@ -216,7 +216,7 @@ namespace CVAT
             var __maxAttempts = global::CVAT.AutoSDKRequestOptionsSupport.GetMaxAttempts(
                 clientOptions: Options,
                 requestOptions: requestOptions,
-                supportsRetry: true);
+                supportsRetry: false);
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
@@ -267,12 +267,189 @@ namespace CVAT
                 __httpRequest.Headers.TryAddWithoutValidation("Upload-Start", uploadStart.ToString());
             }
 
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
+
+                            var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+                            if (uploadFinish != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(uploadFinish, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
+                                    name: "\"Upload-Finish\"");
+
+                            }
+                            if (uploadMultiple != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(uploadMultiple, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
+                                    name: "\"Upload-Multiple\"");
+
+                            }
+                            if (uploadStart != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(uploadStart, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
+                                    name: "\"Upload-Start\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                name: "\"id\"");
+
+                            if (request.ChunkSize != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.ChunkSize, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"chunk_size\"");
+
+                            }
+                            if (request.ImageQuality != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.ImageQuality, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"image_quality\"");
+
+                            }
+                            if (request.StartFrame != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.StartFrame, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"start_frame\"");
+
+                            }
+                            if (request.StopFrame != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.StopFrame, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"stop_frame\"");
+
+                            }
+                            if (request.FrameFilter != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.FrameFilter ?? string.Empty),
+                                    name: "\"frame_filter\"");
+
+                            }
+                            if (request.ClientFiles != default)
+                            {
+
+                                for (var __iClientFiles = 0; __iClientFiles < request.ClientFiles.Count; __iClientFiles++)
+                                {
+                                    var __contentClientFiles = new global::System.Net.Http.ByteArrayContent(request.ClientFiles[__iClientFiles]);
+                                __contentClientFiles.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+                                    __httpRequestContent.Add(
+                                        content: __contentClientFiles,
+                                        name: "\"client_files\"",
+                                        fileName: $"\"file{__iClientFiles}.bin\"");
+                                    if (__contentClientFiles.Headers.ContentDisposition != null)
+                                    {
+                                        __contentClientFiles.Headers.ContentDisposition.FileNameStar = null;
+                                    }
+                                }
+
+                            }
+                            if (request.ServerFiles != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.ServerFiles, x => x))}]"),
+                                    name: "\"server_files\"");
+
+                            }
+                            if (request.RemoteFiles != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.RemoteFiles, x => x))}]"),
+                                    name: "\"remote_files\"");
+
+                            }
+                            if (request.UseZipChunks != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.UseZipChunks, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
+                                    name: "\"use_zip_chunks\"");
+
+                            }
+                            if (request.ServerFilesExclude != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.ServerFilesExclude, x => x))}]"),
+                                    name: "\"server_files_exclude\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.CloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                name: "\"cloud_storage_id\"");
+
+                            if (request.UseCache != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.UseCache, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
+                                    name: "\"use_cache\"");
+
+                            }
+                            if (request.CopyData != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.CopyData, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
+                                    name: "\"copy_data\"");
+
+                            }
+                            if (request.StorageMethod != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((request.StorageMethod).HasValue ? (request.StorageMethod).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"storage_method\"");
+
+                            }
+                            if (request.SortingMethod != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent((request.SortingMethod).HasValue ? (request.SortingMethod).GetValueOrDefault().ToValueString() : string.Empty),
+                                    name: "\"sorting_method\"");
+
+                            }
+                            if (request.FilenamePattern != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.FilenamePattern ?? string.Empty),
+                                    name: "\"filename_pattern\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.JobFileMapping, x => x.ToString() ?? string.Empty))}]"),
+                                name: "\"job_file_mapping\"");
+
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.UploadFileOrder, x => x))}]"),
+                                name: "\"upload_file_order\"");
+
+                            if (request.ValidationParams != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.ValidationParams.ToJson(JsonSerializerContext)),
+                                    name: "\"validation_params\"");
+
+                            }
+
                             __httpRequest.Content = __httpRequestContent;
+
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,

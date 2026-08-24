@@ -104,5 +104,78 @@ namespace CVAT
             bool? useDefaultLocation = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Import annotations into a job<br/>
+        /// The request POST /api/jobs/id/annotations initiates a background process to import annotations into a job.<br/>
+        /// Please, use the GET /api/requests/&lt;rq_id&gt; endpoint for checking status of the process.<br/>
+        /// The `rq_id` parameter can be found in the response on initiating request.
+        /// </summary>
+        /// <param name="cloudStorageId"></param>
+        /// <param name="filename"></param>
+        /// <param name="format"></param>
+        /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
+        /// <param name="location"></param>
+        /// <param name="useDefaultLocation">
+        /// Default Value: true
+        /// </param>
+        /// <param name="annotationFile">
+        /// The stream to send as the multipart 'annotation_file' file part.
+        /// </param>
+        /// <param name="annotationFilename"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.RqId> JobsCreateAnnotationsAsync(
+            int id,
+            global::System.IO.Stream annotationFile,
+            string annotationFilename,
+            int? cloudStorageId = default,
+            string? filename = default,
+            string? format = default,
+            global::CVAT.JobsCreateAnnotationsImportMode? importMode = default,
+            global::CVAT.JobsCreateAnnotationsLocation? location = default,
+            bool? useDefaultLocation = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Import annotations into a job<br/>
+        /// The request POST /api/jobs/id/annotations initiates a background process to import annotations into a job.<br/>
+        /// Please, use the GET /api/requests/&lt;rq_id&gt; endpoint for checking status of the process.<br/>
+        /// The `rq_id` parameter can be found in the response on initiating request.
+        /// </summary>
+        /// <param name="cloudStorageId"></param>
+        /// <param name="filename"></param>
+        /// <param name="format"></param>
+        /// <param name="id"></param>
+        /// <param name="importMode">
+        /// Default Value: replace
+        /// </param>
+        /// <param name="location"></param>
+        /// <param name="useDefaultLocation">
+        /// Default Value: true
+        /// </param>
+        /// <param name="annotationFile">
+        /// The stream to send as the multipart 'annotation_file' file part.
+        /// </param>
+        /// <param name="annotationFilename"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::CVAT.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.RqId>> JobsCreateAnnotationsAsResponseAsync(
+            int id,
+            global::System.IO.Stream annotationFile,
+            string annotationFilename,
+            int? cloudStorageId = default,
+            string? filename = default,
+            string? format = default,
+            global::CVAT.JobsCreateAnnotationsImportMode? importMode = default,
+            global::CVAT.JobsCreateAnnotationsLocation? location = default,
+            bool? useDefaultLocation = default,
+            global::CVAT.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
