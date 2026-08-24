@@ -126,7 +126,7 @@ namespace CVAT
             var __maxAttempts = global::CVAT.AutoSDKRequestOptionsSupport.GetMaxAttempts(
                 clientOptions: Options,
                 requestOptions: requestOptions,
-                supportsRetry: true);
+                supportsRetry: false);
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
@@ -173,12 +173,165 @@ namespace CVAT
                 __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
             }
 
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
+
+                            var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+                            if (xOrganization != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(xOrganization ?? string.Empty),
+                                    name: "\"X-Organization\"");
+
+                            }
+                            if (org != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(org ?? string.Empty),
+                                    name: "\"org\"");
+
+                            }
+                            if (orgId != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(orgId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"org_id\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.ProviderType.ToValueString()),
+                                name: "\"provider_type\"");
+
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.Resource ?? string.Empty),
+                                name: "\"resource\"");
+
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.DisplayName ?? string.Empty),
+                                name: "\"display_name\"");
+
+                            if (request.Owner != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Owner.ToJson(JsonSerializerContext)),
+                                    name: "\"owner\"");
+
+                            }
+                            __httpRequestContent.Add(
+                                content: new global::System.Net.Http.StringContent(request.CredentialsType.ToValueString()),
+                                name: "\"credentials_type\"");
+
+                            if (request.SessionToken != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.SessionToken ?? string.Empty),
+                                    name: "\"session_token\"");
+
+                            }
+                            if (request.AccountName != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.AccountName ?? string.Empty),
+                                    name: "\"account_name\"");
+
+                            }
+                            if (request.Key != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Key ?? string.Empty),
+                                    name: "\"key\"");
+
+                            }
+                            if (request.SecretKey != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.SecretKey ?? string.Empty),
+                                    name: "\"secret_key\"");
+
+                            }
+                            if (request.ConnectionString != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.ConnectionString ?? string.Empty),
+                                    name: "\"connection_string\"");
+
+                            }
+                            if (request.KeyFile != default)
+                            {
+
+                                var __contentKeyFile = new global::System.Net.Http.ByteArrayContent(request.KeyFile ?? global::System.Array.Empty<byte>());
+                                __contentKeyFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.KeyFilename is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.KeyFilename) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
+                                __httpRequestContent.Add(
+                                    content: __contentKeyFile,
+                                    name: "\"key_file\"",
+                                    fileName: request.KeyFilename != null ? $"\"{request.KeyFilename}\"" : string.Empty);
+                                if (__contentKeyFile.Headers.ContentDisposition != null)
+                                {
+                                    __contentKeyFile.Headers.ContentDisposition.FileNameStar = null;
+                                }
+
+                            }
+                            if (request.SpecificAttributes != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.SpecificAttributes ?? string.Empty),
+                                    name: "\"specific_attributes\"");
+
+                            }
+                            if (request.Description != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(request.Description ?? string.Empty),
+                                    name: "\"description\"");
+
+                            }
+                            if (request.Manifests != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.Manifests, x => x))}]"),
+                                    name: "\"manifests\"");
+
+                            }
+
                             __httpRequest.Content = __httpRequestContent;
+
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
