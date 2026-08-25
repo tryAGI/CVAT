@@ -269,34 +269,6 @@ namespace CVAT
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (uploadFinish != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(uploadFinish, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
-                                    name: "\"Upload-Finish\"");
-
-                            }
-                            if (uploadMultiple != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(uploadMultiple, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
-                                    name: "\"Upload-Multiple\"");
-
-                            }
-                            if (uploadStart != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(uploadStart, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
-                                    name: "\"Upload-Start\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
                             if (request.ChunkSize != default)
                             {
 

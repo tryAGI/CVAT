@@ -219,58 +219,6 @@ namespace CVAT
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (format != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(format ?? string.Empty),
-                                    name: "\"format\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
-                            if (importMode != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((importMode).HasValue ? (importMode).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"import_mode\"");
-
-                            }
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
-                            if (useDefaultLocation != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(useDefaultLocation, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
-                                    name: "\"use_default_location\"");
-
-                            }
                             var __contentAnnotationFile = new global::System.Net.Http.ByteArrayContent(request.AnnotationFile ?? global::System.Array.Empty<byte>());
                             __contentAnnotationFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.AnnotationFilename is null
@@ -812,58 +760,6 @@ namespace CVAT
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (format != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(format ?? string.Empty),
-                                    name: "\"format\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
-                            if (importMode != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((importMode).HasValue ? (importMode).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"import_mode\"");
-
-                            }
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
-                            if (useDefaultLocation != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(useDefaultLocation, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
-                                    name: "\"use_default_location\"");
-
-                            }
                             var __contentAnnotationFile = new global::System.Net.Http.StreamContent(annotationFile);
                             __contentAnnotationFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.AnnotationFilename is null
@@ -1343,58 +1239,6 @@ namespace CVAT
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (format != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(format ?? string.Empty),
-                                    name: "\"format\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
-                            if (importMode != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((importMode).HasValue ? (importMode).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"import_mode\"");
-
-                            }
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
-                            if (useDefaultLocation != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(useDefaultLocation, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
-                                    name: "\"use_default_location\"");
-
-                            }
                             var __contentAnnotationFile = new global::System.Net.Http.StreamContent(annotationFile);
                             __contentAnnotationFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.AnnotationFilename is null

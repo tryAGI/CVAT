@@ -220,54 +220,6 @@ namespace CVAT
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (xOrganization != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(xOrganization ?? string.Empty),
-                                    name: "\"X-Organization\"");
-
-                            }
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
-                            if (org != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(org ?? string.Empty),
-                                    name: "\"org\"");
-
-                            }
-                            if (orgId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(orgId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"org_id\"");
-
-                            }
                             var __contentProjectFile = new global::System.Net.Http.ByteArrayContent(request.ProjectFile ?? global::System.Array.Empty<byte>());
                             __contentProjectFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.ProjectFilename is null
@@ -779,54 +731,6 @@ namespace CVAT
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (xOrganization != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(xOrganization ?? string.Empty),
-                                    name: "\"X-Organization\"");
-
-                            }
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
-                            if (org != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(org ?? string.Empty),
-                                    name: "\"org\"");
-
-                            }
-                            if (orgId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(orgId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"org_id\"");
-
-                            }
                             var __contentProjectFile = new global::System.Net.Http.StreamContent(projectFile);
                             __contentProjectFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.ProjectFilename is null
@@ -1277,54 +1181,6 @@ namespace CVAT
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (xOrganization != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(xOrganization ?? string.Empty),
-                                    name: "\"X-Organization\"");
-
-                            }
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
-                            if (org != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(org ?? string.Empty),
-                                    name: "\"org\"");
-
-                            }
-                            if (orgId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(orgId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"org_id\"");
-
-                            }
                             var __contentProjectFile = new global::System.Net.Http.StreamContent(projectFile);
                             __contentProjectFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.ProjectFilename is null

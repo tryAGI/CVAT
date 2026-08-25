@@ -193,42 +193,6 @@ namespace CVAT
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (format != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(format ?? string.Empty),
-                                    name: "\"format\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
                             var __contentDatasetFile = new global::System.Net.Http.ByteArrayContent(request.DatasetFile ?? global::System.Array.Empty<byte>());
                             __contentDatasetFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.DatasetFilename is null
@@ -778,42 +742,6 @@ namespace CVAT
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (format != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(format ?? string.Empty),
-                                    name: "\"format\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
                             var __contentDatasetFile = new global::System.Net.Http.StreamContent(datasetFile);
                             __contentDatasetFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.DatasetFilename is null
@@ -1311,42 +1239,6 @@ namespace CVAT
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (cloudStorageId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(cloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"cloud_storage_id\"");
-
-                            }
-                            if (filename != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(filename ?? string.Empty),
-                                    name: "\"filename\"");
-
-                            }
-                            if (format != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(format ?? string.Empty),
-                                    name: "\"format\"");
-
-                            }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(id, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"id\"");
-
-                            if (location != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent((location).HasValue ? (location).GetValueOrDefault().ToValueString() : string.Empty),
-                                    name: "\"location\"");
-
-                            }
                             var __contentDatasetFile = new global::System.Net.Http.StreamContent(datasetFile);
                             __contentDatasetFile.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
                                 request.DatasetFilename is null
