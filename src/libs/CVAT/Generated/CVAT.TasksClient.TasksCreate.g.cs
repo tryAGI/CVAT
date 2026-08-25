@@ -505,12 +505,12 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.TaskRead> TasksCreateAsync(
             string name,
-            int? ownerId,
-            int? assigneeId,
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
             int? projectId = default,
+            int? ownerId = default,
+            int? assigneeId = default,
             string? bugTracker = default,
             int? overlap = default,
             int? segmentSize = default,

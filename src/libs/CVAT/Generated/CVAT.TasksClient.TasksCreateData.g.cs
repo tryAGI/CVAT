@@ -331,7 +331,7 @@ namespace CVAT
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.ServerFiles, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.ServerFiles!, x => x))}]"),
                                     name: "\"server_files\"");
 
                             }
@@ -339,7 +339,7 @@ namespace CVAT
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.RemoteFiles, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.RemoteFiles!, x => x))}]"),
                                     name: "\"remote_files\"");
 
                             }
@@ -355,14 +355,18 @@ namespace CVAT
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.ServerFilesExclude, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.ServerFilesExclude!, x => x))}]"),
                                     name: "\"server_files_exclude\"");
 
                             }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.CloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                name: "\"cloud_storage_id\"");
+                            if (request.CloudStorageId != default)
+                            {
 
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.CloudStorageId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
+                                    name: "\"cloud_storage_id\"");
+
+                            }
                             if (request.UseCache != default)
                             {
 
@@ -403,14 +407,22 @@ namespace CVAT
                                     name: "\"filename_pattern\"");
 
                             }
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.JobFileMapping, x => x.ToString() ?? string.Empty))}]"),
-                                name: "\"job_file_mapping\"");
+                            if (request.JobFileMapping != default)
+                            {
 
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.UploadFileOrder, x => x))}]"),
-                                name: "\"upload_file_order\"");
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.JobFileMapping!, x => x.ToString() ?? string.Empty))}]"),
+                                    name: "\"job_file_mapping\"");
 
+                            }
+                            if (request.UploadFileOrder != default)
+                            {
+
+                                __httpRequestContent.Add(
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.UploadFileOrder!, x => x))}]"),
+                                    name: "\"upload_file_order\"");
+
+                            }
                             if (request.ValidationParams != default)
                             {
 
@@ -874,9 +886,6 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.DataResponse> TasksCreateDataAsync(
             int id,
-            int? cloudStorageId,
-            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>> jobFileMapping,
-            global::System.Collections.Generic.IList<string> uploadFileOrder,
             bool? uploadFinish = default,
             bool? uploadMultiple = default,
             bool? uploadStart = default,
@@ -890,11 +899,14 @@ namespace CVAT
             global::System.Collections.Generic.IList<string>? remoteFiles = default,
             bool? useZipChunks = default,
             global::System.Collections.Generic.IList<string>? serverFilesExclude = default,
+            int? cloudStorageId = default,
             bool? useCache = default,
             bool? copyData = default,
             global::CVAT.StorageMethod? storageMethod = default,
             global::CVAT.SortingMethod? sortingMethod = default,
             string? filenamePattern = default,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>>? jobFileMapping = default,
+            global::System.Collections.Generic.IList<string>? uploadFileOrder = default,
             global::CVAT.ValidationParamsRequest? validationParams = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)

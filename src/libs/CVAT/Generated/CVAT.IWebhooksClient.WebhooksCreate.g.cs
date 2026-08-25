@@ -70,8 +70,6 @@ namespace CVAT
         global::System.Threading.Tasks.Task<global::CVAT.WebhookRead> WebhooksCreateAsync(
             string targetUrl,
             global::CVAT.WebhookType type,
-            int? projectId,
-            global::System.Collections.Generic.IList<global::CVAT.EventsEnum> events,
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
@@ -80,6 +78,8 @@ namespace CVAT
             string? secret = default,
             bool? isActive = default,
             bool? enableSsl = default,
+            int? projectId = default,
+            global::System.Collections.Generic.IList<global::CVAT.EventsEnum>? events = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

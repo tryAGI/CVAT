@@ -453,9 +453,9 @@ namespace CVAT
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.RestAuthDetail> AuthCreatePasswordChangeAsync(
-            string oldPassword,
-            string newPassword1,
-            string newPassword2,
+            string? oldPassword = default,
+            string? newPassword1 = default,
+            string? newPassword2 = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

@@ -291,7 +291,7 @@ namespace CVAT
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.Manifests, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.Manifests!, x => x))}]"),
                                     name: "\"manifests\"");
 
                             }

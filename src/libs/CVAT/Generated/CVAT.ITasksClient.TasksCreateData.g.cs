@@ -288,9 +288,6 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.DataResponse> TasksCreateDataAsync(
             int id,
-            int? cloudStorageId,
-            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>> jobFileMapping,
-            global::System.Collections.Generic.IList<string> uploadFileOrder,
             bool? uploadFinish = default,
             bool? uploadMultiple = default,
             bool? uploadStart = default,
@@ -304,11 +301,14 @@ namespace CVAT
             global::System.Collections.Generic.IList<string>? remoteFiles = default,
             bool? useZipChunks = default,
             global::System.Collections.Generic.IList<string>? serverFilesExclude = default,
+            int? cloudStorageId = default,
             bool? useCache = default,
             bool? copyData = default,
             global::CVAT.StorageMethod? storageMethod = default,
             global::CVAT.SortingMethod? sortingMethod = default,
             string? filenamePattern = default,
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>>? jobFileMapping = default,
+            global::System.Collections.Generic.IList<string>? uploadFileOrder = default,
             global::CVAT.ValidationParamsRequest? validationParams = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -80,7 +80,6 @@ namespace CVAT
         global::System.Threading.Tasks.Task<global::CVAT.FunctionCall> LambdaCreateRequestsAsync(
             string function,
             int task,
-            bool convMaskToPoly,
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
@@ -88,6 +87,7 @@ namespace CVAT
             int? maxDistance = default,
             double? threshold = default,
             bool? cleanup = default,
+            bool? convMaskToPoly = default,
             bool? convMaskToPoly2 = default,
             global::System.Collections.Generic.Dictionary<string, global::CVAT.LabelMappingEntryRequest>? mapping = default,
             global::System.Collections.Generic.IList<int>? roi = default,

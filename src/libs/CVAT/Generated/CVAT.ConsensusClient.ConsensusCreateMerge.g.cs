@@ -476,8 +476,8 @@ namespace CVAT
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.RqId> ConsensusCreateMergeAsync(
-            int taskId,
-            int jobId,
+            int? taskId = default,
+            int? jobId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

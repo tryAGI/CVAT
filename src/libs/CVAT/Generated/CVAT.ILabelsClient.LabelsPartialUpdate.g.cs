@@ -73,11 +73,11 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.Label> LabelsPartialUpdateAsync(
             int id,
-            bool deleted,
             int? requestId = default,
             string? name = default,
             string? color = default,
             global::System.Collections.Generic.IList<global::CVAT.AttributeRequest>? attributes = default,
+            bool? deleted = default,
             global::CVAT.LabelType? type = default,
             string? svg = default,
             global::System.Collections.Generic.IList<global::CVAT.SublabelRequest>? sublabels = default,

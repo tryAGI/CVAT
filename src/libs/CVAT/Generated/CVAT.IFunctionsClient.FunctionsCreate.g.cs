@@ -57,8 +57,8 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.Function> FunctionsCreateAsync(
             string provider,
-            string apiKey,
             string? url = default,
+            string? apiKey = default,
             string? name = default,
             global::CVAT.KindEnum? kind = default,
             global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? labelsV2 = default,

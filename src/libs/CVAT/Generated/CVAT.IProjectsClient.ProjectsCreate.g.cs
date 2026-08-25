@@ -69,15 +69,15 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.ProjectRead> ProjectsCreateAsync(
             string name,
-            global::System.Collections.Generic.IList<global::CVAT.PatchedLabelRequest> labels,
-            int? ownerId,
-            int? assigneeId,
-            global::CVAT.StorageRequest targetStorage,
-            global::CVAT.StorageRequest sourceStorage,
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
+            global::System.Collections.Generic.IList<global::CVAT.PatchedLabelRequest>? labels = default,
+            int? ownerId = default,
+            int? assigneeId = default,
             string? bugTracker = default,
+            global::CVAT.StorageRequest? targetStorage = default,
+            global::CVAT.StorageRequest? sourceStorage = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

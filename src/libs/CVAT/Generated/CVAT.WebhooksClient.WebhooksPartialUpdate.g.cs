@@ -460,13 +460,13 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.WebhookRead> WebhooksPartialUpdateAsync(
             int id,
-            global::System.Collections.Generic.IList<global::CVAT.EventsEnum> events,
             string? targetUrl = default,
             string? description = default,
             global::CVAT.WebhookContentType? contentType = default,
             string? secret = default,
             bool? isActive = default,
             bool? enableSsl = default,
+            global::System.Collections.Generic.IList<global::CVAT.EventsEnum>? events = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

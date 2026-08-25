@@ -465,16 +465,16 @@ namespace CVAT
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.TaskRead> TasksPartialUpdateAsync(
             int id,
-            int? ownerId,
-            int? assigneeId,
-            int? organizationId,
             string? name = default,
             int? projectId = default,
+            int? ownerId = default,
+            int? assigneeId = default,
             string? bugTracker = default,
             global::System.Collections.Generic.IList<global::CVAT.PatchedLabelRequest>? labels = default,
             string? subset = default,
             global::CVAT.StorageRequest? targetStorage = default,
             global::CVAT.StorageRequest? sourceStorage = default,
+            int? organizationId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

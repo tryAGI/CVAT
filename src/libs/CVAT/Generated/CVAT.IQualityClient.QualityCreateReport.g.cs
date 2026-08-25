@@ -52,9 +52,9 @@ namespace CVAT
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.QualityReport> QualityCreateReportAsync(
-            int taskId,
-            int projectId,
             string? rqId = default,
+            int? taskId = default,
+            int? projectId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

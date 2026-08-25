@@ -61,13 +61,13 @@ namespace CVAT
             int id,
             string targetUrl,
             global::CVAT.WebhookType type,
-            int? projectId,
-            global::System.Collections.Generic.IList<global::CVAT.EventsEnum> events,
             string? description = default,
             global::CVAT.WebhookContentType? contentType = default,
             string? secret = default,
             bool? isActive = default,
             bool? enableSsl = default,
+            int? projectId = default,
+            global::System.Collections.Generic.IList<global::CVAT.EventsEnum>? events = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -60,12 +60,12 @@ namespace CVAT
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::CVAT.ClientEvents> EventsCreateAsync(
-            global::CVAT.EventRequest previousEvent,
             global::System.DateTime timestamp,
             string? xOrganization = default,
             string? org = default,
             int? orgId = default,
             global::System.Collections.Generic.IList<global::CVAT.EventRequest>? events = default,
+            global::CVAT.EventRequest? previousEvent = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
