@@ -175,30 +175,6 @@ namespace CVAT
 
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            if (xOrganization != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(xOrganization ?? string.Empty),
-                                    name: "\"X-Organization\"");
-
-                            }
-                            if (org != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(org ?? string.Empty),
-                                    name: "\"org\"");
-
-                            }
-                            if (orgId != default)
-                            {
-
-                                __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(orgId, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
-                                    name: "\"org_id\"");
-
-                            }
                             __httpRequestContent.Add(
                                 content: new global::System.Net.Http.StringContent(request.ProviderType.ToValueString()),
                                 name: "\"provider_type\"");
