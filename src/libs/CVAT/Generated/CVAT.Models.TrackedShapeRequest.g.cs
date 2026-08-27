@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TrackedShapeRequest
     {
@@ -48,7 +48,7 @@ namespace CVAT
         public double? Rotation { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("points")]
         public global::System.Collections.Generic.IList<double>? Points { get; set; }
@@ -60,13 +60,13 @@ namespace CVAT
         public global::System.Collections.Generic.IList<global::CVAT.AttributeValRequest>? Attributes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public int? Id { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frame")]
         [global::System.Text.Json.Serialization.JsonRequired]

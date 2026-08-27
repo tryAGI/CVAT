@@ -19,47 +19,47 @@ namespace CVAT
     public enum LabelType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Any,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cuboid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ellipse,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Interval,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mask,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Points,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Polygon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Polyline,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Rectangle,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Skeleton,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tag,
     }

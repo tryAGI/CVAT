@@ -4,20 +4,20 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TasksRetrieveDataType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chunk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ContextImage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Frame,
     }

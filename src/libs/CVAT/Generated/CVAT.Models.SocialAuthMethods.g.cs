@@ -4,33 +4,33 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SocialAuthMethods
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("google")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.SocialAuthMethod Google { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("github")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.SocialAuthMethod Github { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("amazon-cognito")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.SocialAuthMethod AmazonCognito { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sso")]
         [global::System.Text.Json.Serialization.JsonRequired]

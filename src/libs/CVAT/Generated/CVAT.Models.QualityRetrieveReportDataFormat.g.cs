@@ -9,11 +9,11 @@ namespace CVAT
     public enum QualityRetrieveReportDataFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Csv,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Json,
     }

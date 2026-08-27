@@ -10,11 +10,11 @@ namespace CVAT
     public enum LocationEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CloudStorage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Local,
     }

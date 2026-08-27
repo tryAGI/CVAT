@@ -9,11 +9,11 @@ namespace CVAT
     public enum ProjectsCreateBackupLocation
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CloudStorage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Local,
     }

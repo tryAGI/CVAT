@@ -10,11 +10,11 @@ namespace CVAT
     public enum AnnotationConflictSeverity
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Warning,
     }

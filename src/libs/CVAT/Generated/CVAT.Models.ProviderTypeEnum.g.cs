@@ -11,15 +11,15 @@ namespace CVAT
     public enum ProviderTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AwsS3Bucket,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AzureContainer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GoogleCloudStorage,
     }

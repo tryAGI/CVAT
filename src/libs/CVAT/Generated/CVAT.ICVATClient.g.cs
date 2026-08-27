@@ -40,143 +40,143 @@ namespace CVAT
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalyticsClient Analytics { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AssetsClient Assets { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CloudstoragesClient Cloudstorages { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommentsClient Comments { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConsensusClient Consensus { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventsClient Events { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FunctionsClient Functions { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GuidesClient Guides { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public InvitationsClient Invitations { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IssuesClient Issues { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public JobsClient Jobs { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LabelsClient Labels { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LambdaClient Lambda { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LimitsClient Limits { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MembershipsClient Memberships { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public OrganizationsClient Organizations { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ProjectsClient Projects { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public QualityClient Quality { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RequestsClient Requests { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SchemaClient Schema { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerClient Server { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubscriptionsClient Subscriptions { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TasksClient Tasks { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsageClient Usage { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsersClient Users { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public WebhooksClient Webhooks { get; }
 

@@ -11,15 +11,15 @@ namespace CVAT
     public enum QualityTargetMetric
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Accuracy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Precision,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Recall,
     }

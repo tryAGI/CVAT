@@ -16,35 +16,35 @@ namespace CVAT
     public enum ShapeType2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cuboid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ellipse,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mask,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Points,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Polygon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Polyline,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Rectangle,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Skeleton,
     }

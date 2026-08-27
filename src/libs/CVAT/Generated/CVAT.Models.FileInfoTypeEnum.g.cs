@@ -10,11 +10,11 @@ namespace CVAT
     public enum FileInfoTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Dir,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reg,
     }

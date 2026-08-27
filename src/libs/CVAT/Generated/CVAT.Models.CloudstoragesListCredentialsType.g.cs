@@ -4,28 +4,28 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CloudstoragesListCredentialsType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AccountNameTokenPair,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AnonymousAccess,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConnectionString,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KeyFilePath,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KeySecretKeyPair,
     }

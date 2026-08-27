@@ -4,20 +4,20 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CloudstoragesListProviderType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AwsS3Bucket,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AzureContainer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GoogleCloudStorage,
     }

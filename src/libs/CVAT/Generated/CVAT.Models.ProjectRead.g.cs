@@ -6,7 +6,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ProjectRead
     {
@@ -41,7 +41,7 @@ namespace CVAT
         public global::CVAT.BasicUser? Assignee { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("guide_id")]
         public int? GuideId { get; set; }
@@ -109,14 +109,14 @@ namespace CVAT
         public global::CVAT.Storage? SourceStorage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tasks")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.TasksSummary Tasks { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
         [global::System.Text.Json.Serialization.JsonRequired]

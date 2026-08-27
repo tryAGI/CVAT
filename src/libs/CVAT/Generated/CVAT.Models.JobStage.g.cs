@@ -11,15 +11,15 @@ namespace CVAT
     public enum JobStage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Acceptance,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Annotation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Validation,
     }

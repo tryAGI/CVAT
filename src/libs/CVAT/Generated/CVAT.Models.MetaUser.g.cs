@@ -5,12 +5,12 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct MetaUser : global::System.IEquatable<MetaUser>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::CVAT.User? User { get; init; }
@@ -19,7 +19,7 @@ namespace CVAT
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(User))]
@@ -27,7 +27,7 @@ namespace CVAT
         public bool IsUser => User != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUser(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::CVAT.User PickUser() => IsUser
             ? User!
             : throw new global::System.InvalidOperationException($"Expected union variant 'User' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::CVAT.BasicUser? Basic { get; init; }
@@ -56,7 +56,7 @@ namespace CVAT
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Basic))]
@@ -64,7 +64,7 @@ namespace CVAT
         public bool IsBasic => Basic != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBasic(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::CVAT.BasicUser PickBasic() => IsBasic
             ? Basic!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator MetaUser(global::CVAT.User value) => new MetaUser((global::CVAT.User?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::CVAT.User?(MetaUser @this) => @this.User;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MetaUser(global::CVAT.User? value)
         {
@@ -101,22 +101,22 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static MetaUser FromUser(global::CVAT.User? value) => new MetaUser(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator MetaUser(global::CVAT.BasicUser value) => new MetaUser((global::CVAT.BasicUser?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::CVAT.BasicUser?(MetaUser @this) => @this.Basic;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MetaUser(global::CVAT.BasicUser? value)
         {
@@ -124,12 +124,12 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static MetaUser FromBasic(global::CVAT.BasicUser? value) => new MetaUser(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MetaUser(
             global::CVAT.User? user,
@@ -141,23 +141,23 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Basic as object ??
-            User as object 
+            User as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             User?.ToString() ??
-            Basic?.ToString() 
+            Basic?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::CVAT.User, TResult>? user = null,
@@ -190,7 +190,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::CVAT.User>? user = null,
@@ -214,7 +214,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::CVAT.User>? user = null,
@@ -237,7 +237,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(MetaUser other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::CVAT.User?>.Default.Equals(User, other.User) &&
-                global::System.Collections.Generic.EqualityComparer<global::CVAT.BasicUser?>.Default.Equals(Basic, other.Basic) 
+                global::System.Collections.Generic.EqualityComparer<global::CVAT.BasicUser?>.Default.Equals(Basic, other.Basic)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(MetaUser obj1, MetaUser obj2)
         {
@@ -277,7 +277,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(MetaUser obj1, MetaUser obj2)
         {
@@ -285,7 +285,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

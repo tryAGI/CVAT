@@ -12,19 +12,19 @@ namespace CVAT
     public enum KindEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Detector,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Interactor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tracker,
     }

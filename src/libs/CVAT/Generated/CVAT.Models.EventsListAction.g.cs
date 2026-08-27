@@ -4,12 +4,12 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum EventsListAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Download,
     }

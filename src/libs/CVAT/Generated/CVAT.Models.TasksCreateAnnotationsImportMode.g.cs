@@ -9,11 +9,11 @@ namespace CVAT
     public enum TasksCreateAnnotationsImportMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Append,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Replace,
     }

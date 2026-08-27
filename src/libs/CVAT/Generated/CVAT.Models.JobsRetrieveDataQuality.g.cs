@@ -4,16 +4,16 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum JobsRetrieveDataQuality
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Compressed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Original,
     }

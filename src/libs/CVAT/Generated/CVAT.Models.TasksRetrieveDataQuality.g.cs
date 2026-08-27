@@ -4,16 +4,16 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TasksRetrieveDataQuality
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Compressed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Original,
     }

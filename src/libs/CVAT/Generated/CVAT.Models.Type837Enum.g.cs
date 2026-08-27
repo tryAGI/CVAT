@@ -13,23 +13,23 @@ namespace CVAT
     public enum Type837Enum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AnnotateFrame,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AnnotateTask,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InitTracking,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Interact,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Track,
     }

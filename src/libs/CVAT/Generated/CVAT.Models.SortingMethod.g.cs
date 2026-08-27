@@ -12,19 +12,19 @@ namespace CVAT
     public enum SortingMethod
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Lexicographical,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Natural,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Predefined,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Random,
     }
