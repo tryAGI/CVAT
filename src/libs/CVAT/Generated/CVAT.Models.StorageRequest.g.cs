@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class StorageRequest
     {
@@ -17,7 +17,7 @@ namespace CVAT
         public global::CVAT.LocationEnum? Location { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cloud_storage_id")]
         public int? CloudStorageId { get; set; }

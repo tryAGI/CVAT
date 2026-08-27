@@ -10,11 +10,11 @@ namespace CVAT
     public enum VisibilityEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Private,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Public,
     }

@@ -9,7 +9,7 @@ namespace CVAT
     public enum WebhookContentType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApplicationJson,
     }

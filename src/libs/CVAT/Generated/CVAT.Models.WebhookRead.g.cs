@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class WebhookRead
     {
@@ -79,7 +79,7 @@ namespace CVAT
         public global::CVAT.BasicUser? Owner { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("project_id")]
         public int? ProjectId { get; set; }

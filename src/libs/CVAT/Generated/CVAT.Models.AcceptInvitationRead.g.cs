@@ -4,12 +4,12 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AcceptInvitationRead
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("organization_slug")]
         [global::System.Text.Json.Serialization.JsonRequired]

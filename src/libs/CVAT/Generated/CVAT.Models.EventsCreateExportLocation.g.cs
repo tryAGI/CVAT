@@ -4,16 +4,16 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum EventsCreateExportLocation
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CloudStorage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Local,
     }

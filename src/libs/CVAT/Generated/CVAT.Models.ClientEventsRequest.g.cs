@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ClientEventsRequest
     {
@@ -21,7 +21,7 @@ namespace CVAT
         public global::CVAT.EventRequest? PreviousEvent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timestamp")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class InvitationWriteRequest
     {
@@ -20,7 +20,7 @@ namespace CVAT
         public required global::CVAT.RoleEnum Role { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email")]
         [global::System.Text.Json.Serialization.JsonRequired]

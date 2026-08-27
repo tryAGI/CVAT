@@ -10,11 +10,11 @@ namespace CVAT
     public enum ValidationMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GtPool,
     }

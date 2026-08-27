@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TaskValidationLayoutRead
     {
@@ -34,7 +34,7 @@ namespace CVAT
         public global::System.Collections.Generic.IList<int>? DisabledFrames { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("honeypot_count")]
         public int? HoneypotCount { get; set; }

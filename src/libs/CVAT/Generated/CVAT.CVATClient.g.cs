@@ -11,7 +11,7 @@ namespace CVAT
     public sealed partial class CVATClient : global::CVAT.ICVATClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://app.cvat.ai/";
 
@@ -38,7 +38,7 @@ namespace CVAT
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::CVAT.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -48,7 +48,7 @@ namespace CVAT
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalyticsClient Analytics => new AnalyticsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -57,7 +57,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AssetsClient Assets => new AssetsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -66,7 +66,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth => new AuthClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -75,7 +75,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CloudstoragesClient Cloudstorages => new CloudstoragesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -84,7 +84,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CommentsClient Comments => new CommentsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -93,7 +93,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConsensusClient Consensus => new ConsensusClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -102,7 +102,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventsClient Events => new EventsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -111,7 +111,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FunctionsClient Functions => new FunctionsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -120,7 +120,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GuidesClient Guides => new GuidesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -129,7 +129,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public InvitationsClient Invitations => new InvitationsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -138,7 +138,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IssuesClient Issues => new IssuesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -147,7 +147,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public JobsClient Jobs => new JobsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -156,7 +156,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LabelsClient Labels => new LabelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -165,7 +165,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LambdaClient Lambda => new LambdaClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -174,7 +174,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LimitsClient Limits => new LimitsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -183,7 +183,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MembershipsClient Memberships => new MembershipsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -192,7 +192,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public OrganizationsClient Organizations => new OrganizationsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -201,7 +201,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ProjectsClient Projects => new ProjectsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -210,7 +210,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public QualityClient Quality => new QualityClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -219,7 +219,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RequestsClient Requests => new RequestsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -228,7 +228,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SchemaClient Schema => new SchemaClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -237,7 +237,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerClient Server => new ServerClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -246,7 +246,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubscriptionsClient Subscriptions => new SubscriptionsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -255,7 +255,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TasksClient Tasks => new TasksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -264,7 +264,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsageClient Usage => new UsageClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -273,7 +273,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsersClient Users => new UsersClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -282,7 +282,7 @@ namespace CVAT
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public WebhooksClient Webhooks => new WebhooksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

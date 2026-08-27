@@ -12,19 +12,19 @@ namespace CVAT
     public enum RoleEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Maintainer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Owner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Supervisor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Worker,
     }

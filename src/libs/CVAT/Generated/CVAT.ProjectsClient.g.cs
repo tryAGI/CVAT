@@ -10,7 +10,7 @@ namespace CVAT
     public sealed partial class ProjectsClient : global::CVAT.IProjectsClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://app.cvat.ai/";
 
@@ -37,7 +37,7 @@ namespace CVAT
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::CVAT.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {

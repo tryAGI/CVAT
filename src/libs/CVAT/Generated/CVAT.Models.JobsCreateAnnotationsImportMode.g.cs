@@ -9,11 +9,11 @@ namespace CVAT
     public enum JobsCreateAnnotationsImportMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Append,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Replace,
     }

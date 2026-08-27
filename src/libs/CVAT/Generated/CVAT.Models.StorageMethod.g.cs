@@ -10,11 +10,11 @@ namespace CVAT
     public enum StorageMethod
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cache,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FileSystem,
     }

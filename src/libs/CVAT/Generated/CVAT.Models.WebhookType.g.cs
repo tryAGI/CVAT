@@ -10,11 +10,11 @@ namespace CVAT
     public enum WebhookType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Organization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Project,
     }

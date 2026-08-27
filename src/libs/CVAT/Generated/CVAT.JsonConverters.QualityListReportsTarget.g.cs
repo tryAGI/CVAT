@@ -20,7 +20,7 @@ namespace CVAT.JsonConverters
                     {
                         return global::CVAT.QualityListReportsTargetExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

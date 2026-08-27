@@ -10,11 +10,11 @@ namespace CVAT
     public enum SelectionSchemaEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailAddress,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LowestWeight,
     }

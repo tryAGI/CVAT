@@ -174,7 +174,7 @@ namespace CVAT
         public global::System.Collections.Generic.IList<string>? UploadFileOrder { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("validation_params")]
         public global::CVAT.ValidationParamsRequest? ValidationParams { get; set; }

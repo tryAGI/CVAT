@@ -4,19 +4,19 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Plugins
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ANALYTICS")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool Analytics { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("MODELS")]
         [global::System.Text.Json.Serialization.JsonRequired]

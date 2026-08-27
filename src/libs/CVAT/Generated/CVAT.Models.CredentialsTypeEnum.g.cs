@@ -13,23 +13,23 @@ namespace CVAT
     public enum CredentialsTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AccountNameTokenPair,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AnonymousAccess,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConnectionString,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KeyFilePath,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KeySecretKeyPair,
     }

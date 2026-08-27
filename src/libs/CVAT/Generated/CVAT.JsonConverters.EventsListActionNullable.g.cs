@@ -20,7 +20,7 @@ namespace CVAT.JsonConverters
                     {
                         return global::CVAT.EventsListActionExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -4,24 +4,24 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum MembershipsListRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Maintainer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Owner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Supervisor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Worker,
     }

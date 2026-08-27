@@ -4,20 +4,20 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TasksListDimension
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1d,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x2d,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3d,
     }

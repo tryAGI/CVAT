@@ -4,26 +4,26 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ArAssignment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("function_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int FunctionId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ar_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ArId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ar_params")]
         [global::System.Text.Json.Serialization.JsonRequired]

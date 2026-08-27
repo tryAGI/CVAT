@@ -4,12 +4,12 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class QueueRequestAcquireOutput
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ar_assignment")]
         public global::CVAT.ArAssignment? ArAssignment { get; set; }

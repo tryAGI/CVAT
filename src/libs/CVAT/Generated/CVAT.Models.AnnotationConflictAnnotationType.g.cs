@@ -11,15 +11,15 @@ namespace CVAT
     public enum AnnotationConflictAnnotationType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Shape,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tag,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Track,
     }

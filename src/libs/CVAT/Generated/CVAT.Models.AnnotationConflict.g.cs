@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AnnotationConflict
     {
@@ -28,7 +28,7 @@ namespace CVAT
         public global::CVAT.AnnotationConflictType? Type { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("annotation_ids")]
         [global::System.Text.Json.Serialization.JsonRequired]

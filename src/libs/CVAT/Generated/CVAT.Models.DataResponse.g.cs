@@ -5,12 +5,12 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct DataResponse : global::System.IEquatable<DataResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::CVAT.RqId? RqId { get; init; }
@@ -19,7 +19,7 @@ namespace CVAT
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RqId))]
@@ -27,7 +27,7 @@ namespace CVAT
         public bool IsRqId => RqId != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRqId(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::CVAT.RqId PickRqId() => IsRqId
             ? RqId!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RqId' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public byte[]? DataResponseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace CVAT
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DataResponseVariant2))]
@@ -64,7 +64,7 @@ namespace CVAT
         public bool IsDataResponseVariant2 => DataResponseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDataResponseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public byte[] PickDataResponseVariant2() => IsDataResponseVariant2
             ? DataResponseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'DataResponseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator DataResponse(global::CVAT.RqId value) => new DataResponse((global::CVAT.RqId?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::CVAT.RqId?(DataResponse @this) => @this.RqId;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataResponse(global::CVAT.RqId? value)
         {
@@ -101,22 +101,22 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static DataResponse FromRqId(global::CVAT.RqId? value) => new DataResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator DataResponse(byte[] value) => new DataResponse((byte[]?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator byte[]?(DataResponse @this) => @this.DataResponseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataResponse(byte[]? value)
         {
@@ -124,12 +124,12 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static DataResponse FromDataResponseVariant2(byte[]? value) => new DataResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DataResponse(
             global::CVAT.RqId? rqId,
@@ -141,23 +141,23 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             DataResponseVariant2 as object ??
-            RqId as object 
+            RqId as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RqId?.ToString() ??
-            DataResponseVariant2?.ToString() 
+            DataResponseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::CVAT.RqId, TResult>? rqId = null,
@@ -190,7 +190,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::CVAT.RqId>? rqId = null,
@@ -214,7 +214,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::CVAT.RqId>? rqId = null,
@@ -237,7 +237,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(DataResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::CVAT.RqId?>.Default.Equals(RqId, other.RqId) &&
-                global::System.Collections.Generic.EqualityComparer<byte[]?>.Default.Equals(DataResponseVariant2, other.DataResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<byte[]?>.Default.Equals(DataResponseVariant2, other.DataResponseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(DataResponse obj1, DataResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(DataResponse obj1, DataResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace CVAT
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

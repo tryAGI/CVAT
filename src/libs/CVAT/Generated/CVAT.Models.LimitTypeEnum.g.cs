@@ -11,15 +11,15 @@ namespace CVAT
     public enum LimitTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Custom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Default,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paid,
     }

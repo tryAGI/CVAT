@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class OrganizationRead
     {
@@ -51,7 +51,7 @@ namespace CVAT
         public object? Contact { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
         public global::CVAT.BasicUser? Owner { get; set; }

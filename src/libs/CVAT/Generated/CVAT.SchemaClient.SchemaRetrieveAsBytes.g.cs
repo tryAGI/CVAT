@@ -152,7 +152,7 @@ namespace CVAT
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -480,7 +480,7 @@ namespace CVAT
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

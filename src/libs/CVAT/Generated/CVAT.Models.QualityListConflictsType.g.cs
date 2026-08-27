@@ -4,40 +4,40 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum QualityListConflictsType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CoveredAnnotation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExtraAnnotation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LowOverlap,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MismatchingAttributes,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MismatchingDirection,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MismatchingGroups,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MismatchingLabel,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingAnnotation,
     }

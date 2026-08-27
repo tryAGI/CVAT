@@ -4,20 +4,20 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum JobsListType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Annotation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConsensusReplica,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GroundTruth,
     }

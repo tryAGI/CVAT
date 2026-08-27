@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AccessTokenWriteRequest
     {
@@ -23,7 +23,7 @@ namespace CVAT
         public global::System.DateTime? ExpiryDate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("read_only")]
         public bool? ReadOnly { get; set; }

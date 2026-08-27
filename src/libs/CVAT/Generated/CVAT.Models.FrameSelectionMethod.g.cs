@@ -11,15 +11,15 @@ namespace CVAT
     public enum FrameSelectionMethod
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Manual,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RandomPerJob,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RandomUniform,
     }

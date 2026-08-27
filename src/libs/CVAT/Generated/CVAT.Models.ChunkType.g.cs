@@ -11,15 +11,15 @@ namespace CVAT
     public enum ChunkType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AudioMp3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Imageset,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Video,
     }

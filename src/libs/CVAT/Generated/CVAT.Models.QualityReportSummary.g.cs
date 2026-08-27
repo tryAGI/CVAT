@@ -4,12 +4,12 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class QualityReportSummary
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_frames")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -22,7 +22,7 @@ namespace CVAT
         public int? FrameCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("validation_frames")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -35,84 +35,84 @@ namespace CVAT
         public double? FrameShare { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("validation_frame_share")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double ValidationFrameShare { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("conflict_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ConflictCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("warning_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int WarningCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ErrorCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("conflicts_by_type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.Dictionary<string, int> ConflictsByType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("valid_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ValidCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ds_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int DsCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gt_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int GtCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TotalCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("accuracy")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Accuracy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("precision")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Precision { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("recall")]
         [global::System.Text.Json.Serialization.JsonRequired]

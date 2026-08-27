@@ -4,82 +4,82 @@
 namespace CVAT
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AnnotationsStatistics
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("label_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int LabelId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("label_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string LabelName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rectangle")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Rectangle { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ellipse")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Ellipse { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("polygon")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Polygon { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("polyline")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Polyline { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("points")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Points { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mask")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Mask { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cuboid")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Cuboid { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("skeleton")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::CVAT.Count Skeleton { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tag")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -11,15 +11,15 @@ namespace CVAT
     public enum StorageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CloudStorage,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Local,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Share,
     }

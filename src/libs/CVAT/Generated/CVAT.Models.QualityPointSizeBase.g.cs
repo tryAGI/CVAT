@@ -10,11 +10,11 @@ namespace CVAT
     public enum QualityPointSizeBase
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GroupBboxSize,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImageSize,
     }

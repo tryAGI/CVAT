@@ -10,11 +10,11 @@ namespace CVAT
     public enum RequestCategoryEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Batch,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Interactive,
     }

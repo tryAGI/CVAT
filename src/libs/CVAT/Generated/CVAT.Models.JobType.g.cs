@@ -11,15 +11,15 @@ namespace CVAT
     public enum JobType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Annotation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConsensusReplica,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GroundTruth,
     }

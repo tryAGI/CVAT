@@ -13,23 +13,23 @@ namespace CVAT
     public enum InputTypeEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Checkbox,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Number,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Radio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Select,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

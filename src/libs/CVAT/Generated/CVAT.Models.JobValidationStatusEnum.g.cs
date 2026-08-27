@@ -11,15 +11,15 @@ namespace CVAT
     public enum JobValidationStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Accepted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Disabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Rejected,
     }

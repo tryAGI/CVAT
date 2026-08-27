@@ -11,15 +11,15 @@ namespace CVAT
     public enum QualityReportTarget
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Job,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Project,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Task,
     }
