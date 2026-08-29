@@ -141,7 +141,7 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum>? Type27 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>? Type27 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1341,7 +1341,7 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum>? Type327 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>? Type327 { get; set; }
         /// <summary>
         ///
         /// </summary>

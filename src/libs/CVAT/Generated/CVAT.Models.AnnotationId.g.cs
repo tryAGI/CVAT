@@ -31,8 +31,8 @@ namespace CVAT
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shape_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ShapeType2?, global::CVAT.NullEnum>))]
-        public global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum>? ShapeType { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>))]
+        public global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>? ShapeType { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -62,7 +62,7 @@ namespace CVAT
             int? objId,
             int? jobId,
             global::CVAT.AnnotationConflictAnnotationType? type,
-            global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum>? shapeType)
+            global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>? shapeType)
         {
             this.ObjId = objId;
             this.JobId = jobId;
