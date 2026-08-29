@@ -12,8 +12,8 @@ namespace CVAT
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ValidationMode?, global::CVAT.NullEnum>))]
-        public global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum>? Mode { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>))]
+        public global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>? Mode { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -83,7 +83,7 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TaskValidationLayoutRead(
-            global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum>? mode,
+            global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>? mode,
             int? framesPerJobCount,
             global::System.Collections.Generic.IList<int>? validationFrames,
             global::System.Collections.Generic.IList<int>? disabledFrames,
