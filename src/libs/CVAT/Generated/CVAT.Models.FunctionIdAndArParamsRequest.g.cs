@@ -9,15 +9,15 @@ namespace CVAT
     public sealed partial class FunctionIdAndArParamsRequest
     {
         /// <summary>
-        /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
-        /// * `interact` - interact<br/>
+        /// * `annotate_task` - annotate_task<br/>
         /// * `init_tracking` - init_tracking<br/>
+        /// * `interact` - interact<br/>
         /// * `track` - track
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type837EnumJsonConverter))]
-        public global::CVAT.Type837Enum? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.ArTypeJsonConverter))]
+        public global::CVAT.ArType? Type { get; set; }
 
         /// <summary>
         ///
@@ -117,10 +117,10 @@ namespace CVAT
         /// <param name="task"></param>
         /// <param name="function"></param>
         /// <param name="type">
-        /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
-        /// * `interact` - interact<br/>
+        /// * `annotate_task` - annotate_task<br/>
         /// * `init_tracking` - init_tracking<br/>
+        /// * `interact` - interact<br/>
         /// * `track` - track
         /// </param>
         /// <param name="job"></param>
@@ -141,7 +141,7 @@ namespace CVAT
         public FunctionIdAndArParamsRequest(
             int task,
             int function,
-            global::CVAT.Type837Enum? type,
+            global::CVAT.ArType? type,
             int? job,
             int? frame,
             double? threshold,

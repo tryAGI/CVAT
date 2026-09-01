@@ -24,13 +24,13 @@ namespace CVAT
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("internal_ai_agent_calls")]
-        public string? InternalAiAgentCalls { get; set; }
+        public int? InternalAiAgentCalls { get; set; }
 
         /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("external_ai_agent_calls")]
-        public string? ExternalAiAgentCalls { get; set; }
+        public int? ExternalAiAgentCalls { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -59,8 +59,8 @@ namespace CVAT
         public Usage(
             int? userId,
             int? orgId,
-            string? internalAiAgentCalls,
-            string? externalAiAgentCalls)
+            int? internalAiAgentCalls,
+            int? externalAiAgentCalls)
         {
             this.UserId = userId;
             this.OrgId = orgId;

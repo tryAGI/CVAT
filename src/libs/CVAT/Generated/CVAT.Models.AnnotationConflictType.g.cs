@@ -7,7 +7,6 @@ namespace CVAT
     /// * `missing_annotation` - MISSING_ANNOTATION<br/>
     /// * `extra_annotation` - EXTRA_ANNOTATION<br/>
     /// * `mismatching_label` - MISMATCHING_LABEL<br/>
-    /// * `low_overlap` - LOW_OVERLAP<br/>
     /// * `mismatching_direction` - MISMATCHING_DIRECTION<br/>
     /// * `mismatching_attributes` - MISMATCHING_ATTRIBUTES<br/>
     /// * `mismatching_groups` - MISMATCHING_GROUPS<br/>
@@ -23,10 +22,6 @@ namespace CVAT
         ///
         /// </summary>
         ExtraAnnotation,
-        /// <summary>
-        ///
-        /// </summary>
-        LowOverlap,
         /// <summary>
         ///
         /// </summary>
@@ -63,7 +58,6 @@ namespace CVAT
             {
                 AnnotationConflictType.CoveredAnnotation => "covered_annotation",
                 AnnotationConflictType.ExtraAnnotation => "extra_annotation",
-                AnnotationConflictType.LowOverlap => "low_overlap",
                 AnnotationConflictType.MismatchingAttributes => "mismatching_attributes",
                 AnnotationConflictType.MismatchingDirection => "mismatching_direction",
                 AnnotationConflictType.MismatchingGroups => "mismatching_groups",
@@ -81,7 +75,6 @@ namespace CVAT
             {
                 "covered_annotation" => AnnotationConflictType.CoveredAnnotation,
                 "extra_annotation" => AnnotationConflictType.ExtraAnnotation,
-                "low_overlap" => AnnotationConflictType.LowOverlap,
                 "mismatching_attributes" => AnnotationConflictType.MismatchingAttributes,
                 "mismatching_direction" => AnnotationConflictType.MismatchingDirection,
                 "mismatching_groups" => AnnotationConflictType.MismatchingGroups,

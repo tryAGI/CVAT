@@ -3,10 +3,10 @@
 namespace CVAT.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class Type837EnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.Type837Enum?>
+    public sealed class AnnotationTypeEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.AnnotationTypeEnum?>
     {
         /// <inheritdoc />
-        public override global::CVAT.Type837Enum? Read(
+        public override global::CVAT.AnnotationTypeEnum? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace CVAT.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::CVAT.Type837EnumExtensions.ToEnum(stringValue);
+                        return global::CVAT.AnnotationTypeEnumExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace CVAT.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::CVAT.Type837Enum)numValue;
+                    return (global::CVAT.AnnotationTypeEnum)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::CVAT.Type837Enum?);
+                    return default(global::CVAT.AnnotationTypeEnum?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace CVAT.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::CVAT.Type837Enum? value,
+            global::CVAT.AnnotationTypeEnum? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace CVAT.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::CVAT.Type837EnumExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::CVAT.AnnotationTypeEnumExtensions.ToValueString(value.Value));
             }
         }
     }

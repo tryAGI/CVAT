@@ -4,7 +4,7 @@
 namespace CVAT
 {
     /// <summary>
-    ///
+    /// Label mapping for from the model to the task sublabels within a parent label
     /// </summary>
     public sealed partial class LabelMappingEntrySublabels
     {

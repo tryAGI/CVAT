@@ -37,6 +37,13 @@ namespace CVAT
         public required int Included { get; set; }
 
         /// <summary>
+        /// Jobs with all enabled requirements met
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Completed { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -57,6 +64,9 @@ namespace CVAT
         /// <param name="included">
         /// Included job count = total - excluded
         /// </param>
+        /// <param name="completed">
+        /// Jobs with all enabled requirements met
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -64,12 +74,14 @@ namespace CVAT
             int total,
             int excluded,
             int notCheckable,
-            int included)
+            int included,
+            int completed)
         {
             this.Total = total;
             this.Excluded = excluded;
             this.NotCheckable = notCheckable;
             this.Included = included;
+            this.Completed = completed;
         }
 
         /// <summary>

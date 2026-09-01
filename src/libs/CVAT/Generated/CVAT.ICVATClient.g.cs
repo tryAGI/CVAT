@@ -88,6 +88,11 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
+        public GrowthClient Growth { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public GuidesClient Guides { get; }
 
         /// <summary>

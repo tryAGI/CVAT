@@ -20,6 +20,9 @@ namespace CVAT
         /// </summary>
         /// <param name="xOrganization"></param>
         /// <param name="filter"></param>
+        /// <param name="includeLegacy">
+        /// Default Value: false
+        /// </param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
@@ -36,6 +39,7 @@ namespace CVAT
         global::System.Threading.Tasks.Task<global::CVAT.PaginatedQualityReportList> QualityListReportsAsync(
             string? xOrganization = default,
             string? filter = default,
+            bool? includeLegacy = default,
             int? jobId = default,
             string? org = default,
             int? orgId = default,
@@ -64,6 +68,9 @@ namespace CVAT
         /// </summary>
         /// <param name="xOrganization"></param>
         /// <param name="filter"></param>
+        /// <param name="includeLegacy">
+        /// Default Value: false
+        /// </param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
@@ -80,6 +87,7 @@ namespace CVAT
         global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.PaginatedQualityReportList>> QualityListReportsAsResponseAsync(
             string? xOrganization = default,
             string? filter = default,
+            bool? includeLegacy = default,
             int? jobId = default,
             string? org = default,
             int? orgId = default,

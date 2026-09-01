@@ -72,6 +72,12 @@ namespace CVAT
         /// <summary>
         /// Included only in responses
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("requirements")]
+        public global::System.Collections.Generic.IList<global::CVAT.JobValidationRequirement>? Requirements { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("report_id")]
         public int? ReportId { get; set; }
 
@@ -119,6 +125,9 @@ namespace CVAT
         /// <param name="targetMetric">
         /// Included only in responses
         /// </param>
+        /// <param name="requirements">
+        /// Included only in responses
+        /// </param>
         /// <param name="reportId">
         /// Included only in responses
         /// </param>
@@ -140,6 +149,7 @@ namespace CVAT
             double? actualScore,
             double? requiredScore,
             global::CVAT.QualityTargetMetric? targetMetric,
+            global::System.Collections.Generic.IList<global::CVAT.JobValidationRequirement>? requirements,
             int? reportId,
             global::CVAT.JobValidationStatusEnum? status,
             global::System.Collections.Generic.IList<string>? messages)
@@ -154,6 +164,7 @@ namespace CVAT
             this.ActualScore = actualScore;
             this.RequiredScore = requiredScore;
             this.TargetMetric = targetMetric;
+            this.Requirements = requirements;
             this.ReportId = reportId;
             this.Status = status;
             this.Messages = messages;

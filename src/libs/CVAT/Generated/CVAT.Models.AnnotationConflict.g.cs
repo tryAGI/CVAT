@@ -48,6 +48,12 @@ namespace CVAT
         public global::CVAT.AnnotationConflictSeverity? Severity { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("attribute_names")]
+        public global::System.Collections.Generic.IList<string>? AttributeNames { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -72,6 +78,9 @@ namespace CVAT
         /// <param name="severity">
         /// Included only in responses
         /// </param>
+        /// <param name="attributeNames">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -81,7 +90,8 @@ namespace CVAT
             int? frame,
             global::CVAT.AnnotationConflictType? type,
             int? reportId,
-            global::CVAT.AnnotationConflictSeverity? severity)
+            global::CVAT.AnnotationConflictSeverity? severity,
+            global::System.Collections.Generic.IList<string>? attributeNames)
         {
             this.Id = id;
             this.Frame = frame;
@@ -89,6 +99,7 @@ namespace CVAT
             this.AnnotationIds = annotationIds ?? throw new global::System.ArgumentNullException(nameof(annotationIds));
             this.ReportId = reportId;
             this.Severity = severity;
+            this.AttributeNames = attributeNames;
         }
 
         /// <summary>
