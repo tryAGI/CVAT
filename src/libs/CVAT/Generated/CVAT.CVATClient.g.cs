@@ -122,6 +122,15 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
+        public GrowthClient Growth => new GrowthClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContextProvider = JsonSerializerContextProvider,
+        };
+
+        /// <summary>
+        ///
+        /// </summary>
         public GuidesClient Guides => new GuidesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,

@@ -4,13 +4,13 @@
 namespace CVAT
 {
     /// <summary>
-    /// * `annotate_task` - annotate_task<br/>
     /// * `annotate_frame` - annotate_frame<br/>
-    /// * `interact` - interact<br/>
+    /// * `annotate_task` - annotate_task<br/>
     /// * `init_tracking` - init_tracking<br/>
+    /// * `interact` - interact<br/>
     /// * `track` - track
     /// </summary>
-    public enum Type837Enum
+    public enum ArType
     {
         /// <summary>
         ///
@@ -37,35 +37,35 @@ namespace CVAT
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class Type837EnumExtensions
+    public static class ArTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this Type837Enum value)
+        public static string ToValueString(this ArType value)
         {
             return value switch
             {
-                Type837Enum.AnnotateFrame => "annotate_frame",
-                Type837Enum.AnnotateTask => "annotate_task",
-                Type837Enum.InitTracking => "init_tracking",
-                Type837Enum.Interact => "interact",
-                Type837Enum.Track => "track",
+                ArType.AnnotateFrame => "annotate_frame",
+                ArType.AnnotateTask => "annotate_task",
+                ArType.InitTracking => "init_tracking",
+                ArType.Interact => "interact",
+                ArType.Track => "track",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static Type837Enum? ToEnum(string value)
+        public static ArType? ToEnum(string value)
         {
             return value switch
             {
-                "annotate_frame" => Type837Enum.AnnotateFrame,
-                "annotate_task" => Type837Enum.AnnotateTask,
-                "init_tracking" => Type837Enum.InitTracking,
-                "interact" => Type837Enum.Interact,
-                "track" => Type837Enum.Track,
+                "annotate_frame" => ArType.AnnotateFrame,
+                "annotate_task" => ArType.AnnotateTask,
+                "init_tracking" => ArType.InitTracking,
+                "interact" => ArType.Interact,
+                "track" => ArType.Track,
                 _ => null,
             };
         }

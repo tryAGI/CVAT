@@ -445,10 +445,10 @@ namespace CVAT
         /// </summary>
         /// <param name="id"></param>
         /// <param name="type">
-        /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
-        /// * `interact` - interact<br/>
+        /// * `annotate_task` - annotate_task<br/>
         /// * `init_tracking` - init_tracking<br/>
+        /// * `interact` - interact<br/>
         /// * `track` - track
         /// </param>
         /// <param name="task"></param>
@@ -470,7 +470,7 @@ namespace CVAT
         public async global::System.Threading.Tasks.Task<global::CVAT.Function> FunctionsCreateRunAsync(
             int id,
             int task,
-            global::CVAT.Type837Enum? type = default,
+            global::CVAT.ArType? type = default,
             int? job = default,
             int? frame = default,
             double? threshold = default,

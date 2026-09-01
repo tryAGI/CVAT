@@ -12,10 +12,6 @@ namespace CVAT
         ///
         /// </summary>
         Error,
-        /// <summary>
-        ///
-        /// </summary>
-        Warning,
     }
 
     /// <summary>
@@ -31,7 +27,6 @@ namespace CVAT
             return value switch
             {
                 QualityListConflictsSeverity.Error => "error",
-                QualityListConflictsSeverity.Warning => "warning",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,7 +38,6 @@ namespace CVAT
             return value switch
             {
                 "error" => QualityListConflictsSeverity.Error,
-                "warning" => QualityListConflictsSeverity.Warning,
                 _ => null,
             };
         }

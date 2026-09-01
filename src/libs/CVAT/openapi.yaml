@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.73.0 (2.0)",
+    "version": "2.74.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -3830,6 +3830,182 @@
         "responses": {
           "204": {
             "description": "No response body"
+          }
+        }
+      }
+    },
+    "/api/growth": {
+      "get": {
+        "operationId": "growth_list",
+        "summary": "List growth data",
+        "parameters": [
+          {
+            "name": "filter",
+            "required": false,
+            "in": "query",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['id', 'user_id'].",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['id']",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "growth"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedUserGrowthDataList"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/growth/{id}": {
+      "get": {
+        "operationId": "growth_retrieve",
+        "summary": "Get growth data",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "growth"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGrowthData"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "growth_partial_update",
+        "summary": "Update growth data",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "growth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedUserGrowthDataRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserGrowthData"
+                }
+              }
+            },
+            "description": ""
           }
         }
       }
@@ -8657,7 +8833,6 @@
             "schema": {
               "type": "string",
               "enum": [
-                "warning",
                 "error"
               ]
             }
@@ -8689,7 +8864,6 @@
                 "missing_annotation",
                 "extra_annotation",
                 "mismatching_label",
-                "low_overlap",
                 "mismatching_direction",
                 "mismatching_attributes",
                 "mismatching_groups",
@@ -9029,6 +9203,15 @@
             }
           },
           {
+            "in": "query",
+            "name": "include_legacy",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Include reports stored in the legacy data format"
+          },
+          {
             "name": "job_id",
             "in": "query",
             "description": "A simple equality filter for the job_id field",
@@ -9267,6 +9450,133 @@
         }
       }
     },
+    "/api/quality/reports/{id}/confusion": {
+      "get": {
+        "operationId": "quality_retrieve_report_confusion",
+        "summary": "Download quality report confusion matrices",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this quality report.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "description": "ZIP archive with per-requirement confusion matrices"
+          }
+        }
+      }
+    },
+    "/api/quality/reports/{id}/confusion/matrix": {
+      "get": {
+        "operationId": "quality_retrieve_report_requirement_confusion",
+        "summary": "Get a quality report requirement confusion matrix",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "csv",
+                "json"
+              ],
+              "default": "json"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this quality report.",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "requirement",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Quality requirement id in the report",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualityReportConfusionMatrix"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "description": "JSON confusion matrix for the requested quality requirement"
+          },
+          "404": {
+            "description": "Requirement confusion matrix was not found"
+          }
+        }
+      }
+    },
     "/api/quality/reports/{id}/data": {
       "get": {
         "operationId": "quality_retrieve_report_data",
@@ -9278,7 +9588,6 @@
             "schema": {
               "type": "string",
               "enum": [
-                "csv",
                 "json"
               ],
               "default": "json"
@@ -9511,6 +9820,61 @@
           }
         }
       },
+      "put": {
+        "operationId": "quality_update_settings",
+        "summary": "Replace a quality settings instance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "An id of a quality settings instance",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualitySettingsRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualitySettings"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
       "patch": {
         "operationId": "quality_partial_update_settings",
         "summary": "Update a quality settings instance",
@@ -9559,6 +9923,447 @@
               "application/vnd.cvat+json": {
                 "schema": {
                   "$ref": "#/components/schemas/QualitySettings"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/quality/settings/requirements": {
+      "get": {
+        "operationId": "quality_list_settings_requirements",
+        "summary": "List quality requirements",
+        "parameters": [
+          {
+            "name": "X-Organization",
+            "in": "header",
+            "description": "Organization unique slug",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "annotation_type",
+            "in": "query",
+            "description": "A simple equality filter for the annotation_type field",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "tag",
+                "rectangle",
+                "skeleton",
+                "skeleton_keypoint",
+                "points",
+                "polyline",
+                "mask",
+                "polygon",
+                "ellipse"
+              ]
+            }
+          },
+          {
+            "name": "enabled",
+            "in": "query",
+            "description": "A simple equality filter for the enabled field",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "filter",
+            "required": false,
+            "in": "query",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['annotation_type', 'created_date', 'enabled', 'id', 'project_id', 'settings_id', 'task_id', 'updated_date'].",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org",
+            "in": "query",
+            "description": "Organization unique slug",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "description": "Organization identifier",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "project_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Project id filter"
+          },
+          {
+            "in": "query",
+            "name": "settings_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Settings id filter"
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['annotation_type', 'created_date', 'enabled', 'id', 'name', 'project_id', 'settings_id', 'sort_order', 'task_id', 'updated_date']",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "task_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Task id filter"
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedQualityRequirementListItemList"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "quality_create_settings_requirements",
+        "summary": "Create a quality requirement",
+        "tags": [
+          "quality"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualityRequirementRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualityRequirement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/quality/settings/requirements/{id}": {
+      "get": {
+        "operationId": "quality_retrieve_settings_requirements",
+        "summary": "Get quality requirement details",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this quality requirement.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualityRequirement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "operationId": "quality_update_settings_requirements",
+        "summary": "Replace a quality requirement",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this quality requirement.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualityRequirementRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualityRequirement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "quality_partial_update_settings_requirements",
+        "summary": "Update a quality requirement",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this quality requirement.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedQualityRequirementRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualityRequirement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "quality_destroy_settings_requirements",
+        "summary": "Delete a quality requirement",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this quality requirement.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "quality"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Requirement deleted"
+          }
+        }
+      }
+    },
+    "/api/quality/settings/requirements/bulk": {
+      "post": {
+        "operationId": "quality_create_settings_requirements_bulk",
+        "summary": "Create a hierarchy of quality requirements",
+        "tags": [
+          "quality"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualityRequirementBulkCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QualityRequirement"
+                  }
                 }
               }
             },
@@ -13221,6 +14026,13 @@
               }
             ],
             "readOnly": true
+          },
+          "attribute_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "readOnly": true
           }
         },
         "required": [
@@ -13238,25 +14050,23 @@
       },
       "AnnotationConflictSeverity": {
         "enum": [
-          "warning",
           "error"
         ],
         "type": "string",
-        "description": "* `warning` - WARNING\n* `error` - ERROR"
+        "description": "* `error` - ERROR"
       },
       "AnnotationConflictType": {
         "enum": [
           "missing_annotation",
           "extra_annotation",
           "mismatching_label",
-          "low_overlap",
           "mismatching_direction",
           "mismatching_attributes",
           "mismatching_groups",
           "covered_annotation"
         ],
         "type": "string",
-        "description": "* `missing_annotation` - MISSING_ANNOTATION\n* `extra_annotation` - EXTRA_ANNOTATION\n* `mismatching_label` - MISMATCHING_LABEL\n* `low_overlap` - LOW_OVERLAP\n* `mismatching_direction` - MISMATCHING_DIRECTION\n* `mismatching_attributes` - MISMATCHING_ATTRIBUTES\n* `mismatching_groups` - MISMATCHING_GROUPS\n* `covered_annotation` - COVERED_ANNOTATION"
+        "description": "* `missing_annotation` - MISSING_ANNOTATION\n* `extra_annotation` - EXTRA_ANNOTATION\n* `mismatching_label` - MISMATCHING_LABEL\n* `mismatching_direction` - MISMATCHING_DIRECTION\n* `mismatching_attributes` - MISMATCHING_ATTRIBUTES\n* `mismatching_groups` - MISMATCHING_GROUPS\n* `covered_annotation` - COVERED_ANNOTATION"
       },
       "AnnotationFileRequest": {
         "type": "object",
@@ -13409,6 +14219,21 @@
           "task"
         ]
       },
+      "AnnotationTypeEnum": {
+        "enum": [
+          "tag",
+          "rectangle",
+          "skeleton",
+          "skeleton_keypoint",
+          "points",
+          "polyline",
+          "mask",
+          "polygon",
+          "ellipse"
+        ],
+        "type": "string",
+        "description": "* `tag` - Tag\n* `rectangle` - Rectangle\n* `skeleton` - Skeleton\n* `skeleton_keypoint` - Skeleton Keypoint\n* `points` - Points\n* `polyline` - Polyline\n* `mask` - Mask\n* `polygon` - Polygon\n* `ellipse` - Ellipse"
+      },
       "AnnotationsStatistics": {
         "type": "object",
         "properties": {
@@ -13483,7 +14308,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/Type837Enum"
+            "$ref": "#/components/schemas/ArType"
           },
           "task": {
             "type": "integer"
@@ -13582,7 +14407,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/Type837Enum"
+            "$ref": "#/components/schemas/ArType"
           },
           "task": {
             "type": "integer"
@@ -13678,6 +14503,17 @@
           "task"
         ]
       },
+      "ArType": {
+        "enum": [
+          "annotate_frame",
+          "annotate_task",
+          "init_tracking",
+          "interact",
+          "track"
+        ],
+        "type": "string",
+        "description": "* `annotate_frame` - annotate_frame\n* `annotate_task` - annotate_task\n* `init_tracking` - init_tracking\n* `interact` - interact\n* `track` - track"
+      },
       "AssetRead": {
         "type": "object",
         "properties": {
@@ -13757,6 +14593,166 @@
           "mutable",
           "name",
           "values"
+        ]
+      },
+      "AttributeComparison": {
+        "type": "object",
+        "properties": {
+          "default": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparisonDefaultRule"
+              }
+            ],
+            "nullable": true
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeComparisonRule"
+            }
+          }
+        }
+      },
+      "AttributeComparisonDefaultRule": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "comparator": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ComparatorEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true
+          }
+        }
+      },
+      "AttributeComparisonDefaultRuleRequest": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "comparator": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ComparatorEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true
+          }
+        }
+      },
+      "AttributeComparisonRequest": {
+        "type": "object",
+        "properties": {
+          "default": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparisonDefaultRuleRequest"
+              }
+            ],
+            "nullable": true
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttributeComparisonRuleRequest"
+            }
+          }
+        }
+      },
+      "AttributeComparisonRule": {
+        "type": "object",
+        "properties": {
+          "spec_id": {
+            "type": "integer",
+            "description": "AttributeSpec id to override."
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "comparator": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ComparatorEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true
+          }
+        },
+        "required": [
+          "enabled",
+          "spec_id"
+        ]
+      },
+      "AttributeComparisonRuleRequest": {
+        "type": "object",
+        "properties": {
+          "spec_id": {
+            "type": "integer",
+            "description": "AttributeSpec id to override."
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "comparator": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ComparatorEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true
+          }
+        },
+        "required": [
+          "enabled",
+          "spec_id"
         ]
       },
       "AttributeRequest": {
@@ -13942,6 +14938,11 @@
         },
         "required": [
           "username"
+        ]
+      },
+      "BlankEnum": {
+        "enum": [
+          ""
         ]
       },
       "Chapter": {
@@ -14250,6 +15251,14 @@
             "readOnly": true
           }
         }
+      },
+      "ComparatorEnum": {
+        "enum": [
+          "exact",
+          "levenshtein"
+        ],
+        "type": "string",
+        "description": "* `exact` - exact\n* `levenshtein` - levenshtein"
       },
       "ConsensusMergeCreateRequest": {
         "type": "object",
@@ -15194,7 +16203,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/Type837Enum"
+            "$ref": "#/components/schemas/ArType"
           },
           "task": {
             "type": "integer"
@@ -15948,6 +16957,13 @@
             ],
             "readOnly": true
           },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobValidationRequirement"
+            },
+            "readOnly": true
+          },
           "report_id": {
             "type": "integer",
             "readOnly": true
@@ -16010,6 +17026,36 @@
             "description": "The list of real (validation) frame ids for honeypots in the job\n"
           }
         }
+      },
+      "JobValidationRequirement": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "metric": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "completed",
+          "metric",
+          "name",
+          "score",
+          "threshold"
+        ]
       },
       "JobValidationStatusEnum": {
         "enum": [
@@ -16189,15 +17235,15 @@
           "attributes": {
             "type": "object",
             "additionalProperties": {
-              "type": "string",
-              "maxLength": 64
+              "type": "string"
             }
           },
           "sublabels": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/SublabelMappingEntry"
-            }
+            },
+            "description": "Label mapping for from the model to the task sublabels within a parent label"
           }
         },
         "required": [
@@ -16215,15 +17261,15 @@
             "type": "object",
             "additionalProperties": {
               "type": "string",
-              "minLength": 1,
-              "maxLength": 64
+              "minLength": 1
             }
           },
           "sublabels": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/SublabelMappingEntryRequest"
-            }
+            },
+            "description": "Label mapping for from the model to the task sublabels within a parent label"
           }
         },
         "required": [
@@ -17702,6 +18748,37 @@
           }
         }
       },
+      "PaginatedQualityRequirementListItemList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityRequirementListItem"
+            }
+          }
+        }
+      },
       "PaginatedQualitySettingsList": {
         "type": "object",
         "required": [
@@ -17822,6 +18899,37 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Usage"
+            }
+          }
+        }
+      },
+      "PaginatedUserGrowthDataList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserGrowthData"
             }
           }
         }
@@ -18349,6 +19457,161 @@
           }
         }
       },
+      "PatchedQualityRequirementRequest": {
+        "type": "object",
+        "properties": {
+          "settings_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 250
+          },
+          "sort_order": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -2147483648
+          },
+          "filter": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "annotation_type": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AnnotationTypeEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "metric": {
+            "nullable": true,
+            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityTargetMetric"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "required_score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Defines the minimal quality requirements in terms of the selected target metric."
+          },
+          "parent_requirement": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The parent requirement. Child requirements inherit comparison settings from it."
+          },
+          "iou_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Used for distinction between matched / unmatched shapes"
+          },
+          "point_size": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval"
+          },
+          "point_size_base": {
+            "nullable": true,
+            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityPointSizeBase"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "line_thickness": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+          },
+          "match_orientation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables polyline orientation comparison"
+          },
+          "line_orientation_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'match_orientation' parameter is true\n"
+          },
+          "match_groups": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables annotation group checks. Only annotations of the same shape type can form matching groups."
+          },
+          "group_match_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'match_groups' parameter is true\n"
+          },
+          "check_covered_annotations": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
+          },
+          "object_visibility_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
+          },
+          "panoptic_comparison": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Use only the visible part of the masks and polygons in comparisons\n"
+          },
+          "attribute_comparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparisonRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "Incremental attribute comparison settings. The default rule applies to attributes without an override; rules override behavior for individual AttributeSpec ids."
+          }
+        }
+      },
       "PatchedQualitySettingsRequest": {
         "type": "object",
         "properties": {
@@ -18361,121 +19624,17 @@
             "type": "boolean",
             "description": "Allow using project settings when computing task quality.\nOnly applicable to task quality settings inside projects\n"
           },
-          "target_metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/QualityTargetMetric"
-              }
-            ],
-            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL"
-          },
-          "target_metric_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "description": "Defines the minimal quality requirements in terms of the selected target metric.\n"
-          },
           "max_validations_per_job": {
             "type": "integer",
             "maximum": 2147483647,
             "minimum": 0,
             "description": "The maximum number of job validation attempts for the job assignee.\nThe job can be automatically accepted if the job quality is above the required\nthreshold, defined by the target threshold parameter.\n"
           },
-          "iou_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.4,
-            "description": "Used for distinction between matched / unmatched shapes"
-          },
-          "oks_sigma": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.09,
-            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval\n"
-          },
-          "point_size_base": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/QualityPointSizeBase"
-              }
-            ],
-            "default": "group_bbox_size",
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe OKS sigma parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE"
-          },
-          "line_thickness": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.01,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
-          },
-          "low_overlap_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.8,
-            "description": "Used for distinction between strong / weak (low_overlap) matches\n"
-          },
-          "compare_line_orientation": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enables or disables polyline orientation comparison"
-          },
-          "line_orientation_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.1,
-            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'compare_line_orientation' parameter is true\n"
-          },
-          "compare_groups": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enables or disables annotation group checks"
-          },
-          "group_match_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.5,
-            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'compare_groups' parameter is true\n"
-          },
-          "check_covered_annotations": {
-            "type": "boolean",
-            "default": true,
-            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
-          },
-          "object_visibility_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.05,
-            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
-          },
-          "panoptic_comparison": {
-            "type": "boolean",
-            "default": true,
-            "description": "Use only the visible part of the masks and polygons in comparisons\n"
-          },
-          "compare_attributes": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enables or disables annotation attribute comparison"
-          },
-          "empty_is_annotated": {
-            "type": "boolean",
-            "default": false,
-            "description": "Consider empty frames annotated as \"empty\". This affects target metrics like\naccuracy in cases there are no annotations. If disabled, frames without annotations\nare counted as not matching (accuracy is 0). If enabled, accuracy will be 1 instead.\nThis will also add virtual annotations to empty frames in the comparison results.\n"
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityRequirementListItemRequest"
+            }
           }
         }
       },
@@ -18554,6 +19713,20 @@
             "type": "integer",
             "writeOnly": true,
             "nullable": true
+          }
+        }
+      },
+      "PatchedUserGrowthDataRequest": {
+        "type": "object",
+        "properties": {
+          "github_prompt_shown": {
+            "type": "boolean"
+          },
+          "github_prompt_support_clicked": {
+            "type": "boolean"
+          },
+          "promotion_notifications_allowed": {
+            "type": "boolean"
           }
         }
       },
@@ -18918,6 +20091,85 @@
           "target"
         ]
       },
+      "QualityReportConfusionMatrix": {
+        "type": "object",
+        "properties": {
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "axes": {
+            "$ref": "#/components/schemas/QualityReportConfusionMatrixAxes"
+          },
+          "precision": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "recall": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "accuracy": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "jaccard_index": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          }
+        },
+        "required": [
+          "accuracy",
+          "axes",
+          "jaccard_index",
+          "labels",
+          "precision",
+          "recall",
+          "rows"
+        ]
+      },
+      "QualityReportConfusionMatrixAxes": {
+        "type": "object",
+        "properties": {
+          "cols": {
+            "type": "string"
+          },
+          "rows": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cols",
+          "rows"
+        ]
+      },
       "QualityReportCreateRequest": {
         "type": "object",
         "properties": {
@@ -18949,13 +20201,136 @@
           "included": {
             "type": "integer",
             "description": "Included job count = total - excluded"
+          },
+          "completed": {
+            "type": "integer",
+            "description": "Jobs with all enabled requirements met"
           }
         },
         "required": [
+          "completed",
           "excluded",
           "included",
           "not_checkable",
           "total"
+        ]
+      },
+      "QualityReportRequirementCalculation": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/QualityReportRequirementCalculationStatusEnum"
+          },
+          "reason": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ReasonEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "QualityReportRequirementCalculationStatusEnum": {
+        "enum": [
+          "computed",
+          "not_computed"
+        ],
+        "type": "string",
+        "description": "* `computed` - computed\n* `not_computed` - not_computed"
+      },
+      "QualityReportRequirementSummaryItem": {
+        "type": "object",
+        "properties": {
+          "requirement_id": {
+            "type": "integer",
+            "nullable": true
+          },
+          "name": {
+            "type": "string"
+          },
+          "metric": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "score_components": {
+            "$ref": "#/components/schemas/QualityReportScoreComponents"
+          },
+          "calculation": {
+            "$ref": "#/components/schemas/QualityReportRequirementCalculation"
+          },
+          "threshold": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "calculation",
+          "metric",
+          "name",
+          "requirement_id",
+          "score",
+          "score_components",
+          "threshold"
+        ]
+      },
+      "QualityReportRequirementsSummary": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "enabled": {
+            "type": "integer"
+          },
+          "completed": {
+            "type": "integer"
+          },
+          "not_computed": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityReportRequirementSummaryItem"
+            }
+          }
+        },
+        "required": [
+          "completed",
+          "enabled",
+          "items",
+          "not_computed",
+          "total"
+        ]
+      },
+      "QualityReportScoreComponents": {
+        "type": "object",
+        "properties": {
+          "valid_count": {
+            "type": "integer"
+          },
+          "missing_count": {
+            "type": "integer"
+          },
+          "extra_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "extra_count",
+          "missing_count",
+          "valid_count"
         ]
       },
       "QualityReportSummary": {
@@ -18964,26 +20339,14 @@
           "total_frames": {
             "type": "integer"
           },
-          "frame_count": {
-            "type": "integer",
-            "description": "Deprecated. Use 'validation_frames' instead"
-          },
           "validation_frames": {
             "type": "integer"
-          },
-          "frame_share": {
-            "type": "number",
-            "format": "double",
-            "description": "Deprecated. Use 'validation_frame_share' instead"
           },
           "validation_frame_share": {
             "type": "number",
             "format": "double"
           },
           "conflict_count": {
-            "type": "integer"
-          },
-          "warning_count": {
             "type": "integer"
           },
           "error_count": {
@@ -18994,30 +20357,6 @@
             "additionalProperties": {
               "type": "integer"
             }
-          },
-          "valid_count": {
-            "type": "integer"
-          },
-          "ds_count": {
-            "type": "integer"
-          },
-          "gt_count": {
-            "type": "integer"
-          },
-          "total_count": {
-            "type": "integer"
-          },
-          "accuracy": {
-            "type": "number",
-            "format": "double"
-          },
-          "precision": {
-            "type": "number",
-            "format": "double"
-          },
-          "recall": {
-            "type": "number",
-            "format": "double"
           },
           "tasks": {
             "allOf": [
@@ -19034,23 +20373,18 @@
               }
             ],
             "description": "Included only in task and project reports"
+          },
+          "requirements": {
+            "$ref": "#/components/schemas/QualityReportRequirementsSummary"
           }
         },
         "required": [
-          "accuracy",
           "conflict_count",
           "conflicts_by_type",
-          "ds_count",
           "error_count",
-          "gt_count",
-          "precision",
-          "recall",
-          "total_count",
           "total_frames",
-          "valid_count",
           "validation_frame_share",
-          "validation_frames",
-          "warning_count"
+          "validation_frames"
         ]
       },
       "QualityReportTarget": {
@@ -19084,15 +20418,878 @@
           "included": {
             "type": "integer",
             "description": "Included task count = total - custom - non_configured - excluded"
+          },
+          "completed": {
+            "type": "integer",
+            "description": "Tasks with all enabled requirements met"
           }
         },
         "required": [
+          "completed",
           "custom",
           "excluded",
           "included",
           "not_configured",
           "total"
         ]
+      },
+      "QualityRequirement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "settings_id": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
+          "project_id": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 250
+          },
+          "is_base": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "sort_order": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -2147483648
+          },
+          "filter": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "annotation_type": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AnnotationTypeEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "metric": {
+            "nullable": true,
+            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityTargetMetric"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "required_score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Defines the minimal quality requirements in terms of the selected target metric."
+          },
+          "parent_requirement": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The parent requirement. Child requirements inherit comparison settings from it."
+          },
+          "effective": {
+            "type": "object",
+            "readOnly": true
+          },
+          "iou_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Used for distinction between matched / unmatched shapes"
+          },
+          "point_size": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval"
+          },
+          "point_size_base": {
+            "nullable": true,
+            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityPointSizeBase"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "line_thickness": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+          },
+          "match_orientation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables polyline orientation comparison"
+          },
+          "line_orientation_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'match_orientation' parameter is true\n"
+          },
+          "match_groups": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables annotation group checks. Only annotations of the same shape type can form matching groups."
+          },
+          "group_match_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'match_groups' parameter is true\n"
+          },
+          "check_covered_annotations": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
+          },
+          "object_visibility_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
+          },
+          "panoptic_comparison": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Use only the visible part of the masks and polygons in comparisons\n"
+          },
+          "attribute_comparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparison"
+              }
+            ],
+            "nullable": true,
+            "description": "Incremental attribute comparison settings. The default rule applies to attributes without an override; rules override behavior for individual AttributeSpec ids."
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "QualityRequirementBulkCreateNodeRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 250
+          },
+          "sort_order": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -2147483648
+          },
+          "filter": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "annotation_type": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AnnotationTypeEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "metric": {
+            "nullable": true,
+            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityTargetMetric"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "required_score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Defines the minimal quality requirements in terms of the selected target metric."
+          },
+          "parent_requirement": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Required for root requirements and forbidden for nested requirements. Must identify an existing requirement from the selected quality settings."
+          },
+          "iou_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Used for distinction between matched / unmatched shapes"
+          },
+          "point_size": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval"
+          },
+          "point_size_base": {
+            "nullable": true,
+            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityPointSizeBase"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "line_thickness": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+          },
+          "match_orientation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables polyline orientation comparison"
+          },
+          "line_orientation_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'match_orientation' parameter is true\n"
+          },
+          "match_groups": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables annotation group checks. Only annotations of the same shape type can form matching groups."
+          },
+          "group_match_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'match_groups' parameter is true\n"
+          },
+          "check_covered_annotations": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
+          },
+          "object_visibility_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
+          },
+          "panoptic_comparison": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Use only the visible part of the masks and polygons in comparisons\n"
+          },
+          "attribute_comparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparisonRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "Incremental attribute comparison settings. The default rule applies to attributes without an override; rules override behavior for individual AttributeSpec ids."
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityRequirementBulkCreateNodeRequest"
+            },
+            "description": "Nested requirements to create. Their parent is determined by their position in the hierarchy."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "QualityRequirementBulkCreateRequest": {
+        "type": "object",
+        "properties": {
+          "settings_id": {
+            "type": "integer"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityRequirementBulkCreateNodeRequest"
+            }
+          }
+        },
+        "required": [
+          "requirements",
+          "settings_id"
+        ]
+      },
+      "QualityRequirementListItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "settings_id": {
+            "type": "integer"
+          },
+          "task_id": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
+          "project_id": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 250
+          },
+          "is_base": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "sort_order": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -2147483648
+          },
+          "filter": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "annotation_type": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AnnotationTypeEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "metric": {
+            "nullable": true,
+            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityTargetMetric"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "required_score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Defines the minimal quality requirements in terms of the selected target metric."
+          },
+          "parent_requirement": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The parent requirement. Child requirements inherit comparison settings from it."
+          },
+          "iou_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Used for distinction between matched / unmatched shapes"
+          },
+          "point_size": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval"
+          },
+          "point_size_base": {
+            "nullable": true,
+            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityPointSizeBase"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "line_thickness": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+          },
+          "match_orientation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables polyline orientation comparison"
+          },
+          "line_orientation_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'match_orientation' parameter is true\n"
+          },
+          "match_groups": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables annotation group checks. Only annotations of the same shape type can form matching groups."
+          },
+          "group_match_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'match_groups' parameter is true\n"
+          },
+          "check_covered_annotations": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
+          },
+          "object_visibility_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
+          },
+          "panoptic_comparison": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Use only the visible part of the masks and polygons in comparisons\n"
+          },
+          "attribute_comparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparison"
+              }
+            ],
+            "nullable": true,
+            "description": "Incremental attribute comparison settings. The default rule applies to attributes without an override; rules override behavior for individual AttributeSpec ids."
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "QualityRequirementListItemRequest": {
+        "type": "object",
+        "properties": {
+          "settings_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 250
+          },
+          "sort_order": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -2147483648
+          },
+          "filter": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "annotation_type": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AnnotationTypeEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "metric": {
+            "nullable": true,
+            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityTargetMetric"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "required_score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Defines the minimal quality requirements in terms of the selected target metric."
+          },
+          "parent_requirement": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The parent requirement. Child requirements inherit comparison settings from it."
+          },
+          "iou_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Used for distinction between matched / unmatched shapes"
+          },
+          "point_size": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval"
+          },
+          "point_size_base": {
+            "nullable": true,
+            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityPointSizeBase"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "line_thickness": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+          },
+          "match_orientation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables polyline orientation comparison"
+          },
+          "line_orientation_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'match_orientation' parameter is true\n"
+          },
+          "match_groups": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables annotation group checks. Only annotations of the same shape type can form matching groups."
+          },
+          "group_match_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'match_groups' parameter is true\n"
+          },
+          "check_covered_annotations": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
+          },
+          "object_visibility_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
+          },
+          "panoptic_comparison": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Use only the visible part of the masks and polygons in comparisons\n"
+          },
+          "attribute_comparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparisonRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "Incremental attribute comparison settings. The default rule applies to attributes without an override; rules override behavior for individual AttributeSpec ids."
+          }
+        }
+      },
+      "QualityRequirementRequest": {
+        "type": "object",
+        "properties": {
+          "settings_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 250
+          },
+          "sort_order": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": -2147483648
+          },
+          "filter": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "annotation_type": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AnnotationTypeEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "metric": {
+            "nullable": true,
+            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityTargetMetric"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "required_score": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Defines the minimal quality requirements in terms of the selected target metric."
+          },
+          "parent_requirement": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The parent requirement. Child requirements inherit comparison settings from it."
+          },
+          "iou_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Used for distinction between matched / unmatched shapes"
+          },
+          "point_size": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval"
+          },
+          "point_size_base": {
+            "nullable": true,
+            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QualityPointSizeBase"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
+          "line_thickness": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+          },
+          "match_orientation": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables polyline orientation comparison"
+          },
+          "line_orientation_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'match_orientation' parameter is true\n"
+          },
+          "match_groups": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Enables or disables annotation group checks. Only annotations of the same shape type can form matching groups."
+          },
+          "group_match_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'match_groups' parameter is true\n"
+          },
+          "check_covered_annotations": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
+          },
+          "object_visibility_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
+          },
+          "panoptic_comparison": {
+            "type": "boolean",
+            "nullable": true,
+            "description": "Use only the visible part of the masks and polygons in comparisons\n"
+          },
+          "attribute_comparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AttributeComparisonRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "Incremental attribute comparison settings. The default rule applies to attributes without an override; rules override behavior for individual AttributeSpec ids."
+          }
+        }
       },
       "QualitySettings": {
         "type": "object",
@@ -19118,121 +21315,17 @@
             "type": "boolean",
             "description": "Allow using project settings when computing task quality.\nOnly applicable to task quality settings inside projects\n"
           },
-          "target_metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/QualityTargetMetric"
-              }
-            ],
-            "description": "The primary metric used for quality estimation\n\n* `accuracy` - ACCURACY\n* `precision` - PRECISION\n* `recall` - RECALL"
-          },
-          "target_metric_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "description": "Defines the minimal quality requirements in terms of the selected target metric.\n"
-          },
           "max_validations_per_job": {
             "type": "integer",
             "maximum": 2147483647,
             "minimum": 0,
             "description": "The maximum number of job validation attempts for the job assignee.\nThe job can be automatically accepted if the job quality is above the required\nthreshold, defined by the target threshold parameter.\n"
           },
-          "iou_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.4,
-            "description": "Used for distinction between matched / unmatched shapes"
-          },
-          "oks_sigma": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.09,
-            "description": "Like IoU threshold, but for points.\nThe percent of the bbox side, used as the radius of the circle around the GT point,\nwhere the checked point is expected to be. For boxes with different width and\nheight, the \"side\" is computed as a geometric mean of the width and height.\nRead more: https://cocodataset.org/#keypoints-eval\n"
-          },
-          "point_size_base": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/QualityPointSizeBase"
-              }
-            ],
-            "default": "group_bbox_size",
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe OKS sigma parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE"
-          },
-          "line_thickness": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.01,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
-          },
-          "low_overlap_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.8,
-            "description": "Used for distinction between strong / weak (low_overlap) matches\n"
-          },
-          "compare_line_orientation": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enables or disables polyline orientation comparison"
-          },
-          "line_orientation_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.1,
-            "description": "The minimal gain in the GT IoU between the given and reversed line directions\nto consider the line inverted.\nOnly used when the 'compare_line_orientation' parameter is true\n"
-          },
-          "compare_groups": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enables or disables annotation group checks"
-          },
-          "group_match_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.5,
-            "description": "Minimal IoU for groups to be considered matching.\nOnly used when the 'compare_groups' parameter is true\n"
-          },
-          "check_covered_annotations": {
-            "type": "boolean",
-            "default": true,
-            "description": "Check for partially-covered annotations, useful in segmentation tasks\n"
-          },
-          "object_visibility_threshold": {
-            "type": "number",
-            "format": "double",
-            "maximum": 1,
-            "minimum": 0,
-            "default": 0.05,
-            "description": "Minimal visible area percent of the spatial annotations (polygons, masks)\nfor reporting covered annotations.\nOnly used when the 'object_visibility_threshold' parameter is true\n"
-          },
-          "panoptic_comparison": {
-            "type": "boolean",
-            "default": true,
-            "description": "Use only the visible part of the masks and polygons in comparisons\n"
-          },
-          "compare_attributes": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enables or disables annotation attribute comparison"
-          },
-          "empty_is_annotated": {
-            "type": "boolean",
-            "default": false,
-            "description": "Consider empty frames annotated as \"empty\". This affects target metrics like\naccuracy in cases there are no annotations. If disabled, frames without annotations\nare counted as not matching (accuracy is 0). If enabled, accuracy will be 1 instead.\nThis will also add virtual annotations to empty frames in the comparison results.\n"
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityRequirementListItem"
+            }
           },
           "created_date": {
             "type": "string",
@@ -19243,6 +21336,32 @@
             "type": "string",
             "format": "date-time",
             "readOnly": true
+          }
+        }
+      },
+      "QualitySettingsRequest": {
+        "type": "object",
+        "properties": {
+          "job_filter": {
+            "type": "string",
+            "description": "A JSON-based logic expression used to filter jobs for quality validation.\nThe filter supports various terms to specify conditions on job: ['assignee', 'id', 'stage', 'state', 'task_id', 'task_name', 'type']\n",
+            "maxLength": 1024
+          },
+          "inherit": {
+            "type": "boolean",
+            "description": "Allow using project settings when computing task quality.\nOnly applicable to task quality settings inside projects\n"
+          },
+          "max_validations_per_job": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "description": "The maximum number of job validation attempts for the job assignee.\nThe job can be automatically accepted if the job quality is above the required\nthreshold, defined by the target threshold parameter.\n"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualityRequirementListItemRequest"
+            }
           }
         }
       },
@@ -19359,6 +21478,15 @@
           "agent_id",
           "progress"
         ]
+      },
+      "ReasonEnum": {
+        "enum": [
+          "no_annotations",
+          "filter_no_matches",
+          "required_attributes_missing"
+        ],
+        "type": "string",
+        "description": "* `no_annotations` - no_annotations\n* `filter_no_matches` - filter_no_matches\n* `required_attributes_missing` - required_attributes_missing"
       },
       "RegisterSerializerWithSubscriptions": {
         "type": "object",
@@ -20791,17 +22919,6 @@
           "type"
         ]
       },
-      "Type837Enum": {
-        "enum": [
-          "annotate_task",
-          "annotate_frame",
-          "interact",
-          "init_tracking",
-          "track"
-        ],
-        "type": "string",
-        "description": "* `annotate_task` - annotate_task\n* `annotate_frame` - annotate_frame\n* `interact` - interact\n* `init_tracking` - init_tracking\n* `track` - track"
-      },
       "Usage": {
         "type": "object",
         "properties": {
@@ -20816,11 +22933,11 @@
             "readOnly": true
           },
           "internal_ai_agent_calls": {
-            "type": "string",
+            "type": "integer",
             "readOnly": true
           },
           "external_ai_agent_calls": {
-            "type": "string",
+            "type": "integer",
             "readOnly": true
           }
         }
@@ -20972,6 +23089,36 @@
         "required": [
           "name"
         ]
+      },
+      "UserGrowthData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "owner": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BasicUser"
+              }
+            ],
+            "readOnly": true
+          },
+          "github_prompt_shown": {
+            "type": "boolean"
+          },
+          "github_prompt_support_clicked": {
+            "type": "boolean"
+          },
+          "github_prompt_enabled": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "promotion_notifications_allowed": {
+            "type": "boolean"
+          }
+        }
       },
       "UserIdentifiers": {
         "type": "object",

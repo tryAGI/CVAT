@@ -11,10 +11,6 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        Csv,
-        /// <summary>
-        ///
-        /// </summary>
         Json,
     }
 
@@ -30,7 +26,6 @@ namespace CVAT
         {
             return value switch
             {
-                QualityRetrieveReportDataFormat.Csv => "csv",
                 QualityRetrieveReportDataFormat.Json => "json",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -42,7 +37,6 @@ namespace CVAT
         {
             return value switch
             {
-                "csv" => QualityRetrieveReportDataFormat.Csv,
                 "json" => QualityRetrieveReportDataFormat.Json,
                 _ => null,
             };

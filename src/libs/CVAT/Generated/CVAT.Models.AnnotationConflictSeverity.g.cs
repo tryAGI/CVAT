@@ -4,7 +4,6 @@
 namespace CVAT
 {
     /// <summary>
-    /// * `warning` - WARNING<br/>
     /// * `error` - ERROR
     /// </summary>
     public enum AnnotationConflictSeverity
@@ -13,10 +12,6 @@ namespace CVAT
         ///
         /// </summary>
         Error,
-        /// <summary>
-        ///
-        /// </summary>
-        Warning,
     }
 
     /// <summary>
@@ -32,7 +27,6 @@ namespace CVAT
             return value switch
             {
                 AnnotationConflictSeverity.Error => "error",
-                AnnotationConflictSeverity.Warning => "warning",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,7 +38,6 @@ namespace CVAT
             return value switch
             {
                 "error" => AnnotationConflictSeverity.Error,
-                "warning" => AnnotationConflictSeverity.Warning,
                 _ => null,
             };
         }

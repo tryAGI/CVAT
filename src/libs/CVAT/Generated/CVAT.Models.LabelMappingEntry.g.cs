@@ -22,7 +22,7 @@ namespace CVAT
         public global::System.Collections.Generic.Dictionary<string, string>? Attributes { get; set; }
 
         /// <summary>
-        ///
+        /// Label mapping for from the model to the task sublabels within a parent label
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sublabels")]
         public global::System.Collections.Generic.Dictionary<string, global::CVAT.SublabelMappingEntry>? Sublabels { get; set; }
@@ -38,7 +38,9 @@ namespace CVAT
         /// </summary>
         /// <param name="name"></param>
         /// <param name="attributes"></param>
-        /// <param name="sublabels"></param>
+        /// <param name="sublabels">
+        /// Label mapping for from the model to the task sublabels within a parent label
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

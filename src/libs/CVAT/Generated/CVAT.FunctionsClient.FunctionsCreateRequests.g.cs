@@ -435,10 +435,10 @@ namespace CVAT
         /// Submit a batch annotation request
         /// </summary>
         /// <param name="type">
-        /// * `annotate_task` - annotate_task<br/>
         /// * `annotate_frame` - annotate_frame<br/>
-        /// * `interact` - interact<br/>
+        /// * `annotate_task` - annotate_task<br/>
         /// * `init_tracking` - init_tracking<br/>
+        /// * `interact` - interact<br/>
         /// * `track` - track
         /// </param>
         /// <param name="task"></param>
@@ -461,7 +461,7 @@ namespace CVAT
         public async global::System.Threading.Tasks.Task<global::CVAT.AnnotationRequest> FunctionsCreateRequestsAsync(
             int task,
             int function,
-            global::CVAT.Type837Enum? type = default,
+            global::CVAT.ArType? type = default,
             int? job = default,
             int? frame = default,
             double? threshold = default,

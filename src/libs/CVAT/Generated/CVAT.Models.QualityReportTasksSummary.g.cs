@@ -44,6 +44,13 @@ namespace CVAT
         public required int Included { get; set; }
 
         /// <summary>
+        /// Tasks with all enabled requirements met
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("completed")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Completed { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -67,6 +74,9 @@ namespace CVAT
         /// <param name="included">
         /// Included task count = total - custom - non_configured - excluded
         /// </param>
+        /// <param name="completed">
+        /// Tasks with all enabled requirements met
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -75,13 +85,15 @@ namespace CVAT
             int custom,
             int notConfigured,
             int excluded,
-            int included)
+            int included,
+            int completed)
         {
             this.Total = total;
             this.Custom = custom;
             this.NotConfigured = notConfigured;
             this.Excluded = excluded;
             this.Included = included;
+            this.Completed = completed;
         }
 
         /// <summary>

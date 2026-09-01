@@ -19,10 +19,6 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        LowOverlap,
-        /// <summary>
-        ///
-        /// </summary>
         MismatchingAttributes,
         /// <summary>
         ///
@@ -56,7 +52,6 @@ namespace CVAT
             {
                 QualityListConflictsType.CoveredAnnotation => "covered_annotation",
                 QualityListConflictsType.ExtraAnnotation => "extra_annotation",
-                QualityListConflictsType.LowOverlap => "low_overlap",
                 QualityListConflictsType.MismatchingAttributes => "mismatching_attributes",
                 QualityListConflictsType.MismatchingDirection => "mismatching_direction",
                 QualityListConflictsType.MismatchingGroups => "mismatching_groups",
@@ -74,7 +69,6 @@ namespace CVAT
             {
                 "covered_annotation" => QualityListConflictsType.CoveredAnnotation,
                 "extra_annotation" => QualityListConflictsType.ExtraAnnotation,
-                "low_overlap" => QualityListConflictsType.LowOverlap,
                 "mismatching_attributes" => QualityListConflictsType.MismatchingAttributes,
                 "mismatching_direction" => QualityListConflictsType.MismatchingDirection,
                 "mismatching_groups" => QualityListConflictsType.MismatchingGroups,

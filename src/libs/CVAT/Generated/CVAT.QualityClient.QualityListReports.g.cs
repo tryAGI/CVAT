@@ -29,6 +29,7 @@ namespace CVAT
             global::System.Net.Http.HttpClient httpClient,
             ref string? xOrganization,
             ref string? filter,
+            ref bool? includeLegacy,
             ref int? jobId,
             ref string? org,
             ref int? orgId,
@@ -44,6 +45,7 @@ namespace CVAT
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? xOrganization,
             string? filter,
+            bool? includeLegacy,
             int? jobId,
             string? org,
             int? orgId,
@@ -79,6 +81,9 @@ namespace CVAT
         /// </summary>
         /// <param name="xOrganization"></param>
         /// <param name="filter"></param>
+        /// <param name="includeLegacy">
+        /// Default Value: false
+        /// </param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
@@ -95,6 +100,7 @@ namespace CVAT
         public async global::System.Threading.Tasks.Task<global::CVAT.PaginatedQualityReportList> QualityListReportsAsync(
             string? xOrganization = default,
             string? filter = default,
+            bool? includeLegacy = default,
             int? jobId = default,
             string? org = default,
             int? orgId = default,
@@ -111,6 +117,7 @@ namespace CVAT
             var __response = await QualityListReportsAsResponseAsync(
                 xOrganization: xOrganization,
                 filter: filter,
+                includeLegacy: includeLegacy,
                 jobId: jobId,
                 org: org,
                 orgId: orgId,
@@ -143,6 +150,9 @@ namespace CVAT
         /// </summary>
         /// <param name="xOrganization"></param>
         /// <param name="filter"></param>
+        /// <param name="includeLegacy">
+        /// Default Value: false
+        /// </param>
         /// <param name="jobId"></param>
         /// <param name="org"></param>
         /// <param name="orgId"></param>
@@ -159,6 +169,7 @@ namespace CVAT
         public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.PaginatedQualityReportList>> QualityListReportsAsResponseAsync(
             string? xOrganization = default,
             string? filter = default,
+            bool? includeLegacy = default,
             int? jobId = default,
             string? org = default,
             int? orgId = default,
@@ -178,6 +189,7 @@ namespace CVAT
                 httpClient: HttpClient,
                 xOrganization: ref xOrganization,
                 filter: ref filter,
+                includeLegacy: ref includeLegacy,
                 jobId: ref jobId,
                 org: ref org,
                 orgId: ref orgId,
@@ -217,6 +229,7 @@ namespace CVAT
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("filter", filter)
+                                .AddOptionalParameter("include_legacy", includeLegacy?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("job_id", jobId?.ToString())
                                 .AddOptionalParameter("org", org)
                                 .AddOptionalParameter("org_id", orgId?.ToString())
@@ -276,6 +289,7 @@ namespace CVAT
                     httpRequestMessage: __httpRequest,
                     xOrganization: xOrganization,
                     filter: filter,
+                    includeLegacy: includeLegacy,
                     jobId: jobId,
                     org: org,
                     orgId: orgId,
