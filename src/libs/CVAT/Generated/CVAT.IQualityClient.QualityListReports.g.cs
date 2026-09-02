@@ -6,17 +6,15 @@ namespace CVAT
     {
         /// <summary>
         /// Method returns a paginated list of quality reports.<br/>
-        /// Please note that children reports are included by default<br/>
-        /// if the "task_id", "project_id" filters are used.<br/>
-        /// If you want to restrict the list of results to a specific report type,<br/>
-        /// use the "target" parameter.<br/>
-        /// The "parent_id" filter includes all the nested reports recursively.<br/>
-        /// For instance, if the "parent_id" is a project report,<br/>
-        /// all the related task and job reports will be returned.<br/>
+        /// The "target" parameter is required when the "task_id" or "project_id"<br/>
+        /// filter is used.<br/>
+        /// The "parent_id" filter requires the "target" parameter. Valid parent<br/>
+        /// report target to requested target combinations are: task to job,<br/>
+        /// project to task, and project to job.<br/>
         /// Please note that a report can be reused in several parent reports,<br/>
         /// but the "parent_id" field in responses will include only the first parent report id.<br/>
-        /// The "parent_id" filter still returns all the relevant nested reports,<br/>
-        /// even though the response "parent_id" values may be different from the requested one.
+        /// Filtering project report children with target "job" still returns all the relevant<br/>
+        /// nested job reports, even though their response "parent_id" values refer to task reports.
         /// </summary>
         /// <param name="xOrganization"></param>
         /// <param name="filter"></param>
@@ -54,17 +52,15 @@ namespace CVAT
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Method returns a paginated list of quality reports.<br/>
-        /// Please note that children reports are included by default<br/>
-        /// if the "task_id", "project_id" filters are used.<br/>
-        /// If you want to restrict the list of results to a specific report type,<br/>
-        /// use the "target" parameter.<br/>
-        /// The "parent_id" filter includes all the nested reports recursively.<br/>
-        /// For instance, if the "parent_id" is a project report,<br/>
-        /// all the related task and job reports will be returned.<br/>
+        /// The "target" parameter is required when the "task_id" or "project_id"<br/>
+        /// filter is used.<br/>
+        /// The "parent_id" filter requires the "target" parameter. Valid parent<br/>
+        /// report target to requested target combinations are: task to job,<br/>
+        /// project to task, and project to job.<br/>
         /// Please note that a report can be reused in several parent reports,<br/>
         /// but the "parent_id" field in responses will include only the first parent report id.<br/>
-        /// The "parent_id" filter still returns all the relevant nested reports,<br/>
-        /// even though the response "parent_id" values may be different from the requested one.
+        /// Filtering project report children with target "job" still returns all the relevant<br/>
+        /// nested job reports, even though their response "parent_id" values refer to task reports.
         /// </summary>
         /// <param name="xOrganization"></param>
         /// <param name="filter"></param>
