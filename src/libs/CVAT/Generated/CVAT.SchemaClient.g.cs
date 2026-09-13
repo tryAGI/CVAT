@@ -34,7 +34,7 @@ namespace CVAT
         /// <inheritdoc/>
         public global::CVAT.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::CVAT.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::CVAT.SchemaSourceGenerationContext.Default);
 
         /// <summary>
         ///
