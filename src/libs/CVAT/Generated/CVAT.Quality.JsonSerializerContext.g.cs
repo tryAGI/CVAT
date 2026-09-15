@@ -23,6 +23,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicUser))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AggregationEnum), TypeInfoPropertyName = "AggregationEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTarget), TypeInfoPropertyName = "QualityReportTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflict))]
@@ -83,6 +84,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportConfusionMatrix))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportConfusionMatrixAxes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricSummary))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportJobsSummary))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportRequirementCalculation))]
@@ -95,6 +97,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.QualityReportRequirementSummaryItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTasksSummary))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum), TypeInfoPropertyName = "QualityReportTargetMetricSummaryMetricEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricValues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityRequirementBulkCreateNodeRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.QualityRequirementBulkCreateNodeRequest>))]
@@ -113,6 +117,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AggregationEnum?), TypeInfoPropertyName = "NullableAggregationEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTarget?), TypeInfoPropertyName = "NullableQualityReportTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictType?), TypeInfoPropertyName = "NullableAnnotationConflictType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictSeverity?), TypeInfoPropertyName = "NullableAnnotationConflictSeverity2")]
@@ -134,6 +139,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportRequirementCalculationStatusEnum?), TypeInfoPropertyName = "NullableQualityReportRequirementCalculationStatusEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ReasonEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfReasonEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ReasonEnum?), TypeInfoPropertyName = "NullableReasonEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum?), TypeInfoPropertyName = "NullableQualityReportTargetMetricSummaryMetricEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListConflictsSeverity?), TypeInfoPropertyName = "NullableQualityListConflictsSeverity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListConflictsType?), TypeInfoPropertyName = "NullableQualityListConflictsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListJobValidationsStatus?), TypeInfoPropertyName = "NullableQualityListJobValidationsStatus2")]
@@ -249,7 +255,11 @@ namespace CVAT
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::CVAT.AnnotationConflictAnnotationType)
+                    typeToConvert == typeof(global::CVAT.AggregationEnum)
+
+                    || typeToConvert == typeof(global::CVAT.AggregationEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.AnnotationConflictAnnotationType)
 
                     || typeToConvert == typeof(global::CVAT.AnnotationConflictAnnotationType?)
 
@@ -292,6 +302,10 @@ namespace CVAT
                     || typeToConvert == typeof(global::CVAT.QualityReportTarget)
 
                     || typeToConvert == typeof(global::CVAT.QualityReportTarget?)
+
+                    || typeToConvert == typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum)
+
+                    || typeToConvert == typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum?)
 
                     || typeToConvert == typeof(global::CVAT.QualityTargetMetric)
 
@@ -342,6 +356,16 @@ namespace CVAT
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
+                if (typeToConvert == typeof(global::CVAT.AggregationEnum))
+                {
+                    return new global::CVAT.JsonConverters.AggregationEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.AggregationEnum?))
+                {
+                    return new global::CVAT.JsonConverters.AggregationEnumNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::CVAT.AnnotationConflictAnnotationType))
                 {
                     return new global::CVAT.JsonConverters.AnnotationConflictAnnotationTypeJsonConverter();
@@ -450,6 +474,16 @@ namespace CVAT
                 if (typeToConvert == typeof(global::CVAT.QualityReportTarget?))
                 {
                     return new global::CVAT.JsonConverters.QualityReportTargetNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum))
+                {
+                    return new global::CVAT.JsonConverters.QualityReportTargetMetricSummaryMetricEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum?))
+                {
+                    return new global::CVAT.JsonConverters.QualityReportTargetMetricSummaryMetricEnumNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.QualityTargetMetric))

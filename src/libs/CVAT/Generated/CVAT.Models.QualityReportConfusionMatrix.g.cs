@@ -54,6 +54,19 @@ namespace CVAT
         public global::System.Collections.Generic.IList<double>? JaccardIndex { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dice")]
+        public global::System.Collections.Generic.IList<double>? Dice { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target_metric_summary")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::CVAT.QualityReportTargetMetricSummary TargetMetricSummary { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -65,10 +78,12 @@ namespace CVAT
         /// <param name="labels"></param>
         /// <param name="rows"></param>
         /// <param name="axes"></param>
+        /// <param name="targetMetricSummary"></param>
         /// <param name="precision"></param>
         /// <param name="recall"></param>
         /// <param name="accuracy"></param>
         /// <param name="jaccardIndex"></param>
+        /// <param name="dice"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -76,10 +91,12 @@ namespace CVAT
             global::System.Collections.Generic.IList<string> labels,
             global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>> rows,
             global::CVAT.QualityReportConfusionMatrixAxes axes,
+            global::CVAT.QualityReportTargetMetricSummary targetMetricSummary,
             global::System.Collections.Generic.IList<double>? precision,
             global::System.Collections.Generic.IList<double>? recall,
             global::System.Collections.Generic.IList<double>? accuracy,
-            global::System.Collections.Generic.IList<double>? jaccardIndex)
+            global::System.Collections.Generic.IList<double>? jaccardIndex,
+            global::System.Collections.Generic.IList<double>? dice)
         {
             this.Labels = labels ?? throw new global::System.ArgumentNullException(nameof(labels));
             this.Rows = rows ?? throw new global::System.ArgumentNullException(nameof(rows));
@@ -88,6 +105,8 @@ namespace CVAT
             this.Recall = recall;
             this.Accuracy = accuracy;
             this.JaccardIndex = jaccardIndex;
+            this.Dice = dice;
+            this.TargetMetricSummary = targetMetricSummary ?? throw new global::System.ArgumentNullException(nameof(targetMetricSummary));
         }
 
         /// <summary>

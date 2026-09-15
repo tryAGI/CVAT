@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace CVAT
@@ -66,6 +68,7 @@ namespace CVAT
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("changed_fields")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public string? ChangedFields { get; set; }
 
         /// <summary>
@@ -116,9 +119,6 @@ namespace CVAT
         /// <param name="updatedDate">
         /// Included only in responses
         /// </param>
-        /// <param name="changedFields">
-        /// Included only in responses
-        /// </param>
         /// <param name="request">
         /// Included only in responses
         /// </param>
@@ -138,7 +138,6 @@ namespace CVAT
             int? requestDuration,
             global::System.DateTime? createdDate,
             global::System.DateTime? updatedDate,
-            string? changedFields,
             object? request,
             object? response)
         {
@@ -151,7 +150,6 @@ namespace CVAT
             this.RequestDuration = requestDuration;
             this.CreatedDate = createdDate;
             this.UpdatedDate = updatedDate;
-            this.ChangedFields = changedFields;
             this.Request = request;
             this.Response = response;
         }
