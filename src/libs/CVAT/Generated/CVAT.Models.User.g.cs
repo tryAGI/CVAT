@@ -89,6 +89,13 @@ namespace CVAT
         public bool? HasAnalyticsAccess { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_via")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>))]
+        public global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? CreatedVia { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -128,6 +135,9 @@ namespace CVAT
         /// <param name="hasAnalyticsAccess">
         /// Included only in responses
         /// </param>
+        /// <param name="createdVia">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -144,7 +154,8 @@ namespace CVAT
             bool? isActive,
             global::System.DateTime? lastLogin,
             global::System.DateTime? dateJoined,
-            bool? hasAnalyticsAccess)
+            bool? hasAnalyticsAccess,
+            global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? createdVia)
         {
             this.Url = url;
             this.Id = id;
@@ -159,6 +170,7 @@ namespace CVAT
             this.LastLogin = lastLogin;
             this.DateJoined = dateJoined;
             this.HasAnalyticsAccess = hasAnalyticsAccess;
+            this.CreatedVia = createdVia;
         }
 
         /// <summary>

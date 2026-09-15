@@ -44,7 +44,19 @@ namespace CVAT
         /// The primary metric used for quality estimation<br/>
         /// * `accuracy` - ACCURACY<br/>
         /// * `precision` - PRECISION<br/>
-        /// * `recall` - RECALL
+        /// * `recall` - RECALL<br/>
+        /// * `jaccard_index` - JACCARD_INDEX<br/>
+        /// * `dice` - DICE<br/>
+        /// * `mean_accuracy` - MEAN_ACCURACY<br/>
+        /// * `mean_precision` - MEAN_PRECISION<br/>
+        /// * `mean_recall` - MEAN_RECALL<br/>
+        /// * `mean_jaccard_index` - MEAN_JACCARD_INDEX<br/>
+        /// * `mean_dice` - MEAN_DICE<br/>
+        /// * `label_accuracy` - LABEL_ACCURACY<br/>
+        /// * `label_precision` - LABEL_PRECISION<br/>
+        /// * `label_recall` - LABEL_RECALL<br/>
+        /// * `label_jaccard_index` - LABEL_JACCARD_INDEX<br/>
+        /// * `label_dice` - LABEL_DICE
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>))]
@@ -181,7 +193,19 @@ namespace CVAT
         /// The primary metric used for quality estimation<br/>
         /// * `accuracy` - ACCURACY<br/>
         /// * `precision` - PRECISION<br/>
-        /// * `recall` - RECALL
+        /// * `recall` - RECALL<br/>
+        /// * `jaccard_index` - JACCARD_INDEX<br/>
+        /// * `dice` - DICE<br/>
+        /// * `mean_accuracy` - MEAN_ACCURACY<br/>
+        /// * `mean_precision` - MEAN_PRECISION<br/>
+        /// * `mean_recall` - MEAN_RECALL<br/>
+        /// * `mean_jaccard_index` - MEAN_JACCARD_INDEX<br/>
+        /// * `mean_dice` - MEAN_DICE<br/>
+        /// * `label_accuracy` - LABEL_ACCURACY<br/>
+        /// * `label_precision` - LABEL_PRECISION<br/>
+        /// * `label_recall` - LABEL_RECALL<br/>
+        /// * `label_jaccard_index` - LABEL_JACCARD_INDEX<br/>
+        /// * `label_dice` - LABEL_DICE
         /// </param>
         /// <param name="requiredScore">
         /// Defines the minimal quality requirements in terms of the selected target metric.

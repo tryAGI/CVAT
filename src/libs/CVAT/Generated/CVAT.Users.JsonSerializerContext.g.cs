@@ -24,15 +24,21 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicUser))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum), TypeInfoPropertyName = "NullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CreatedViaEnum), TypeInfoPropertyName = "CreatedViaEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.MetaUser), TypeInfoPropertyName = "MetaUser2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.User))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PaginatedMetaUserList))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.MetaUser>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedUserRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfCreatedViaEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum?), TypeInfoPropertyName = "NullableNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CreatedViaEnum?), TypeInfoPropertyName = "NullableCreatedViaEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.MetaUser?), TypeInfoPropertyName = "NullableMetaUser2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfCreatedViaEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.MetaUser>))]
     internal sealed partial class UsersSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -80,7 +86,9 @@ namespace CVAT
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::CVAT.JsonConverters.MetaUserJsonConverter());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.UnixTimestampJsonConverter());
+            options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
 
         private static global::System.Text.Json.JsonSerializerOptions CreateDefaultOptions()
@@ -93,6 +101,48 @@ namespace CVAT
             AddConverters(options);
 
             return options;
+        }
+
+
+        private sealed class LazyEnumJsonConverterFactory : global::System.Text.Json.Serialization.JsonConverterFactory
+        {
+            public override bool CanConvert(global::System.Type typeToConvert)
+            {
+                return
+                    typeToConvert == typeof(global::CVAT.CreatedViaEnum)
+
+                    || typeToConvert == typeof(global::CVAT.CreatedViaEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.NullEnum)
+
+                    || typeToConvert == typeof(global::CVAT.NullEnum?);
+            }
+
+            public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
+                global::System.Type typeToConvert,
+                global::System.Text.Json.JsonSerializerOptions options)
+            {
+                if (typeToConvert == typeof(global::CVAT.CreatedViaEnum))
+                {
+                    return new global::CVAT.JsonConverters.CreatedViaEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.CreatedViaEnum?))
+                {
+                    return new global::CVAT.JsonConverters.CreatedViaEnumNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.NullEnum))
+                {
+                    return new global::CVAT.JsonConverters.NullEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.NullEnum?))
+                {
+                    return new global::CVAT.JsonConverters.NullEnumNullableJsonConverter();
+                }
+                throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
+            }
         }
 
         private sealed class LazyChunkResolver : global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver

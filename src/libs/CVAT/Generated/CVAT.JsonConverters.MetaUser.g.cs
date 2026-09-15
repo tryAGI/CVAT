@@ -28,6 +28,7 @@ namespace CVAT.JsonConverters
             }
 
             var __score0 = 0;
+            if (__jsonProps.Contains("created_via")) __score0++;
             if (__jsonProps.Contains("date_joined")) __score0++;
             if (__jsonProps.Contains("email")) __score0++;
             if (__jsonProps.Contains("first_name")) __score0++;

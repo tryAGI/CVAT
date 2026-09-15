@@ -22,11 +22,26 @@ namespace CVAT
         public required string Name { get; set; }
 
         /// <summary>
-        ///
+        /// * `accuracy` - ACCURACY<br/>
+        /// * `precision` - PRECISION<br/>
+        /// * `recall` - RECALL<br/>
+        /// * `jaccard_index` - JACCARD_INDEX<br/>
+        /// * `dice` - DICE<br/>
+        /// * `mean_accuracy` - MEAN_ACCURACY<br/>
+        /// * `mean_precision` - MEAN_PRECISION<br/>
+        /// * `mean_recall` - MEAN_RECALL<br/>
+        /// * `mean_jaccard_index` - MEAN_JACCARD_INDEX<br/>
+        /// * `mean_dice` - MEAN_DICE<br/>
+        /// * `label_accuracy` - LABEL_ACCURACY<br/>
+        /// * `label_precision` - LABEL_PRECISION<br/>
+        /// * `label_recall` - LABEL_RECALL<br/>
+        /// * `label_jaccard_index` - LABEL_JACCARD_INDEX<br/>
+        /// * `label_dice` - LABEL_DICE
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metric")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.QualityTargetMetricJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Metric { get; set; }
+        public required global::CVAT.QualityTargetMetric Metric { get; set; }
 
         /// <summary>
         ///
@@ -65,7 +80,23 @@ namespace CVAT
         /// Initializes a new instance of the <see cref="QualityReportRequirementSummaryItem" /> class.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="metric"></param>
+        /// <param name="metric">
+        /// * `accuracy` - ACCURACY<br/>
+        /// * `precision` - PRECISION<br/>
+        /// * `recall` - RECALL<br/>
+        /// * `jaccard_index` - JACCARD_INDEX<br/>
+        /// * `dice` - DICE<br/>
+        /// * `mean_accuracy` - MEAN_ACCURACY<br/>
+        /// * `mean_precision` - MEAN_PRECISION<br/>
+        /// * `mean_recall` - MEAN_RECALL<br/>
+        /// * `mean_jaccard_index` - MEAN_JACCARD_INDEX<br/>
+        /// * `mean_dice` - MEAN_DICE<br/>
+        /// * `label_accuracy` - LABEL_ACCURACY<br/>
+        /// * `label_precision` - LABEL_PRECISION<br/>
+        /// * `label_recall` - LABEL_RECALL<br/>
+        /// * `label_jaccard_index` - LABEL_JACCARD_INDEX<br/>
+        /// * `label_dice` - LABEL_DICE
+        /// </param>
         /// <param name="scoreComponents"></param>
         /// <param name="calculation"></param>
         /// <param name="threshold"></param>
@@ -76,7 +107,7 @@ namespace CVAT
 #endif
         public QualityReportRequirementSummaryItem(
             string name,
-            string metric,
+            global::CVAT.QualityTargetMetric metric,
             global::CVAT.QualityReportScoreComponents scoreComponents,
             global::CVAT.QualityReportRequirementCalculation calculation,
             double threshold,
@@ -85,7 +116,7 @@ namespace CVAT
         {
             this.RequirementId = requirementId;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Metric = metric ?? throw new global::System.ArgumentNullException(nameof(metric));
+            this.Metric = metric;
             this.Score = score;
             this.ScoreComponents = scoreComponents ?? throw new global::System.ArgumentNullException(nameof(scoreComponents));
             this.Calculation = calculation ?? throw new global::System.ArgumentNullException(nameof(calculation));
