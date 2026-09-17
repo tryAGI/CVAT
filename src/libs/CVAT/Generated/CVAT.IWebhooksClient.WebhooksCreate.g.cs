@@ -50,7 +50,8 @@ namespace CVAT
         /// <param name="description"></param>
         /// <param name="type">
         /// * `organization` - ORGANIZATION<br/>
-        /// * `project` - PROJECT
+        /// * `project` - PROJECT<br/>
+        /// * `server` - SERVER
         /// </param>
         /// <param name="contentType">
         /// * `application/json` - JSON

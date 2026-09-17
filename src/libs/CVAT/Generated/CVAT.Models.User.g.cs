@@ -91,6 +91,12 @@ namespace CVAT
         /// <summary>
         /// Included only in responses
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("email_verified")]
+        public bool? EmailVerified { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_via")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>))]
         public global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? CreatedVia { get; set; }
@@ -135,6 +141,9 @@ namespace CVAT
         /// <param name="hasAnalyticsAccess">
         /// Included only in responses
         /// </param>
+        /// <param name="emailVerified">
+        /// Included only in responses
+        /// </param>
         /// <param name="createdVia">
         /// Included only in responses
         /// </param>
@@ -155,6 +164,7 @@ namespace CVAT
             global::System.DateTime? lastLogin,
             global::System.DateTime? dateJoined,
             bool? hasAnalyticsAccess,
+            bool? emailVerified,
             global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? createdVia)
         {
             this.Url = url;
@@ -170,6 +180,7 @@ namespace CVAT
             this.LastLogin = lastLogin;
             this.DateJoined = dateJoined;
             this.HasAnalyticsAccess = hasAnalyticsAccess;
+            this.EmailVerified = emailVerified;
             this.CreatedVia = createdVia;
         }
 

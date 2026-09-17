@@ -6,10 +6,15 @@ namespace CVAT
     /// <summary>
     /// * `organization` - ORGANIZATION<br/>
     /// * `project` - PROJECT<br/>
-    /// * `server` - SERVER
+    /// * `server` - SERVER<br/>
+    /// * `all` - ALL
     /// </summary>
-    public enum WebhookType
+    public enum AllWebhookType
     {
+        /// <summary>
+        ///
+        /// </summary>
+        All,
         /// <summary>
         ///
         /// </summary>
@@ -27,31 +32,33 @@ namespace CVAT
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class WebhookTypeExtensions
+    public static class AllWebhookTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this WebhookType value)
+        public static string ToValueString(this AllWebhookType value)
         {
             return value switch
             {
-                WebhookType.Organization => "organization",
-                WebhookType.Project => "project",
-                WebhookType.Server => "server",
+                AllWebhookType.All => "all",
+                AllWebhookType.Organization => "organization",
+                AllWebhookType.Project => "project",
+                AllWebhookType.Server => "server",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static WebhookType? ToEnum(string value)
+        public static AllWebhookType? ToEnum(string value)
         {
             return value switch
             {
-                "organization" => WebhookType.Organization,
-                "project" => WebhookType.Project,
-                "server" => WebhookType.Server,
+                "all" => AllWebhookType.All,
+                "organization" => AllWebhookType.Organization,
+                "project" => AllWebhookType.Project,
+                "server" => AllWebhookType.Server,
                 _ => null,
             };
         }

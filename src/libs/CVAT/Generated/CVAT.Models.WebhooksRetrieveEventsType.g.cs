@@ -4,12 +4,14 @@
 namespace CVAT
 {
     /// <summary>
-    /// * `organization` - ORGANIZATION<br/>
-    /// * `project` - PROJECT<br/>
-    /// * `server` - SERVER
+    /// Default Value: all
     /// </summary>
-    public enum WebhookType
+    public enum WebhooksRetrieveEventsType
     {
+        /// <summary>
+        ///
+        /// </summary>
+        All,
         /// <summary>
         ///
         /// </summary>
@@ -27,31 +29,33 @@ namespace CVAT
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class WebhookTypeExtensions
+    public static class WebhooksRetrieveEventsTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this WebhookType value)
+        public static string ToValueString(this WebhooksRetrieveEventsType value)
         {
             return value switch
             {
-                WebhookType.Organization => "organization",
-                WebhookType.Project => "project",
-                WebhookType.Server => "server",
+                WebhooksRetrieveEventsType.All => "all",
+                WebhooksRetrieveEventsType.Organization => "organization",
+                WebhooksRetrieveEventsType.Project => "project",
+                WebhooksRetrieveEventsType.Server => "server",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static WebhookType? ToEnum(string value)
+        public static WebhooksRetrieveEventsType? ToEnum(string value)
         {
             return value switch
             {
-                "organization" => WebhookType.Organization,
-                "project" => WebhookType.Project,
-                "server" => WebhookType.Server,
+                "all" => WebhooksRetrieveEventsType.All,
+                "organization" => WebhooksRetrieveEventsType.Organization,
+                "project" => WebhooksRetrieveEventsType.Project,
+                "server" => WebhooksRetrieveEventsType.Server,
                 _ => null,
             };
         }

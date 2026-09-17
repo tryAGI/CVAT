@@ -16,6 +16,10 @@ namespace CVAT
         ///
         /// </summary>
         Project,
+        /// <summary>
+        ///
+        /// </summary>
+        Server,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace CVAT
             {
                 WebhooksListType.Organization => "organization",
                 WebhooksListType.Project => "project",
+                WebhooksListType.Server => "server",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace CVAT
             {
                 "organization" => WebhooksListType.Organization,
                 "project" => WebhooksListType.Project,
+                "server" => WebhooksListType.Server,
                 _ => null,
             };
         }

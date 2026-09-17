@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.75.0 (2.0)",
+    "version": "2.76.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -5957,6 +5957,27 @@
         ],
         "responses": {
           "200": {
+            "headers": {
+              "X-Checksum": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Data checksum, applicable for chunks only"
+              },
+              "X-Chunk-Size": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Decoded chunk size in bytes, applicable for chunks only"
+              },
+              "X-Updated-Date": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "description": "Data update date, applicable for chunks only"
+              }
+            },
             "content": {
               "application/vnd.cvat+json": {
                 "schema": {
@@ -5968,6 +5989,27 @@
             "description": "Data of a specific type"
           },
           "206": {
+            "headers": {
+              "X-Checksum": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Data checksum, applicable for chunks only"
+              },
+              "X-Chunk-Size": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Decoded chunk size in bytes, applicable for chunks only"
+              },
+              "X-Updated-Date": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "description": "Data update date, applicable for chunks only"
+              }
+            },
             "content": {
               "application/vnd.cvat+json": {
                 "schema": {
@@ -5979,6 +6021,14 @@
             "description": "Partial chunk data"
           },
           "416": {
+            "headers": {
+              "X-Chunk-Size": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Decoded chunk size in bytes, applicable for chunks only"
+              }
+            },
             "description": "Requested range is not satisfiable"
           }
         }
@@ -12049,6 +12099,12 @@
                 },
                 "description": "Data checksum, applicable for chunks only"
               },
+              "X-Chunk-Size": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Decoded chunk size in bytes, applicable for chunks only"
+              },
               "X-Updated-Date": {
                 "schema": {
                   "type": "string",
@@ -12067,6 +12123,12 @@
                 },
                 "description": "Data checksum, applicable for chunks only"
               },
+              "X-Chunk-Size": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Decoded chunk size in bytes, applicable for chunks only"
+              },
               "X-Updated-Date": {
                 "schema": {
                   "type": "string",
@@ -12078,6 +12140,14 @@
             "description": "Partial chunk data"
           },
           "416": {
+            "headers": {
+              "X-Chunk-Size": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Decoded chunk size in bytes, applicable for chunks only"
+              }
+            },
             "description": "Requested range is not satisfiable"
           }
         }
@@ -13304,7 +13374,8 @@
               "type": "string",
               "enum": [
                 "organization",
-                "project"
+                "project",
+                "server"
               ]
             }
           }
@@ -13841,7 +13912,14 @@
             "in": "query",
             "name": "type",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "all",
+                "organization",
+                "project",
+                "server"
+              ],
+              "default": "all"
             },
             "description": "Type of webhook"
           }
@@ -14006,6 +14084,16 @@
         ],
         "type": "string",
         "description": "* `micro` - micro\n* `mean` - mean\n* `label` - label"
+      },
+      "AllWebhookType": {
+        "enum": [
+          "organization",
+          "project",
+          "server",
+          "all"
+        ],
+        "type": "string",
+        "description": "* `organization` - ORGANIZATION\n* `project` - PROJECT\n* `server` - SERVER\n* `all` - ALL"
       },
       "AnalyticsReport": {
         "type": "object",
@@ -15889,7 +15977,7 @@
         "type": "object",
         "properties": {
           "webhook_type": {
-            "$ref": "#/components/schemas/WebhookType"
+            "$ref": "#/components/schemas/AllWebhookType"
           },
           "events": {
             "type": "array",
@@ -15917,25 +16005,30 @@
           "create:issue",
           "create:job",
           "create:membership",
+          "create:organization",
           "create:project",
           "create:task",
+          "create:user",
           "delete:comment",
           "delete:invitation",
           "delete:issue",
           "delete:job",
           "delete:membership",
+          "delete:organization",
           "delete:project",
           "delete:task",
+          "delete:user",
           "update:comment",
           "update:issue",
           "update:job",
           "update:membership",
           "update:organization",
           "update:project",
-          "update:task"
+          "update:task",
+          "update:user"
         ],
         "type": "string",
-        "description": "* `completed:request[calculate:quality]` - COMPLETED:REQUEST[CALCULATE:QUALITY]\n* `completed:request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]\n* `completed:request[export:annotations]` - COMPLETED:REQUEST[EXPORT:ANNOTATIONS]\n* `completed:request[export:backup]` - COMPLETED:REQUEST[EXPORT:BACKUP]\n* `completed:request[export:dataset]` - COMPLETED:REQUEST[EXPORT:DATASET]\n* `completed:request[merge:job]` - COMPLETED:REQUEST[MERGE:JOB]\n* `completed:request[merge:task]` - COMPLETED:REQUEST[MERGE:TASK]\n* `create:comment` - CREATE:COMMENT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK"
+        "description": "* `completed:request[calculate:quality]` - COMPLETED:REQUEST[CALCULATE:QUALITY]\n* `completed:request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]\n* `completed:request[export:annotations]` - COMPLETED:REQUEST[EXPORT:ANNOTATIONS]\n* `completed:request[export:backup]` - COMPLETED:REQUEST[EXPORT:BACKUP]\n* `completed:request[export:dataset]` - COMPLETED:REQUEST[EXPORT:DATASET]\n* `completed:request[merge:job]` - COMPLETED:REQUEST[MERGE:JOB]\n* `completed:request[merge:task]` - COMPLETED:REQUEST[MERGE:TASK]\n* `create:comment` - CREATE:COMMENT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:organization` - CREATE:ORGANIZATION\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `create:user` - CREATE:USER\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:organization` - DELETE:ORGANIZATION\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `delete:user` - DELETE:USER\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK\n* `update:user` - UPDATE:USER"
       },
       "FileInfo": {
         "type": "object",
@@ -17924,6 +18017,15 @@
           },
           "limits": {
             "$ref": "#/components/schemas/LimitsField"
+          },
+          "access_until_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expired": {
+            "type": "boolean",
+            "readOnly": true
           }
         },
         "required": [
@@ -17947,6 +18049,11 @@
           },
           "limits": {
             "$ref": "#/components/schemas/LimitsFieldRequest"
+          },
+          "access_until_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "required": [
@@ -19451,6 +19558,11 @@
           },
           "limits": {
             "$ref": "#/components/schemas/LimitsFieldRequest"
+          },
+          "access_until_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         }
       },
@@ -23172,6 +23284,12 @@
           },
           "has_analytics_access": {
             "type": "boolean",
+            "readOnly": true,
+            "nullable": true
+          },
+          "email_verified": {
+            "type": "boolean",
+            "nullable": true,
             "readOnly": true
           },
           "created_via": {
@@ -23531,10 +23649,11 @@
       "WebhookType": {
         "enum": [
           "organization",
-          "project"
+          "project",
+          "server"
         ],
         "type": "string",
-        "description": "* `organization` - ORGANIZATION\n* `project` - PROJECT"
+        "description": "* `organization` - ORGANIZATION\n* `project` - PROJECT\n* `server` - SERVER"
       },
       "WebhookWriteRequest": {
         "type": "object",

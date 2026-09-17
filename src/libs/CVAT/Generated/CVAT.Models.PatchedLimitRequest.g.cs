@@ -37,6 +37,12 @@ namespace CVAT
         public global::CVAT.LimitsFieldRequest? Limits { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("access_until_date")]
+        public global::System.DateTime? AccessUntilDate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -56,6 +62,7 @@ namespace CVAT
         /// The serializer validates limits field names and their value types.<br/>
         /// Null allowed in order to indicate unlimited value.
         /// </param>
+        /// <param name="accessUntilDate"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -63,12 +70,14 @@ namespace CVAT
             int? user,
             int? org,
             global::CVAT.LimitTypeEnum? type,
-            global::CVAT.LimitsFieldRequest? limits)
+            global::CVAT.LimitsFieldRequest? limits,
+            global::System.DateTime? accessUntilDate)
         {
             this.User = user;
             this.Org = org;
             this.Type = type;
             this.Limits = limits;
+            this.AccessUntilDate = accessUntilDate;
         }
 
         /// <summary>
