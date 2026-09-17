@@ -23,7 +23,8 @@ namespace CVAT
 
         /// <summary>
         /// * `organization` - ORGANIZATION<br/>
-        /// * `project` - PROJECT
+        /// * `project` - PROJECT<br/>
+        /// * `server` - SERVER
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.WebhookTypeJsonConverter))]
@@ -79,7 +80,8 @@ namespace CVAT
         /// <param name="targetUrl"></param>
         /// <param name="type">
         /// * `organization` - ORGANIZATION<br/>
-        /// * `project` - PROJECT
+        /// * `project` - PROJECT<br/>
+        /// * `server` - SERVER
         /// </param>
         /// <param name="description"></param>
         /// <param name="contentType">

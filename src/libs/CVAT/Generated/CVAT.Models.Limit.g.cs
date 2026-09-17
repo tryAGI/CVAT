@@ -45,6 +45,18 @@ namespace CVAT
         public required global::CVAT.LimitsField Limits { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("access_until_date")]
+        public global::System.DateTime? AccessUntilDate { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expired")]
+        public bool? Expired { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -67,6 +79,10 @@ namespace CVAT
         /// </param>
         /// <param name="user"></param>
         /// <param name="org"></param>
+        /// <param name="accessUntilDate"></param>
+        /// <param name="expired">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -75,13 +91,17 @@ namespace CVAT
             global::CVAT.LimitsField limits,
             int? id,
             int? user,
-            int? org)
+            int? org,
+            global::System.DateTime? accessUntilDate,
+            bool? expired)
         {
             this.Id = id;
             this.User = user;
             this.Org = org;
             this.Type = type;
             this.Limits = limits ?? throw new global::System.ArgumentNullException(nameof(limits));
+            this.AccessUntilDate = accessUntilDate;
+            this.Expired = expired;
         }
 
         /// <summary>

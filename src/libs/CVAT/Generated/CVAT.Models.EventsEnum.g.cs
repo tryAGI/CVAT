@@ -16,22 +16,27 @@ namespace CVAT
     /// * `create:issue` - CREATE:ISSUE<br/>
     /// * `create:job` - CREATE:JOB<br/>
     /// * `create:membership` - CREATE:MEMBERSHIP<br/>
+    /// * `create:organization` - CREATE:ORGANIZATION<br/>
     /// * `create:project` - CREATE:PROJECT<br/>
     /// * `create:task` - CREATE:TASK<br/>
+    /// * `create:user` - CREATE:USER<br/>
     /// * `delete:comment` - DELETE:COMMENT<br/>
     /// * `delete:invitation` - DELETE:INVITATION<br/>
     /// * `delete:issue` - DELETE:ISSUE<br/>
     /// * `delete:job` - DELETE:JOB<br/>
     /// * `delete:membership` - DELETE:MEMBERSHIP<br/>
+    /// * `delete:organization` - DELETE:ORGANIZATION<br/>
     /// * `delete:project` - DELETE:PROJECT<br/>
     /// * `delete:task` - DELETE:TASK<br/>
+    /// * `delete:user` - DELETE:USER<br/>
     /// * `update:comment` - UPDATE:COMMENT<br/>
     /// * `update:issue` - UPDATE:ISSUE<br/>
     /// * `update:job` - UPDATE:JOB<br/>
     /// * `update:membership` - UPDATE:MEMBERSHIP<br/>
     /// * `update:organization` - UPDATE:ORGANIZATION<br/>
     /// * `update:project` - UPDATE:PROJECT<br/>
-    /// * `update:task` - UPDATE:TASK
+    /// * `update:task` - UPDATE:TASK<br/>
+    /// * `update:user` - UPDATE:USER
     /// </summary>
     public enum EventsEnum
     {
@@ -84,6 +89,10 @@ namespace CVAT
         /// </summary>
         Create_membership,
         /// <summary>
+        /// organization` - CREATE:ORGANIZATION
+        /// </summary>
+        Create_organization,
+        /// <summary>
         /// project` - CREATE:PROJECT
         /// </summary>
         Create_project,
@@ -91,6 +100,10 @@ namespace CVAT
         /// request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]
         /// </summary>
         Create_task,
+        /// <summary>
+        /// user` - CREATE:USER
+        /// </summary>
+        Create_user,
         /// <summary>
         /// comment` - DELETE:COMMENT
         /// </summary>
@@ -112,6 +125,10 @@ namespace CVAT
         /// </summary>
         Delete_membership,
         /// <summary>
+        /// organization` - DELETE:ORGANIZATION
+        /// </summary>
+        Delete_organization,
+        /// <summary>
         /// project` - DELETE:PROJECT
         /// </summary>
         Delete_project,
@@ -119,6 +136,10 @@ namespace CVAT
         /// task` - DELETE:TASK
         /// </summary>
         Delete_task,
+        /// <summary>
+        /// user` - DELETE:USER
+        /// </summary>
+        Delete_user,
         /// <summary>
         /// comment` - UPDATE:COMMENT
         /// </summary>
@@ -147,6 +168,10 @@ namespace CVAT
         /// task` - UPDATE:TASK
         /// </summary>
         Update_task,
+        /// <summary>
+        /// user` - UPDATE:USER
+        /// </summary>
+        Update_user,
     }
 
     /// <summary>
@@ -173,15 +198,19 @@ namespace CVAT
                 EventsEnum.Create_issue => "create:issue",
                 EventsEnum.Create_job => "create:job",
                 EventsEnum.Create_membership => "create:membership",
+                EventsEnum.Create_organization => "create:organization",
                 EventsEnum.Create_project => "create:project",
                 EventsEnum.Create_task => "create:task",
+                EventsEnum.Create_user => "create:user",
                 EventsEnum.Delete_comment => "delete:comment",
                 EventsEnum.Delete_invitation => "delete:invitation",
                 EventsEnum.Delete_issue => "delete:issue",
                 EventsEnum.Delete_job => "delete:job",
                 EventsEnum.Delete_membership => "delete:membership",
+                EventsEnum.Delete_organization => "delete:organization",
                 EventsEnum.Delete_project => "delete:project",
                 EventsEnum.Delete_task => "delete:task",
+                EventsEnum.Delete_user => "delete:user",
                 EventsEnum.Update_comment => "update:comment",
                 EventsEnum.Update_issue => "update:issue",
                 EventsEnum.Update_job => "update:job",
@@ -189,6 +218,7 @@ namespace CVAT
                 EventsEnum.Update_organization => "update:organization",
                 EventsEnum.Update_project => "update:project",
                 EventsEnum.Update_task => "update:task",
+                EventsEnum.Update_user => "update:user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -211,15 +241,19 @@ namespace CVAT
                 "create:issue" => EventsEnum.Create_issue,
                 "create:job" => EventsEnum.Create_job,
                 "create:membership" => EventsEnum.Create_membership,
+                "create:organization" => EventsEnum.Create_organization,
                 "create:project" => EventsEnum.Create_project,
                 "create:task" => EventsEnum.Create_task,
+                "create:user" => EventsEnum.Create_user,
                 "delete:comment" => EventsEnum.Delete_comment,
                 "delete:invitation" => EventsEnum.Delete_invitation,
                 "delete:issue" => EventsEnum.Delete_issue,
                 "delete:job" => EventsEnum.Delete_job,
                 "delete:membership" => EventsEnum.Delete_membership,
+                "delete:organization" => EventsEnum.Delete_organization,
                 "delete:project" => EventsEnum.Delete_project,
                 "delete:task" => EventsEnum.Delete_task,
+                "delete:user" => EventsEnum.Delete_user,
                 "update:comment" => EventsEnum.Update_comment,
                 "update:issue" => EventsEnum.Update_issue,
                 "update:job" => EventsEnum.Update_job,
@@ -227,6 +261,7 @@ namespace CVAT
                 "update:organization" => EventsEnum.Update_organization,
                 "update:project" => EventsEnum.Update_project,
                 "update:task" => EventsEnum.Update_task,
+                "update:user" => EventsEnum.Update_user,
                 _ => null,
             };
         }

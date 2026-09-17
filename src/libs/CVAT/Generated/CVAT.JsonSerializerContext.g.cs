@@ -28,6 +28,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicUser))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AccessTokenWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AggregationEnum), TypeInfoPropertyName = "AggregationEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AllWebhookType), TypeInfoPropertyName = "AllWebhookType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnalyticsReport))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTarget), TypeInfoPropertyName = "QualityReportTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
@@ -135,7 +136,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.DatasetFormat>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventGroup))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Events))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhookType), TypeInfoPropertyName = "WebhookType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.WebhooksEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhooksEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsEnum), TypeInfoPropertyName = "EventsEnum2")]
@@ -398,6 +398,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TaskWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Token))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfCreatedViaEnumNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhookType), TypeInfoPropertyName = "WebhookType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhookWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CloudstoragesListCredentialsType), TypeInfoPropertyName = "CloudstoragesListCredentialsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CloudstoragesListProviderType), TypeInfoPropertyName = "CloudstoragesListProviderType2")]
@@ -448,6 +449,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateDatasetExportLocation), TypeInfoPropertyName = "TasksCreateDatasetExportLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateBackupLocation), TypeInfoPropertyName = "TasksCreateBackupLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhooksListType), TypeInfoPropertyName = "WebhooksListType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhooksRetrieveEventsType), TypeInfoPropertyName = "WebhooksRetrieveEventsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.SocialAuthMethods>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.FunctionCall>))]
@@ -456,6 +458,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AggregationEnum?), TypeInfoPropertyName = "NullableAggregationEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AllWebhookType?), TypeInfoPropertyName = "NullableAllWebhookType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTarget?), TypeInfoPropertyName = "NullableQualityReportTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictType?), TypeInfoPropertyName = "NullableAnnotationConflictType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictSeverity?), TypeInfoPropertyName = "NullableAnnotationConflictSeverity2")]
@@ -479,7 +482,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.StorageMethod?), TypeInfoPropertyName = "NullableStorageMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SortingMethod?), TypeInfoPropertyName = "NullableSortingMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.DataResponse?), TypeInfoPropertyName = "NullableDataResponse2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhookType?), TypeInfoPropertyName = "NullableWebhookType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsEnum?), TypeInfoPropertyName = "NullableEventsEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FileInfoTypeEnum?), TypeInfoPropertyName = "NullableFileInfoTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FrameSelectionMethod?), TypeInfoPropertyName = "NullableFrameSelectionMethod2")]
@@ -512,8 +514,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SelectionSchemaEnum?), TypeInfoPropertyName = "NullableSelectionSchemaEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfValidationModeNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ValidationMode?), TypeInfoPropertyName = "NullableValidationMode2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfCreatedViaEnumNullEnum2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CloudstoragesListCredentialsType?), TypeInfoPropertyName = "NullableCloudstoragesListCredentialsType2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,6 +526,9 @@ namespace CVAT
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfCreatedViaEnumNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhookType?), TypeInfoPropertyName = "NullableWebhookType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CloudstoragesListCredentialsType?), TypeInfoPropertyName = "NullableCloudstoragesListCredentialsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CloudstoragesListProviderType?), TypeInfoPropertyName = "NullableCloudstoragesListProviderType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsListAction?), TypeInfoPropertyName = "NullableEventsListAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsCreateExportLocation?), TypeInfoPropertyName = "NullableEventsCreateExportLocation2")]
@@ -574,6 +577,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateDatasetExportLocation?), TypeInfoPropertyName = "NullableTasksCreateDatasetExportLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.TasksCreateBackupLocation?), TypeInfoPropertyName = "NullableTasksCreateBackupLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhooksListType?), TypeInfoPropertyName = "NullableWebhooksListType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhooksRetrieveEventsType?), TypeInfoPropertyName = "NullableWebhooksRetrieveEventsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ReportEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationsStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationId>))]
@@ -747,6 +751,10 @@ namespace CVAT
                     typeToConvert == typeof(global::CVAT.AggregationEnum)
 
                     || typeToConvert == typeof(global::CVAT.AggregationEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.AllWebhookType)
+
+                    || typeToConvert == typeof(global::CVAT.AllWebhookType?)
 
                     || typeToConvert == typeof(global::CVAT.AnnotationConflictAnnotationType)
 
@@ -1118,7 +1126,11 @@ namespace CVAT
 
                     || typeToConvert == typeof(global::CVAT.WebhooksListType)
 
-                    || typeToConvert == typeof(global::CVAT.WebhooksListType?);
+                    || typeToConvert == typeof(global::CVAT.WebhooksListType?)
+
+                    || typeToConvert == typeof(global::CVAT.WebhooksRetrieveEventsType)
+
+                    || typeToConvert == typeof(global::CVAT.WebhooksRetrieveEventsType?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -1133,6 +1145,16 @@ namespace CVAT
                 if (typeToConvert == typeof(global::CVAT.AggregationEnum?))
                 {
                     return new global::CVAT.JsonConverters.AggregationEnumNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.AllWebhookType))
+                {
+                    return new global::CVAT.JsonConverters.AllWebhookTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.AllWebhookType?))
+                {
+                    return new global::CVAT.JsonConverters.AllWebhookTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.AnnotationConflictAnnotationType))
@@ -2063,6 +2085,16 @@ namespace CVAT
                 if (typeToConvert == typeof(global::CVAT.WebhooksListType?))
                 {
                     return new global::CVAT.JsonConverters.WebhooksListTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.WebhooksRetrieveEventsType))
+                {
+                    return new global::CVAT.JsonConverters.WebhooksRetrieveEventsTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.WebhooksRetrieveEventsType?))
+                {
+                    return new global::CVAT.JsonConverters.WebhooksRetrieveEventsTypeNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

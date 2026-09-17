@@ -10,12 +10,14 @@ namespace CVAT
     {
         /// <summary>
         /// * `organization` - ORGANIZATION<br/>
-        /// * `project` - PROJECT
+        /// * `project` - PROJECT<br/>
+        /// * `server` - SERVER<br/>
+        /// * `all` - ALL
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.WebhookTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.AllWebhookTypeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::CVAT.WebhookType WebhookType { get; set; }
+        public required global::CVAT.AllWebhookType WebhookType { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -34,7 +36,9 @@ namespace CVAT
         /// </summary>
         /// <param name="webhookType">
         /// * `organization` - ORGANIZATION<br/>
-        /// * `project` - PROJECT
+        /// * `project` - PROJECT<br/>
+        /// * `server` - SERVER<br/>
+        /// * `all` - ALL
         /// </param>
         /// <param name="events1">
         /// Included only in responses
@@ -43,7 +47,7 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Events(
-            global::CVAT.WebhookType webhookType,
+            global::CVAT.AllWebhookType webhookType,
             global::System.Collections.Generic.IList<global::CVAT.WebhooksEvent>? events1)
         {
             this.WebhookType = webhookType;

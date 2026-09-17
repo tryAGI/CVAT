@@ -445,6 +445,7 @@ namespace CVAT
         /// The serializer validates limits field names and their value types.<br/>
         /// Null allowed in order to indicate unlimited value.
         /// </param>
+        /// <param name="accessUntilDate"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -453,6 +454,7 @@ namespace CVAT
             global::CVAT.LimitsFieldRequest limits,
             int? user = default,
             int? org = default,
+            global::System.DateTime? accessUntilDate = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -462,6 +464,7 @@ namespace CVAT
                 Org = org,
                 Type = type,
                 Limits = limits,
+                AccessUntilDate = accessUntilDate,
             };
 
             return await LimitsCreateAsync(
