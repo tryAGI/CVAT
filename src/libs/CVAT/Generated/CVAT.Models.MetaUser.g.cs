@@ -42,8 +42,8 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.User PickUser() => IsUser
-            ? User!
+        public global::CVAT.User PickUser() => User is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'User' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.BasicUser PickBasic() => IsBasic
-            ? Basic!
+        public global::CVAT.BasicUser PickBasic() => Basic is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsUser && user != null)
+            if (User is { } __value0 && user != null)
             {
-                return user(User!);
+                return user(__value0);
             }
-            else if (IsBasic && basic != null)
+            else if (Basic is { } __value1 && basic != null)
             {
-                return basic(Basic!);
+                return basic(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsUser)
+            if (User is { } __value0)
             {
-                user?.Invoke(User!);
+                user?.Invoke(__value0);
             }
-            else if (IsBasic)
+            else if (Basic is { } __value1)
             {
-                basic?.Invoke(Basic!);
+                basic?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsUser)
+            if (User is { } __value0)
             {
-                user?.Invoke(User!);
+                user?.Invoke(__value0);
             }
-            else if (IsBasic)
+            else if (Basic is { } __value1)
             {
-                basic?.Invoke(Basic!);
+                basic?.Invoke(__value1);
             }
         }
 

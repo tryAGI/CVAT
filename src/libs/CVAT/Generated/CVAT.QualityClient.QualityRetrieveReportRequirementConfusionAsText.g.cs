@@ -127,7 +127,7 @@ namespace CVAT
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("format", format?.ToValueString())
-                                .AddRequiredParameter("requirement", requirement.ToString()!)
+                                .AddRequiredParameter("requirement", requirement.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::CVAT.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -174,8 +174,8 @@ namespace CVAT
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     format: format,
-                    id: id!,
-                    requirement: requirement!);
+                    id: id,
+                    requirement: requirement);
 
                 return __httpRequest;
             }
@@ -197,7 +197,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -231,7 +231,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -272,7 +272,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -320,7 +320,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -342,7 +342,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -491,7 +491,7 @@ namespace CVAT
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("format", format?.ToValueString())
-                                .AddRequiredParameter("requirement", requirement.ToString()!)
+                                .AddRequiredParameter("requirement", requirement.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::CVAT.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -538,8 +538,8 @@ namespace CVAT
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     format: format,
-                    id: id!,
-                    requirement: requirement!);
+                    id: id,
+                    requirement: requirement);
 
                 return __httpRequest;
             }
@@ -561,7 +561,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -595,7 +595,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -636,7 +636,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -684,7 +684,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -706,7 +706,7 @@ namespace CVAT
                                 pathTemplate: "$\"/api/quality/reports/{id}/confusion/matrix\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
