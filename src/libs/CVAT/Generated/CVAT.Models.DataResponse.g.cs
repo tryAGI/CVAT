@@ -42,8 +42,8 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RqId PickRqId() => IsRqId
-            ? RqId!
+        public global::CVAT.RqId PickRqId() => RqId is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RqId' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public byte[] PickDataResponseVariant2() => IsDataResponseVariant2
-            ? DataResponseVariant2!
+        public byte[] PickDataResponseVariant2() => DataResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'DataResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsRqId && rqId != null)
+            if (RqId is { } __value0 && rqId != null)
             {
-                return rqId(RqId!);
+                return rqId(__value0);
             }
-            else if (IsDataResponseVariant2 && dataResponseVariant2 != null)
+            else if (DataResponseVariant2 is { } __value1 && dataResponseVariant2 != null)
             {
-                return dataResponseVariant2(DataResponseVariant2!);
+                return dataResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsRqId)
+            if (RqId is { } __value0)
             {
-                rqId?.Invoke(RqId!);
+                rqId?.Invoke(__value0);
             }
-            else if (IsDataResponseVariant2)
+            else if (DataResponseVariant2 is { } __value1)
             {
-                dataResponseVariant2?.Invoke(DataResponseVariant2!);
+                dataResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace CVAT
                 Validate();
             }
 
-            if (IsRqId)
+            if (RqId is { } __value0)
             {
-                rqId?.Invoke(RqId!);
+                rqId?.Invoke(__value0);
             }
-            else if (IsDataResponseVariant2)
+            else if (DataResponseVariant2 is { } __value1)
             {
-                dataResponseVariant2?.Invoke(DataResponseVariant2!);
+                dataResponseVariant2?.Invoke(__value1);
             }
         }
 

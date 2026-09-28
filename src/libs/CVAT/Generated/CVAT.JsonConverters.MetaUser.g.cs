@@ -146,13 +146,13 @@ namespace CVAT.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.User), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.User?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.User).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.User!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUser(), typeInfo);
             }
             else if (value.IsBasic)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::CVAT.BasicUser), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::CVAT.BasicUser?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::CVAT.BasicUser).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Basic!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasic(), typeInfo);
             }
         }
     }
