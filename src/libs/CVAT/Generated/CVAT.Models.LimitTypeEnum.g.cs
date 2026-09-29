@@ -4,7 +4,6 @@
 namespace CVAT
 {
     /// <summary>
-    /// * `default` - DEFAULT<br/>
     /// * `paid` - PAID<br/>
     /// * `custom` - CUSTOM
     /// </summary>
@@ -14,10 +13,6 @@ namespace CVAT
         ///
         /// </summary>
         Custom,
-        /// <summary>
-        ///
-        /// </summary>
-        Default,
         /// <summary>
         ///
         /// </summary>
@@ -37,7 +32,6 @@ namespace CVAT
             return value switch
             {
                 LimitTypeEnum.Custom => "custom",
-                LimitTypeEnum.Default => "default",
                 LimitTypeEnum.Paid => "paid",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -50,7 +44,6 @@ namespace CVAT
             return value switch
             {
                 "custom" => LimitTypeEnum.Custom,
-                "default" => LimitTypeEnum.Default,
                 "paid" => LimitTypeEnum.Paid,
                 _ => null,
             };

@@ -27,7 +27,6 @@ namespace CVAT
         public int? Org { get; set; }
 
         /// <summary>
-        /// * `default` - DEFAULT<br/>
         /// * `paid` - PAID<br/>
         /// * `custom` - CUSTOM
         /// </summary>
@@ -66,7 +65,6 @@ namespace CVAT
         /// Initializes a new instance of the <see cref="Limit" /> class.
         /// </summary>
         /// <param name="type">
-        /// * `default` - DEFAULT<br/>
         /// * `paid` - PAID<br/>
         /// * `custom` - CUSTOM
         /// </param>

@@ -447,7 +447,6 @@ namespace CVAT
         /// <param name="user"></param>
         /// <param name="org"></param>
         /// <param name="type">
-        /// * `default` - DEFAULT<br/>
         /// * `paid` - PAID<br/>
         /// * `custom` - CUSTOM
         /// </param>
