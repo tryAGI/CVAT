@@ -475,14 +475,17 @@ namespace CVAT
         /// The parent requirement. Child requirements inherit comparison settings from it.
         /// </param>
         /// <param name="iouThreshold">
-        /// Used for distinction between matched / unmatched shapes
+        /// The overlap threshold used for distinction between matched / unmatched objects.<br/>
+        /// The specific meaning can vary depending on the shape type:<br/>
+        /// for rectangles, polygons, ellipses, lines and masks it's the IoU threshold;<br/>
+        /// for points and skeletons, it's the OKS threshold.
         /// </param>
         /// <param name="pointSize">
-        /// Like IoU threshold, but for points.<br/>
-        /// The percent of the bbox side, used as the radius of the circle around the GT point,<br/>
-        /// where the checked point is expected to be. For boxes with different width and<br/>
-        /// height, the "side" is computed as a geometric mean of the width and height.<br/>
-        /// Read more: https://cocodataset.org/#keypoints-eval
+        /// The point "size" (the OKS sigma), as a fraction of the object size, defined by<br/>
+        /// the point size base. Corresponds to the standard deviation of the keypoint position.<br/>
+        /// Larger values give larger areas around the GT points, where the checked points<br/>
+        /// are accepted.<br/>
+        /// Read more about the point matching in the documentation.
         /// </param>
         /// <param name="pointSizeBase">
         /// When comparing point annotations (including both separate points and point groups),<br/>
