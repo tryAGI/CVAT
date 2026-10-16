@@ -89,6 +89,41 @@ namespace CVAT
         public bool? HasAnalyticsAccess { get; set; }
 
         /// <summary>
+        /// The main reason the user uses CVAT.<br/>
+        /// * `work_project` - work_project<br/>
+        /// * `academic_research` - academic_research<br/>
+        /// * `teaching_or_coursework` - teaching_or_coursework<br/>
+        /// * `personal_project` - personal_project
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cvat_usage_reason")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>))]
+        public global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? CvatUsageReason { get; set; }
+
+        /// <summary>
+        /// A predefined role code or custom role text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary_role")]
+        public string? PrimaryRole { get; set; }
+
+        /// <summary>
+        /// Predefined activity codes selected by the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("planned_activities")]
+        public global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? PlannedActivities { get; set; }
+
+        /// <summary>
+        /// Predefined data type codes and optionally one custom value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_types")]
+        public global::System.Collections.Generic.IList<string>? DataTypes { get; set; }
+
+        /// <summary>
+        /// A predefined discovery source code or custom text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("discovery_source")]
+        public string? DiscoverySource { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email_verified")]
@@ -141,6 +176,25 @@ namespace CVAT
         /// <param name="hasAnalyticsAccess">
         /// Included only in responses
         /// </param>
+        /// <param name="cvatUsageReason">
+        /// The main reason the user uses CVAT.<br/>
+        /// * `work_project` - work_project<br/>
+        /// * `academic_research` - academic_research<br/>
+        /// * `teaching_or_coursework` - teaching_or_coursework<br/>
+        /// * `personal_project` - personal_project
+        /// </param>
+        /// <param name="primaryRole">
+        /// A predefined role code or custom role text.
+        /// </param>
+        /// <param name="plannedActivities">
+        /// Predefined activity codes selected by the user.
+        /// </param>
+        /// <param name="dataTypes">
+        /// Predefined data type codes and optionally one custom value.
+        /// </param>
+        /// <param name="discoverySource">
+        /// A predefined discovery source code or custom text.
+        /// </param>
         /// <param name="emailVerified">
         /// Included only in responses
         /// </param>
@@ -164,6 +218,11 @@ namespace CVAT
             global::System.DateTime? lastLogin,
             global::System.DateTime? dateJoined,
             bool? hasAnalyticsAccess,
+            global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? cvatUsageReason,
+            string? primaryRole,
+            global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? plannedActivities,
+            global::System.Collections.Generic.IList<string>? dataTypes,
+            string? discoverySource,
             bool? emailVerified,
             global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? createdVia)
         {
@@ -180,6 +239,11 @@ namespace CVAT
             this.LastLogin = lastLogin;
             this.DateJoined = dateJoined;
             this.HasAnalyticsAccess = hasAnalyticsAccess;
+            this.CvatUsageReason = cvatUsageReason;
+            this.PrimaryRole = primaryRole;
+            this.PlannedActivities = plannedActivities;
+            this.DataTypes = dataTypes;
+            this.DiscoverySource = discoverySource;
             this.EmailVerified = emailVerified;
             this.CreatedVia = createdVia;
         }

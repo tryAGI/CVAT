@@ -1,0 +1,113 @@
+
+#nullable enable
+
+namespace CVAT
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public sealed partial class CurrentLimit
+    {
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public int? Id { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        public int? User { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("org")]
+        public int? Org { get; set; }
+
+        /// <summary>
+        /// * `paid` - PAID<br/>
+        /// * `custom` - CUSTOM
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type2c0EnumJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::CVAT.Type2c0Enum Type { get; set; }
+
+        /// <summary>
+        /// The serializer validates limits field names and their value types.<br/>
+        /// Null allowed in order to indicate unlimited value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::CVAT.LimitsField Limits { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("access_until_date")]
+        public global::System.DateTime? AccessUntilDate { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expired")]
+        public bool? Expired { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CurrentLimit" /> class.
+        /// </summary>
+        /// <param name="type">
+        /// * `paid` - PAID<br/>
+        /// * `custom` - CUSTOM
+        /// </param>
+        /// <param name="limits">
+        /// The serializer validates limits field names and their value types.<br/>
+        /// Null allowed in order to indicate unlimited value.
+        /// </param>
+        /// <param name="id">
+        /// Included only in responses
+        /// </param>
+        /// <param name="user"></param>
+        /// <param name="org"></param>
+        /// <param name="accessUntilDate"></param>
+        /// <param name="expired">
+        /// Included only in responses
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public CurrentLimit(
+            global::CVAT.Type2c0Enum type,
+            global::CVAT.LimitsField limits,
+            int? id,
+            int? user,
+            int? org,
+            global::System.DateTime? accessUntilDate,
+            bool? expired)
+        {
+            this.Id = id;
+            this.User = user;
+            this.Org = org;
+            this.Type = type;
+            this.Limits = limits ?? throw new global::System.ArgumentNullException(nameof(limits));
+            this.AccessUntilDate = accessUntilDate;
+            this.Expired = expired;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CurrentLimit" /> class.
+        /// </summary>
+        public CurrentLimit()
+        {
+        }
+
+    }
+}

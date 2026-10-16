@@ -3,10 +3,10 @@
 namespace CVAT.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class LimitTypeEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.LimitTypeEnum?>
+    public sealed class CvatUsageReasonEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.CvatUsageReasonEnum?>
     {
         /// <inheritdoc />
-        public override global::CVAT.LimitTypeEnum? Read(
+        public override global::CVAT.CvatUsageReasonEnum? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace CVAT.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::CVAT.LimitTypeEnumExtensions.ToEnum(stringValue);
+                        return global::CVAT.CvatUsageReasonEnumExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace CVAT.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::CVAT.LimitTypeEnum)numValue;
+                    return (global::CVAT.CvatUsageReasonEnum)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::CVAT.LimitTypeEnum?);
+                    return default(global::CVAT.CvatUsageReasonEnum?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace CVAT.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::CVAT.LimitTypeEnum? value,
+            global::CVAT.CvatUsageReasonEnum? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace CVAT.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::CVAT.LimitTypeEnumExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::CVAT.CvatUsageReasonEnumExtensions.ToValueString(value.Value));
             }
         }
     }

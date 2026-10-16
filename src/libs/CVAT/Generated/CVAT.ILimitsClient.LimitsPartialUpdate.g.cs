@@ -54,7 +54,7 @@ namespace CVAT
             int id,
             int? user = default,
             int? org = default,
-            global::CVAT.LimitTypeEnum? type = default,
+            global::CVAT.Type2c0Enum? type = default,
             global::CVAT.LimitsFieldRequest? limits = default,
             global::System.DateTime? accessUntilDate = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,

@@ -23,14 +23,8 @@ namespace CVAT
         /// <summary>
         /// Included only in responses
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("internal_ai_agent_calls")]
-        public int? InternalAiAgentCalls { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("external_ai_agent_calls")]
-        public int? ExternalAiAgentCalls { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
+        public global::CVAT.NumericUsage? Usage1 { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,10 +41,7 @@ namespace CVAT
         /// <param name="orgId">
         /// Included only in responses
         /// </param>
-        /// <param name="internalAiAgentCalls">
-        /// Included only in responses
-        /// </param>
-        /// <param name="externalAiAgentCalls">
+        /// <param name="usage1">
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -59,13 +50,11 @@ namespace CVAT
         public Usage(
             int? userId,
             int? orgId,
-            int? internalAiAgentCalls,
-            int? externalAiAgentCalls)
+            global::CVAT.NumericUsage? usage1)
         {
             this.UserId = userId;
             this.OrgId = orgId;
-            this.InternalAiAgentCalls = internalAiAgentCalls;
-            this.ExternalAiAgentCalls = externalAiAgentCalls;
+            this.Usage1 = usage1;
         }
 
         /// <summary>

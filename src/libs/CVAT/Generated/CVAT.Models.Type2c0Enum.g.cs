@@ -7,7 +7,7 @@ namespace CVAT
     /// * `paid` - PAID<br/>
     /// * `custom` - CUSTOM
     /// </summary>
-    public enum LimitTypeEnum
+    public enum Type2c0Enum
     {
         /// <summary>
         ///
@@ -22,29 +22,29 @@ namespace CVAT
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class LimitTypeEnumExtensions
+    public static class Type2c0EnumExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this LimitTypeEnum value)
+        public static string ToValueString(this Type2c0Enum value)
         {
             return value switch
             {
-                LimitTypeEnum.Custom => "custom",
-                LimitTypeEnum.Paid => "paid",
+                Type2c0Enum.Custom => "custom",
+                Type2c0Enum.Paid => "paid",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static LimitTypeEnum? ToEnum(string value)
+        public static Type2c0Enum? ToEnum(string value)
         {
             return value switch
             {
-                "custom" => LimitTypeEnum.Custom,
-                "paid" => LimitTypeEnum.Paid,
+                "custom" => Type2c0Enum.Custom,
+                "paid" => Type2c0Enum.Paid,
                 _ => null,
             };
         }

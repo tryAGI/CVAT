@@ -17,9 +17,10 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Limit))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LimitTypeEnum), TypeInfoPropertyName = "LimitTypeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CurrentLimit))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Type2c0Enum), TypeInfoPropertyName = "Type2c0Enum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LimitsField))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Limit))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LimitRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LimitsFieldRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
@@ -29,7 +30,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LimitTypeEnum?), TypeInfoPropertyName = "NullableLimitTypeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.Type2c0Enum?), TypeInfoPropertyName = "NullableType2c0Enum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.Limit>))]
     internal sealed partial class LimitsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -101,23 +102,23 @@ namespace CVAT
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::CVAT.LimitTypeEnum)
+                    typeToConvert == typeof(global::CVAT.Type2c0Enum)
 
-                    || typeToConvert == typeof(global::CVAT.LimitTypeEnum?);
+                    || typeToConvert == typeof(global::CVAT.Type2c0Enum?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
-                if (typeToConvert == typeof(global::CVAT.LimitTypeEnum))
+                if (typeToConvert == typeof(global::CVAT.Type2c0Enum))
                 {
-                    return new global::CVAT.JsonConverters.LimitTypeEnumJsonConverter();
+                    return new global::CVAT.JsonConverters.Type2c0EnumJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.LimitTypeEnum?))
+                if (typeToConvert == typeof(global::CVAT.Type2c0Enum?))
                 {
-                    return new global::CVAT.JsonConverters.LimitTypeEnumNullableJsonConverter();
+                    return new global::CVAT.JsonConverters.Type2c0EnumNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }
