@@ -25,8 +25,8 @@ namespace CVAT
         /// * `custom` - CUSTOM
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.LimitTypeEnumJsonConverter))]
-        public global::CVAT.LimitTypeEnum? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type2c0EnumJsonConverter))]
+        public global::CVAT.Type2c0Enum? Type { get; set; }
 
         /// <summary>
         /// The serializer validates limits field names and their value types.<br/>
@@ -67,7 +67,7 @@ namespace CVAT
         public PatchedLimitRequest(
             int? user,
             int? org,
-            global::CVAT.LimitTypeEnum? type,
+            global::CVAT.Type2c0Enum? type,
             global::CVAT.LimitsFieldRequest? limits,
             global::System.DateTime? accessUntilDate)
         {

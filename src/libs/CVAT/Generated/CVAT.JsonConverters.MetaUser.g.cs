@@ -29,7 +29,10 @@ namespace CVAT.JsonConverters
 
             var __score0 = 0;
             if (__jsonProps.Contains("created_via")) __score0++;
+            if (__jsonProps.Contains("cvat_usage_reason")) __score0++;
+            if (__jsonProps.Contains("data_types")) __score0++;
             if (__jsonProps.Contains("date_joined")) __score0++;
+            if (__jsonProps.Contains("discovery_source")) __score0++;
             if (__jsonProps.Contains("email")) __score0++;
             if (__jsonProps.Contains("email_verified")) __score0++;
             if (__jsonProps.Contains("first_name")) __score0++;
@@ -41,6 +44,8 @@ namespace CVAT.JsonConverters
             if (__jsonProps.Contains("is_superuser")) __score0++;
             if (__jsonProps.Contains("last_login")) __score0++;
             if (__jsonProps.Contains("last_name")) __score0++;
+            if (__jsonProps.Contains("planned_activities")) __score0++;
+            if (__jsonProps.Contains("primary_role")) __score0++;
             if (__jsonProps.Contains("url")) __score0++;
             if (__jsonProps.Contains("username")) __score0++;
             var __score1 = 0;

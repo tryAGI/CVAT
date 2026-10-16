@@ -460,6 +460,25 @@ namespace CVAT
         /// <param name="isActive">
         /// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
         /// </param>
+        /// <param name="cvatUsageReason">
+        /// The main reason the user uses CVAT.<br/>
+        /// * `work_project` - work_project<br/>
+        /// * `academic_research` - academic_research<br/>
+        /// * `teaching_or_coursework` - teaching_or_coursework<br/>
+        /// * `personal_project` - personal_project
+        /// </param>
+        /// <param name="primaryRole">
+        /// A predefined role code or custom role text.
+        /// </param>
+        /// <param name="plannedActivities">
+        /// Predefined activity codes selected by the user.
+        /// </param>
+        /// <param name="dataTypes">
+        /// Predefined data type codes and optionally one custom value.
+        /// </param>
+        /// <param name="discoverySource">
+        /// A predefined discovery source code or custom text.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -473,6 +492,11 @@ namespace CVAT
             bool? isStaff = default,
             bool? isSuperuser = default,
             bool? isActive = default,
+            global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? cvatUsageReason = default,
+            string? primaryRole = default,
+            global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? plannedActivities = default,
+            global::System.Collections.Generic.IList<string>? dataTypes = default,
+            string? discoverySource = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -486,6 +510,11 @@ namespace CVAT
                 IsStaff = isStaff,
                 IsSuperuser = isSuperuser,
                 IsActive = isActive,
+                CvatUsageReason = cvatUsageReason,
+                PrimaryRole = primaryRole,
+                PlannedActivities = plannedActivities,
+                DataTypes = dataTypes,
+                DiscoverySource = discoverySource,
             };
 
             return await UsersPartialUpdateAsync(

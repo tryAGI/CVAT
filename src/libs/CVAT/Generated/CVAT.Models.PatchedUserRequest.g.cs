@@ -57,6 +57,41 @@ namespace CVAT
         public bool? IsActive { get; set; }
 
         /// <summary>
+        /// The main reason the user uses CVAT.<br/>
+        /// * `work_project` - work_project<br/>
+        /// * `academic_research` - academic_research<br/>
+        /// * `teaching_or_coursework` - teaching_or_coursework<br/>
+        /// * `personal_project` - personal_project
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cvat_usage_reason")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>))]
+        public global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? CvatUsageReason { get; set; }
+
+        /// <summary>
+        /// A predefined role code or custom role text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("primary_role")]
+        public string? PrimaryRole { get; set; }
+
+        /// <summary>
+        /// Predefined activity codes selected by the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("planned_activities")]
+        public global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? PlannedActivities { get; set; }
+
+        /// <summary>
+        /// Predefined data type codes and optionally one custom value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_types")]
+        public global::System.Collections.Generic.IList<string>? DataTypes { get; set; }
+
+        /// <summary>
+        /// A predefined discovery source code or custom text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("discovery_source")]
+        public string? DiscoverySource { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -81,6 +116,25 @@ namespace CVAT
         /// <param name="isActive">
         /// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
         /// </param>
+        /// <param name="cvatUsageReason">
+        /// The main reason the user uses CVAT.<br/>
+        /// * `work_project` - work_project<br/>
+        /// * `academic_research` - academic_research<br/>
+        /// * `teaching_or_coursework` - teaching_or_coursework<br/>
+        /// * `personal_project` - personal_project
+        /// </param>
+        /// <param name="primaryRole">
+        /// A predefined role code or custom role text.
+        /// </param>
+        /// <param name="plannedActivities">
+        /// Predefined activity codes selected by the user.
+        /// </param>
+        /// <param name="dataTypes">
+        /// Predefined data type codes and optionally one custom value.
+        /// </param>
+        /// <param name="discoverySource">
+        /// A predefined discovery source code or custom text.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,7 +146,12 @@ namespace CVAT
             global::System.Collections.Generic.IList<string>? groups,
             bool? isStaff,
             bool? isSuperuser,
-            bool? isActive)
+            bool? isActive,
+            global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? cvatUsageReason,
+            string? primaryRole,
+            global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? plannedActivities,
+            global::System.Collections.Generic.IList<string>? dataTypes,
+            string? discoverySource)
         {
             this.Username = username;
             this.FirstName = firstName;
@@ -102,6 +161,11 @@ namespace CVAT
             this.IsStaff = isStaff;
             this.IsSuperuser = isSuperuser;
             this.IsActive = isActive;
+            this.CvatUsageReason = cvatUsageReason;
+            this.PrimaryRole = primaryRole;
+            this.PlannedActivities = plannedActivities;
+            this.DataTypes = dataTypes;
+            this.DiscoverySource = discoverySource;
         }
 
         /// <summary>

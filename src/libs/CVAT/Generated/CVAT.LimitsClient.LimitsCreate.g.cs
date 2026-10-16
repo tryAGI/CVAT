@@ -449,7 +449,7 @@ namespace CVAT
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.Limit> LimitsCreateAsync(
-            global::CVAT.LimitTypeEnum type,
+            global::CVAT.Type2c0Enum type,
             global::CVAT.LimitsFieldRequest limits,
             int? user = default,
             int? org = default,

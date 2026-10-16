@@ -25,9 +25,9 @@ namespace CVAT
         /// * `custom` - CUSTOM
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.LimitTypeEnumJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.Type2c0EnumJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::CVAT.LimitTypeEnum Type { get; set; }
+        public required global::CVAT.Type2c0Enum Type { get; set; }
 
         /// <summary>
         /// The serializer validates limits field names and their value types.<br/>
@@ -67,7 +67,7 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LimitRequest(
-            global::CVAT.LimitTypeEnum type,
+            global::CVAT.Type2c0Enum type,
             global::CVAT.LimitsFieldRequest limits,
             int? user,
             int? org,

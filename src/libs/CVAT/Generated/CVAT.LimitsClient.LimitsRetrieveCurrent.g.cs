@@ -3,11 +3,11 @@
 
 namespace CVAT
 {
-    public partial class UsageClient
+    public partial class LimitsClient
     {
 
 
-        private static readonly global::CVAT.EndPointSecurityRequirement s_UsageListSecurityRequirement0 =
+        private static readonly global::CVAT.EndPointSecurityRequirement s_LimitsRetrieveCurrentSecurityRequirement0 =
             new global::CVAT.EndPointSecurityRequirement
             {
                 Authorizations = new global::CVAT.EndPointAuthorizationRequirement[]
@@ -21,80 +21,36 @@ namespace CVAT
                     },
                 },
             };
-        private static readonly global::CVAT.EndPointSecurityRequirement[] s_UsageListSecurityRequirements =
+        private static readonly global::CVAT.EndPointSecurityRequirement[] s_LimitsRetrieveCurrentSecurityRequirements =
             new global::CVAT.EndPointSecurityRequirement[]
-            {                s_UsageListSecurityRequirement0,
+            {                s_LimitsRetrieveCurrentSecurityRequirement0,
             };
-        partial void PrepareUsageListArguments(
+        partial void PrepareLimitsRetrieveCurrentArguments(
+            global::System.Net.Http.HttpClient httpClient);
+        partial void PrepareLimitsRetrieveCurrentRequest(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? xOrganization,
-            ref string? filter,
-            ref string? org,
-            ref int? orgId,
-            ref int? page,
-            ref int? pageSize,
-            ref string? sort,
-            ref string? user,
-            ref int? userId);
-        partial void PrepareUsageListRequest(
-            global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? xOrganization,
-            string? filter,
-            string? org,
-            int? orgId,
-            int? page,
-            int? pageSize,
-            string? sort,
-            string? user,
-            int? userId);
-        partial void ProcessUsageListResponse(
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+        partial void ProcessLimitsRetrieveCurrentResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessUsageListResponseContent(
+        partial void ProcessLimitsRetrieveCurrentResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Method returns a paginated list of usage according to query parameters
+        /// Get limits for the current user or organization<br/>
+        /// Returns stored limit metadata with effective limits. Expired records use Free defaults.
         /// </summary>
-        /// <param name="xOrganization"></param>
-        /// <param name="filter"></param>
-        /// <param name="org"></param>
-        /// <param name="orgId"></param>
-        /// <param name="page"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="sort"></param>
-        /// <param name="user"></param>
-        /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::CVAT.PaginatedUsageList> UsageListAsync(
-            string? xOrganization = default,
-            string? filter = default,
-            string? org = default,
-            int? orgId = default,
-            int? page = default,
-            int? pageSize = default,
-            string? sort = default,
-            string? user = default,
-            int? userId = default,
+        public async global::System.Threading.Tasks.Task<global::CVAT.CurrentLimit> LimitsRetrieveCurrentAsync(
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await UsageListAsResponseAsync(
-                xOrganization: xOrganization,
-                filter: filter,
-                org: org,
-                orgId: orgId,
-                page: page,
-                pageSize: pageSize,
-                sort: sort,
-                user: user,
-                userId: userId,
+            var __response = await LimitsRetrieveCurrentAsResponseAsync(
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -102,52 +58,26 @@ namespace CVAT
             return __response.Body;
         }
         /// <summary>
-        /// Method returns a paginated list of usage according to query parameters
+        /// Get limits for the current user or organization<br/>
+        /// Returns stored limit metadata with effective limits. Expired records use Free defaults.
         /// </summary>
-        /// <param name="xOrganization"></param>
-        /// <param name="filter"></param>
-        /// <param name="org"></param>
-        /// <param name="orgId"></param>
-        /// <param name="page"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="sort"></param>
-        /// <param name="user"></param>
-        /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.PaginatedUsageList>> UsageListAsResponseAsync(
-            string? xOrganization = default,
-            string? filter = default,
-            string? org = default,
-            int? orgId = default,
-            int? page = default,
-            int? pageSize = default,
-            string? sort = default,
-            string? user = default,
-            int? userId = default,
+        public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.CurrentLimit>> LimitsRetrieveCurrentAsResponseAsync(
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareUsageListArguments(
-                httpClient: HttpClient,
-                xOrganization: ref xOrganization,
-                filter: ref filter,
-                org: ref org,
-                orgId: ref orgId,
-                page: ref page,
-                pageSize: ref pageSize,
-                sort: ref sort,
-                user: ref user,
-                userId: ref userId);
+            PrepareLimitsRetrieveCurrentArguments(
+                httpClient: HttpClient);
 
 
             var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_UsageListSecurityRequirements,
-                operationName: "UsageListAsync");
+                securityRequirements: s_LimitsRetrieveCurrentSecurityRequirements,
+                operationName: "LimitsRetrieveCurrentAsync");
 
             using var __timeoutCancellationTokenSource = global::CVAT.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -167,18 +97,8 @@ namespace CVAT
             {
 
                             var __pathBuilder = new global::CVAT.PathBuilder(
-                                path: "/api/usage",
+                                path: "/api/limits/current",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("filter", filter)
-                                .AddOptionalParameter("org", org)
-                                .AddOptionalParameter("org_id", orgId?.ToString())
-                                .AddOptionalParameter("page", page?.ToString())
-                                .AddOptionalParameter("page_size", pageSize?.ToString())
-                                .AddOptionalParameter("sort", sort)
-                                .AddOptionalParameter("user", user)
-                                .AddOptionalParameter("user_id", userId?.ToString())
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::CVAT.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -208,12 +128,6 @@ namespace CVAT
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-
-            if (xOrganization != default)
-            {
-                __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
-            }
-
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -222,18 +136,9 @@ namespace CVAT
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareUsageListRequest(
+                PrepareLimitsRetrieveCurrentRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest,
-                    xOrganization: xOrganization,
-                    filter: filter,
-                    org: org,
-                    orgId: orgId,
-                    page: page,
-                    pageSize: pageSize,
-                    sort: sort,
-                    user: user,
-                    userId: userId);
+                    httpRequestMessage: __httpRequest);
 
                 return __httpRequest;
             }
@@ -250,9 +155,9 @@ namespace CVAT
                     await global::CVAT.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsageList",
-                                methodName: "UsageListAsync",
-                                pathTemplate: "\"/api/usage\"",
+                                operationId: "LimitsRetrieveCurrent",
+                                methodName: "LimitsRetrieveCurrentAsync",
+                                pathTemplate: "\"/api/limits/current\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -284,9 +189,9 @@ namespace CVAT
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsageList",
-                                methodName: "UsageListAsync",
-                                pathTemplate: "\"/api/usage\"",
+                                operationId: "LimitsRetrieveCurrent",
+                                methodName: "LimitsRetrieveCurrentAsync",
+                                pathTemplate: "\"/api/limits/current\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -325,9 +230,9 @@ namespace CVAT
                         await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsageList",
-                                methodName: "UsageListAsync",
-                                pathTemplate: "\"/api/usage\"",
+                                operationId: "LimitsRetrieveCurrent",
+                                methodName: "LimitsRetrieveCurrentAsync",
+                                pathTemplate: "\"/api/limits/current\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -365,7 +270,7 @@ namespace CVAT
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessUsageListResponse(
+                ProcessLimitsRetrieveCurrentResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -373,9 +278,9 @@ namespace CVAT
                     await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsageList",
-                                methodName: "UsageListAsync",
-                                pathTemplate: "\"/api/usage\"",
+                                operationId: "LimitsRetrieveCurrent",
+                                methodName: "LimitsRetrieveCurrentAsync",
+                                pathTemplate: "\"/api/limits/current\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -395,9 +300,9 @@ namespace CVAT
                     await global::CVAT.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::CVAT.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsageList",
-                                methodName: "UsageListAsync",
-                                pathTemplate: "\"/api/usage\"",
+                                operationId: "LimitsRetrieveCurrent",
+                                methodName: "LimitsRetrieveCurrentAsync",
+                                pathTemplate: "\"/api/limits/current\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -425,7 +330,7 @@ namespace CVAT
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessUsageListResponseContent(
+                                ProcessLimitsRetrieveCurrentResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -434,9 +339,9 @@ namespace CVAT
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::CVAT.PaginatedUsageList.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::CVAT.CurrentLimit.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.PaginatedUsageList>(
+                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.CurrentLimit>(
                                         statusCode: __response.StatusCode,
                                         headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -466,9 +371,9 @@ namespace CVAT
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::CVAT.PaginatedUsageList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::CVAT.CurrentLimit.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.PaginatedUsageList>(
+                                    return new global::CVAT.AutoSDKHttpResponse<global::CVAT.CurrentLimit>(
                                         statusCode: __response.StatusCode,
                                         headers: global::CVAT.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

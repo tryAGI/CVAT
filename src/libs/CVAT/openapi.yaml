@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.78.0 (2.0)",
+    "version": "2.79.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -7377,6 +7377,44 @@
         }
       }
     },
+    "/api/limits/current": {
+      "get": {
+        "operationId": "limits_retrieve_current",
+        "description": "Returns stored limit metadata with effective limits. Expired records use Free defaults.",
+        "summary": "Get limits for the current user or organization",
+        "tags": [
+          "limits"
+        ],
+        "security": [
+          {
+            "tokenAuth": []
+          },
+          {
+            "accessTokenAuth": []
+          },
+          {
+            "sessionAuth": [],
+            "csrfAuth": [],
+            "csrfHeaderAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.cvat+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentLimit"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/limits/default": {
       "get": {
         "operationId": "limits_retrieve_default",
@@ -11096,7 +11134,7 @@
             "name": "filter",
             "required": false,
             "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'dimension', 'id', 'media_type', 'mode', 'name', 'owner', 'project_id', 'project_name', 'status', 'subset', 'tracker_link', 'updated_date', 'validation_mode'].\n\nThere are few examples for complex filtering tasks:\n\n    - Get all tasks from 1,2,3 projects - { \"and\" : [{ \"in\" : [{ \"var\" : \"project_id\" }, [1, 2, 3]]}]}\n\n    - Get all completed tasks from 1 project - { \"and\": [{ \"==\": [{ \"var\" : \"status\" }, \"completed\"]}, { \"==\" : [{ \"var\" : \"project_id\"}, 1]}]}\n\n",
+            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['assignee', 'created_date', 'dimension', 'id', 'media_type', 'mode', 'name', 'owner', 'project_id', 'project_name', 'status', 'subset', 'tracker_link', 'updated_date', 'validation_mode'].\n\nThere are few examples for complex filtering tasks:\n\n    - Get all tasks from 1,2,3 projects - { \"and\" : [{ \"in\" : [{ \"var\" : \"project_id\" }, [1, 2, 3]]}]}\n\n    - Get all completed tasks from 1 project - { \"and\": [{ \"==\": [{ \"var\" : \"status\" }, \"completed\"]}, { \"==\" : [{ \"var\" : \"project_id\"}, 1]}]}\n\n",
             "schema": {
               "type": "string"
             }
@@ -11207,7 +11245,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['assignee', 'dimension', 'id', 'media_type', 'mode', 'name', 'owner', 'project_id', 'project_name', 'status', 'subset', 'tracker_link', 'updated_date', 'validation_mode']",
+            "description": "Which field to use when ordering the results. Available ordering_fields: ['assignee', 'created_date', 'dimension', 'id', 'media_type', 'mode', 'name', 'owner', 'project_id', 'project_name', 'status', 'subset', 'tracker_link', 'updated_date', 'validation_mode']",
             "schema": {
               "type": "string"
             }
@@ -12800,91 +12838,10 @@
         }
       }
     },
-    "/api/usage": {
+    "/api/usage/current": {
       "get": {
-        "operationId": "usage_list",
-        "summary": "Method returns a paginated list of usage according to query parameters",
-        "parameters": [
-          {
-            "name": "X-Organization",
-            "in": "header",
-            "description": "Organization unique slug.\nIf omitted, results from all organizations available to the user are returned\n(unfiltered). An empty value (\"\") selects the personal sandbox workspace only.\nA non-empty value selects that organization.\n",
-            "schema": {
-              "type": "string"
-            },
-            "allowEmptyValue": true
-          },
-          {
-            "name": "filter",
-            "required": false,
-            "in": "query",
-            "description": "\nJSON Logic filter. This filter can be used to perform complex filtering by grouping rules.\n\nFor example, using such a filter you can get all resources created by you:\n\n    - {\"and\":[{\"==\":[{\"var\":\"owner\"},\"<user>\"]}]}\n\nDetails about the syntax used can be found at the link: https://jsonlogic.com/\n\n Available filter_fields: ['user', 'user_id'].",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "org",
-            "in": "query",
-            "description": "Organization unique slug.\nIf omitted, results from all organizations available to the user are returned\n(unfiltered). An empty value (\"\") selects the personal sandbox workspace only.\nA non-empty value selects that organization.\n",
-            "schema": {
-              "type": "string"
-            },
-            "allowEmptyValue": true
-          },
-          {
-            "name": "org_id",
-            "in": "query",
-            "description": "Organization unique id.\nIf omitted, results from all organizations available to the user are returned\n(unfiltered). An empty value (\"\") selects the personal sandbox workspace only.\nA positive integer selects that organization.\n",
-            "schema": {
-              "type": "integer"
-            },
-            "allowEmptyValue": true
-          },
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "description": "A page number within the paginated result set.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "page_size",
-            "required": false,
-            "in": "query",
-            "description": "Number of results to return per page.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results. Available ordering_fields: ['user', 'user_id']",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "user",
-            "in": "query",
-            "description": "A simple equality filter for the user field",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "user_id",
-            "in": "query",
-            "description": "A simple equality filter for the user_id field",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
+        "operationId": "usage_retrieve_current",
+        "summary": "Get usage for the current user or organization",
         "tags": [
           "usage"
         ],
@@ -12909,7 +12866,7 @@
             "content": {
               "application/vnd.cvat+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedUsageList"
+                  "$ref": "#/components/schemas/Usage"
                 }
               }
             },
@@ -15506,6 +15463,53 @@
         "type": "string",
         "description": "* `KEY_SECRET_KEY_PAIR` - KEY_SECRET_KEY_PAIR\n* `ACCOUNT_NAME_TOKEN_PAIR` - ACCOUNT_NAME_TOKEN_PAIR\n* `KEY_FILE_PATH` - KEY_FILE_PATH\n* `ANONYMOUS_ACCESS` - ANONYMOUS_ACCESS\n* `CONNECTION_STRING` - CONNECTION_STRING"
       },
+      "CurrentLimit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
+          },
+          "user": {
+            "type": "integer",
+            "nullable": true
+          },
+          "org": {
+            "type": "integer",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/Type2c0Enum"
+          },
+          "limits": {
+            "$ref": "#/components/schemas/LimitsField"
+          },
+          "access_until_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expired": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "limits",
+          "type"
+        ]
+      },
+      "CvatUsageReasonEnum": {
+        "enum": [
+          "work_project",
+          "academic_research",
+          "teaching_or_coursework",
+          "personal_project"
+        ],
+        "type": "string",
+        "description": "* `work_project` - work_project\n* `academic_research` - academic_research\n* `teaching_or_coursework` - teaching_or_coursework\n* `personal_project` - personal_project"
+      },
       "DataMetaRead": {
         "type": "object",
         "properties": {
@@ -18013,7 +18017,7 @@
             "nullable": true
           },
           "type": {
-            "$ref": "#/components/schemas/LimitTypeEnum"
+            "$ref": "#/components/schemas/Type2c0Enum"
           },
           "limits": {
             "$ref": "#/components/schemas/LimitsField"
@@ -18045,7 +18049,7 @@
             "nullable": true
           },
           "type": {
-            "$ref": "#/components/schemas/LimitTypeEnum"
+            "$ref": "#/components/schemas/Type2c0Enum"
           },
           "limits": {
             "$ref": "#/components/schemas/LimitsFieldRequest"
@@ -18060,14 +18064,6 @@
           "limits",
           "type"
         ]
-      },
-      "LimitTypeEnum": {
-        "enum": [
-          "paid",
-          "custom"
-        ],
-        "type": "string",
-        "description": "* `paid` - PAID\n* `custom` - CUSTOM"
       },
       "LimitsField": {
         "type": "object",
@@ -18313,6 +18309,51 @@
       "NullEnum": {
         "enum": [
           null
+        ]
+      },
+      "NumericUsage": {
+        "type": "object",
+        "properties": {
+          "tasks": {
+            "type": "integer"
+          },
+          "projects": {
+            "type": "integer"
+          },
+          "cloud_storages": {
+            "type": "integer"
+          },
+          "webhooks": {
+            "type": "integer"
+          },
+          "external_ai_agents": {
+            "type": "integer"
+          },
+          "external_ai_agent_calls": {
+            "type": "integer"
+          },
+          "internal_ai_agent_calls": {
+            "type": "integer"
+          },
+          "internal_storage_bytes": {
+            "type": "integer"
+          },
+          "memberships": {
+            "type": "integer"
+          },
+          "organizations": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cloud_storages",
+          "external_ai_agent_calls",
+          "external_ai_agents",
+          "internal_ai_agent_calls",
+          "internal_storage_bytes",
+          "projects",
+          "tasks",
+          "webhooks"
         ]
       },
       "OnlineFunctionCallRequest": {
@@ -19055,37 +19096,6 @@
           }
         }
       },
-      "PaginatedUsageList": {
-        "type": "object",
-        "required": [
-          "count",
-          "results"
-        ],
-        "properties": {
-          "count": {
-            "type": "integer",
-            "example": 123
-          },
-          "next": {
-            "type": "string",
-            "nullable": true,
-            "format": "uri",
-            "example": "http://api.example.org/accounts/?page=4"
-          },
-          "previous": {
-            "type": "string",
-            "nullable": true,
-            "format": "uri",
-            "example": "http://api.example.org/accounts/?page=2"
-          },
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Usage"
-            }
-          }
-        }
-      },
       "PaginatedUserGrowthDataList": {
         "type": "object",
         "required": [
@@ -19553,7 +19563,7 @@
             "nullable": true
           },
           "type": {
-            "$ref": "#/components/schemas/LimitTypeEnum"
+            "$ref": "#/components/schemas/Type2c0Enum"
           },
           "limits": {
             "$ref": "#/components/schemas/LimitsFieldRequest"
@@ -19963,6 +19973,45 @@
             "type": "boolean",
             "title": "Active",
             "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+          },
+          "cvat_usage_reason": {
+            "description": "The main reason the user uses CVAT.\n\n* `work_project` - work_project\n* `academic_research` - academic_research\n* `teaching_or_coursework` - teaching_or_coursework\n* `personal_project` - personal_project",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CvatUsageReasonEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "primary_role": {
+            "type": "string",
+            "description": "A predefined role code or custom role text.",
+            "maxLength": 255
+          },
+          "planned_activities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlannedActivitiesEnum"
+            },
+            "description": "Predefined activity codes selected by the user.",
+            "maxItems": 6
+          },
+          "data_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            },
+            "description": "Predefined data type codes and optionally one custom value.",
+            "maxItems": 6
+          },
+          "discovery_source": {
+            "type": "string",
+            "description": "A predefined discovery source code or custom text.",
+            "maxLength": 255
           }
         }
       },
@@ -20000,6 +20049,18 @@
             "writeOnly": true
           }
         }
+      },
+      "PlannedActivitiesEnum": {
+        "enum": [
+          "set_up_projects",
+          "annotate_data",
+          "review_quality",
+          "manage_annotators",
+          "connect_models",
+          "evaluate_for_organization"
+        ],
+        "type": "string",
+        "description": "* `set_up_projects` - set_up_projects\n* `annotate_data` - annotate_data\n* `review_quality` - review_quality\n* `manage_annotators` - manage_annotators\n* `connect_models` - connect_models\n* `evaluate_for_organization` - evaluate_for_organization"
       },
       "Plugins": {
         "type": "object",
@@ -23194,25 +23255,33 @@
           "type"
         ]
       },
+      "Type2c0Enum": {
+        "enum": [
+          "paid",
+          "custom"
+        ],
+        "type": "string",
+        "description": "* `paid` - PAID\n* `custom` - CUSTOM"
+      },
       "Usage": {
         "type": "object",
         "properties": {
           "user_id": {
             "type": "integer",
-            "nullable": true,
-            "readOnly": true
+            "readOnly": true,
+            "nullable": true
           },
           "org_id": {
             "type": "integer",
-            "nullable": true,
-            "readOnly": true
+            "readOnly": true,
+            "nullable": true
           },
-          "internal_ai_agent_calls": {
-            "type": "integer",
-            "readOnly": true
-          },
-          "external_ai_agent_calls": {
-            "type": "integer",
+          "usage": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NumericUsage"
+              }
+            ],
             "readOnly": true
           }
         }
@@ -23285,6 +23354,44 @@
             "type": "boolean",
             "readOnly": true,
             "nullable": true
+          },
+          "cvat_usage_reason": {
+            "description": "The main reason the user uses CVAT.\n\n* `work_project` - work_project\n* `academic_research` - academic_research\n* `teaching_or_coursework` - teaching_or_coursework\n* `personal_project` - personal_project",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CvatUsageReasonEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "primary_role": {
+            "type": "string",
+            "description": "A predefined role code or custom role text.",
+            "maxLength": 255
+          },
+          "planned_activities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlannedActivitiesEnum"
+            },
+            "description": "Predefined activity codes selected by the user.",
+            "maxItems": 6
+          },
+          "data_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "description": "Predefined data type codes and optionally one custom value.",
+            "maxItems": 6
+          },
+          "discovery_source": {
+            "type": "string",
+            "description": "A predefined discovery source code or custom text.",
+            "maxLength": 255
           },
           "email_verified": {
             "type": "boolean",

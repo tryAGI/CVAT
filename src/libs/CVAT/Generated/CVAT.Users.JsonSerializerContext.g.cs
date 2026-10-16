@@ -20,22 +20,32 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicUser))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum), TypeInfoPropertyName = "NullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BlankEnum), TypeInfoPropertyName = "BlankEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CreatedViaEnum), TypeInfoPropertyName = "CreatedViaEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CvatUsageReasonEnum), TypeInfoPropertyName = "CvatUsageReasonEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.MetaUser), TypeInfoPropertyName = "MetaUser2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.User))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PaginatedMetaUserList))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.MetaUser>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedUserRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>), TypeInfoPropertyName = "OneOfCvatUsageReasonEnumBlankEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PlannedActivitiesEnum), TypeInfoPropertyName = "PlannedActivitiesEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfCreatedViaEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum?), TypeInfoPropertyName = "NullableNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BlankEnum?), TypeInfoPropertyName = "NullableBlankEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CreatedViaEnum?), TypeInfoPropertyName = "NullableCreatedViaEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.CvatUsageReasonEnum?), TypeInfoPropertyName = "NullableCvatUsageReasonEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.MetaUser?), TypeInfoPropertyName = "NullableMetaUser2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>?), TypeInfoPropertyName = "NullableOneOfCvatUsageReasonEnumBlankEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PlannedActivitiesEnum?), TypeInfoPropertyName = "NullablePlannedActivitiesEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfCreatedViaEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.MetaUser>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.PlannedActivitiesEnum>))]
     internal sealed partial class UsersSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -84,6 +94,8 @@ namespace CVAT
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::CVAT.JsonConverters.MetaUserJsonConverter());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
@@ -107,19 +119,41 @@ namespace CVAT
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::CVAT.CreatedViaEnum)
+                    typeToConvert == typeof(global::CVAT.BlankEnum)
+
+                    || typeToConvert == typeof(global::CVAT.BlankEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.CreatedViaEnum)
 
                     || typeToConvert == typeof(global::CVAT.CreatedViaEnum?)
 
+                    || typeToConvert == typeof(global::CVAT.CvatUsageReasonEnum)
+
+                    || typeToConvert == typeof(global::CVAT.CvatUsageReasonEnum?)
+
                     || typeToConvert == typeof(global::CVAT.NullEnum)
 
-                    || typeToConvert == typeof(global::CVAT.NullEnum?);
+                    || typeToConvert == typeof(global::CVAT.NullEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.PlannedActivitiesEnum)
+
+                    || typeToConvert == typeof(global::CVAT.PlannedActivitiesEnum?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
+                if (typeToConvert == typeof(global::CVAT.BlankEnum))
+                {
+                    return new global::CVAT.JsonConverters.BlankEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.BlankEnum?))
+                {
+                    return new global::CVAT.JsonConverters.BlankEnumNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::CVAT.CreatedViaEnum))
                 {
                     return new global::CVAT.JsonConverters.CreatedViaEnumJsonConverter();
@@ -130,6 +164,16 @@ namespace CVAT
                     return new global::CVAT.JsonConverters.CreatedViaEnumNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::CVAT.CvatUsageReasonEnum))
+                {
+                    return new global::CVAT.JsonConverters.CvatUsageReasonEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.CvatUsageReasonEnum?))
+                {
+                    return new global::CVAT.JsonConverters.CvatUsageReasonEnumNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::CVAT.NullEnum))
                 {
                     return new global::CVAT.JsonConverters.NullEnumJsonConverter();
@@ -138,6 +182,16 @@ namespace CVAT
                 if (typeToConvert == typeof(global::CVAT.NullEnum?))
                 {
                     return new global::CVAT.JsonConverters.NullEnumNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.PlannedActivitiesEnum))
+                {
+                    return new global::CVAT.JsonConverters.PlannedActivitiesEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.PlannedActivitiesEnum?))
+                {
+                    return new global::CVAT.JsonConverters.PlannedActivitiesEnumNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }
