@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.79.0 (2.0)",
+    "version": "2.80.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -5212,7 +5212,7 @@
               "enum": [
                 "annotation",
                 "ground_truth",
-                "consensus_replica"
+                "replica"
               ]
             }
           }
@@ -13048,6 +13048,14 @@
         "summary": "Get user details",
         "parameters": [
           {
+            "in": "header",
+            "name": "X-Organization",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Organization unique slug.\nIf omitted, results from all organizations available to the user are returned\n(unfiltered). An empty value (\"\") selects the personal sandbox workspace only.\nA non-empty value selects that organization.\n"
+          },
+          {
             "in": "path",
             "name": "id",
             "schema": {
@@ -13055,6 +13063,22 @@
             },
             "description": "A unique integer value identifying this user.",
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "org",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Organization unique slug.\nIf omitted, results from all organizations available to the user are returned\n(unfiltered). An empty value (\"\") selects the personal sandbox workspace only.\nA non-empty value selects that organization.\n"
+          },
+          {
+            "in": "query",
+            "name": "org_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Organization unique id.\nIf omitted, results from all organizations available to the user are returned\n(unfiltered). An empty value (\"\") selects the personal sandbox workspace only.\nA positive integer selects that organization.\n"
           }
         ],
         "tags": [
@@ -17038,11 +17062,6 @@
             "nullable": true,
             "readOnly": true
           },
-          "consensus_replicas": {
-            "type": "integer",
-            "readOnly": true,
-            "deprecated": true
-          },
           "replicas_count": {
             "type": "integer",
             "readOnly": true
@@ -17075,10 +17094,10 @@
         "enum": [
           "annotation",
           "ground_truth",
-          "consensus_replica"
+          "replica"
         ],
         "type": "string",
-        "description": "* `annotation` - ANNOTATION\n* `ground_truth` - GROUND_TRUTH\n* `consensus_replica` - CONSENSUS_REPLICA"
+        "description": "* `annotation` - ANNOTATION\n* `ground_truth` - GROUND_TRUTH\n* `replica` - REPLICA"
       },
       "JobValidation": {
         "type": "object",
@@ -22873,6 +22892,10 @@
             "type": "integer",
             "readOnly": true
           },
+          "initial_replicas": {
+            "type": "integer",
+            "readOnly": true
+          },
           "status": {
             "allOf": [
               {
@@ -22989,10 +23012,6 @@
             "type": "string",
             "nullable": true,
             "description": "Describes how the task validation is performed. Configured at task creation"
-          },
-          "consensus_enabled": {
-            "type": "boolean",
-            "readOnly": true
           }
         },
         "required": [
@@ -23111,11 +23130,18 @@
           "source_storage": {
             "$ref": "#/components/schemas/StorageRequest"
           },
+          "initial_replicas": {
+            "type": "integer",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "description": "The number of replica jobs for each annotation job. Configured at task creation"
+          },
           "consensus_replicas": {
             "type": "integer",
             "minimum": 0,
-            "default": 0,
-            "description": "The number of consensus replica jobs for each annotation job.\nConfigured at task creation\n"
+            "writeOnly": true,
+            "description": "Deprecated. The number of replica jobs for each annotation job.\nUse 'initial_replicas' instead\n",
+            "deprecated": true
           }
         },
         "required": [

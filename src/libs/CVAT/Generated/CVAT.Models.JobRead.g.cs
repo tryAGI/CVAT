@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace CVAT
@@ -203,13 +201,6 @@ namespace CVAT
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parent_job_id")]
         public int? ParentJobId { get; set; }
-
-        /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("consensus_replicas")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public int? ConsensusReplicas { get; set; }
 
         /// <summary>
         /// Included only in responses

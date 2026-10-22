@@ -46,7 +46,7 @@ namespace CVAT
         /// <param name="type">
         /// * `annotation` - ANNOTATION<br/>
         /// * `ground_truth` - GROUND_TRUTH<br/>
-        /// * `consensus_replica` - CONSENSUS_REPLICA
+        /// * `replica` - REPLICA
         /// </param>
         /// <param name="taskId"></param>
         /// <param name="frameSelectionMethod">

@@ -15,11 +15,11 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        ConsensusReplica,
+        GroundTruth,
         /// <summary>
         ///
         /// </summary>
-        GroundTruth,
+        Replica,
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ namespace CVAT
             return value switch
             {
                 JobsListType.Annotation => "annotation",
-                JobsListType.ConsensusReplica => "consensus_replica",
                 JobsListType.GroundTruth => "ground_truth",
+                JobsListType.Replica => "replica",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,8 +48,8 @@ namespace CVAT
             return value switch
             {
                 "annotation" => JobsListType.Annotation,
-                "consensus_replica" => JobsListType.ConsensusReplica,
                 "ground_truth" => JobsListType.GroundTruth,
+                "replica" => JobsListType.Replica,
                 _ => null,
             };
         }
