@@ -27,11 +27,17 @@ namespace CVAT
             };
         partial void PrepareUsersRetrieveArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref int id);
+            ref string? xOrganization,
+            ref int id,
+            ref string? org,
+            ref int? orgId);
         partial void PrepareUsersRetrieveRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int id);
+            string? xOrganization,
+            int id,
+            string? org,
+            int? orgId);
         partial void ProcessUsersRetrieveResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -44,17 +50,26 @@ namespace CVAT
         /// <summary>
         /// Get user details
         /// </summary>
+        /// <param name="xOrganization"></param>
         /// <param name="id"></param>
+        /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.MetaUser> UsersRetrieveAsync(
             int id,
+            string? xOrganization = default,
+            string? org = default,
+            int? orgId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await UsersRetrieveAsResponseAsync(
                 id: id,
+                xOrganization: xOrganization,
+                org: org,
+                orgId: orgId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -64,12 +79,18 @@ namespace CVAT
         /// <summary>
         /// Get user details
         /// </summary>
+        /// <param name="xOrganization"></param>
         /// <param name="id"></param>
+        /// <param name="org"></param>
+        /// <param name="orgId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::CVAT.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::CVAT.AutoSDKHttpResponse<global::CVAT.MetaUser>> UsersRetrieveAsResponseAsync(
             int id,
+            string? xOrganization = default,
+            string? org = default,
+            int? orgId = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -77,7 +98,10 @@ namespace CVAT
                 client: HttpClient);
             PrepareUsersRetrieveArguments(
                 httpClient: HttpClient,
-                id: ref id);
+                xOrganization: ref xOrganization,
+                id: ref id,
+                org: ref org,
+                orgId: ref orgId);
 
 
             var __authorizations = global::CVAT.EndPointSecurityResolver.ResolveAuthorizations(
@@ -105,6 +129,10 @@ namespace CVAT
                             var __pathBuilder = new global::CVAT.PathBuilder(
                                 path: $"/api/users/{id}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("org", org)
+                                .AddOptionalParameter("org_id", orgId?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::CVAT.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -134,6 +162,12 @@ namespace CVAT
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+
+            if (xOrganization != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Organization", xOrganization.ToString());
+            }
+
                 global::CVAT.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -145,7 +179,10 @@ namespace CVAT
                 PrepareUsersRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id);
+                    xOrganization: xOrganization,
+                    id: id,
+                    org: org,
+                    orgId: orgId);
 
                 return __httpRequest;
             }

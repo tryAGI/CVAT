@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace CVAT
@@ -76,11 +78,18 @@ namespace CVAT
         public global::CVAT.StorageRequest? SourceStorage { get; set; }
 
         /// <summary>
-        /// The number of consensus replica jobs for each annotation job.<br/>
-        /// Configured at task creation<br/>
-        /// Default Value: 0
+        /// The number of replica jobs for each annotation job. Configured at task creation
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initial_replicas")]
+        public int? InitialReplicas { get; set; }
+
+        /// <summary>
+        /// Deprecated. The number of replica jobs for each annotation job.<br/>
+        /// Use 'initial_replicas' instead<br/>
+        /// Included only in requests
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("consensus_replicas")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public int? ConsensusReplicas { get; set; }
 
         /// <summary>
@@ -107,10 +116,8 @@ namespace CVAT
         /// <param name="subset"></param>
         /// <param name="targetStorage"></param>
         /// <param name="sourceStorage"></param>
-        /// <param name="consensusReplicas">
-        /// The number of consensus replica jobs for each annotation job.<br/>
-        /// Configured at task creation<br/>
-        /// Default Value: 0
+        /// <param name="initialReplicas">
+        /// The number of replica jobs for each annotation job. Configured at task creation
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -127,7 +134,7 @@ namespace CVAT
             string? subset,
             global::CVAT.StorageRequest? targetStorage,
             global::CVAT.StorageRequest? sourceStorage,
-            int? consensusReplicas)
+            int? initialReplicas)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.ProjectId = projectId;
@@ -140,7 +147,7 @@ namespace CVAT
             this.Subset = subset;
             this.TargetStorage = targetStorage;
             this.SourceStorage = sourceStorage;
-            this.ConsensusReplicas = consensusReplicas;
+            this.InitialReplicas = initialReplicas;
         }
 
         /// <summary>

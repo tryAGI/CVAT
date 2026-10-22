@@ -6,7 +6,7 @@ namespace CVAT
     /// <summary>
     /// * `annotation` - ANNOTATION<br/>
     /// * `ground_truth` - GROUND_TRUTH<br/>
-    /// * `consensus_replica` - CONSENSUS_REPLICA
+    /// * `replica` - REPLICA
     /// </summary>
     public enum JobType
     {
@@ -17,11 +17,11 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        ConsensusReplica,
+        GroundTruth,
         /// <summary>
         ///
         /// </summary>
-        GroundTruth,
+        Replica,
     }
 
     /// <summary>
@@ -37,8 +37,8 @@ namespace CVAT
             return value switch
             {
                 JobType.Annotation => "annotation",
-                JobType.ConsensusReplica => "consensus_replica",
                 JobType.GroundTruth => "ground_truth",
+                JobType.Replica => "replica",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,8 +50,8 @@ namespace CVAT
             return value switch
             {
                 "annotation" => JobType.Annotation,
-                "consensus_replica" => JobType.ConsensusReplica,
                 "ground_truth" => JobType.GroundTruth,
+                "replica" => JobType.Replica,
                 _ => null,
             };
         }

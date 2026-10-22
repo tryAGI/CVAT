@@ -1,6 +1,8 @@
 
 #nullable enable
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace CVAT
 {
     public partial class TasksClient
@@ -495,10 +497,8 @@ namespace CVAT
         /// <param name="subset"></param>
         /// <param name="targetStorage"></param>
         /// <param name="sourceStorage"></param>
-        /// <param name="consensusReplicas">
-        /// The number of consensus replica jobs for each annotation job.<br/>
-        /// Configured at task creation<br/>
-        /// Default Value: 0
+        /// <param name="initialReplicas">
+        /// The number of replica jobs for each annotation job. Configured at task creation
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -518,7 +518,7 @@ namespace CVAT
             string? subset = default,
             global::CVAT.StorageRequest? targetStorage = default,
             global::CVAT.StorageRequest? sourceStorage = default,
-            int? consensusReplicas = default,
+            int? initialReplicas = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -535,7 +535,7 @@ namespace CVAT
                 Subset = subset,
                 TargetStorage = targetStorage,
                 SourceStorage = sourceStorage,
-                ConsensusReplicas = consensusReplicas,
+                InitialReplicas = initialReplicas,
             };
 
             return await TasksCreateAsync(

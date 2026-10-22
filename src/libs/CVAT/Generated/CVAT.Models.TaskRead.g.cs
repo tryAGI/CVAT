@@ -85,6 +85,12 @@ namespace CVAT
         /// <summary>
         /// Included only in responses
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initial_replicas")]
+        public int? InitialReplicas { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.JobStatusJsonConverter))]
         public global::CVAT.JobStatus? Status { get; set; }
@@ -215,12 +221,6 @@ namespace CVAT
         public string? ValidationMode { get; set; }
 
         /// <summary>
-        /// Included only in responses
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("consensus_enabled")]
-        public bool? ConsensusEnabled { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -259,6 +259,9 @@ namespace CVAT
         /// Included only in responses
         /// </param>
         /// <param name="segmentSize">
+        /// Included only in responses
+        /// </param>
+        /// <param name="initialReplicas">
         /// Included only in responses
         /// </param>
         /// <param name="status">
@@ -309,9 +312,6 @@ namespace CVAT
         /// <param name="validationMode">
         /// Describes how the task validation is performed. Configured at task creation
         /// </param>
-        /// <param name="consensusEnabled">
-        /// Included only in responses
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -330,6 +330,7 @@ namespace CVAT
             global::System.DateTime? updatedDate,
             int? overlap,
             int? segmentSize,
+            int? initialReplicas,
             global::CVAT.JobStatus? status,
             int? dataChunkSize,
             global::CVAT.ChunkType? dataOriginalChunkType,
@@ -347,8 +348,7 @@ namespace CVAT
             global::CVAT.Storage? targetStorage,
             global::CVAT.Storage? sourceStorage,
             global::System.DateTime? assigneeUpdatedDate,
-            string? validationMode,
-            bool? consensusEnabled)
+            string? validationMode)
         {
             this.Url = url;
             this.Id = id;
@@ -362,6 +362,7 @@ namespace CVAT
             this.UpdatedDate = updatedDate;
             this.Overlap = overlap;
             this.SegmentSize = segmentSize;
+            this.InitialReplicas = initialReplicas;
             this.Status = status;
             this.DataChunkSize = dataChunkSize;
             this.DataOriginalChunkType = dataOriginalChunkType;
@@ -382,7 +383,6 @@ namespace CVAT
             this.Labels = labels ?? throw new global::System.ArgumentNullException(nameof(labels));
             this.AssigneeUpdatedDate = assigneeUpdatedDate;
             this.ValidationMode = validationMode;
-            this.ConsensusEnabled = consensusEnabled;
         }
 
         /// <summary>

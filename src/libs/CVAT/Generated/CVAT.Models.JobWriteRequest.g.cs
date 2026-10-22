@@ -36,7 +36,7 @@ namespace CVAT
         /// <summary>
         /// * `annotation` - ANNOTATION<br/>
         /// * `ground_truth` - GROUND_TRUTH<br/>
-        /// * `consensus_replica` - CONSENSUS_REPLICA
+        /// * `replica` - REPLICA
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.JobTypeJsonConverter))]
@@ -114,7 +114,7 @@ namespace CVAT
         /// <param name="type">
         /// * `annotation` - ANNOTATION<br/>
         /// * `ground_truth` - GROUND_TRUTH<br/>
-        /// * `consensus_replica` - CONSENSUS_REPLICA
+        /// * `replica` - REPLICA
         /// </param>
         /// <param name="taskId"></param>
         /// <param name="assignee"></param>
