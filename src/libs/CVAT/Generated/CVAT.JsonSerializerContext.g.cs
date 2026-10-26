@@ -12,6 +12,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.About))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
@@ -508,7 +509,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.WebhookContentType?), TypeInfoPropertyName = "NullableWebhookContentType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportRequirementCalculationStatusEnum?), TypeInfoPropertyName = "NullableQualityReportRequirementCalculationStatusEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ReasonEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfReasonEnumNullEnum2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ReasonEnum?), TypeInfoPropertyName = "NullableReasonEnum2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ReasonEnum?), TypeInfoPropertyName = "NullableReasonEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum?), TypeInfoPropertyName = "NullableQualityReportTargetMetricSummaryMetricEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RequestCategoryEnum?), TypeInfoPropertyName = "NullableRequestCategoryEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RequestStatus?), TypeInfoPropertyName = "NullableRequestStatus2")]
