@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.80.0 (2.0)",
+    "version": "2.81.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -5315,6 +5315,14 @@
                     ]
                   },
                   "summary": "create gt job with manual frame selection"
+                },
+                "CreateAReplicaJob": {
+                  "value": {
+                    "type": "replica",
+                    "task_id": 17,
+                    "parent_job_id": 42
+                  },
+                  "summary": "create a replica job"
                 }
               }
             }
@@ -5455,7 +5463,7 @@
       },
       "delete": {
         "operationId": "jobs_destroy",
-        "description": "Related annotations will be deleted as well.\n\nPlease note, that not every job can be removed. Currently,\nit is only available for Ground Truth jobs.\n",
+        "description": "Related annotations will be deleted as well.\n\nPlease note, that not every job can be removed. Currently,\nit is only available for Ground Truth and replica jobs.\n",
         "summary": "Delete a job",
         "parameters": [
           {
@@ -16688,6 +16696,68 @@
           "name"
         ]
       },
+      "GroundTruthJobCreateRequest": {
+        "type": "object",
+        "properties": {
+          "assignee": {
+            "type": "integer",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/GroundTruthJobCreateTypeEnum"
+          },
+          "task_id": {
+            "type": "integer"
+          },
+          "frame_selection_method": {
+            "$ref": "#/components/schemas/FrameSelectionMethod"
+          },
+          "frames": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "The list of frame ids. Applicable only to the \"manual\" frame selection method\n"
+          },
+          "frame_count": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The number of frames included in the GT job.\nApplicable only to the \"random_uniform\" frame selection method\n"
+          },
+          "frame_share": {
+            "type": "number",
+            "format": "double",
+            "description": "The share of frames included in the GT job.\nApplicable only to the \"random_uniform\" frame selection method\n"
+          },
+          "frames_per_job_count": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The number of frames included in the GT job from each annotation job.\nApplicable only to the \"random_per_job\" frame selection method\n"
+          },
+          "frames_per_job_share": {
+            "type": "number",
+            "format": "double",
+            "description": "The share of frames included in the GT job from each annotation job.\nApplicable only to the \"random_per_job\" frame selection method\n"
+          },
+          "random_seed": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "The seed value for the random number generator.\nThe same value will produce the same frame sets.\nApplicable only to random frame selection methods.\nBy default, a random value is used.\n"
+          }
+        },
+        "required": [
+          "task_id",
+          "type"
+        ]
+      },
+      "GroundTruthJobCreateTypeEnum": {
+        "enum": [
+          "ground_truth"
+        ],
+        "type": "string",
+        "description": "* `ground_truth` - GROUND_TRUTH"
+      },
       "InputTypeEnum": {
         "enum": [
           "checkbox",
@@ -17260,65 +17330,21 @@
         "description": "* `disabled` - DISABLED\n* `accepted` - ACCEPTED\n* `rejected` - REJECTED"
       },
       "JobWriteRequest": {
-        "type": "object",
-        "properties": {
-          "assignee": {
-            "type": "integer",
-            "nullable": true
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/GroundTruthJobCreateRequest"
           },
-          "stage": {
-            "$ref": "#/components/schemas/JobStage"
-          },
-          "state": {
-            "$ref": "#/components/schemas/OperationStatus"
-          },
-          "type": {
-            "$ref": "#/components/schemas/JobType"
-          },
-          "task_id": {
-            "type": "integer"
-          },
-          "frame_selection_method": {
-            "$ref": "#/components/schemas/FrameSelectionMethod"
-          },
-          "frame_count": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "The number of frames included in the GT job.\nApplicable only to the \"random_uniform\" frame selection method\n"
-          },
-          "frame_share": {
-            "type": "number",
-            "format": "double",
-            "description": "The share of frames included in the GT job.\nApplicable only to the \"random_uniform\" frame selection method\n"
-          },
-          "frames_per_job_count": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "The number of frames included in the GT job from each annotation job.\nApplicable only to the \"random_per_job\" frame selection method\n"
-          },
-          "frames_per_job_share": {
-            "type": "number",
-            "format": "double",
-            "description": "The share of frames included in the GT job from each annotation job.\nApplicable only to the \"random_per_job\" frame selection method\n"
-          },
-          "random_seed": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "The seed value for the random number generator.\nThe same value will produce the same frame sets.\nApplicable only to random frame selection methods.\nBy default, a random value is used.\n"
-          },
-          "frames": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "description": "The list of frame ids. Applicable only to the \"manual\" frame selection method\n"
+          {
+            "$ref": "#/components/schemas/ReplicaJobCreateRequest"
           }
-        },
-        "required": [
-          "task_id",
-          "type"
-        ]
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ground_truth": "#/components/schemas/GroundTruthJobCreateRequest",
+            "replica": "#/components/schemas/ReplicaJobCreateRequest"
+          }
+        }
       },
       "JobsSummary": {
         "type": "object",
@@ -21934,6 +21960,36 @@
           "password2",
           "username"
         ]
+      },
+      "ReplicaJobCreateRequest": {
+        "type": "object",
+        "properties": {
+          "assignee": {
+            "type": "integer",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/ReplicaJobCreateTypeEnum"
+          },
+          "task_id": {
+            "type": "integer"
+          },
+          "parent_job_id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "parent_job_id",
+          "task_id",
+          "type"
+        ]
+      },
+      "ReplicaJobCreateTypeEnum": {
+        "enum": [
+          "replica"
+        ],
+        "type": "string",
+        "description": "* `replica` - REPLICA"
       },
       "ReportEvent": {
         "type": "object",

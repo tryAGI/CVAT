@@ -28,7 +28,7 @@
       "Slug": "jobs-create",
       "Description": "Generated from OpenAPI examples.",
       "Language": "csharp",
-      "Code": "using var client = new CVATClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::CVAT.JobWriteRequest\u003E(\n    @\u0022{\n  \u0022\u0022type\u0022\u0022: \u0022\u0022ground_truth\u0022\u0022,\n  \u0022\u0022task_id\u0022\u0022: 42,\n  \u0022\u0022frame_selection_method\u0022\u0022: \u0022\u0022random_per_job\u0022\u0022,\n  \u0022\u0022frames_per_job_share\u0022\u0022: 0.2,\n  \u0022\u0022random_seed\u0022\u0022: 1\n}\u0022)!;\n\nvar response = await client.Jobs.JobsCreateAsync(\n    request: request\n);",
+      "Code": "using var client = new CVATClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::CVAT.JobWriteRequest\u003E(\n    @\u0022{\n  \u0022\u0022type\u0022\u0022: \u0022\u0022replica\u0022\u0022,\n  \u0022\u0022task_id\u0022\u0022: 17,\n  \u0022\u0022parent_job_id\u0022\u0022: 42\n}\u0022)!;\n\nvar response = await client.Jobs.JobsCreateAsync(\n    request: request\n);",
       "Format": "sdk",
       "OperationId": "jobs_create",
       "Setup": "This example assumes \u0060using CVAT;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
