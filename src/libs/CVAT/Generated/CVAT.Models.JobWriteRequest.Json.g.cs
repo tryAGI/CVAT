@@ -2,7 +2,7 @@
 
 namespace CVAT
 {
-    public sealed partial class JobWriteRequest
+    public readonly partial struct JobWriteRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace CVAT
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::CVAT.JobWriteRequest),
-                jsonSerializerContext) as global::CVAT.JobWriteRequest;
+                jsonSerializerContext) as global::CVAT.JobWriteRequest?;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace CVAT
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::CVAT.JobWriteRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::CVAT.JobWriteRequest;
+                jsonSerializerContext).ConfigureAwait(false)) as global::CVAT.JobWriteRequest?;
         }
 
         /// <summary>

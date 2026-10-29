@@ -8,7 +8,7 @@ namespace CVAT
         /// Delete a job<br/>
         /// Related annotations will be deleted as well.<br/>
         /// Please note, that not every job can be removed. Currently,<br/>
-        /// it is only available for Ground Truth jobs.
+        /// it is only available for Ground Truth and replica jobs.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,7 +22,7 @@ namespace CVAT
         /// Delete a job<br/>
         /// Related annotations will be deleted as well.<br/>
         /// Please note, that not every job can be removed. Currently,<br/>
-        /// it is only available for Ground Truth jobs.
+        /// it is only available for Ground Truth and replica jobs.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
