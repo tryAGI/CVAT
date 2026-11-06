@@ -538,1291 +538,1347 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FileInfoTypeEnum? Type125 { get; set; }
+        public global::CVAT.ExtrapolationEnum? Type125 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FrameSelectionMethod? Type126 { get; set; }
+        public global::CVAT.FileInfoTypeEnum? Type126 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Function? Type127 { get; set; }
+        public global::CVAT.FrameSelectionMethod? Type127 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.KindEnum? Type128 { get; set; }
+        public global::CVAT.Function? Type128 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionLabel>? Type129 { get; set; }
+        public global::CVAT.KindEnum? Type129 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionLabel? Type130 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionLabel>? Type130 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? Type131 { get; set; }
+        public global::CVAT.FunctionLabel? Type131 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.VisibilityEnum? Type132 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? Type132 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionAttribute? Type133 { get; set; }
+        public global::CVAT.VisibilityEnum? Type133 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionAttributeRequest? Type134 { get; set; }
+        public global::CVAT.FunctionAttribute? Type134 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionCall? Type135 { get; set; }
+        public global::CVAT.FunctionAttributeRequest? Type135 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionCallParams? Type136 { get; set; }
+        public global::CVAT.FunctionCall? Type136 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionCallRequest? Type137 { get; set; }
+        public global::CVAT.FunctionCallParams? Type137 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionIdAndArParamsRequest? Type138 { get; set; }
+        public global::CVAT.FunctionCallRequest? Type138 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabelType? Type139 { get; set; }
+        public global::CVAT.FunctionIdAndArParamsRequest? Type139 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionAttribute>? Type140 { get; set; }
+        public global::CVAT.LabelType? Type140 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionSublabel>? Type141 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionAttribute>? Type141 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionSublabel? Type142 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionSublabel>? Type142 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionLabelRequest? Type143 { get; set; }
+        public global::CVAT.FunctionSublabel? Type143 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionAttributeRequest>? Type144 { get; set; }
+        public global::CVAT.FunctionLabelRequest? Type144 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionSublabelRequest>? Type145 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionAttributeRequest>? Type145 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionSublabelRequest? Type146 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionSublabelRequest>? Type146 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.FunctionRequest? Type147 { get; set; }
+        public global::CVAT.FunctionSublabelRequest? Type147 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? Type148 { get; set; }
+        public global::CVAT.FunctionRequest? Type148 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.GroundTruthJobCreateRequest? Type149 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionLabelRequest>? Type149 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.GroundTruthJobCreateTypeEnum? Type150 { get; set; }
+        public global::CVAT.GroundTruthJobCreateRequest? Type150 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.InvitationRead? Type151 { get; set; }
+        public global::CVAT.GroundTruthJobCreateTypeEnum? Type151 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RoleEnum? Type152 { get; set; }
+        public global::CVAT.InputEnum? Type152 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.InvitationWriteRequest? Type153 { get; set; }
+        public global::CVAT.InvitationRead? Type153 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.IssueRead? Type154 { get; set; }
+        public global::CVAT.RoleEnum? Type154 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.IssueWriteRequest? Type155 { get; set; }
+        public global::CVAT.InvitationWriteRequest? Type155 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.IssuesSummary? Type156 { get; set; }
+        public global::CVAT.IssueRead? Type156 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobRead? Type157 { get; set; }
+        public global::CVAT.IssueWriteRequest? Type157 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobStatus? Type158 { get; set; }
+        public global::CVAT.IssuesSummary? Type158 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobStage? Type159 { get; set; }
+        public global::CVAT.JobRead? Type159 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OperationStatus? Type160 { get; set; }
+        public global::CVAT.JobStatus? Type160 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabelsSummary? Type161 { get; set; }
+        public global::CVAT.JobStage? Type161 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobType? Type162 { get; set; }
+        public global::CVAT.OperationStatus? Type162 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Storage? Type163 { get; set; }
+        public global::CVAT.LabelsSummary? Type163 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobValidation? Type164 { get; set; }
+        public global::CVAT.JobType? Type164 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityTargetMetric? Type165 { get; set; }
+        public global::CVAT.Storage? Type165 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.JobValidationRequirement>? Type166 { get; set; }
+        public global::CVAT.JobValidation? Type166 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobValidationRequirement? Type167 { get; set; }
+        public global::CVAT.QualityTargetMetric? Type167 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobValidationStatusEnum? Type168 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.JobValidationRequirement>? Type168 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobValidationCreateRequest? Type169 { get; set; }
+        public global::CVAT.JobValidationRequirement? Type169 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobValidationLayoutRead? Type170 { get; set; }
+        public global::CVAT.JobValidationStatusEnum? Type170 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobWriteRequest? Type171 { get; set; }
+        public global::CVAT.JobValidationCreateRequest? Type171 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ReplicaJobCreateRequest? Type172 { get; set; }
+        public global::CVAT.JobValidationLayoutRead? Type172 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobWriteRequestDiscriminator? Type173 { get; set; }
+        public global::CVAT.JobWriteRequest? Type173 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobWriteRequestDiscriminatorType? Type174 { get; set; }
+        public global::CVAT.ReplicaJobCreateRequest? Type174 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsSummary? Type175 { get; set; }
+        public global::CVAT.JobWriteRequestDiscriminator? Type175 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Label? Type176 { get; set; }
+        public global::CVAT.JobWriteRequestDiscriminatorType? Type176 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.Attribute>? Type177 { get; set; }
+        public global::CVAT.JobsSummary? Type177 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.Sublabel>? Type178 { get; set; }
+        public global::CVAT.Label? Type178 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Sublabel? Type179 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.Attribute>? Type179 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type180 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.Sublabel>? Type180 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::CVAT.SublabelMappingEntry>? Type181 { get; set; }
+        public global::CVAT.Sublabel? Type181 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SublabelMappingEntry? Type182 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type182 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::CVAT.SublabelMappingEntryRequest>? Type183 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::CVAT.SublabelMappingEntry>? Type183 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SublabelMappingEntryRequest? Type184 { get; set; }
+        public global::CVAT.SublabelMappingEntry? Type184 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledData? Type185 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::CVAT.SublabelMappingEntryRequest>? Type185 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledImage>? Type186 { get; set; }
+        public global::CVAT.SublabelMappingEntryRequest? Type186 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledImage? Type187 { get; set; }
+        public global::CVAT.LabeledData? Type187 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledShape>? Type188 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledImage>? Type188 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledShape? Type189 { get; set; }
+        public global::CVAT.LabeledImage? Type189 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledTrack>? Type190 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledShape>? Type190 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledTrack? Type191 { get; set; }
+        public global::CVAT.LabeledShape? Type191 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledInterval>? Type192 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledTrack>? Type192 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledInterval? Type193 { get; set; }
+        public global::CVAT.LabeledTrack? Type193 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledDataRequest? Type194 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledInterval>? Type194 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledImageRequest>? Type195 { get; set; }
+        public global::CVAT.LabeledInterval? Type195 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledImageRequest? Type196 { get; set; }
+        public global::CVAT.LabeledDataRequest? Type196 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledShapeRequest>? Type197 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledImageRequest>? Type197 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledShapeRequest? Type198 { get; set; }
+        public global::CVAT.LabeledImageRequest? Type198 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledTrackRequest>? Type199 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledShapeRequest>? Type199 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledTrackRequest? Type200 { get; set; }
+        public global::CVAT.LabeledShapeRequest? Type200 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.LabeledIntervalRequest>? Type201 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledTrackRequest>? Type201 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabeledIntervalRequest? Type202 { get; set; }
+        public global::CVAT.LabeledTrackRequest? Type202 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AttributeVal>? Type203 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.LabeledIntervalRequest>? Type203 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledShape>? Type204 { get; set; }
+        public global::CVAT.LabeledIntervalRequest? Type204 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SubLabeledShape? Type205 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AttributeVal>? Type205 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledShapeRequest>? Type206 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledShape>? Type206 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SubLabeledShapeRequest? Type207 { get; set; }
+        public global::CVAT.SubLabeledShape? Type207 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.TrackedShape>? Type208 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledShapeRequest>? Type208 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TrackedShape? Type209 { get; set; }
+        public global::CVAT.SubLabeledShapeRequest? Type209 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledTrack>? Type210 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.TrackedShape>? Type210 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SubLabeledTrack? Type211 { get; set; }
+        public global::CVAT.TrackedShape? Type211 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.TrackedShapeRequest>? Type212 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledTrack>? Type212 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TrackedShapeRequest? Type213 { get; set; }
+        public global::CVAT.SubLabeledTrack? Type213 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledTrackRequest>? Type214 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.TrackedShapeRequest>? Type214 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SubLabeledTrackRequest? Type215 { get; set; }
+        public global::CVAT.TrackedShapeRequest? Type215 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Limit? Type216 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.SubLabeledTrackRequest>? Type216 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LimitRequest? Type217 { get; set; }
+        public global::CVAT.SubLabeledTrackRequest? Type217 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LimitsFieldRequest? Type218 { get; set; }
+        public global::CVAT.Limit? Type218 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public long? Type219 { get; set; }
+        public global::CVAT.LimitRequest? Type219 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LocationEnum? Type220 { get; set; }
+        public global::CVAT.LimitsFieldRequest? Type220 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LoginSerializerExRequest? Type221 { get; set; }
+        public long? Type221 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.MembershipRead? Type222 { get; set; }
+        public global::CVAT.LocationEnum? Type222 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.MetaUser? Type223 { get; set; }
+        public global::CVAT.LoginSerializerExRequest? Type223 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.User? Type224 { get; set; }
+        public global::CVAT.MembershipRead? Type224 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.NumericUsage? Type225 { get; set; }
+        public global::CVAT.MetaUser? Type225 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OnlineFunctionCallRequest? Type226 { get; set; }
+        public global::CVAT.User? Type226 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OrganizationRead? Type227 { get; set; }
+        public global::CVAT.NumericUsage? Type227 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OrganizationWriteRequest? Type228 { get; set; }
+        public global::CVAT.OnlineFunctionCallRequest? Type228 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedAccessTokenReadList? Type229 { get; set; }
+        public global::CVAT.OrganizationRead? Type229 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AccessTokenRead>? Type230 { get; set; }
+        public global::CVAT.OrganizationWriteRequest? Type230 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedAnnotationConflictList? Type231 { get; set; }
+        public global::CVAT.PaginatedAccessTokenReadList? Type231 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AnnotationConflict>? Type232 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AccessTokenRead>? Type232 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedCloudStorageReadList? Type233 { get; set; }
+        public global::CVAT.PaginatedAnnotationConflictList? Type233 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.CloudStorageRead>? Type234 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AnnotationConflict>? Type234 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedCommentReadList? Type235 { get; set; }
+        public global::CVAT.PaginatedCloudStorageReadList? Type235 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.CommentRead>? Type236 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.CloudStorageRead>? Type236 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedConsensusSettingsList? Type237 { get; set; }
+        public global::CVAT.PaginatedCommentReadList? Type237 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.ConsensusSettings>? Type238 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.CommentRead>? Type238 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedFunctionList? Type239 { get; set; }
+        public global::CVAT.PaginatedConsensusSettingsList? Type239 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.Function>? Type240 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ConsensusSettings>? Type240 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedInvitationReadList? Type241 { get; set; }
+        public global::CVAT.PaginatedFunctionList? Type241 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.InvitationRead>? Type242 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.Function>? Type242 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedIssueReadList? Type243 { get; set; }
+        public global::CVAT.PaginatedInvitationReadList? Type243 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.IssueRead>? Type244 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.InvitationRead>? Type244 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedJobReadList? Type245 { get; set; }
+        public global::CVAT.PaginatedIssueReadList? Type245 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.JobRead>? Type246 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.IssueRead>? Type246 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedJobValidationList? Type247 { get; set; }
+        public global::CVAT.PaginatedJobReadList? Type247 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.JobValidation>? Type248 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.JobRead>? Type248 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedLabelList? Type249 { get; set; }
+        public global::CVAT.PaginatedJobValidationList? Type249 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.Label>? Type250 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.JobValidation>? Type250 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedLimitList? Type251 { get; set; }
+        public global::CVAT.PaginatedLabelList? Type251 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.Limit>? Type252 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.Label>? Type252 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedMembershipReadList? Type253 { get; set; }
+        public global::CVAT.PaginatedLimitList? Type253 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.MembershipRead>? Type254 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.Limit>? Type254 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedMetaUserList? Type255 { get; set; }
+        public global::CVAT.PaginatedMembershipReadList? Type255 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.MetaUser>? Type256 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.MembershipRead>? Type256 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedOrganizationReadList? Type257 { get; set; }
+        public global::CVAT.PaginatedMetaUserList? Type257 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.OrganizationRead>? Type258 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.MetaUser>? Type258 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedProjectReadList? Type259 { get; set; }
+        public global::CVAT.PaginatedOrganizationReadList? Type259 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.ProjectRead>? Type260 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.OrganizationRead>? Type260 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectRead? Type261 { get; set; }
+        public global::CVAT.PaginatedProjectReadList? Type261 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedQualityReportList? Type262 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ProjectRead>? Type262 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualityReport>? Type263 { get; set; }
+        public global::CVAT.ProjectRead? Type263 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReport? Type264 { get; set; }
+        public global::CVAT.PaginatedQualityReportList? Type264 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedQualityRequirementListItemList? Type265 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.QualityReport>? Type265 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirementListItem>? Type266 { get; set; }
+        public global::CVAT.QualityReport? Type266 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRequirementListItem? Type267 { get; set; }
+        public global::CVAT.PaginatedQualityRequirementListItemList? Type267 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedQualitySettingsList? Type268 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirementListItem>? Type268 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualitySettings>? Type269 { get; set; }
+        public global::CVAT.QualityRequirementListItem? Type269 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualitySettings? Type270 { get; set; }
+        public global::CVAT.PaginatedQualitySettingsList? Type270 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedRequestList? Type271 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.QualitySettings>? Type271 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.Request>? Type272 { get; set; }
+        public global::CVAT.QualitySettings? Type272 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Request? Type273 { get; set; }
+        public global::CVAT.PaginatedRequestList? Type273 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedTaskReadList? Type274 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.Request>? Type274 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.TaskRead>? Type275 { get; set; }
+        public global::CVAT.Request? Type275 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TaskRead? Type276 { get; set; }
+        public global::CVAT.PaginatedTaskReadList? Type276 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedUserGrowthDataList? Type277 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.TaskRead>? Type277 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.UserGrowthData>? Type278 { get; set; }
+        public global::CVAT.TaskRead? Type278 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.UserGrowthData? Type279 { get; set; }
+        public global::CVAT.PaginatedUserGrowthDataList? Type279 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedWebhookDeliveryReadList? Type280 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.UserGrowthData>? Type280 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.WebhookDeliveryRead>? Type281 { get; set; }
+        public global::CVAT.UserGrowthData? Type281 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhookDeliveryRead? Type282 { get; set; }
+        public global::CVAT.PaginatedWebhookDeliveryReadList? Type282 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PaginatedWebhookReadList? Type283 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.WebhookDeliveryRead>? Type283 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.WebhookRead>? Type284 { get; set; }
+        public global::CVAT.WebhookDeliveryRead? Type284 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhookRead? Type285 { get; set; }
+        public global::CVAT.PaginatedWebhookReadList? Type285 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PasswordChangeRequest? Type286 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.WebhookRead>? Type286 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PasswordResetConfirmRequest? Type287 { get; set; }
+        public global::CVAT.WebhookRead? Type287 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PasswordResetSerializerExRequest? Type288 { get; set; }
+        public global::CVAT.PasswordChangeRequest? Type288 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedAccessTokenWriteRequest? Type289 { get; set; }
+        public global::CVAT.PasswordResetConfirmRequest? Type289 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedAnnotationGuideWriteRequest? Type290 { get; set; }
+        public global::CVAT.PasswordResetSerializerExRequest? Type290 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedCloudStorageWriteRequest? Type291 { get; set; }
+        public global::CVAT.PatchedAccessTokenWriteRequest? Type291 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedCommentWriteRequest? Type292 { get; set; }
+        public global::CVAT.PatchedAnnotationGuideWriteRequest? Type292 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedConsensusSettingsRequest? Type293 { get; set; }
+        public global::CVAT.PatchedCloudStorageWriteRequest? Type293 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedDataMetaWriteRequest? Type294 { get; set; }
+        public global::CVAT.PatchedCommentWriteRequest? Type294 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedIssueWriteRequest? Type295 { get; set; }
+        public global::CVAT.PatchedConsensusSettingsRequest? Type295 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedJobDataMetaWriteRequest? Type296 { get; set; }
+        public global::CVAT.PatchedDataMetaWriteRequest? Type296 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedJobValidationLayoutWriteRequest? Type297 { get; set; }
+        public global::CVAT.PatchedIssueWriteRequest? Type297 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedJobWriteRequest? Type298 { get; set; }
+        public global::CVAT.PatchedJobDataMetaWriteRequest? Type298 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedLabelRequest? Type299 { get; set; }
+        public global::CVAT.PatchedJobValidationLayoutWriteRequest? Type299 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AttributeRequest>? Type300 { get; set; }
+        public global::CVAT.PatchedJobWriteRequest? Type300 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SublabelRequest>? Type301 { get; set; }
+        public global::CVAT.PatchedLabelRequest? Type301 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SublabelRequest? Type302 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AttributeRequest>? Type302 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedLabeledDataRequest? Type303 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.SublabelRequest>? Type303 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedLimitRequest? Type304 { get; set; }
+        public global::CVAT.SublabelRequest? Type304 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedMembershipWriteRequest? Type305 { get; set; }
+        public global::CVAT.PatchedLabeledDataRequest? Type305 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedOrganizationWriteRequest? Type306 { get; set; }
+        public global::CVAT.PatchedLimitRequest? Type306 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedProjectWriteRequest? Type307 { get; set; }
+        public global::CVAT.PatchedMembershipWriteRequest? Type307 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.PatchedLabelRequest>? Type308 { get; set; }
+        public global::CVAT.PatchedOrganizationWriteRequest? Type308 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.StorageRequest? Type309 { get; set; }
+        public global::CVAT.PatchedProjectWriteRequest? Type309 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedQualityRequirementRequest? Type310 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.PatchedLabelRequest>? Type310 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? Type311 { get; set; }
+        public global::CVAT.StorageRequest? Type311 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>? Type312 { get; set; }
+        public global::CVAT.PatchedQualityRequirementRequest? Type312 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? Type313 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? Type313 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityPointSizeBase? Type314 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>? Type314 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedQualitySettingsRequest? Type315 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? Type315 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirementListItemRequest>? Type316 { get; set; }
+        public global::CVAT.SimilarityMetricEnum? Type316 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRequirementListItemRequest? Type317 { get; set; }
+        public global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicyRequest>? Type317 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedTaskValidationLayoutWriteRequest? Type318 { get; set; }
+        public global::CVAT.SimilarityThresholdPolicyRequest? Type318 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedTaskWriteRequest? Type319 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? Type319 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedUserGrowthDataRequest? Type320 { get; set; }
+        public global::CVAT.QualityPointSizeBase? Type320 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedUserRequest? Type321 { get; set; }
+        public global::CVAT.PatchedQualitySettingsRequest? Type321 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? Type322 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirementListItemRequest>? Type322 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? Type323 { get; set; }
+        public global::CVAT.QualityRequirementListItemRequest? Type323 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PlannedActivitiesEnum? Type324 { get; set; }
+        public global::CVAT.PatchedTaskValidationLayoutWriteRequest? Type324 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.PatchedWebhookWriteRequest? Type325 { get; set; }
+        public global::CVAT.PatchedTaskWriteRequest? Type325 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhookContentType? Type326 { get; set; }
+        public global::CVAT.PatchedUserGrowthDataRequest? Type326 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.EventsEnum>? Type327 { get; set; }
+        public global::CVAT.PatchedUserRequest? Type327 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Plugins? Type328 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.CvatUsageReasonEnum?, global::CVAT.BlankEnum?>? Type328 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectFileRequest? Type329 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.PlannedActivitiesEnum>? Type329 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksSummary? Type330 { get; set; }
+        public global::CVAT.PlannedActivitiesEnum? Type330 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectWriteRequest? Type331 { get; set; }
+        public global::CVAT.PatchedWebhookWriteRequest? Type331 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportSummary? Type332 { get; set; }
+        public global::CVAT.WebhookContentType? Type332 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportConfusionMatrix? Type333 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.EventsEnum>? Type333 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>? Type334 { get; set; }
+        public global::CVAT.Plugins? Type334 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportConfusionMatrixAxes? Type335 { get; set; }
+        public global::CVAT.ProjectFileRequest? Type335 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportTargetMetricSummary? Type336 { get; set; }
+        public global::CVAT.TasksSummary? Type336 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportCreateRequest? Type337 { get; set; }
+        public global::CVAT.ProjectWriteRequest? Type337 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportJobsSummary? Type338 { get; set; }
+        public global::CVAT.QualityReportSummary? Type338 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportRequirementCalculation? Type339 { get; set; }
+        public global::CVAT.QualityReportConfusionMatrix? Type339 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportRequirementCalculationStatusEnum? Type340 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<int>>? Type340 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.ReasonEnum?, global::CVAT.NullEnum?>? Type341 { get; set; }
+        public global::CVAT.QualityReportConfusionMatrixAxes? Type341 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ReasonEnum? Type342 { get; set; }
+        public global::CVAT.QualityReportTargetMetricSummary? Type342 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportRequirementSummaryItem? Type343 { get; set; }
+        public global::CVAT.QualityReportCreateRequest? Type343 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportScoreComponents? Type344 { get; set; }
+        public global::CVAT.QualityReportJobsSummary? Type344 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportRequirementsSummary? Type345 { get; set; }
+        public global::CVAT.QualityReportRequirementCalculation? Type345 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualityReportRequirementSummaryItem>? Type346 { get; set; }
+        public global::CVAT.QualityReportRequirementCalculationStatusEnum? Type346 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, int>? Type347 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.ReasonEnum?, global::CVAT.NullEnum?>? Type347 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportTasksSummary? Type348 { get; set; }
+        public global::CVAT.ReasonEnum? Type348 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportTargetMetricSummaryMetricEnum? Type349 { get; set; }
+        public global::CVAT.QualityReportRequirementSummaryItem? Type349 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityReportTargetMetricValues? Type350 { get; set; }
+        public global::CVAT.QualityReportScoreComponents? Type350 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRequirement? Type351 { get; set; }
+        public global::CVAT.QualityReportRequirementsSummary? Type351 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRequirementBulkCreateNodeRequest? Type352 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.QualityReportRequirementSummaryItem>? Type352 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirementBulkCreateNodeRequest>? Type353 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, int>? Type353 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRequirementBulkCreateRequest? Type354 { get; set; }
+        public global::CVAT.QualityReportTasksSummary? Type354 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRequirementRequest? Type355 { get; set; }
+        public global::CVAT.QualityReportTargetMetricSummaryMetricEnum? Type355 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualitySettingsRequest? Type356 { get; set; }
+        public global::CVAT.QualityReportTargetMetricValues? Type356 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QueueRequestAcquireInputRequest? Type357 { get; set; }
+        public global::CVAT.QualityRequirement? Type357 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RequestCategoryEnum? Type358 { get; set; }
+        public global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicy>? Type358 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QueueRequestAcquireOutput? Type359 { get; set; }
+        public global::CVAT.SimilarityThresholdPolicy? Type359 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QueueRequestCompleteInputRequest? Type360 { get; set; }
+        public global::CVAT.QualityRequirementBulkCreateNodeRequest? Type360 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AttributedShapeRequest>? Type361 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirementBulkCreateNodeRequest>? Type361 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QueueRequestFailInputRequest? Type362 { get; set; }
+        public global::CVAT.QualityRequirementBulkCreateRequest? Type362 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QueueRequestUpdateInputRequest? Type363 { get; set; }
+        public global::CVAT.QualityRequirementRequest? Type363 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RegisterSerializerWithSubscriptions? Type364 { get; set; }
+        public global::CVAT.QualitySettingsRequest? Type364 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.UserAgreement>? Type365 { get; set; }
+        public global::CVAT.QueueRequestAcquireInputRequest? Type365 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.UserAgreement? Type366 { get; set; }
+        public global::CVAT.RequestCategoryEnum? Type366 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RegisterSerializerWithSubscriptionsRequest? Type367 { get; set; }
+        public global::CVAT.QueueRequestAcquireOutput? Type367 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.UserAgreementRequest>? Type368 { get; set; }
+        public global::CVAT.QueueRequestCompleteInputRequest? Type368 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.UserAgreementRequest? Type369 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.AttributedShapeRequest>? Type369 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ReplicaJobCreateTypeEnum? Type370 { get; set; }
+        public global::CVAT.QueueRequestFailInputRequest? Type370 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RequestStatus? Type371 { get; set; }
+        public global::CVAT.QueueRequestUpdateInputRequest? Type371 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RequestDataOperation? Type372 { get; set; }
+        public global::CVAT.RegisterSerializerWithSubscriptions? Type372 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.UserIdentifiers? Type373 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.UserAgreement>? Type373 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RestAuthDetail? Type374 { get; set; }
+        public global::CVAT.UserAgreement? Type374 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RqStatus? Type375 { get; set; }
+        public global::CVAT.RegisterSerializerWithSubscriptionsRequest? Type375 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RqStatusStateEnum? Type376 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.UserAgreementRequest>? Type376 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SSOAuthMethod? Type377 { get; set; }
+        public global::CVAT.UserAgreementRequest? Type377 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SelectionSchemaEnum? Type378 { get; set; }
+        public global::CVAT.ReplicaJobCreateTypeEnum? Type378 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SSOLoginURL? Type379 { get; set; }
+        public global::CVAT.RequestStatus? Type379 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SocialAuthMethod? Type380 { get; set; }
+        public global::CVAT.RequestDataOperation? Type380 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SocialAuthMethods? Type381 { get; set; }
+        public global::CVAT.UserIdentifiers? Type381 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SocialLoginSerializerExRequest? Type382 { get; set; }
+        public global::CVAT.RestAuthDetail? Type382 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TaskFileRequest? Type383 { get; set; }
+        public global::CVAT.RqStatus? Type383 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TaskValidationLayoutRead? Type384 { get; set; }
+        public global::CVAT.RqStatusStateEnum? Type384 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>? Type385 { get; set; }
+        public global::CVAT.SSOAuthMethod? Type385 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ValidationMode? Type386 { get; set; }
+        public global::CVAT.SelectionSchemaEnum? Type386 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TaskWriteRequest? Type387 { get; set; }
+        public global::CVAT.SSOLoginURL? Type387 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Token? Type388 { get; set; }
+        public global::CVAT.SimilarityThresholdPolicyTypeEnum? Type388 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.Usage? Type389 { get; set; }
+        public global::CVAT.SimilarityThresholdPolicyModeEnum? Type389 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? Type390 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ThresholdPolicyPoint>? Type390 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhookType? Type391 { get; set; }
+        public global::CVAT.ThresholdPolicyPoint? Type391 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhookWriteRequest? Type392 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ThresholdPolicyPointRequest>? Type392 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.CloudstoragesListCredentialsType? Type393 { get; set; }
+        public global::CVAT.ThresholdPolicyPointRequest? Type393 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.CloudstoragesListProviderType? Type394 { get; set; }
+        public global::CVAT.SocialAuthMethod? Type394 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.EventsListAction? Type395 { get; set; }
+        public global::CVAT.SocialAuthMethods? Type395 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.EventsCreateExportLocation? Type396 { get; set; }
+        public global::CVAT.SocialLoginSerializerExRequest? Type396 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsListDimension? Type397 { get; set; }
+        public global::CVAT.TaskFileRequest? Type397 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsListMediaType? Type398 { get; set; }
+        public global::CVAT.TaskValidationLayoutRead? Type398 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsListMode? Type399 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>? Type399 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsListStage? Type400 { get; set; }
+        public global::CVAT.ValidationMode? Type400 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsListState? Type401 { get; set; }
+        public global::CVAT.TaskWriteRequest? Type401 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsListType? Type402 { get; set; }
+        public global::CVAT.Token? Type402 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsRetrieveAnnotationsLocation? Type403 { get; set; }
+        public global::CVAT.Usage? Type403 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsCreateAnnotationsImportMode? Type404 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.CreatedViaEnum?, global::CVAT.NullEnum?>? Type404 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsCreateAnnotationsLocation? Type405 { get; set; }
+        public global::CVAT.WebhookType? Type405 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsPartialUpdateAnnotationsAction? Type406 { get; set; }
+        public global::CVAT.WebhookWriteRequest? Type406 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsRetrieveDataQuality? Type407 { get; set; }
+        public global::CVAT.CloudstoragesListCredentialsType? Type407 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsRetrieveDataType? Type408 { get; set; }
+        public global::CVAT.CloudstoragesListProviderType? Type408 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.JobsCreateDatasetExportLocation? Type409 { get; set; }
+        public global::CVAT.EventsListAction? Type409 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.LabelsListType? Type410 { get; set; }
+        public global::CVAT.EventsCreateExportLocation? Type410 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.MembershipsListRole? Type411 { get; set; }
+        public global::CVAT.JobsListDimension? Type411 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectsListStatus? Type412 { get; set; }
+        public global::CVAT.JobsListMediaType? Type412 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectsCreateBackupExportLocation? Type413 { get; set; }
+        public global::CVAT.JobsListMode? Type413 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectsCreateDatasetLocation? Type414 { get; set; }
+        public global::CVAT.JobsListStage? Type414 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectsCreateDatasetExportLocation? Type415 { get; set; }
+        public global::CVAT.JobsListState? Type415 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ProjectsCreateBackupLocation? Type416 { get; set; }
+        public global::CVAT.JobsListType? Type416 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityListConflictsSeverity? Type417 { get; set; }
+        public global::CVAT.JobsRetrieveAnnotationsLocation? Type417 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityListConflictsType? Type418 { get; set; }
+        public global::CVAT.JobsCreateAnnotationsImportMode? Type418 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityListJobValidationsStatus? Type419 { get; set; }
+        public global::CVAT.JobsCreateAnnotationsLocation? Type419 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityListReportsTarget? Type420 { get; set; }
+        public global::CVAT.JobsPartialUpdateAnnotationsAction? Type420 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRetrieveReportRequirementConfusionFormat? Type421 { get; set; }
+        public global::CVAT.JobsRetrieveDataQuality? Type421 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityRetrieveReportDataFormat? Type422 { get; set; }
+        public global::CVAT.JobsRetrieveDataType? Type422 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityListSettingsParentType? Type423 { get; set; }
+        public global::CVAT.JobsCreateDatasetExportLocation? Type423 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.QualityListSettingsRequirementsAnnotationType? Type424 { get; set; }
+        public global::CVAT.LabelsListType? Type424 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.RequestsListStatus? Type425 { get; set; }
+        public global::CVAT.MembershipsListRole? Type425 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SchemaRetrieveLang? Type426 { get; set; }
+        public global::CVAT.ProjectsListStatus? Type426 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.SchemaRetrieveScheme? Type427 { get; set; }
+        public global::CVAT.ProjectsCreateBackupExportLocation? Type427 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksListDimension? Type428 { get; set; }
+        public global::CVAT.ProjectsCreateDatasetLocation? Type428 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksListMediaType? Type429 { get; set; }
+        public global::CVAT.ProjectsCreateDatasetExportLocation? Type429 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksListMode? Type430 { get; set; }
+        public global::CVAT.ProjectsCreateBackupLocation? Type430 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksListStatus? Type431 { get; set; }
+        public global::CVAT.QualityListConflictsSeverity? Type431 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksListValidationMode? Type432 { get; set; }
+        public global::CVAT.QualityListConflictsType? Type432 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksCreateAnnotationsImportMode? Type433 { get; set; }
+        public global::CVAT.QualityListJobValidationsStatus? Type433 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksCreateAnnotationsLocation? Type434 { get; set; }
+        public global::CVAT.QualityListReportsTarget? Type434 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksPartialUpdateAnnotationsAction? Type435 { get; set; }
+        public global::CVAT.QualityRetrieveReportRequirementConfusionFormat? Type435 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksCreateBackupExportLocation? Type436 { get; set; }
+        public global::CVAT.QualityRetrieveReportDataFormat? Type436 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksRetrieveDataQuality? Type437 { get; set; }
+        public global::CVAT.QualityListSettingsParentType? Type437 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksRetrieveDataType? Type438 { get; set; }
+        public global::CVAT.QualityListSettingsRequirementsAnnotationType? Type438 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksCreateDatasetExportLocation? Type439 { get; set; }
+        public global::CVAT.RequestsListStatus? Type439 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.TasksCreateBackupLocation? Type440 { get; set; }
+        public global::CVAT.SchemaRetrieveLang? Type440 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhooksListType? Type441 { get; set; }
+        public global::CVAT.SchemaRetrieveScheme? Type441 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.WebhooksRetrieveEventsType? Type442 { get; set; }
+        public global::CVAT.TasksListDimension? Type442 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.SocialAuthMethods>? Type443 { get; set; }
+        public global::CVAT.TasksListMediaType? Type443 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>? Type444 { get; set; }
+        public global::CVAT.TasksListMode? Type444 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.FunctionCall>? Type445 { get; set; }
+        public global::CVAT.TasksListStatus? Type445 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirement>? Type446 { get; set; }
+        public global::CVAT.TasksListValidationMode? Type446 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksCreateAnnotationsImportMode? Type447 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksCreateAnnotationsLocation? Type448 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksPartialUpdateAnnotationsAction? Type449 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksCreateBackupExportLocation? Type450 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksRetrieveDataQuality? Type451 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksRetrieveDataType? Type452 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksCreateDatasetExportLocation? Type453 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.TasksCreateBackupLocation? Type454 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.WebhooksListType? Type455 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::CVAT.WebhooksRetrieveEventsType? Type456 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::CVAT.SocialAuthMethods>? Type457 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::CVAT.AnnotationRequest>? Type458 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::CVAT.FunctionCall>? Type459 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::CVAT.QualityRequirement>? Type460 { get; set; }
 
         /// <summary>
         ///
@@ -2159,18 +2215,26 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::CVAT.SocialAuthMethods>? ListType83 { get; set; }
+        public global::System.Collections.Generic.List<global::CVAT.ThresholdPolicyPoint>? ListType83 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::CVAT.AnnotationRequest>? ListType84 { get; set; }
+        public global::System.Collections.Generic.List<global::CVAT.ThresholdPolicyPointRequest>? ListType84 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::CVAT.FunctionCall>? ListType85 { get; set; }
+        public global::System.Collections.Generic.List<global::CVAT.SocialAuthMethods>? ListType85 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::CVAT.QualityRequirement>? ListType86 { get; set; }
+        public global::System.Collections.Generic.List<global::CVAT.AnnotationRequest>? ListType86 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::CVAT.FunctionCall>? ListType87 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::CVAT.QualityRequirement>? ListType88 { get; set; }
     }
 }

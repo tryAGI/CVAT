@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.81.0 (2.0)",
+    "version": "2.82.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -16066,6 +16066,13 @@
         "type": "string",
         "description": "* `completed:request[calculate:quality]` - COMPLETED:REQUEST[CALCULATE:QUALITY]\n* `completed:request[create:task]` - COMPLETED:REQUEST[CREATE:TASK]\n* `completed:request[export:annotations]` - COMPLETED:REQUEST[EXPORT:ANNOTATIONS]\n* `completed:request[export:backup]` - COMPLETED:REQUEST[EXPORT:BACKUP]\n* `completed:request[export:dataset]` - COMPLETED:REQUEST[EXPORT:DATASET]\n* `completed:request[merge:job]` - COMPLETED:REQUEST[MERGE:JOB]\n* `completed:request[merge:task]` - COMPLETED:REQUEST[MERGE:TASK]\n* `create:comment` - CREATE:COMMENT\n* `create:invitation` - CREATE:INVITATION\n* `create:issue` - CREATE:ISSUE\n* `create:job` - CREATE:JOB\n* `create:membership` - CREATE:MEMBERSHIP\n* `create:organization` - CREATE:ORGANIZATION\n* `create:project` - CREATE:PROJECT\n* `create:task` - CREATE:TASK\n* `create:user` - CREATE:USER\n* `delete:comment` - DELETE:COMMENT\n* `delete:invitation` - DELETE:INVITATION\n* `delete:issue` - DELETE:ISSUE\n* `delete:job` - DELETE:JOB\n* `delete:membership` - DELETE:MEMBERSHIP\n* `delete:organization` - DELETE:ORGANIZATION\n* `delete:project` - DELETE:PROJECT\n* `delete:task` - DELETE:TASK\n* `delete:user` - DELETE:USER\n* `update:comment` - UPDATE:COMMENT\n* `update:issue` - UPDATE:ISSUE\n* `update:job` - UPDATE:JOB\n* `update:membership` - UPDATE:MEMBERSHIP\n* `update:organization` - UPDATE:ORGANIZATION\n* `update:project` - UPDATE:PROJECT\n* `update:task` - UPDATE:TASK\n* `update:user` - UPDATE:USER"
       },
+      "ExtrapolationEnum": {
+        "enum": [
+          "clamp"
+        ],
+        "type": "string",
+        "description": "* `clamp` - clamp"
+      },
       "FileInfo": {
         "type": "object",
         "properties": {
@@ -16757,6 +16764,13 @@
         ],
         "type": "string",
         "description": "* `ground_truth` - GROUND_TRUTH"
+      },
+      "InputEnum": {
+        "enum": [
+          "gt.shape_area"
+        ],
+        "type": "string",
+        "description": "* `gt.shape_area` - gt.shape_area"
       },
       "InputTypeEnum": {
         "enum": [
@@ -19761,13 +19775,57 @@
             "nullable": true,
             "description": "The parent requirement. Child requirements inherit comparison settings from it."
           },
+          "similarity_metric": {
+            "nullable": true,
+            "description": "The similarity metric used to match the objects. The supported metrics\ndepend on the annotation type:\n- ellipse: 'boundary_f', 'iou' (default);\n- mask: 'boundary_f', 'iou' (default);\n- points: 'oks' (default);\n- polygon: 'boundary_f', 'iou' (default);\n- polyline: 'boundary_f', 'iou' (default);\n- rectangle: 'boundary_f', 'iou' (default);\n- skeleton: 'oks' (default);\n- skeleton_keypoint: 'oks' (default);\n- tag: 'equality' (default)\n\n\n* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityMetricEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
           "iou_threshold": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicyRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent."
+          },
+          "oks_threshold": {
             "type": "number",
             "format": "double",
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "The overlap threshold used for distinction between matched / unmatched objects.\nThe specific meaning can vary depending on the shape type:\nfor rectangles, polygons, ellipses, lines and masks it's the IoU threshold;\nfor points and skeletons, it's the OKS threshold.\n"
+            "description": "The minimal OKS for distinction between matched / unmatched objects.\nOnly used with the 'oks' similarity metric.\n"
+          },
+          "boundary_f_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal Boundary F score for distinction between matched / unmatched\nobjects. Only used with the 'boundary_f' similarity metric.\n"
+          },
+          "boundary_f_tolerance": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The maximum allowed boundary deviation, in pixels. The boundary points\nwithin this distance from the other object boundary are considered matching.\nOnly used with the 'boundary_f' similarity metric.\n"
           },
           "point_size": {
             "type": "number",
@@ -19779,7 +19837,7 @@
           },
           "point_size_base": {
             "nullable": true,
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "description": "When comparing point groups, skeletons, and skeleton keypoints,\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size. Single points without a group are always compared\nusing the image size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group or skeleton bbox size. Useful if each point group represents\nan object or there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QualityPointSizeBase"
@@ -19798,7 +19856,7 @@
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be.\nWith the 'boundary_f' similarity metric, the boundary tolerance is used instead\n"
           },
           "match_orientation": {
             "type": "boolean",
@@ -20884,13 +20942,57 @@
             "type": "object",
             "readOnly": true
           },
+          "similarity_metric": {
+            "nullable": true,
+            "description": "The similarity metric used to match the objects. The supported metrics\ndepend on the annotation type:\n- ellipse: 'boundary_f', 'iou' (default);\n- mask: 'boundary_f', 'iou' (default);\n- points: 'oks' (default);\n- polygon: 'boundary_f', 'iou' (default);\n- polyline: 'boundary_f', 'iou' (default);\n- rectangle: 'boundary_f', 'iou' (default);\n- skeleton: 'oks' (default);\n- skeleton_keypoint: 'oks' (default);\n- tag: 'equality' (default)\n\n\n* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityMetricEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
           "iou_threshold": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicy"
+              }
+            ],
+            "nullable": true,
+            "description": "The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent."
+          },
+          "oks_threshold": {
             "type": "number",
             "format": "double",
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "The overlap threshold used for distinction between matched / unmatched objects.\nThe specific meaning can vary depending on the shape type:\nfor rectangles, polygons, ellipses, lines and masks it's the IoU threshold;\nfor points and skeletons, it's the OKS threshold.\n"
+            "description": "The minimal OKS for distinction between matched / unmatched objects.\nOnly used with the 'oks' similarity metric.\n"
+          },
+          "boundary_f_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal Boundary F score for distinction between matched / unmatched\nobjects. Only used with the 'boundary_f' similarity metric.\n"
+          },
+          "boundary_f_tolerance": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The maximum allowed boundary deviation, in pixels. The boundary points\nwithin this distance from the other object boundary are considered matching.\nOnly used with the 'boundary_f' similarity metric.\n"
           },
           "point_size": {
             "type": "number",
@@ -20902,7 +21004,7 @@
           },
           "point_size_base": {
             "nullable": true,
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "description": "When comparing point groups, skeletons, and skeleton keypoints,\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size. Single points without a group are always compared\nusing the image size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group or skeleton bbox size. Useful if each point group represents\nan object or there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QualityPointSizeBase"
@@ -20921,7 +21023,7 @@
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be.\nWith the 'boundary_f' similarity metric, the boundary tolerance is used instead\n"
           },
           "match_orientation": {
             "type": "boolean",
@@ -21046,13 +21148,57 @@
             "nullable": true,
             "description": "Required for root requirements and forbidden for nested requirements. Must identify an existing requirement from the selected quality settings."
           },
+          "similarity_metric": {
+            "nullable": true,
+            "description": "The similarity metric used to match the objects. The supported metrics\ndepend on the annotation type:\n- ellipse: 'boundary_f', 'iou' (default);\n- mask: 'boundary_f', 'iou' (default);\n- points: 'oks' (default);\n- polygon: 'boundary_f', 'iou' (default);\n- polyline: 'boundary_f', 'iou' (default);\n- rectangle: 'boundary_f', 'iou' (default);\n- skeleton: 'oks' (default);\n- skeleton_keypoint: 'oks' (default);\n- tag: 'equality' (default)\n\n\n* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityMetricEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
           "iou_threshold": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicyRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent."
+          },
+          "oks_threshold": {
             "type": "number",
             "format": "double",
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "The overlap threshold used for distinction between matched / unmatched objects.\nThe specific meaning can vary depending on the shape type:\nfor rectangles, polygons, ellipses, lines and masks it's the IoU threshold;\nfor points and skeletons, it's the OKS threshold.\n"
+            "description": "The minimal OKS for distinction between matched / unmatched objects.\nOnly used with the 'oks' similarity metric.\n"
+          },
+          "boundary_f_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal Boundary F score for distinction between matched / unmatched\nobjects. Only used with the 'boundary_f' similarity metric.\n"
+          },
+          "boundary_f_tolerance": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The maximum allowed boundary deviation, in pixels. The boundary points\nwithin this distance from the other object boundary are considered matching.\nOnly used with the 'boundary_f' similarity metric.\n"
           },
           "point_size": {
             "type": "number",
@@ -21064,7 +21210,7 @@
           },
           "point_size_base": {
             "nullable": true,
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "description": "When comparing point groups, skeletons, and skeleton keypoints,\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size. Single points without a group are always compared\nusing the image size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group or skeleton bbox size. Useful if each point group represents\nan object or there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QualityPointSizeBase"
@@ -21083,7 +21229,7 @@
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be.\nWith the 'boundary_f' similarity metric, the boundary tolerance is used instead\n"
           },
           "match_orientation": {
             "type": "boolean",
@@ -21246,13 +21392,57 @@
             "nullable": true,
             "description": "The parent requirement. Child requirements inherit comparison settings from it."
           },
+          "similarity_metric": {
+            "nullable": true,
+            "description": "The similarity metric used to match the objects. The supported metrics\ndepend on the annotation type:\n- ellipse: 'boundary_f', 'iou' (default);\n- mask: 'boundary_f', 'iou' (default);\n- points: 'oks' (default);\n- polygon: 'boundary_f', 'iou' (default);\n- polyline: 'boundary_f', 'iou' (default);\n- rectangle: 'boundary_f', 'iou' (default);\n- skeleton: 'oks' (default);\n- skeleton_keypoint: 'oks' (default);\n- tag: 'equality' (default)\n\n\n* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityMetricEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
           "iou_threshold": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicy"
+              }
+            ],
+            "nullable": true,
+            "description": "The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent."
+          },
+          "oks_threshold": {
             "type": "number",
             "format": "double",
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "The overlap threshold used for distinction between matched / unmatched objects.\nThe specific meaning can vary depending on the shape type:\nfor rectangles, polygons, ellipses, lines and masks it's the IoU threshold;\nfor points and skeletons, it's the OKS threshold.\n"
+            "description": "The minimal OKS for distinction between matched / unmatched objects.\nOnly used with the 'oks' similarity metric.\n"
+          },
+          "boundary_f_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal Boundary F score for distinction between matched / unmatched\nobjects. Only used with the 'boundary_f' similarity metric.\n"
+          },
+          "boundary_f_tolerance": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The maximum allowed boundary deviation, in pixels. The boundary points\nwithin this distance from the other object boundary are considered matching.\nOnly used with the 'boundary_f' similarity metric.\n"
           },
           "point_size": {
             "type": "number",
@@ -21264,7 +21454,7 @@
           },
           "point_size_base": {
             "nullable": true,
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "description": "When comparing point groups, skeletons, and skeleton keypoints,\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size. Single points without a group are always compared\nusing the image size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group or skeleton bbox size. Useful if each point group represents\nan object or there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QualityPointSizeBase"
@@ -21283,7 +21473,7 @@
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be.\nWith the 'boundary_f' similarity metric, the boundary tolerance is used instead\n"
           },
           "match_orientation": {
             "type": "boolean",
@@ -21411,13 +21601,57 @@
             "nullable": true,
             "description": "The parent requirement. Child requirements inherit comparison settings from it."
           },
+          "similarity_metric": {
+            "nullable": true,
+            "description": "The similarity metric used to match the objects. The supported metrics\ndepend on the annotation type:\n- ellipse: 'boundary_f', 'iou' (default);\n- mask: 'boundary_f', 'iou' (default);\n- points: 'oks' (default);\n- polygon: 'boundary_f', 'iou' (default);\n- polyline: 'boundary_f', 'iou' (default);\n- rectangle: 'boundary_f', 'iou' (default);\n- skeleton: 'oks' (default);\n- skeleton_keypoint: 'oks' (default);\n- tag: 'equality' (default)\n\n\n* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityMetricEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
           "iou_threshold": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicyRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent."
+          },
+          "oks_threshold": {
             "type": "number",
             "format": "double",
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "The overlap threshold used for distinction between matched / unmatched objects.\nThe specific meaning can vary depending on the shape type:\nfor rectangles, polygons, ellipses, lines and masks it's the IoU threshold;\nfor points and skeletons, it's the OKS threshold.\n"
+            "description": "The minimal OKS for distinction between matched / unmatched objects.\nOnly used with the 'oks' similarity metric.\n"
+          },
+          "boundary_f_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal Boundary F score for distinction between matched / unmatched\nobjects. Only used with the 'boundary_f' similarity metric.\n"
+          },
+          "boundary_f_tolerance": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The maximum allowed boundary deviation, in pixels. The boundary points\nwithin this distance from the other object boundary are considered matching.\nOnly used with the 'boundary_f' similarity metric.\n"
           },
           "point_size": {
             "type": "number",
@@ -21429,7 +21663,7 @@
           },
           "point_size_base": {
             "nullable": true,
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "description": "When comparing point groups, skeletons, and skeleton keypoints,\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size. Single points without a group are always compared\nusing the image size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group or skeleton bbox size. Useful if each point group represents\nan object or there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QualityPointSizeBase"
@@ -21448,7 +21682,7 @@
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be.\nWith the 'boundary_f' similarity metric, the boundary tolerance is used instead\n"
           },
           "match_orientation": {
             "type": "boolean",
@@ -21566,13 +21800,57 @@
             "nullable": true,
             "description": "The parent requirement. Child requirements inherit comparison settings from it."
           },
+          "similarity_metric": {
+            "nullable": true,
+            "description": "The similarity metric used to match the objects. The supported metrics\ndepend on the annotation type:\n- ellipse: 'boundary_f', 'iou' (default);\n- mask: 'boundary_f', 'iou' (default);\n- points: 'oks' (default);\n- polygon: 'boundary_f', 'iou' (default);\n- polyline: 'boundary_f', 'iou' (default);\n- rectangle: 'boundary_f', 'iou' (default);\n- skeleton: 'oks' (default);\n- skeleton_keypoint: 'oks' (default);\n- tag: 'equality' (default)\n\n\n* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityMetricEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              },
+              {
+                "$ref": "#/components/schemas/NullEnum"
+              }
+            ]
+          },
           "iou_threshold": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicyRequest"
+              }
+            ],
+            "nullable": true,
+            "description": "The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent."
+          },
+          "oks_threshold": {
             "type": "number",
             "format": "double",
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "The overlap threshold used for distinction between matched / unmatched objects.\nThe specific meaning can vary depending on the shape type:\nfor rectangles, polygons, ellipses, lines and masks it's the IoU threshold;\nfor points and skeletons, it's the OKS threshold.\n"
+            "description": "The minimal OKS for distinction between matched / unmatched objects.\nOnly used with the 'oks' similarity metric.\n"
+          },
+          "boundary_f_threshold": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0,
+            "nullable": true,
+            "description": "The minimal Boundary F score for distinction between matched / unmatched\nobjects. Only used with the 'boundary_f' similarity metric.\n"
+          },
+          "boundary_f_tolerance": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "nullable": true,
+            "description": "The maximum allowed boundary deviation, in pixels. The boundary points\nwithin this distance from the other object boundary are considered matching.\nOnly used with the 'boundary_f' similarity metric.\n"
           },
           "point_size": {
             "type": "number",
@@ -21584,7 +21862,7 @@
           },
           "point_size_base": {
             "nullable": true,
-            "description": "When comparing point annotations (including both separate points and point groups),\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group bbox size. Useful if each point group represents an object\nor there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
+            "description": "When comparing point groups, skeletons, and skeleton keypoints,\nthe point size parameter defines matching area for each GT point based to the\nobject size. The point size base parameter allows to configure how to determine\nthe object size. Single points without a group are always compared\nusing the image size.\nIf image_size, the image size is used. Useful if each point\nannotation represents a separate object or boxes grouped with points do not\nrepresent object boundaries.\nIf group_bbox_size, the object size is based on\nthe point group or skeleton bbox size. Useful if each point group represents\nan object or there is a bbox grouped with points, representing the object size.\n\n\n* `image_size` - IMAGE_SIZE\n* `group_bbox_size` - GROUP_BBOX_SIZE",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QualityPointSizeBase"
@@ -21603,7 +21881,7 @@
             "maximum": 1,
             "minimum": 0,
             "nullable": true,
-            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be\n"
+            "description": "Thickness of polylines, relatively to the (image area) ^ 0.5.\nThe distance to the boundary around the GT line,\ninside of which the checked line points should be.\nWith the 'boundary_f' similarity metric, the boundary tolerance is used instead\n"
           },
           "match_orientation": {
             "type": "boolean",
@@ -22391,6 +22669,109 @@
         ],
         "type": "string",
         "description": "* `rectangle` - RECTANGLE\n* `polygon` - POLYGON\n* `polyline` - POLYLINE\n* `points` - POINTS\n* `ellipse` - ELLIPSE\n* `cuboid` - CUBOID\n* `mask` - MASK\n* `skeleton` - SKELETON"
+      },
+      "SimilarityMetricEnum": {
+        "enum": [
+          "iou",
+          "oks",
+          "boundary_f",
+          "equality"
+        ],
+        "type": "string",
+        "description": "* `iou` - IoU\n* `oks` - OKS\n* `boundary_f` - Boundary F\n* `equality` - Equality"
+      },
+      "SimilarityThresholdPolicy": {
+        "type": "object",
+        "description": "An IoU threshold policy for rectangle, polygon, mask, and ellipse requirements.\n\nThe `iou_threshold` field also accepts a finite number between 0 and 1, such as `0.7`.\nExisting numeric thresholds are returned as numbers.\n\nA constant policy uses one threshold for all shapes:\n\n```json\n{\"type\": \"iou\", \"mode\": \"constant\", \"value\": 0.7}\n```\n\nA linear policy chooses a threshold from the GT shape area in px\u00b2:\n\n```json\n{\n  \"type\": \"iou\",\n  \"mode\": \"linear\",\n  \"input\": \"gt.shape_area\",\n  \"extrapolation\": \"clamp\",\n  \"points\": [{\"x\": 100, \"y\": 0.4}, {\"x\": 1000, \"y\": 0.9}]\n}\n```\n\nLinear policies require 2-200 points with unique positive areas sorted in ascending order\nand thresholds between 0 and 1. Outside the curve, the nearest endpoint applies.\nPolicies without `type` are accepted as IoU for compatibility; responses include it.\nOther threshold types are not supported.\n\nSetting a child's threshold to `null` restores inheritance of the whole threshold.\nRoot requirements cannot inherit their threshold.",
+        "properties": {
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicyTypeEnum"
+              }
+            ],
+            "description": "Threshold type. Omitted type is accepted as IoU for compatibility; responses always include it.\n\n* `iou` - iou"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/SimilarityThresholdPolicyModeEnum"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0
+          },
+          "input": {
+            "$ref": "#/components/schemas/InputEnum"
+          },
+          "extrapolation": {
+            "$ref": "#/components/schemas/ExtrapolationEnum"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThresholdPolicyPoint"
+            },
+            "description": "Required in linear mode: 2-200 points sorted by unique positive GT area."
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "SimilarityThresholdPolicyModeEnum": {
+        "enum": [
+          "constant",
+          "linear"
+        ],
+        "type": "string",
+        "description": "* `constant` - constant\n* `linear` - linear"
+      },
+      "SimilarityThresholdPolicyRequest": {
+        "type": "object",
+        "description": "An IoU threshold policy for rectangle, polygon, mask, and ellipse requirements.\n\nThe `iou_threshold` field also accepts a finite number between 0 and 1, such as `0.7`.\nExisting numeric thresholds are returned as numbers.\n\nA constant policy uses one threshold for all shapes:\n\n```json\n{\"type\": \"iou\", \"mode\": \"constant\", \"value\": 0.7}\n```\n\nA linear policy chooses a threshold from the GT shape area in px\u00b2:\n\n```json\n{\n  \"type\": \"iou\",\n  \"mode\": \"linear\",\n  \"input\": \"gt.shape_area\",\n  \"extrapolation\": \"clamp\",\n  \"points\": [{\"x\": 100, \"y\": 0.4}, {\"x\": 1000, \"y\": 0.9}]\n}\n```\n\nLinear policies require 2-200 points with unique positive areas sorted in ascending order\nand thresholds between 0 and 1. Outside the curve, the nearest endpoint applies.\nPolicies without `type` are accepted as IoU for compatibility; responses include it.\nOther threshold types are not supported.\n\nSetting a child's threshold to `null` restores inheritance of the whole threshold.\nRoot requirements cannot inherit their threshold.",
+        "properties": {
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SimilarityThresholdPolicyTypeEnum"
+              }
+            ],
+            "description": "Threshold type. Omitted type is accepted as IoU for compatibility; responses always include it.\n\n* `iou` - iou"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/SimilarityThresholdPolicyModeEnum"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0
+          },
+          "input": {
+            "$ref": "#/components/schemas/InputEnum"
+          },
+          "extrapolation": {
+            "$ref": "#/components/schemas/ExtrapolationEnum"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThresholdPolicyPointRequest"
+            },
+            "description": "Required in linear mode: 2-200 points sorted by unique positive GT area."
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "SimilarityThresholdPolicyTypeEnum": {
+        "enum": [
+          "iou"
+        ],
+        "type": "string",
+        "description": "* `iou` - iou"
       },
       "SocialAuthMethod": {
         "type": "object",
@@ -23217,6 +23598,48 @@
             "readOnly": true
           }
         }
+      },
+      "ThresholdPolicyPoint": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "description": "Finite GT shape area in px\u00b2, strictly greater than zero."
+          },
+          "y": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "ThresholdPolicyPointRequest": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "description": "Finite GT shape area in px\u00b2, strictly greater than zero."
+          },
+          "y": {
+            "type": "number",
+            "format": "double",
+            "maximum": 1,
+            "minimum": 0
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
       },
       "Token": {
         "type": "object",

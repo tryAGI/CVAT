@@ -110,13 +110,54 @@ namespace CVAT
         public object? Effective { get; set; }
 
         /// <summary>
-        /// The overlap threshold used for distinction between matched / unmatched objects.<br/>
-        /// The specific meaning can vary depending on the shape type:<br/>
-        /// for rectangles, polygons, ellipses, lines and masks it's the IoU threshold;<br/>
-        /// for points and skeletons, it's the OKS threshold.
+        /// The similarity metric used to match the objects. The supported metrics<br/>
+        /// depend on the annotation type:<br/>
+        /// - ellipse: 'boundary_f', 'iou' (default);<br/>
+        /// - mask: 'boundary_f', 'iou' (default);<br/>
+        /// - points: 'oks' (default);<br/>
+        /// - polygon: 'boundary_f', 'iou' (default);<br/>
+        /// - polyline: 'boundary_f', 'iou' (default);<br/>
+        /// - rectangle: 'boundary_f', 'iou' (default);<br/>
+        /// - skeleton: 'oks' (default);<br/>
+        /// - skeleton_keypoint: 'oks' (default);<br/>
+        /// - tag: 'equality' (default)<br/>
+        /// * `iou` - IoU<br/>
+        /// * `oks` - OKS<br/>
+        /// * `boundary_f` - Boundary F<br/>
+        /// * `equality` - Equality
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("similarity_metric")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>))]
+        public global::CVAT.OneOf<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? SimilarityMetric { get; set; }
+
+        /// <summary>
+        /// The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("iou_threshold")]
-        public double? IouThreshold { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicy>))]
+        public global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicy>? IouThreshold { get; set; }
+
+        /// <summary>
+        /// The minimal OKS for distinction between matched / unmatched objects.<br/>
+        /// Only used with the 'oks' similarity metric.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("oks_threshold")]
+        public double? OksThreshold { get; set; }
+
+        /// <summary>
+        /// The minimal Boundary F score for distinction between matched / unmatched<br/>
+        /// objects. Only used with the 'boundary_f' similarity metric.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("boundary_f_threshold")]
+        public double? BoundaryFThreshold { get; set; }
+
+        /// <summary>
+        /// The maximum allowed boundary deviation, in pixels. The boundary points<br/>
+        /// within this distance from the other object boundary are considered matching.<br/>
+        /// Only used with the 'boundary_f' similarity metric.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("boundary_f_tolerance")]
+        public double? BoundaryFTolerance { get; set; }
 
         /// <summary>
         /// The point "size" (the OKS sigma), as a fraction of the object size, defined by<br/>
@@ -129,16 +170,17 @@ namespace CVAT
         public double? PointSize { get; set; }
 
         /// <summary>
-        /// When comparing point annotations (including both separate points and point groups),<br/>
+        /// When comparing point groups, skeletons, and skeleton keypoints,<br/>
         /// the point size parameter defines matching area for each GT point based to the<br/>
         /// object size. The point size base parameter allows to configure how to determine<br/>
-        /// the object size.<br/>
+        /// the object size. Single points without a group are always compared<br/>
+        /// using the image size.<br/>
         /// If image_size, the image size is used. Useful if each point<br/>
         /// annotation represents a separate object or boxes grouped with points do not<br/>
         /// represent object boundaries.<br/>
         /// If group_bbox_size, the object size is based on<br/>
-        /// the point group bbox size. Useful if each point group represents an object<br/>
-        /// or there is a bbox grouped with points, representing the object size.<br/>
+        /// the point group or skeleton bbox size. Useful if each point group represents<br/>
+        /// an object or there is a bbox grouped with points, representing the object size.<br/>
         /// * `image_size` - IMAGE_SIZE<br/>
         /// * `group_bbox_size` - GROUP_BBOX_SIZE
         /// </summary>
@@ -149,7 +191,8 @@ namespace CVAT
         /// <summary>
         /// Thickness of polylines, relatively to the (image area) ^ 0.5.<br/>
         /// The distance to the boundary around the GT line,<br/>
-        /// inside of which the checked line points should be
+        /// inside of which the checked line points should be.<br/>
+        /// With the 'boundary_f' similarity metric, the boundary tolerance is used instead
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("line_thickness")]
         public double? LineThickness { get; set; }
@@ -273,11 +316,38 @@ namespace CVAT
         /// <param name="effective">
         /// Included only in responses
         /// </param>
+        /// <param name="similarityMetric">
+        /// The similarity metric used to match the objects. The supported metrics<br/>
+        /// depend on the annotation type:<br/>
+        /// - ellipse: 'boundary_f', 'iou' (default);<br/>
+        /// - mask: 'boundary_f', 'iou' (default);<br/>
+        /// - points: 'oks' (default);<br/>
+        /// - polygon: 'boundary_f', 'iou' (default);<br/>
+        /// - polyline: 'boundary_f', 'iou' (default);<br/>
+        /// - rectangle: 'boundary_f', 'iou' (default);<br/>
+        /// - skeleton: 'oks' (default);<br/>
+        /// - skeleton_keypoint: 'oks' (default);<br/>
+        /// - tag: 'equality' (default)<br/>
+        /// * `iou` - IoU<br/>
+        /// * `oks` - OKS<br/>
+        /// * `boundary_f` - Boundary F<br/>
+        /// * `equality` - Equality
+        /// </param>
         /// <param name="iouThreshold">
-        /// The overlap threshold used for distinction between matched / unmatched objects.<br/>
-        /// The specific meaning can vary depending on the shape type:<br/>
-        /// for rectangles, polygons, ellipses, lines and masks it's the IoU threshold;<br/>
-        /// for points and skeletons, it's the OKS threshold.
+        /// The minimal IoU for distinction between matched / unmatched objects. Only used with the 'iou' similarity metric. A constant threshold or an IoU policy by GT shape area (rectangle, polygon, mask, ellipse). Null inherits the whole threshold from the parent.
+        /// </param>
+        /// <param name="oksThreshold">
+        /// The minimal OKS for distinction between matched / unmatched objects.<br/>
+        /// Only used with the 'oks' similarity metric.
+        /// </param>
+        /// <param name="boundaryFThreshold">
+        /// The minimal Boundary F score for distinction between matched / unmatched<br/>
+        /// objects. Only used with the 'boundary_f' similarity metric.
+        /// </param>
+        /// <param name="boundaryFTolerance">
+        /// The maximum allowed boundary deviation, in pixels. The boundary points<br/>
+        /// within this distance from the other object boundary are considered matching.<br/>
+        /// Only used with the 'boundary_f' similarity metric.
         /// </param>
         /// <param name="pointSize">
         /// The point "size" (the OKS sigma), as a fraction of the object size, defined by<br/>
@@ -287,23 +357,25 @@ namespace CVAT
         /// Read more about the point matching in the documentation.
         /// </param>
         /// <param name="pointSizeBase">
-        /// When comparing point annotations (including both separate points and point groups),<br/>
+        /// When comparing point groups, skeletons, and skeleton keypoints,<br/>
         /// the point size parameter defines matching area for each GT point based to the<br/>
         /// object size. The point size base parameter allows to configure how to determine<br/>
-        /// the object size.<br/>
+        /// the object size. Single points without a group are always compared<br/>
+        /// using the image size.<br/>
         /// If image_size, the image size is used. Useful if each point<br/>
         /// annotation represents a separate object or boxes grouped with points do not<br/>
         /// represent object boundaries.<br/>
         /// If group_bbox_size, the object size is based on<br/>
-        /// the point group bbox size. Useful if each point group represents an object<br/>
-        /// or there is a bbox grouped with points, representing the object size.<br/>
+        /// the point group or skeleton bbox size. Useful if each point group represents<br/>
+        /// an object or there is a bbox grouped with points, representing the object size.<br/>
         /// * `image_size` - IMAGE_SIZE<br/>
         /// * `group_bbox_size` - GROUP_BBOX_SIZE
         /// </param>
         /// <param name="lineThickness">
         /// Thickness of polylines, relatively to the (image area) ^ 0.5.<br/>
         /// The distance to the boundary around the GT line,<br/>
-        /// inside of which the checked line points should be
+        /// inside of which the checked line points should be.<br/>
+        /// With the 'boundary_f' similarity metric, the boundary tolerance is used instead
         /// </param>
         /// <param name="matchOrientation">
         /// Enables or disables polyline orientation comparison
@@ -358,7 +430,11 @@ namespace CVAT
             double? requiredScore,
             int? parentRequirement,
             object? effective,
-            double? iouThreshold,
+            global::CVAT.OneOf<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? similarityMetric,
+            global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicy>? iouThreshold,
+            double? oksThreshold,
+            double? boundaryFThreshold,
+            double? boundaryFTolerance,
             double? pointSize,
             global::CVAT.OneOf<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>? pointSizeBase,
             double? lineThickness,
@@ -387,7 +463,11 @@ namespace CVAT
             this.RequiredScore = requiredScore;
             this.ParentRequirement = parentRequirement;
             this.Effective = effective;
+            this.SimilarityMetric = similarityMetric;
             this.IouThreshold = iouThreshold;
+            this.OksThreshold = oksThreshold;
+            this.BoundaryFThreshold = boundaryFThreshold;
+            this.BoundaryFTolerance = boundaryFTolerance;
             this.PointSize = pointSize;
             this.PointSizeBase = pointSizeBase;
             this.LineThickness = lineThickness;

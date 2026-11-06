@@ -49,6 +49,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AttributeComparisonRuleRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BlankEnum), TypeInfoPropertyName = "BlankEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RqId))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ExtrapolationEnum), TypeInfoPropertyName = "ExtrapolationEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.InputEnum), TypeInfoPropertyName = "InputEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobValidation))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityTargetMetric), TypeInfoPropertyName = "QualityTargetMetric2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.JobValidationRequirement>))]
@@ -71,6 +73,10 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedQualityRequirementRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfAnnotationTypeEnumBlankEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfQualityTargetMetricNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfSimilarityMetricEnumBlankEnumNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityMetricEnum), TypeInfoPropertyName = "SimilarityMetricEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicyRequest>), TypeInfoPropertyName = "OneOfDoubleSimilarityThresholdPolicyRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityThresholdPolicyRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfQualityPointSizeBaseBlankEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityPointSizeBase), TypeInfoPropertyName = "QualityPointSizeBase2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedQualitySettingsRequest))]
@@ -96,11 +102,19 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum), TypeInfoPropertyName = "QualityReportTargetMetricSummaryMetricEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricValues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityRequirement))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicy>), TypeInfoPropertyName = "OneOfDoubleSimilarityThresholdPolicy2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityThresholdPolicy))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityRequirementBulkCreateNodeRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.QualityRequirementBulkCreateNodeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityRequirementBulkCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityRequirementRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualitySettingsRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityThresholdPolicyTypeEnum), TypeInfoPropertyName = "SimilarityThresholdPolicyTypeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityThresholdPolicyModeEnum), TypeInfoPropertyName = "SimilarityThresholdPolicyModeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.ThresholdPolicyPoint>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ThresholdPolicyPoint))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.ThresholdPolicyPointRequest>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ThresholdPolicyPointRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListConflictsSeverity), TypeInfoPropertyName = "QualityListConflictsSeverity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListConflictsType), TypeInfoPropertyName = "QualityListConflictsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListJobValidationsStatus), TypeInfoPropertyName = "QualityListJobValidationsStatus2")]
@@ -126,16 +140,24 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ComparatorEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfComparatorEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ComparatorEnum?), TypeInfoPropertyName = "NullableComparatorEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BlankEnum?), TypeInfoPropertyName = "NullableBlankEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ExtrapolationEnum?), TypeInfoPropertyName = "NullableExtrapolationEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.InputEnum?), TypeInfoPropertyName = "NullableInputEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityTargetMetric?), TypeInfoPropertyName = "NullableQualityTargetMetric2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobValidationStatusEnum?), TypeInfoPropertyName = "NullableJobValidationStatusEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfAnnotationTypeEnumBlankEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfQualityTargetMetricNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfSimilarityMetricEnumBlankEnumNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityMetricEnum?), TypeInfoPropertyName = "NullableSimilarityMetricEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicyRequest>?), TypeInfoPropertyName = "NullableOneOfDoubleSimilarityThresholdPolicyRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfQualityPointSizeBaseBlankEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityPointSizeBase?), TypeInfoPropertyName = "NullableQualityPointSizeBase2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportRequirementCalculationStatusEnum?), TypeInfoPropertyName = "NullableQualityReportRequirementCalculationStatusEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ReasonEnum?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfReasonEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ReasonEnum?), TypeInfoPropertyName = "NullableReasonEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityReportTargetMetricSummaryMetricEnum?), TypeInfoPropertyName = "NullableQualityReportTargetMetricSummaryMetricEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<double?, global::CVAT.SimilarityThresholdPolicy>?), TypeInfoPropertyName = "NullableOneOfDoubleSimilarityThresholdPolicy2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityThresholdPolicyTypeEnum?), TypeInfoPropertyName = "NullableSimilarityThresholdPolicyTypeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.SimilarityThresholdPolicyModeEnum?), TypeInfoPropertyName = "NullableSimilarityThresholdPolicyModeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListConflictsSeverity?), TypeInfoPropertyName = "NullableQualityListConflictsSeverity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListConflictsType?), TypeInfoPropertyName = "NullableQualityListConflictsType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.QualityListJobValidationsStatus?), TypeInfoPropertyName = "NullableQualityListJobValidationsStatus2")]
@@ -160,6 +182,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<int>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.QualityReportRequirementSummaryItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.QualityRequirementBulkCreateNodeRequest>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ThresholdPolicyPoint>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ThresholdPolicyPointRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.QualityRequirement>))]
     internal sealed partial class QualitySourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -215,22 +239,34 @@ namespace CVAT
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ComparatorEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicyRequest>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ReasonEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicy>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicyRequest>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicy>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicyRequest>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.AnnotationTypeEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityTargetMetric?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.SimilarityMetricEnum?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<double?, global::CVAT.SimilarityThresholdPolicyRequest>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.QualityPointSizeBase?, global::CVAT.BlankEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
@@ -282,6 +318,14 @@ namespace CVAT
 
                     || typeToConvert == typeof(global::CVAT.ComparatorEnum?)
 
+                    || typeToConvert == typeof(global::CVAT.ExtrapolationEnum)
+
+                    || typeToConvert == typeof(global::CVAT.ExtrapolationEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.InputEnum)
+
+                    || typeToConvert == typeof(global::CVAT.InputEnum?)
+
                     || typeToConvert == typeof(global::CVAT.JobValidationStatusEnum)
 
                     || typeToConvert == typeof(global::CVAT.JobValidationStatusEnum?)
@@ -317,6 +361,18 @@ namespace CVAT
                     || typeToConvert == typeof(global::CVAT.ShapeType2)
 
                     || typeToConvert == typeof(global::CVAT.ShapeType2?)
+
+                    || typeToConvert == typeof(global::CVAT.SimilarityMetricEnum)
+
+                    || typeToConvert == typeof(global::CVAT.SimilarityMetricEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyModeEnum)
+
+                    || typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyModeEnum?)
+
+                    || typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyTypeEnum)
+
+                    || typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyTypeEnum?)
 
                     || typeToConvert == typeof(global::CVAT.QualityListConflictsSeverity)
 
@@ -425,6 +481,26 @@ namespace CVAT
                     return new global::CVAT.JsonConverters.ComparatorEnumNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::CVAT.ExtrapolationEnum))
+                {
+                    return new global::CVAT.JsonConverters.ExtrapolationEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.ExtrapolationEnum?))
+                {
+                    return new global::CVAT.JsonConverters.ExtrapolationEnumNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.InputEnum))
+                {
+                    return new global::CVAT.JsonConverters.InputEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.InputEnum?))
+                {
+                    return new global::CVAT.JsonConverters.InputEnumNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::CVAT.JobValidationStatusEnum))
                 {
                     return new global::CVAT.JsonConverters.JobValidationStatusEnumJsonConverter();
@@ -513,6 +589,36 @@ namespace CVAT
                 if (typeToConvert == typeof(global::CVAT.ShapeType2?))
                 {
                     return new global::CVAT.JsonConverters.ShapeType2NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.SimilarityMetricEnum))
+                {
+                    return new global::CVAT.JsonConverters.SimilarityMetricEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.SimilarityMetricEnum?))
+                {
+                    return new global::CVAT.JsonConverters.SimilarityMetricEnumNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyModeEnum))
+                {
+                    return new global::CVAT.JsonConverters.SimilarityThresholdPolicyModeEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyModeEnum?))
+                {
+                    return new global::CVAT.JsonConverters.SimilarityThresholdPolicyModeEnumNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyTypeEnum))
+                {
+                    return new global::CVAT.JsonConverters.SimilarityThresholdPolicyTypeEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.SimilarityThresholdPolicyTypeEnum?))
+                {
+                    return new global::CVAT.JsonConverters.SimilarityThresholdPolicyTypeEnumNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.QualityListConflictsSeverity))
