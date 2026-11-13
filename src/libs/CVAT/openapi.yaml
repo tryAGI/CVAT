@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CVAT REST API",
-    "version": "2.82.0 (2.0)",
+    "version": "2.83.0 (2.0)",
     "description": "REST API for Computer Vision Annotation Tool (CVAT)",
     "termsOfService": "https://www.google.com/policies/terms/",
     "contact": {
@@ -14176,6 +14176,13 @@
               "type": "string"
             },
             "readOnly": true
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnnotationConflictRequirement"
+            },
+            "readOnly": true
           }
         },
         "required": [
@@ -14190,6 +14197,19 @@
         ],
         "type": "string",
         "description": "* `tag` - TAG\n* `shape` - SHAPE\n* `track` - TRACK"
+      },
+      "AnnotationConflictRequirement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
       },
       "AnnotationConflictSeverity": {
         "enum": [
