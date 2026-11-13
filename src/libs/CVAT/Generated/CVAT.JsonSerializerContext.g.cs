@@ -39,6 +39,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationId))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictSeverity), TypeInfoPropertyName = "AnnotationConflictSeverity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.AnnotationConflictRequirement>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictAnnotationType), TypeInfoPropertyName = "AnnotationConflictAnnotationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
@@ -507,8 +509,6 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.EventsEnum?), TypeInfoPropertyName = "NullableEventsEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ExtrapolationEnum?), TypeInfoPropertyName = "NullableExtrapolationEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FileInfoTypeEnum?), TypeInfoPropertyName = "NullableFileInfoTypeEnum2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FrameSelectionMethod?), TypeInfoPropertyName = "NullableFrameSelectionMethod2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.KindEnum?), TypeInfoPropertyName = "NullableKindEnum2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FrameSelectionMethod?), TypeInfoPropertyName = "NullableFrameSelectionMethod2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.KindEnum?), TypeInfoPropertyName = "NullableKindEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.VisibilityEnum?), TypeInfoPropertyName = "NullableVisibilityEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LabelType?), TypeInfoPropertyName = "NullableLabelType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.GroundTruthJobCreateTypeEnum?), TypeInfoPropertyName = "NullableGroundTruthJobCreateTypeEnum2")]
@@ -615,6 +617,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationsStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationId>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AnnotationConflictRequirement>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]

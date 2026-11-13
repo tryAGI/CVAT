@@ -54,6 +54,12 @@ namespace CVAT
         public global::System.Collections.Generic.IList<string>? AttributeNames { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("requirements")]
+        public global::System.Collections.Generic.IList<global::CVAT.AnnotationConflictRequirement>? Requirements { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -81,6 +87,9 @@ namespace CVAT
         /// <param name="attributeNames">
         /// Included only in responses
         /// </param>
+        /// <param name="requirements">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -91,7 +100,8 @@ namespace CVAT
             global::CVAT.AnnotationConflictType? type,
             int? reportId,
             global::CVAT.AnnotationConflictSeverity? severity,
-            global::System.Collections.Generic.IList<string>? attributeNames)
+            global::System.Collections.Generic.IList<string>? attributeNames,
+            global::System.Collections.Generic.IList<global::CVAT.AnnotationConflictRequirement>? requirements)
         {
             this.Id = id;
             this.Frame = frame;
@@ -100,6 +110,7 @@ namespace CVAT
             this.ReportId = reportId;
             this.Severity = severity;
             this.AttributeNames = attributeNames;
+            this.Requirements = requirements;
         }
 
         /// <summary>
