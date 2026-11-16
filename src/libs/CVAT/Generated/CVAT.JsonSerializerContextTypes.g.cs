@@ -166,11 +166,11 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>? Type32 { get; set; }
+        public global::CVAT.OneOf<global::CVAT.ShapeType?, global::CVAT.NullEnum?>? Type32 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::CVAT.ShapeType2? Type33 { get; set; }
+        public global::CVAT.ShapeType? Type33 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -574,7 +574,7 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? Type134 { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ShapeType>? Type134 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1987,7 +1987,7 @@ namespace CVAT
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::CVAT.ShapeType2>? ListType24 { get; set; }
+        public global::System.Collections.Generic.List<global::CVAT.ShapeType>? ListType24 { get; set; }
         /// <summary>
         ///
         /// </summary>

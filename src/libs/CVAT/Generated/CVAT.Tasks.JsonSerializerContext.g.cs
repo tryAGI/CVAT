@@ -22,7 +22,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType2), TypeInfoPropertyName = "ShapeType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType), TypeInfoPropertyName = "ShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum), TypeInfoPropertyName = "NullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
@@ -122,7 +122,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType2?), TypeInfoPropertyName = "NullableShapeType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType?), TypeInfoPropertyName = "NullableShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum?), TypeInfoPropertyName = "NullableNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.InputTypeEnum?), TypeInfoPropertyName = "NullableInputTypeEnum2")]
@@ -226,7 +226,7 @@ namespace CVAT
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::CVAT.JsonConverters.DataResponseJsonConverter());
-            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ShapeType?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ValidationMode?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
@@ -282,9 +282,9 @@ namespace CVAT
 
                     || typeToConvert == typeof(global::CVAT.RqStatusStateEnum?)
 
-                    || typeToConvert == typeof(global::CVAT.ShapeType2)
+                    || typeToConvert == typeof(global::CVAT.ShapeType)
 
-                    || typeToConvert == typeof(global::CVAT.ShapeType2?)
+                    || typeToConvert == typeof(global::CVAT.ShapeType?)
 
                     || typeToConvert == typeof(global::CVAT.SortingMethod)
 
@@ -439,14 +439,14 @@ namespace CVAT
                     return new global::CVAT.JsonConverters.RqStatusStateEnumNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.ShapeType2))
+                if (typeToConvert == typeof(global::CVAT.ShapeType))
                 {
-                    return new global::CVAT.JsonConverters.ShapeType2JsonConverter();
+                    return new global::CVAT.JsonConverters.ShapeTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.ShapeType2?))
+                if (typeToConvert == typeof(global::CVAT.ShapeType?))
                 {
-                    return new global::CVAT.JsonConverters.ShapeType2NullableJsonConverter();
+                    return new global::CVAT.JsonConverters.ShapeTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.SortingMethod))

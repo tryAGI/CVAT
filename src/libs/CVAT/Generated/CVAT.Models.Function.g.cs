@@ -77,7 +77,7 @@ namespace CVAT
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supported_shape_types")]
-        public global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? SupportedShapeTypes { get; set; }
+        public global::System.Collections.Generic.IList<global::CVAT.ShapeType>? SupportedShapeTypes { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -166,7 +166,7 @@ namespace CVAT
             int? minNegPoints,
             bool? startswithBox,
             bool? startswithBoxOptional,
-            global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes,
+            global::System.Collections.Generic.IList<global::CVAT.ShapeType>? supportedShapeTypes,
             global::System.DateTime? createdDate,
             global::System.DateTime? updatedDate,
             global::CVAT.BasicUser? owner,

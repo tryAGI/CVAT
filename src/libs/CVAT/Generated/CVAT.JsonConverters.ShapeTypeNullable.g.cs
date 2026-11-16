@@ -3,10 +3,10 @@
 namespace CVAT.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ShapeType2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.ShapeType2?>
+    public sealed class ShapeTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::CVAT.ShapeType?>
     {
         /// <inheritdoc />
-        public override global::CVAT.ShapeType2? Read(
+        public override global::CVAT.ShapeType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace CVAT.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::CVAT.ShapeType2Extensions.ToEnum(stringValue);
+                        return global::CVAT.ShapeTypeExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace CVAT.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::CVAT.ShapeType2)numValue;
+                    return (global::CVAT.ShapeType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::CVAT.ShapeType2?);
+                    return default(global::CVAT.ShapeType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace CVAT.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::CVAT.ShapeType2? value,
+            global::CVAT.ShapeType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace CVAT.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::CVAT.ShapeType2Extensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::CVAT.ShapeTypeExtensions.ToValueString(value.Value));
             }
         }
     }

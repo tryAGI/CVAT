@@ -66,7 +66,7 @@ namespace CVAT
             int? minNegPoints = default,
             bool? startswithBox = default,
             bool? startswithBoxOptional = default,
-            global::System.Collections.Generic.IList<global::CVAT.ShapeType2>? supportedShapeTypes = default,
+            global::System.Collections.Generic.IList<global::CVAT.ShapeType>? supportedShapeTypes = default,
             global::CVAT.VisibilityEnum? visibility = default,
             global::CVAT.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

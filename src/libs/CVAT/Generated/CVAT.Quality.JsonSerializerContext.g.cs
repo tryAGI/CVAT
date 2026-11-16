@@ -32,8 +32,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictAnnotationType), TypeInfoPropertyName = "AnnotationConflictAnnotationType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfShapeType2NullEnum2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType2), TypeInfoPropertyName = "ShapeType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ShapeType?, global::CVAT.NullEnum?>), TypeInfoPropertyName = "OneOfShapeTypeNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType), TypeInfoPropertyName = "ShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum), TypeInfoPropertyName = "NullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationTypeEnum), TypeInfoPropertyName = "AnnotationTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
@@ -134,8 +134,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictType?), TypeInfoPropertyName = "NullableAnnotationConflictType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictSeverity?), TypeInfoPropertyName = "NullableAnnotationConflictSeverity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationConflictAnnotationType?), TypeInfoPropertyName = "NullableAnnotationConflictAnnotationType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfShapeType2NullEnum2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType2?), TypeInfoPropertyName = "NullableShapeType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.OneOf<global::CVAT.ShapeType?, global::CVAT.NullEnum?>?), TypeInfoPropertyName = "NullableOneOfShapeTypeNullEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType?), TypeInfoPropertyName = "NullableShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.NullEnum?), TypeInfoPropertyName = "NullableNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationTypeEnum?), TypeInfoPropertyName = "NullableAnnotationTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
@@ -235,7 +235,7 @@ namespace CVAT
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ShapeType2?, global::CVAT.NullEnum?>());
+            options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ShapeType?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ComparatorEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ComparatorEnum?, global::CVAT.NullEnum?>());
             options.Converters.Add(new global::CVAT.JsonConverters.OneOfJsonConverter<global::CVAT.ComparatorEnum?, global::CVAT.NullEnum?>());
@@ -361,9 +361,9 @@ namespace CVAT
 
                     || typeToConvert == typeof(global::CVAT.ReasonEnum?)
 
-                    || typeToConvert == typeof(global::CVAT.ShapeType2)
+                    || typeToConvert == typeof(global::CVAT.ShapeType)
 
-                    || typeToConvert == typeof(global::CVAT.ShapeType2?)
+                    || typeToConvert == typeof(global::CVAT.ShapeType?)
 
                     || typeToConvert == typeof(global::CVAT.SimilarityMetricEnum)
 
@@ -584,14 +584,14 @@ namespace CVAT
                     return new global::CVAT.JsonConverters.ReasonEnumNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.ShapeType2))
+                if (typeToConvert == typeof(global::CVAT.ShapeType))
                 {
-                    return new global::CVAT.JsonConverters.ShapeType2JsonConverter();
+                    return new global::CVAT.JsonConverters.ShapeTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.ShapeType2?))
+                if (typeToConvert == typeof(global::CVAT.ShapeType?))
                 {
-                    return new global::CVAT.JsonConverters.ShapeType2NullableJsonConverter();
+                    return new global::CVAT.JsonConverters.ShapeTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.SimilarityMetricEnum))
