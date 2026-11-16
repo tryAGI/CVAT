@@ -19,9 +19,9 @@ namespace CVAT
         /// * `skeleton` - SKELETON
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.ShapeType2JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::CVAT.JsonConverters.ShapeTypeJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::CVAT.ShapeType2 Type { get; set; }
+        public required global::CVAT.ShapeType Type { get; set; }
 
         /// <summary>
         /// Default Value: false
@@ -113,7 +113,7 @@ namespace CVAT
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TrackedShapeRequest(
-            global::CVAT.ShapeType2 type,
+            global::CVAT.ShapeType type,
             int frame,
             bool? occluded,
             bool? outside,

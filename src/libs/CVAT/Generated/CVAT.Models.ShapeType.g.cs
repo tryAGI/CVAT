@@ -13,7 +13,7 @@ namespace CVAT
     /// * `mask` - MASK<br/>
     /// * `skeleton` - SKELETON
     /// </summary>
-    public enum ShapeType2
+    public enum ShapeType
     {
         /// <summary>
         ///
@@ -52,41 +52,41 @@ namespace CVAT
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class ShapeType2Extensions
+    public static class ShapeTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this ShapeType2 value)
+        public static string ToValueString(this ShapeType value)
         {
             return value switch
             {
-                ShapeType2.Cuboid => "cuboid",
-                ShapeType2.Ellipse => "ellipse",
-                ShapeType2.Mask => "mask",
-                ShapeType2.Points => "points",
-                ShapeType2.Polygon => "polygon",
-                ShapeType2.Polyline => "polyline",
-                ShapeType2.Rectangle => "rectangle",
-                ShapeType2.Skeleton => "skeleton",
+                ShapeType.Cuboid => "cuboid",
+                ShapeType.Ellipse => "ellipse",
+                ShapeType.Mask => "mask",
+                ShapeType.Points => "points",
+                ShapeType.Polygon => "polygon",
+                ShapeType.Polyline => "polyline",
+                ShapeType.Rectangle => "rectangle",
+                ShapeType.Skeleton => "skeleton",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static ShapeType2? ToEnum(string value)
+        public static ShapeType? ToEnum(string value)
         {
             return value switch
             {
-                "cuboid" => ShapeType2.Cuboid,
-                "ellipse" => ShapeType2.Ellipse,
-                "mask" => ShapeType2.Mask,
-                "points" => ShapeType2.Points,
-                "polygon" => ShapeType2.Polygon,
-                "polyline" => ShapeType2.Polyline,
-                "rectangle" => ShapeType2.Rectangle,
-                "skeleton" => ShapeType2.Skeleton,
+                "cuboid" => ShapeType.Cuboid,
+                "ellipse" => ShapeType.Ellipse,
+                "mask" => ShapeType.Mask,
+                "points" => ShapeType.Points,
+                "polygon" => ShapeType.Polygon,
+                "polyline" => ShapeType.Polyline,
+                "rectangle" => ShapeType.Rectangle,
+                "skeleton" => ShapeType.Skeleton,
                 _ => null,
             };
         }

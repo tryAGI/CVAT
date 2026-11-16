@@ -20,7 +20,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.BasicUser))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType2), TypeInfoPropertyName = "ShapeType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType), TypeInfoPropertyName = "ShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AnnotationRequestFunction))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ArAssignment))]
@@ -47,7 +47,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.KindEnum), TypeInfoPropertyName = "KindEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.FunctionLabel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionLabel))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.ShapeType2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.ShapeType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.VisibilityEnum), TypeInfoPropertyName = "VisibilityEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionAttribute))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FunctionAttributeRequest))]
@@ -94,7 +94,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType2?), TypeInfoPropertyName = "NullableShapeType22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType?), TypeInfoPropertyName = "NullableShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ArType?), TypeInfoPropertyName = "NullableArType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.InputTypeEnum?), TypeInfoPropertyName = "NullableInputTypeEnum2")]
@@ -110,7 +110,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ShapeRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributeValRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionLabel>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ShapeType2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.ShapeType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionAttribute>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionSublabel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FunctionAttributeRequest>))]
@@ -215,9 +215,9 @@ namespace CVAT
 
                     || typeToConvert == typeof(global::CVAT.RequestCategoryEnum?)
 
-                    || typeToConvert == typeof(global::CVAT.ShapeType2)
+                    || typeToConvert == typeof(global::CVAT.ShapeType)
 
-                    || typeToConvert == typeof(global::CVAT.ShapeType2?)
+                    || typeToConvert == typeof(global::CVAT.ShapeType?)
 
                     || typeToConvert == typeof(global::CVAT.VisibilityEnum)
 
@@ -278,14 +278,14 @@ namespace CVAT
                     return new global::CVAT.JsonConverters.RequestCategoryEnumNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.ShapeType2))
+                if (typeToConvert == typeof(global::CVAT.ShapeType))
                 {
-                    return new global::CVAT.JsonConverters.ShapeType2JsonConverter();
+                    return new global::CVAT.JsonConverters.ShapeTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::CVAT.ShapeType2?))
+                if (typeToConvert == typeof(global::CVAT.ShapeType?))
                 {
-                    return new global::CVAT.JsonConverters.ShapeType2NullableJsonConverter();
+                    return new global::CVAT.JsonConverters.ShapeTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.VisibilityEnum))
