@@ -35,6 +35,12 @@ namespace CVAT
         public required int RelatedFiles { get; set; }
 
         /// <summary>
+        /// It is only included in job "meta" responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("related_files_metadata")]
+        public global::System.Collections.Generic.IList<global::CVAT.RelatedFileMetadata>? RelatedFilesMetadata { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_related_context")]
@@ -53,6 +59,9 @@ namespace CVAT
         /// <param name="relatedFiles"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
+        /// <param name="relatedFilesMetadata">
+        /// It is only included in job "meta" responses.
+        /// </param>
         /// <param name="hasRelatedContext">
         /// Included only in responses
         /// </param>
@@ -64,12 +73,14 @@ namespace CVAT
             int relatedFiles,
             int? width,
             int? height,
+            global::System.Collections.Generic.IList<global::CVAT.RelatedFileMetadata>? relatedFilesMetadata,
             bool? hasRelatedContext)
         {
             this.Width = width;
             this.Height = height;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.RelatedFiles = relatedFiles;
+            this.RelatedFilesMetadata = relatedFilesMetadata;
             this.HasRelatedContext = hasRelatedContext;
         }
 

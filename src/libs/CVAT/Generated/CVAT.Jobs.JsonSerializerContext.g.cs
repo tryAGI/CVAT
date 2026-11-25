@@ -23,6 +23,7 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ShapeType), TypeInfoPropertyName = "ShapeType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.AttributeVal))]
@@ -37,6 +38,10 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FrameMeta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.StorageType), TypeInfoPropertyName = "StorageType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RqId))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FileMetadata))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FileMetadataTypeEnum), TypeInfoPropertyName = "FileMetadataTypeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::CVAT.RelatedFileMetadata>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedFileMetadata), TypeInfoPropertyName = "RelatedFileMetadata2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FrameSelectionMethod), TypeInfoPropertyName = "FrameSelectionMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.GroundTruthJobCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.GroundTruthJobCreateTypeEnum), TypeInfoPropertyName = "GroundTruthJobCreateTypeEnum2")]
@@ -91,6 +96,10 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedJobValidationLayoutWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedJobWriteRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.PatchedLabeledDataRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedImageMetadata))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedFileMetadataDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedFileMetadataDiscriminatorType), TypeInfoPropertyName = "RelatedFileMetadataDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedImageMetadataTypeEnum), TypeInfoPropertyName = "RelatedImageMetadataTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ReplicaJobCreateTypeEnum), TypeInfoPropertyName = "ReplicaJobCreateTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListDimension), TypeInfoPropertyName = "JobsListDimension2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListMediaType), TypeInfoPropertyName = "JobsListMediaType2")]
@@ -112,6 +121,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ChunkType?), TypeInfoPropertyName = "NullableChunkType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.StorageType?), TypeInfoPropertyName = "NullableStorageType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FileMetadataTypeEnum?), TypeInfoPropertyName = "NullableFileMetadataTypeEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedFileMetadata?), TypeInfoPropertyName = "NullableRelatedFileMetadata2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.FrameSelectionMethod?), TypeInfoPropertyName = "NullableFrameSelectionMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.GroundTruthJobCreateTypeEnum?), TypeInfoPropertyName = "NullableGroundTruthJobCreateTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobStatus?), TypeInfoPropertyName = "NullableJobStatus2")]
@@ -121,6 +132,8 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobWriteRequest?), TypeInfoPropertyName = "NullableJobWriteRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobWriteRequestDiscriminatorType?), TypeInfoPropertyName = "NullableJobWriteRequestDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.LocationEnum?), TypeInfoPropertyName = "NullableLocationEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedFileMetadataDiscriminatorType?), TypeInfoPropertyName = "NullableRelatedFileMetadataDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.RelatedImageMetadataTypeEnum?), TypeInfoPropertyName = "NullableRelatedImageMetadataTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.ReplicaJobCreateTypeEnum?), TypeInfoPropertyName = "NullableReplicaJobCreateTypeEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListDimension?), TypeInfoPropertyName = "NullableJobsListDimension2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsListMediaType?), TypeInfoPropertyName = "NullableJobsListMediaType2")]
@@ -135,11 +148,13 @@ namespace CVAT
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsRetrieveDataQuality?), TypeInfoPropertyName = "NullableJobsRetrieveDataQuality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsRetrieveDataType?), TypeInfoPropertyName = "NullableJobsRetrieveDataType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::CVAT.JobsCreateDatasetExportLocation?), TypeInfoPropertyName = "NullableJobsCreateDatasetExportLocation2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.AttributeValRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.Chapter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.FrameMeta>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.RelatedFileMetadata>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.LabeledImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.LabeledShape>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::CVAT.LabeledTrack>))]
@@ -204,6 +219,7 @@ namespace CVAT
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::CVAT.JsonConverters.JobWriteRequestJsonConverter());
+            options.Converters.Add(new global::CVAT.JsonConverters.RelatedFileMetadataJsonConverter());
             options.Converters.Add(new global::CVAT.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -229,6 +245,10 @@ namespace CVAT
                     typeToConvert == typeof(global::CVAT.ChunkType)
 
                     || typeToConvert == typeof(global::CVAT.ChunkType?)
+
+                    || typeToConvert == typeof(global::CVAT.FileMetadataTypeEnum)
+
+                    || typeToConvert == typeof(global::CVAT.FileMetadataTypeEnum?)
 
                     || typeToConvert == typeof(global::CVAT.FrameSelectionMethod)
 
@@ -261,6 +281,14 @@ namespace CVAT
                     || typeToConvert == typeof(global::CVAT.OperationStatus)
 
                     || typeToConvert == typeof(global::CVAT.OperationStatus?)
+
+                    || typeToConvert == typeof(global::CVAT.RelatedFileMetadataDiscriminatorType)
+
+                    || typeToConvert == typeof(global::CVAT.RelatedFileMetadataDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::CVAT.RelatedImageMetadataTypeEnum)
+
+                    || typeToConvert == typeof(global::CVAT.RelatedImageMetadataTypeEnum?)
 
                     || typeToConvert == typeof(global::CVAT.ReplicaJobCreateTypeEnum)
 
@@ -341,6 +369,16 @@ namespace CVAT
                     return new global::CVAT.JsonConverters.ChunkTypeNullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::CVAT.FileMetadataTypeEnum))
+                {
+                    return new global::CVAT.JsonConverters.FileMetadataTypeEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.FileMetadataTypeEnum?))
+                {
+                    return new global::CVAT.JsonConverters.FileMetadataTypeEnumNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::CVAT.FrameSelectionMethod))
                 {
                     return new global::CVAT.JsonConverters.FrameSelectionMethodJsonConverter();
@@ -419,6 +457,26 @@ namespace CVAT
                 if (typeToConvert == typeof(global::CVAT.OperationStatus?))
                 {
                     return new global::CVAT.JsonConverters.OperationStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.RelatedFileMetadataDiscriminatorType))
+                {
+                    return new global::CVAT.JsonConverters.RelatedFileMetadataDiscriminatorTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.RelatedFileMetadataDiscriminatorType?))
+                {
+                    return new global::CVAT.JsonConverters.RelatedFileMetadataDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.RelatedImageMetadataTypeEnum))
+                {
+                    return new global::CVAT.JsonConverters.RelatedImageMetadataTypeEnumJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::CVAT.RelatedImageMetadataTypeEnum?))
+                {
+                    return new global::CVAT.JsonConverters.RelatedImageMetadataTypeEnumNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::CVAT.ReplicaJobCreateTypeEnum))
